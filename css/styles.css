@@ -197,6 +197,8 @@ code { background: #0d0e1f; padding: 2px 6px; border-radius: 6px; font-size: 13p
   display: flex; flex-direction: column; transition: border-color 0.15s ease, transform 0.15s ease;
 }
 .gcard--pick { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), 0 12px 30px rgba(46, 196, 182, 0.25); transform: translateY(-2px); }
+.gcard--fit { border-color: rgba(46, 196, 182, 0.5); }
+.pill--fit { background: var(--accent); color: #0f1020; border-color: transparent; font-weight: 700; }
 .gcard__body { padding: 12px; display: grid; gap: 8px; }
 .gcard__name { font-weight: 700; line-height: 1.2; }
 .gcard__meta { display: flex; flex-wrap: wrap; gap: 6px; }

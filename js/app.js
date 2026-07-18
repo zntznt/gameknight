@@ -76,6 +76,31 @@ function fitsPlayers(g, n, mode) {
   return atLeast ? arr.some((c) => c >= 8) : arr.includes(n);
 }
 
+// Is the chosen player count a best / recommended count for this game?
+function isBestAt(g, n) {
+  if (!n || !g.pollVotes || !Array.isArray(g.bestPlayers)) return false;
+  return n >= 8 ? g.bestPlayers.some((c) => c >= 8) : g.bestPlayers.includes(n);
+}
+function isRecAt(g, n) {
+  if (!n || !g.pollVotes || !Array.isArray(g.recPlayers)) return false;
+  return n >= 8 ? g.recPlayers.some((c) => c >= 8) : g.recPlayers.includes(n);
+}
+
+// Fit tier for the chosen player count: best (3) > recommended (2) > supported /
+// no-poll (1). No player count chosen → neutral (0), so ordering falls to rating.
+function fitTier(g) {
+  const n = state.constraints.players;
+  if (!n) return 0;
+  if (isBestAt(g, n)) return 3;
+  if (isRecAt(g, n)) return 2;
+  return 1;
+}
+
+// Rank by how well the game fits the table, then by BGG rating.
+function sortByFit(games) {
+  return games.slice().sort((a, b) => fitTier(b) - fitTier(a) || (b.rating || 0) - (a.rating || 0));
+}
+
 // Compress [1,2,3,5] → "1–3, 5" for the "best at N" badge.
 function formatCounts(arr) {
   const a = [...new Set(arr)].sort((x, y) => x - y);
@@ -139,10 +164,7 @@ function renderLive() {
   if (games.length === 0) {
     strip.appendChild(el('div', 'live__empty', 'Nothing fits — loosen a preference or constraint.'));
   } else {
-    games
-      .slice()
-      .sort((a, b) => (b.rating || 0) - (a.rating || 0))
-      .forEach((g) => strip.appendChild(thumb(g, 'sm')));
+    sortByFit(games).forEach((g) => strip.appendChild(thumb(g, 'sm')));
   }
   wrap.appendChild(strip);
 }
@@ -440,7 +462,7 @@ function renderConstraints(s) {
 }
 
 function renderResult(s) {
-  const games = finalGames().slice().sort((a, b) => (b.rating || 0) - (a.rating || 0));
+  const games = sortByFit(finalGames());
   const card = el('div', 'card');
   const head = el('div', 'result__head');
   head.appendChild(el('h2', null, games.length ? `${games.length} game${games.length === 1 ? '' : 's'} for the table` : 'Nothing survived'));
@@ -469,7 +491,7 @@ function renderResult(s) {
   restart.onclick = () => {
     state.answers = {};
     state.prefIndex = 0;
-    state.constraints = { players: null, wLo: 0, wHi: 99, maxTime: null, minAge: null };
+    state.constraints = { players: null, playerFit: 'rec', wLo: 0, wHi: 99, maxTime: null, minAge: null };
     go('collections');
   };
   foot.appendChild(back);
@@ -488,20 +510,23 @@ function renderResult(s) {
 }
 
 function gameCard(g) {
-  const card = el('div', 'gcard');
+  const n = state.constraints.players;
+  const bestFit = isBestAt(g, n);
+  const card = el('div', 'gcard' + (bestFit ? ' gcard--fit' : ''));
   card.dataset.id = g.id;
   card.appendChild(thumb(g, 'lg'));
   const body = el('div', 'gcard__body');
   body.appendChild(txt('div', 'gcard__name', g.name));
   const meta = el('div', 'gcard__meta');
-  const pill = (t) => el('span', 'pill', t);
+  const pill = (t, cls) => el('span', 'pill' + (cls ? ' ' + cls : ''), t);
   meta.appendChild(pill(`${g.minPlayers}–${g.maxPlayers >= 99 ? '∞' : g.maxPlayers} 👤`));
   const t = g.playTime || g.maxTime || g.minTime;
   if (t) meta.appendChild(pill(`${t}m ⏱`));
   if (g.weight) meta.appendChild(pill(`${g.weight.toFixed(1)} 🧠`));
   if (g.cooperative) meta.appendChild(pill('co-op 🤝'));
   if (g.pollVotes && Array.isArray(g.bestPlayers) && g.bestPlayers.length)
-    meta.appendChild(pill(`best ${formatCounts(g.bestPlayers)} 👍`));
+    // Accent the badge when your chosen count is one of the game's best counts.
+    meta.appendChild(pill(`best ${formatCounts(g.bestPlayers)} 👍`, bestFit ? 'pill--fit' : ''));
   body.appendChild(meta);
   const owners = (g.owners || []).map((id) => (state.data.collections.find((c) => c.id === id) || {}).label || id);
   if (owners.length) body.appendChild(txt('div', 'gcard__owners', `On: ${owners.join(', ')}`));
