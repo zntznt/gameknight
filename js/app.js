@@ -203,11 +203,17 @@ function renderSetup(s) {
     <h2>Welcome to Gameknight ♞</h2>
     <p>No collections are loaded yet. To fill the shelf:</p>
     <ol class="steps">
-      <li>Edit <code>data/collections.config.json</code> with your friends' BoardGameGeek usernames.</li>
+      <li><strong>Get a BoardGameGeek API token.</strong> Since late 2025 the BGG
+        XML API requires one. Apply at
+        <a href="https://boardgamegeek.com/using_the_xml_api" target="_blank" rel="noopener">boardgamegeek.com/using_the_xml_api</a>.</li>
+      <li>Add the token to the repo as a secret named <code>BGG_TOKEN</code>
+        (Settings → Secrets and variables → Actions → New repository secret).</li>
+      <li>List your friends' BGG usernames in <code>data/collections.config.json</code>.</li>
       <li>Run the <strong>Fetch BGG collections</strong> GitHub Action (Actions tab → Run workflow).</li>
       <li>It commits a fresh <code>data/games.json</code> and this page fills up automatically.</li>
     </ol>
-    <p class="muted">Right now you're seeing bundled sample data so you can try the flow.</p>`;
+    <p class="muted">Right now you're seeing bundled sample data so you can try the flow.
+      Without the token, the fetch step returns 401.</p>`;
   const btn = el('button', 'btn btn--primary', 'Try it with sample data →');
   btn.onclick = () => go('collections');
   card.appendChild(btn);
@@ -512,7 +518,12 @@ function renderResult(s) {
 function gameCard(g) {
   const n = state.constraints.players;
   const bestFit = isBestAt(g, n);
-  const card = el('div', 'gcard' + (bestFit ? ' gcard--fit' : ''));
+  // The whole card links to the game's BGG page.
+  const card = el('a', 'gcard' + (bestFit ? ' gcard--fit' : ''));
+  card.href = `https://boardgamegeek.com/boardgame/${g.id}`;
+  card.target = '_blank';
+  card.rel = 'noopener';
+  card.title = `${g.name} on BoardGameGeek`;
   card.dataset.id = g.id;
   card.appendChild(thumb(g, 'lg'));
   const body = el('div', 'gcard__body');
