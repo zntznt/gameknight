@@ -6,7 +6,7 @@
     { "id": "jordan", "label": "Jordan's shelf", "bggUser": "jordan_example" }
   ],
   "options": {
-    "$comment": "Which BGG collection subset to pull per user. own=1 is the usual choice. You can also flip on wishlist/preordered if you want.",
+    "$comment": "Which BGG statuses to pull per user. Leave own=true for a 'what can we play tonight' shelf. These combine with OR and the app can't tell them apart, so only enable wishlist/preordered if you truly want those games mixed in.",
     "own": true,
     "wishlist": false,
     "preordered": false

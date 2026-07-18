@@ -67,6 +67,12 @@ async function fetchCollectionIds(username, options) {
   if (options.own !== false) flags.push('own=1');
   if (options.wishlist) flags.push('wishlist=1');
   if (options.preordered) flags.push('preordered=1');
+  // Safety net: with no status filter, BGG returns the user's ENTIRE collection
+  // (rated, commented, previously owned, wishlisted…). Fall back to owned-only.
+  if (flags.length === 0) {
+    console.warn(`    ⚠ No status filter set for "${username}" — defaulting to own=1.`);
+    flags.push('own=1');
+  }
   // excludesubtype drops expansions — you can't sit down and play an expansion.
   const url = `${API}/collection?username=${encodeURIComponent(username)}&brief=1&excludesubtype=boardgameexpansion&${flags.join('&')}`;
   console.log(`  → collection for ${username}`);
