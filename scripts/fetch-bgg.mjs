@@ -18,7 +18,7 @@ const UA = 'Gameknight/0.1 (+https://github.com/) collection baker';
 const parser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: '',
-  isArray: (name) => ['item', 'link', 'name', 'rank'].includes(name),
+  isArray: (name) => ['item', 'link', 'name', 'rank', 'poll', 'results', 'result'].includes(name),
 });
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -91,6 +91,35 @@ async function fetchThings(ids) {
   return toArr(parsed?.items?.item).map(parseThing);
 }
 
+// Parse the "suggested_numplayers" community poll into best/recommended counts.
+//   • Recommended at N  ⇔  Best + Recommended votes > Not-Recommended votes
+//   • Best at N         ⇔  Best votes lead the other two
+// (Best ⊆ Recommended by construction.) "N+" overflow entries are skipped —
+// they mean "more than the box max", which our exact-N filter doesn't use.
+function parsePlayerPoll(it) {
+  const poll = toArr(it.poll).find((p) => p.name === 'suggested_numplayers');
+  const best = [];
+  const rec = [];
+  const votes = poll ? num(poll.totalvotes) : 0;
+  if (poll) {
+    for (const r of toArr(poll.results)) {
+      const raw = String(r.numplayers ?? '');
+      if (raw.includes('+')) continue;
+      const n = parseInt(raw, 10);
+      if (!Number.isFinite(n)) continue;
+      const by = {};
+      for (const res of toArr(r.result)) by[res.value] = num(res.numvotes);
+      const b = by['Best'] || 0;
+      const rc = by['Recommended'] || 0;
+      const nr = by['Not Recommended'] || 0;
+      if (b + rc + nr === 0) continue;
+      if (b + rc > nr) rec.push(n);
+      if (b > rc && b > nr) best.push(n);
+    }
+  }
+  return { bestPlayers: best, recPlayers: rec, pollVotes: votes };
+}
+
 function parseThing(it) {
   const names = toArr(it.name);
   const primary = names.find((n) => n.type === 'primary') || names[0] || {};
@@ -100,6 +129,7 @@ function parseThing(it) {
   const ratings = it.statistics?.ratings || {};
   const ranks = toArr(ratings.ranks?.rank);
   const overall = ranks.find((r) => r.name === 'boardgame');
+  const poll = parsePlayerPoll(it);
   return {
     id: num(it.id),
     name: primary.value || 'Unknown',
@@ -118,6 +148,9 @@ function parseThing(it) {
     cooperative: mechs.some((m) => /cooperative/i.test(m)),
     categories: cats,
     mechanics: mechs,
+    bestPlayers: poll.bestPlayers,
+    recPlayers: poll.recPlayers,
+    pollVotes: poll.pollVotes,
   };
 }
 

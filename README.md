@@ -88,6 +88,11 @@ ORed within a multi-select. Every question is skippable — a *want* isn't a
 - **Union vs. intersection:** with several collections selected, choose "anyone
   owns" (union) or "everyone owns" (intersection — the safe bet if the owner
   might not show up).
-- **Missing metadata** (e.g. unrated weight) never silently drops a game from a
-  constraint filter — unknowns pass.
+- **Plays-well-at-N:** the player-count filter uses BGG's *suggested number of
+  players* poll, not just the box range. Pick **Best** (the sweet spot),
+  **Recommended** (community says it plays fine), or **Box supports** (anything
+  in the min–max range). Games without poll votes fall back to the box range.
+  Result cards show a **best N** badge from the same poll.
+- **Missing metadata** (e.g. unrated weight, no player poll) never silently
+  drops a game from a constraint filter — unknowns pass / fall back to the box.
 - Game data © BoardGameGeek; fetched via their XML API for personal use.

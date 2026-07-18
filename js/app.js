@@ -28,7 +28,7 @@ const state = {
   mode: 'union', // 'union' | 'intersection'
   answers: {}, // questionId -> [optionId]
   prefIndex: 0,
-  constraints: { players: null, wLo: 0, wHi: 99, maxTime: null, minAge: null },
+  constraints: { players: null, playerFit: 'rec', wLo: 0, wHi: 99, maxTime: null, minAge: null },
 };
 
 const stage = () => $('#stage');
@@ -47,7 +47,7 @@ function afterPrefs() {
 function constraintPredicates() {
   const c = state.constraints;
   const preds = [];
-  if (c.players) preds.push((g) => g.minPlayers <= c.players && g.maxPlayers >= c.players);
+  if (c.players) preds.push((g) => fitsPlayers(g, c.players, c.playerFit));
   // Complexity buckets are half-open [lo, hi). Unknown weight (0) always passes.
   if (c.wLo > 0 || c.wHi < 99)
     preds.push((g) => !g.weight || (g.weight >= c.wLo && g.weight < c.wHi));
@@ -60,6 +60,38 @@ function constraintPredicates() {
 }
 function finalGames() {
   return applyFilters(afterPrefs(), constraintPredicates());
+}
+
+// Does a game play well at N players?
+//   'supported' — N is within the box's min–max range.
+//   'rec'       — the community's suggested-players poll recommends N.
+//   'best'      — the poll calls N a best count.
+// The "8" chip means "8 or more". Games without poll data fall back to the box.
+function fitsPlayers(g, n, mode) {
+  const atLeast = n >= 8;
+  const inBox = atLeast ? g.maxPlayers >= 8 : g.minPlayers <= n && g.maxPlayers >= n;
+  if (mode === 'supported') return inBox;
+  const arr = mode === 'best' ? g.bestPlayers : g.recPlayers;
+  if (!g.pollVotes || !Array.isArray(arr) || !arr.length) return inBox; // no poll → box range
+  return atLeast ? arr.some((c) => c >= 8) : arr.includes(n);
+}
+
+// Compress [1,2,3,5] → "1–3, 5" for the "best at N" badge.
+function formatCounts(arr) {
+  const a = [...new Set(arr)].sort((x, y) => x - y);
+  const runs = [];
+  let start = null;
+  let prev = null;
+  for (const n of a) {
+    if (start === null) start = prev = n;
+    else if (n === prev + 1) prev = n;
+    else {
+      runs.push([start, prev]);
+      start = prev = n;
+    }
+  }
+  if (start !== null) runs.push([start, prev]);
+  return runs.map(([lo, hi]) => (lo === hi ? `${lo}` : `${lo}–${hi}`)).join(', ');
 }
 
 // --- thumbnails with graceful fallback --------------------------------------
@@ -351,7 +383,28 @@ function renderConstraints(s) {
   }
 
   function playerControl() {
-    return chipRow([1, 2, 3, 4, 5, 6, 7, 8], c.players, (v) => (c.players = v), (v) => (v === 8 ? '8+' : v));
+    const box = el('div', 'pcontrol');
+    box.appendChild(chipRow([1, 2, 3, 4, 5, 6, 7, 8], c.players, (v) => (c.players = v), (v) => (v === 8 ? '8+' : v)));
+    if (c.players) {
+      const fit = el('div', 'fitsel');
+      fit.appendChild(el('span', 'fitsel__label', `How it plays at ${c.players === 8 ? '8+' : c.players}:`));
+      const seg = el('div', 'segmented');
+      [
+        ['best', 'Best'],
+        ['rec', 'Recommended'],
+        ['supported', 'Box supports'],
+      ].forEach(([val, label]) => {
+        const b = el('button', 'seg' + (c.playerFit === val ? ' seg--on' : ''), label);
+        b.onclick = () => {
+          c.playerFit = val;
+          render();
+        };
+        seg.appendChild(b);
+      });
+      fit.appendChild(seg);
+      box.appendChild(fit);
+    }
+    return box;
   }
   function ageControl() {
     return chipRow([6, 8, 10, 12, 14], c.minAge, (v) => (c.minAge = v), (v) => `${v}+`);
@@ -447,6 +500,8 @@ function gameCard(g) {
   if (t) meta.appendChild(pill(`${t}m ⏱`));
   if (g.weight) meta.appendChild(pill(`${g.weight.toFixed(1)} 🧠`));
   if (g.cooperative) meta.appendChild(pill('co-op 🤝'));
+  if (g.pollVotes && Array.isArray(g.bestPlayers) && g.bestPlayers.length)
+    meta.appendChild(pill(`best ${formatCounts(g.bestPlayers)} 👍`));
   body.appendChild(meta);
   const owners = (g.owners || []).map((id) => (state.data.collections.find((c) => c.id === id) || {}).label || id);
   if (owners.length) body.appendChild(txt('div', 'gcard__owners', `On: ${owners.join(', ')}`));

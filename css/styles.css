@@ -183,6 +183,11 @@ code { background: #0d0e1f; padding: 2px 6px; border-radius: 6px; font-size: 13p
 .chip:hover { border-color: var(--primary); }
 .chip--on { background: var(--primary); border-color: transparent; color: #fff; font-weight: 700; }
 .chip__sub { display: block; font-size: 10px; font-weight: 400; opacity: 0.7; }
+.pcontrol { display: grid; gap: 10px; }
+.fitsel { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.fitsel__label { font-size: 12px; color: var(--muted); }
+.fitsel .segmented { font-size: 13px; }
+.fitsel .seg { padding: 6px 11px; }
 
 /* Results */
 .result__head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
