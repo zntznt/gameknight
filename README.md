@@ -40,17 +40,26 @@ BGG XML API ──(GitHub Action, weekly)──▶ data/games.json ──▶ sta
    `bggUser` is the BoardGameGeek username. `id` is a short internal key;
    `label` is what shows in the UI.
 
-2. **Bake the data.** In the **Actions** tab, run **Fetch BGG collections**
-   (also runs weekly on its own). It writes a fresh `data/games.json` and
-   commits it. First run for a large collection can take a couple of minutes —
-   BGG queues collection requests and we wait politely.
+2. **Get a BGG API token.** Since late 2025 the BGG XML API requires a Bearer
+   token. Register your use at
+   [boardgamegeek.com/using_the_xml_api](https://boardgamegeek.com/using_the_xml_api),
+   then in this repo go to **Settings → Secrets and variables → Actions → New
+   repository secret** and add it as `BGG_TOKEN`. Without it the fetch returns
+   `401`. The token lives only in the secret and the CI job — it is never
+   committed or shipped to the browser.
 
-3. **Publish.** Settings → Pages → Source = **GitHub Actions**. Pushing to
+3. **Bake the data.** In the **Actions** tab, run **Fetch BGG collections**
+   (also runs weekly on its own). It authenticates with `BGG_TOKEN`, writes a
+   fresh `data/games.json`, and commits it. First run for a large collection can
+   take a couple of minutes — BGG queues collection requests and we wait
+   politely.
+
+4. **Publish.** Settings → Pages → Source = **GitHub Actions**. Pushing to
    `main` deploys via [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
    (Or set Source to "Deploy from a branch" → `main` / root and skip that
    workflow.)
 
-Until you run step 2, the app shows bundled **sample data** so you can try the
+Until you run step 3, the app shows bundled **sample data** so you can try the
 flow immediately.
 
 ## Local development
@@ -59,9 +68,9 @@ No build step. Serve the folder over HTTP (ES modules need a real origin):
 
 ```bash
 npm run serve      # python3 -m http.server 8080  → http://localhost:8080
-# or refresh the data locally (needs your usernames in the config):
+# or refresh the data locally (needs your usernames in the config + a token):
 npm install
-npm run fetch
+BGG_TOKEN=your_token_here npm run fetch
 ```
 
 ## How it's wired

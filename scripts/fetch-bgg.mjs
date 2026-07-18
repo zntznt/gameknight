@@ -2,9 +2,13 @@
 // Server-side BGG fetcher. Runs in CI (no CORS), handles the async 202 queue,
 // enriches every owned game with full details, and writes data/games.json.
 //
-//   node scripts/fetch-bgg.mjs
+//   BGG_TOKEN=<your token> node scripts/fetch-bgg.mjs
 //
 // Reads data/collections.config.json for the usernames to pull.
+//
+// Since late 2025 the BGG XML API requires a Bearer token (register at
+// https://boardgamegeek.com/using_the_xml_api). Provide it via the BGG_TOKEN
+// environment variable — in CI, store it as the repo secret BGG_TOKEN.
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { XMLParser } from 'fast-xml-parser';
@@ -14,6 +18,7 @@ const CONFIG_PATH = new URL('../data/collections.config.json', import.meta.url);
 const OUT_PATH = new URL('../data/games.json', import.meta.url);
 const CHUNK = 20; // ids per `thing` request
 const UA = 'Gameknight/0.1 (+https://github.com/) collection baker';
+const TOKEN = (process.env.BGG_TOKEN || process.env.BGG_API_TOKEN || '').trim();
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -33,7 +38,9 @@ async function bggGet(url, { tries = 8 } = {}) {
   for (let i = 0; i < tries; i++) {
     let res;
     try {
-      res = await fetch(url, { headers: { 'User-Agent': UA } });
+      const headers = { 'User-Agent': UA };
+      if (TOKEN) headers['Authorization'] = `Bearer ${TOKEN}`;
+      res = await fetch(url, { headers });
     } catch (e) {
       await sleep(2000 * (i + 1));
       continue;
@@ -56,6 +63,13 @@ async function bggGet(url, { tries = 8 } = {}) {
     if (res.status === 429 || res.status >= 500) {
       await sleep(3000 * (i + 1));
       continue;
+    }
+    if (res.status === 401) {
+      throw new Error(
+        TOKEN
+          ? 'BGG returned 401 — the BGG_TOKEN is invalid or expired. Re-check it at https://boardgamegeek.com/using_the_xml_api'
+          : 'BGG returned 401 — the XML API now requires a Bearer token. Register at https://boardgamegeek.com/using_the_xml_api and pass it as BGG_TOKEN (repo secret in CI).'
+      );
     }
     throw new Error(`BGG ${res.status} for ${url}`);
   }
@@ -167,6 +181,15 @@ async function main() {
   if (!collections.length) {
     console.error('No collections with a bggUser in collections.config.json — nothing to do.');
     process.exit(1);
+  }
+  if (!TOKEN) {
+    console.warn(
+      '⚠ No BGG_TOKEN set. The BGG XML API has required a Bearer token since late 2025,\n' +
+        '  so this will almost certainly 401. Register at https://boardgamegeek.com/using_the_xml_api\n' +
+        '  and pass it as BGG_TOKEN (locally: `BGG_TOKEN=... npm run fetch`; in CI: repo secret BGG_TOKEN).'
+    );
+  } else {
+    console.log('✓ Using BGG_TOKEN for XML API authorization.');
   }
 
   // 1) gather owned ids per collection
