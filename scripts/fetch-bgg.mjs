@@ -17,7 +17,9 @@ const API = 'https://boardgamegeek.com/xmlapi2';
 const CONFIG_PATH = new URL('../data/collections.config.json', import.meta.url);
 const OUT_PATH = new URL('../data/games.json', import.meta.url);
 const CHUNK = 20; // ids per `thing` request
-const UA = 'Gameknight/0.1 (+https://github.com/) collection baker';
+// Identifies this client to BGG. Keep it pointing at the real repo so BGG can
+// match API traffic to the registered application.
+const UA = 'Gameknight/0.1 (+https://github.com/zntznt/gameknight) collection baker';
 const TOKEN = (process.env.BGG_TOKEN || process.env.BGG_API_TOKEN || '').trim();
 
 const parser = new XMLParser({
