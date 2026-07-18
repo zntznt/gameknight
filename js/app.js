@@ -11,6 +11,15 @@ const el = (tag, cls, html) => {
   if (html != null) n.innerHTML = html;
   return n;
 };
+// Like el() but for untrusted strings (game names, owner/collection labels from
+// BGG). Uses textContent so a name like "Wits & Wagers" or a crafted
+// "<img onerror=...>" renders literally instead of as HTML.
+const txt = (tag, cls, text) => {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+};
 
 const state = {
   data: null,
@@ -167,7 +176,9 @@ function renderCollections(s) {
       updateColUI();
     };
     row.appendChild(cb);
-    row.appendChild(el('span', 'collection__label', `${c.label} <span class="muted">· ${count} games</span>`));
+    const labelWrap = txt('span', 'collection__label', c.label + ' ');
+    labelWrap.appendChild(txt('span', 'muted', `· ${count} games`));
+    row.appendChild(labelWrap);
     list.appendChild(row);
   });
   card.appendChild(list);
@@ -231,6 +242,8 @@ function renderPrefs(s) {
     const wouldRemain = context.filter((g) => o.match(g)).length;
     const on = selected.has(o.id);
     const b = el('button', 'option' + (on ? ' option--on' : '') + (wouldRemain === 0 ? ' option--empty' : ''));
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    // o.label / o.hint come from questions.js (our own code), so HTML here is safe.
     b.innerHTML = `<span class="option__label">${o.label}</span>${o.hint ? `<span class="option__hint">${o.hint}</span>` : ''}<span class="option__count">${wouldRemain}</span>`;
     b.onclick = () => {
       if (q.type === 'single') {
@@ -421,7 +434,7 @@ function gameCard(g) {
   card.dataset.id = g.id;
   card.appendChild(thumb(g, 'lg'));
   const body = el('div', 'gcard__body');
-  body.appendChild(el('div', 'gcard__name', g.name));
+  body.appendChild(txt('div', 'gcard__name', g.name));
   const meta = el('div', 'gcard__meta');
   const pill = (t) => el('span', 'pill', t);
   meta.appendChild(pill(`${g.minPlayers}–${g.maxPlayers >= 99 ? '∞' : g.maxPlayers} 👤`));
@@ -431,7 +444,7 @@ function gameCard(g) {
   if (g.cooperative) meta.appendChild(pill('co-op 🤝'));
   body.appendChild(meta);
   const owners = (g.owners || []).map((id) => (state.data.collections.find((c) => c.id === id) || {}).label || id);
-  if (owners.length) body.appendChild(el('div', 'gcard__owners', `On: ${owners.join(', ')}`));
+  if (owners.length) body.appendChild(txt('div', 'gcard__owners', `On: ${owners.join(', ')}`));
   card.appendChild(body);
   return card;
 }

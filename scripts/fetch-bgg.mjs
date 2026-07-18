@@ -38,7 +38,16 @@ async function bggGet(url, { tries = 8 } = {}) {
       await sleep(2000 * (i + 1));
       continue;
     }
-    if (res.status === 200) return res.text();
+    if (res.status === 200) {
+      const body = await res.text();
+      // Some collection responses come back 200 with a "still processing" message
+      // instead of 202. Treat that as a retry too.
+      if (/try again later|being (re)?processed|please try again/i.test(body)) {
+        await sleep(3000 + 2000 * i);
+        continue;
+      }
+      return body;
+    }
     if (res.status === 202) {
       // collection is being prepared server-side; wait and retry
       await sleep(3000 + 2000 * i);
@@ -58,11 +67,20 @@ async function fetchCollectionIds(username, options) {
   if (options.own !== false) flags.push('own=1');
   if (options.wishlist) flags.push('wishlist=1');
   if (options.preordered) flags.push('preordered=1');
-  const url = `${API}/collection?username=${encodeURIComponent(username)}&brief=1&${flags.join('&')}`;
+  // excludesubtype drops expansions — you can't sit down and play an expansion.
+  const url = `${API}/collection?username=${encodeURIComponent(username)}&brief=1&excludesubtype=boardgameexpansion&${flags.join('&')}`;
   console.log(`  → collection for ${username}`);
   const xml = await bggGet(url);
   const parsed = parser.parse(xml);
+  if (parsed?.errors) {
+    const msg = toArr(parsed.errors.error).map((e) => e.message).join('; ');
+    console.warn(`    ⚠ BGG rejected "${username}": ${msg || 'unknown error'} — skipping.`);
+    return [];
+  }
   const items = toArr(parsed?.items?.item);
+  if (items.length === 0) {
+    console.warn(`    ⚠ "${username}" returned 0 games (private collection, typo, or empty shelf?).`);
+  }
   return items.map((it) => String(it.objectid)).filter(Boolean);
 }
 
@@ -147,9 +165,27 @@ async function main() {
     .filter(Boolean)
     .sort((a, b) => (a.rank || 99999) - (b.rank || 99999) || (b.rating || 0) - (a.rating || 0));
 
+  const collectionsOut = collections.map(({ id, label, bggUser }) => ({ id, label, bggUser }));
+
+  // Skip the write (and therefore the commit) if only the timestamp would change.
+  let unchanged = false;
+  try {
+    const prev = JSON.parse(await readFile(OUT_PATH, 'utf8'));
+    unchanged =
+      !prev.sample &&
+      JSON.stringify(prev.games) === JSON.stringify(games) &&
+      JSON.stringify(prev.collections) === JSON.stringify(collectionsOut);
+  } catch {
+    /* no previous file — treat as changed */
+  }
+  if (unchanged) {
+    console.log('✓ No changes since last run — leaving data/games.json untouched.');
+    return;
+  }
+
   const out = {
     generatedAt: new Date().toISOString(),
-    collections: collections.map(({ id, label, bggUser }) => ({ id, label, bggUser })),
+    collections: collectionsOut,
     games,
   };
   await writeFile(OUT_PATH, JSON.stringify(out, null, 2) + '\n');
