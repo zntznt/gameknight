@@ -28,7 +28,7 @@ const state = {
   mode: 'union', // 'union' | 'intersection'
   answers: {}, // questionId -> [optionId]
   prefIndex: 0,
-  constraints: { players: null, wMin: 1, wMax: 5, maxTime: null, minAge: null },
+  constraints: { players: null, wLo: 0, wHi: 99, maxTime: null, minAge: null },
 };
 
 const stage = () => $('#stage');
@@ -48,8 +48,9 @@ function constraintPredicates() {
   const c = state.constraints;
   const preds = [];
   if (c.players) preds.push((g) => g.minPlayers <= c.players && g.maxPlayers >= c.players);
-  if (c.wMin > 1 || c.wMax < 5)
-    preds.push((g) => !g.weight || (g.weight >= c.wMin && g.weight <= c.wMax));
+  // Complexity buckets are half-open [lo, hi). Unknown weight (0) always passes.
+  if (c.wLo > 0 || c.wHi < 99)
+    preds.push((g) => !g.weight || (g.weight >= c.wLo && g.weight < c.wHi));
   if (c.maxTime) preds.push((g) => {
     const t = g.playTime || g.maxTime || g.minTime || 0;
     return !t || t <= c.maxTime;
@@ -356,23 +357,27 @@ function renderConstraints(s) {
     return chipRow([6, 8, 10, 12, 14], c.minAge, (v) => (c.minAge = v), (v) => `${v}+`);
   }
   function timeControl() {
-    return chipRow([15, 30, 45, 60, 90, 120, 240], c.maxTime, (v) => (c.maxTime = v), (v) => `≤ ${v}m`);
+    return chipRow([15, 30, 45, 60, 90, 120, 180], c.maxTime, (v) => (c.maxTime = v), (v) => `≤ ${v}m`);
   }
   function weightControl() {
-    const wrap = el('div', 'weight');
-    const labels = ['Any', 'Light', 'Medium', 'Heavy', 'Brutal'];
-    const presets = [
-      [1, 5],
-      [1, 2],
-      [2, 3.2],
-      [3.2, 4.2],
-      [4.2, 5],
+    // Half-open [lo, hi) buckets on BGG weight (1–5), so none overlap.
+    const buckets = [
+      { label: 'Any', sub: '', lo: 0, hi: 99 },
+      { label: 'Light', sub: 'gateway', lo: 0, hi: 2.0 },
+      { label: 'Medium-light', sub: '2.0–2.5', lo: 2.0, hi: 2.5 },
+      { label: 'Medium', sub: '2.5–3.0', lo: 2.5, hi: 3.0 },
+      { label: 'Heavy', sub: '3.0–4.0', lo: 3.0, hi: 4.0 },
+      { label: 'Brain-melter', sub: '4.0+', lo: 4.0, hi: 99 },
     ];
-    presets.forEach((rng, i) => {
-      const on = c.wMin === rng[0] && c.wMax === rng[1];
-      const b = el('button', 'chip' + (on ? ' chip--on' : ''), labels[i]);
+    const wrap = el('div', 'weight');
+    buckets.forEach((bk) => {
+      const on = c.wLo === bk.lo && c.wHi === bk.hi;
+      const b = el('button', 'chip' + (on ? ' chip--on' : ''));
+      b.textContent = bk.label;
+      if (bk.sub) b.appendChild(el('span', 'chip__sub', bk.sub));
       b.onclick = () => {
-        [c.wMin, c.wMax] = rng;
+        c.wLo = bk.lo;
+        c.wHi = bk.hi;
         render();
       };
       wrap.appendChild(b);
@@ -411,7 +416,7 @@ function renderResult(s) {
   restart.onclick = () => {
     state.answers = {};
     state.prefIndex = 0;
-    state.constraints = { players: null, wMin: 1, wMax: 5, maxTime: null, minAge: null };
+    state.constraints = { players: null, wLo: 0, wHi: 99, maxTime: null, minAge: null };
     go('collections');
   };
   foot.appendChild(back);
