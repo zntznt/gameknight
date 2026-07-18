@@ -1,0 +1,46 @@
+name: Fetch BGG collections
+
+# Bakes your friends' BoardGameGeek collections into data/games.json.
+# Runs on demand and on a weekly schedule. Commits the refreshed JSON.
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-bgg
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm install --no-audit --no-fund
+
+      - name: Fetch collections from BGG
+        env:
+          BGG_TOKEN: ${{ secrets.BGG_TOKEN }}
+        run: node scripts/fetch-bgg.mjs
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/games.json; then
+            echo "No changes to data/games.json"
+          else
+            git add data/games.json
+            git commit -m "chore: refresh BGG collections ($(date -u +%Y-%m-%d))"
+            git push
+          fi

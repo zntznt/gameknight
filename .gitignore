@@ -1,0 +1,8 @@
+node_modules/
+package-lock.json
+.DS_Store
+*.log
+# Never commit a local token file. BGG_TOKEN should live in the environment
+# (local shell) or a GitHub Actions secret, not on disk.
+.env
+.env.*

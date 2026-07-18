@@ -1,0 +1,17 @@
+{
+  "name": "gameknight",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Filter your board game collections down to the perfect game for the table.",
+  "scripts": {
+    "fetch": "node scripts/fetch-bgg.mjs",
+    "serve": "python3 -m http.server 8080"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
