@@ -54,10 +54,11 @@ BGG XML API ──(GitHub Action, weekly)──▶ data/games.json ──▶ sta
    take a couple of minutes — BGG queues collection requests and we wait
    politely.
 
-4. **Publish.** Settings → Pages → Source = **GitHub Actions**. Pushing to
-   `main` deploys via [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
-   (Or set Source to "Deploy from a branch" → `main` / root and skip that
-   workflow.)
+4. **Publish.** Settings → Pages → Build and deployment → Source =
+   **Deploy from a branch** → Branch `main`, folder `/ (root)` → Save. GitHub
+   serves the static files directly (a `.nojekyll` file is included so it skips
+   Jekyll). No build step and no deploy workflow — every push to `main`
+   republishes automatically.
 
 Until you run step 3, the app shows bundled **sample data** so you can try the
 flow immediately.
