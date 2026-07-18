@@ -1,0 +1,14 @@
+{
+  "$comment": "List the BGG usernames whose collections should be baked into data/games.json. The GitHub Action reads this file. 'id' is a short internal key, 'label' is what shows in the UI. Set 'owned' to which BGG collection flags to include.",
+  "collections": [
+    { "id": "alex", "label": "Alex's shelf", "bggUser": "alex_example" },
+    { "id": "sam", "label": "Sam's shelf", "bggUser": "sam_example" },
+    { "id": "jordan", "label": "Jordan's shelf", "bggUser": "jordan_example" }
+  ],
+  "options": {
+    "$comment": "Which BGG collection subset to pull per user. own=1 is the usual choice. You can also flip on wishlist/preordered if you want.",
+    "own": true,
+    "wishlist": false,
+    "preordered": false
+  }
+}

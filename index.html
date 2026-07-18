@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gameknight ♞ — what should we play?</title>
+    <meta name="description" content="Filter your board game collections down to the perfect game for the table." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%99%9E%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><span class="brand__mark">♞</span> Gameknight</div>
+      <div class="tagline">Wants first, constraints last — what should we play?</div>
+    </header>
+
+    <main class="layout">
+      <section id="live" class="live" hidden aria-live="polite"></section>
+      <section id="stage" class="stage"></section>
+    </main>
+
+    <footer class="footer">
+      <span>Data from BoardGameGeek, baked to static JSON. No server, no tracking.</span>
+    </footer>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
