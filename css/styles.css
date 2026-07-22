@@ -39,9 +39,10 @@ body {
 .tagline { color: var(--muted); font-size: 14px; }
 
 /* BGG attribution badge, required since Gameknight is public-facing.
-   Same pill chrome as .ghlink (border, background, hover) so the two badges
-   read as a matched pair; the logo itself keeps a small white patch since its
-   artwork is dark-on-transparent and needs a light backdrop to stay legible. */
+   Same pill footprint/border/hover as .ghlink, but filled white (rather than
+   dark) end to end, since the logo's artwork is dark-on-transparent and needs
+   a light backdrop the full size of the pill — not a smaller box nested
+   inside a dark one. */
 .bgglink {
   margin-left: auto;
   align-self: center;
@@ -49,15 +50,15 @@ body {
   height: 38px;
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 12px;
   border-radius: 19px;
   border: 1px solid var(--line);
-  background: var(--card-2);
+  background: #fff;
   transition: border-color 0.15s ease, background 0.15s ease, transform 0.05s ease;
 }
-.bgglink:hover { border-color: var(--primary); background: var(--card); }
+.bgglink:hover { border-color: var(--primary); background: #f1f1f6; }
 .bgglink:active { transform: translateY(1px); }
-.bgglink img { height: 18px; width: auto; display: block; border-radius: 3px; background: #fff; padding: 2px 5px; }
+.bgglink img { height: 28px; width: auto; display: block; }
 
 /* Round GitHub badge, pinned to the right of the topbar */
 .ghlink {
