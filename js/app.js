@@ -164,7 +164,14 @@ function renderLive() {
   if (games.length === 0) {
     strip.appendChild(el('div', 'live__empty', 'Nothing fits — loosen a preference or constraint.'));
   } else {
-    sortByFit(games).forEach((g) => strip.appendChild(thumb(g, 'sm')));
+    sortByFit(games).forEach((g) => {
+      const btn = el('button', 'thumb-btn');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', `${g.name} — view details`);
+      btn.appendChild(thumb(g, 'sm'));
+      btn.onclick = () => openGameModal(g);
+      strip.appendChild(btn);
+    });
   }
   wrap.appendChild(strip);
 }
@@ -515,19 +522,11 @@ function renderResult(s) {
   }
 }
 
-function gameCard(g) {
+// Player-count/time/weight/co-op/best-count pills — shared by the result grid
+// card and the quick-look modal.
+function metaPills(g) {
   const n = state.constraints.players;
   const bestFit = isBestAt(g, n);
-  // The whole card links to the game's BGG page.
-  const card = el('a', 'gcard' + (bestFit ? ' gcard--fit' : ''));
-  card.href = `https://boardgamegeek.com/boardgame/${g.id}`;
-  card.target = '_blank';
-  card.rel = 'noopener';
-  card.title = `${g.name} on BoardGameGeek`;
-  card.dataset.id = g.id;
-  card.appendChild(thumb(g, 'lg'));
-  const body = el('div', 'gcard__body');
-  body.appendChild(txt('div', 'gcard__name', g.name));
   const meta = el('div', 'gcard__meta');
   const pill = (t, cls) => el('span', 'pill' + (cls ? ' ' + cls : ''), t);
   meta.appendChild(pill(`${g.minPlayers}–${g.maxPlayers >= 99 ? '∞' : g.maxPlayers} 👤`));
@@ -538,11 +537,74 @@ function gameCard(g) {
   if (g.pollVotes && Array.isArray(g.bestPlayers) && g.bestPlayers.length)
     // Accent the badge when your chosen count is one of the game's best counts.
     meta.appendChild(pill(`best ${formatCounts(g.bestPlayers)} 👍`, bestFit ? 'pill--fit' : ''));
-  body.appendChild(meta);
+  return meta;
+}
+function ownersLine(g) {
   const owners = (g.owners || []).map((id) => (state.data.collections.find((c) => c.id === id) || {}).label || id);
-  if (owners.length) body.appendChild(txt('div', 'gcard__owners', `On: ${owners.join(', ')}`));
+  return owners.length ? txt('div', 'gcard__owners', `On: ${owners.join(', ')}`) : null;
+}
+
+function gameCard(g) {
+  const bestFit = isBestAt(g, state.constraints.players);
+  // The whole card links to the game's BGG page.
+  const card = el('a', 'gcard' + (bestFit ? ' gcard--fit' : ''));
+  card.href = `https://boardgamegeek.com/boardgame/${g.id}`;
+  card.target = '_blank';
+  card.rel = 'noopener';
+  card.title = `${g.name} on BoardGameGeek`;
+  card.dataset.id = g.id;
+  card.appendChild(thumb(g, 'lg'));
+  const body = el('div', 'gcard__body');
+  body.appendChild(txt('div', 'gcard__name', g.name));
+  body.appendChild(metaPills(g));
+  const owners = ownersLine(g);
+  if (owners) body.appendChild(owners);
   card.appendChild(body);
   return card;
+}
+
+// --- quick-look modal, opened from the live thumbnail strip -----------------
+function onModalKeydown(e) {
+  if (e.key === 'Escape') closeModal();
+}
+function closeModal() {
+  const root = $('#modalRoot');
+  if (!root) return;
+  root.innerHTML = '';
+  document.removeEventListener('keydown', onModalKeydown);
+}
+function openGameModal(g) {
+  const root = $('#modalRoot');
+  if (!root) return;
+  const backdrop = el('div', 'modal__backdrop');
+  backdrop.onclick = closeModal;
+  const card = el('div', 'modal__card');
+  card.setAttribute('role', 'dialog');
+  card.setAttribute('aria-modal', 'true');
+  card.setAttribute('aria-label', g.name);
+  card.onclick = (e) => e.stopPropagation();
+  const closeBtn = el('button', 'modal__close', '✕');
+  closeBtn.type = 'button';
+  closeBtn.setAttribute('aria-label', 'Close');
+  closeBtn.onclick = closeModal;
+  card.appendChild(closeBtn);
+  card.appendChild(thumb(g, 'lg'));
+  const body = el('div', 'modal__body');
+  body.appendChild(txt('div', 'gcard__name', g.name));
+  body.appendChild(metaPills(g));
+  const owners = ownersLine(g);
+  if (owners) body.appendChild(owners);
+  const link = el('a', 'btn btn--primary modal__link', 'View on BoardGameGeek ↗');
+  link.href = `https://boardgamegeek.com/boardgame/${g.id}`;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  body.appendChild(link);
+  card.appendChild(body);
+  backdrop.appendChild(card);
+  root.innerHTML = '';
+  root.appendChild(backdrop);
+  document.addEventListener('keydown', onModalKeydown);
+  closeBtn.focus();
 }
 
 // A tiny deterministic-ish PRNG seeded off the current filtered set, so

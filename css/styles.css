@@ -88,9 +88,8 @@ body {
   gap: 18px;
 }
 /* Grid items default to min-width: auto, which refuses to shrink below the
-   content's intrinsic width — e.g. .live__strip's row of thumbnails, one per
-   game. Without this, a large collection stretches the whole page instead of
-   scrolling inside .live__strip's own overflow-x. */
+   content's intrinsic width. Without this, a wide row of live-panel content
+   could stretch the whole page instead of wrapping inside its own box. */
 .layout > * { min-width: 0; }
 
 /* Live "what remains" panel */
@@ -109,10 +108,9 @@ body {
 .live__count span { color: var(--muted); font-size: 13px; }
 .live__strip {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
-  overflow-x: auto;
   padding-top: 10px;
-  scrollbar-width: thin;
 }
 .live__empty { color: var(--muted); font-size: 13px; padding: 6px 0; }
 
@@ -130,6 +128,59 @@ body {
 .thumb--lg { width: 100%; aspect-ratio: 4 / 3; }
 .thumb__ini { font-weight: 800; color: #0f1020; font-size: 15px; }
 .thumb--lg .thumb__ini { font-size: 34px; }
+
+/* Clickable wrapper around a small thumbnail in the live strip — opens the
+   quick-look modal. Plain button reset so it doesn't look like a button. */
+.thumb-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+.thumb-btn:hover, .thumb-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px var(--primary);
+  outline: none;
+}
+
+/* Quick-look modal */
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 7, 18, 0.7);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 50;
+}
+.modal__card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(15, 16, 32, 0.6);
+  color: var(--text);
+  cursor: pointer;
+}
+.modal__close:hover { border-color: var(--primary); }
+.modal__body { padding: 14px; display: grid; gap: 10px; }
+.modal__link { justify-self: start; }
 
 /* Cards */
 .card {
