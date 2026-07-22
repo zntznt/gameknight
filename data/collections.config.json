@@ -2,7 +2,7 @@
   "$comment": "List the BGG usernames whose collections should be baked into data/games.json. The GitHub Action reads this file. 'id' is a short internal key, 'label' is what shows in the UI. Add more entries to pull a whole friend group.",
   "collections": [
     { "id": "zntznt", "label": "Zeo's shelf", "bggUser": "zntznt" },
-    { "id": "zntznt", "label": "Gabo's shelf", "bggUser": "AranGba" }
+    { "id": "gabo", "label": "Gabo's shelf", "bggUser": "AranGba" }
   ],
   "options": {
     "$comment": "Which BGG statuses to pull per user. Leave own=true for a 'what can we play tonight' shelf. These combine with OR and the app can't tell them apart, so only enable wishlist/preordered if you truly want those games mixed in.",
