@@ -28,7 +28,7 @@ body {
 /* Topbar */
 .topbar {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 14px;
   padding: 18px 22px;
   border-bottom: 1px solid var(--line);
