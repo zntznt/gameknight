@@ -189,7 +189,7 @@ body {
 /* A secondary reference link, not another call-to-action — small, muted,
    tucked to the right so it doesn't compete with the flow's real buttons. */
 .modal__link {
-  justify-self: end;
+  justify-self: center;
   font-size: 12px;
   color: var(--muted);
   text-decoration: underline;
