@@ -38,9 +38,22 @@ body {
 .brand__mark { color: var(--primary-2); }
 .tagline { color: var(--muted); font-size: 14px; }
 
+/* BGG attribution badge, required since Gameknight is public-facing */
+.bgglink {
+  margin-left: auto;
+  align-self: center;
+  flex: 0 0 auto;
+  display: block;
+  line-height: 0;
+  border-radius: 6px;
+  opacity: 0.9;
+  transition: opacity 0.15s ease;
+}
+.bgglink:hover { opacity: 1; }
+.bgglink img { height: 26px; width: auto; display: block; border-radius: 4px; background: #fff; padding: 3px 6px; }
+
 /* Round GitHub badge, pinned to the right of the topbar */
 .ghlink {
-  margin-left: auto;
   align-self: center;
   flex: 0 0 auto;
   width: 38px;
