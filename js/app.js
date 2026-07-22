@@ -594,7 +594,7 @@ function openGameModal(g) {
   body.appendChild(metaPills(g));
   const owners = ownersLine(g);
   if (owners) body.appendChild(owners);
-  const link = el('a', 'btn btn--primary modal__link', 'View on BoardGameGeek ↗');
+  const link = el('a', 'modal__link', 'View on BoardGameGeek ↗');
   link.href = `https://boardgamegeek.com/boardgame/${g.id}`;
   link.target = '_blank';
   link.rel = 'noopener';
