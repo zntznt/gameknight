@@ -1,10 +1,15 @@
 {
-  "generatedAt": "2026-07-22T04:44:21.184Z",
+  "generatedAt": "2026-07-22T17:25:58.169Z",
   "collections": [
     {
       "id": "zntznt",
-      "label": "zntznt's shelf",
+      "label": "Zeo's shelf",
       "bggUser": "zntznt"
+    },
+    {
+      "id": "zntznt",
+      "label": "Gabo's shelf",
+      "bggUser": "AranGba"
     }
   ],
   "games": [
@@ -1465,6 +1470,50 @@
       ]
     },
     {
+      "id": 393910,
+      "name": "The Texas Chainsaw Massacre: Slaughterhouse",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/f6lxzslnfjHMeuHt56Bz-w__small/img/dDU2_barvW3vPhtYcY1ZnbQ8Vi0=/fit-in/200x150/filters:strip_icc()/pic7607389.jpg",
+      "image": "https://cf.geekdo-images.com/f6lxzslnfjHMeuHt56Bz-w__original/img/rLTcA_QFtEZB335DJf8Y1JHdlfc=/0x0/filters:format(jpeg)/pic7607389.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 13,
+      "weight": 2.5,
+      "rating": 7.8,
+      "rank": 0,
+      "cooperative": true,
+      "categories": [
+        "Horror",
+        "Movies / TV / Radio theme"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Area Movement",
+        "Critical Hits and Failures",
+        "Dice Rolling",
+        "Interrupts",
+        "Multi-Use Cards",
+        "Multiple Maps",
+        "Once-Per-Game Abilities",
+        "Pick-up and Deliver",
+        "Player Elimination",
+        "Scenario / Mission / Campaign Game",
+        "Semi-Cooperative Game",
+        "Trading",
+        "Variable Phase Order",
+        "Zone of Control"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
       "id": 350163,
       "name": "BattleTech: A Time of War – The BattleTech RPG",
       "year": 2010,
@@ -1844,6 +1893,80 @@
       ]
     },
     {
+      "id": 231327,
+      "name": "The Grizzled: Armistice Edition",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/UtbMCLhn7V4A2jZLfgGQjw__small/img/VDTE9cmoC87z4fiOAOFH82P_r1c=/fit-in/200x150/filters:strip_icc()/pic6434099.jpg",
+      "image": "https://cf.geekdo-images.com/UtbMCLhn7V4A2jZLfgGQjw__original/img/2qoiJkusHN7w5rUy_FJHCTaXWRE=/0x0/filters:format(jpeg)/pic6434099.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 14,
+      "weight": 2.3,
+      "rating": 7.6,
+      "rank": 0,
+      "cooperative": true,
+      "categories": [
+        "Card Game",
+        "World War I"
+      ],
+      "mechanics": [
+        "Communication Limits",
+        "Cooperative Game",
+        "Hand Management",
+        "Move Through Deck",
+        "Push Your Luck",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 282524,
+      "name": "Horrified",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/SoClIcwjDo_iZs0idVikDw__small/img/YSf5Z99aBqAlNKaGBj_oGb1oKH4=/fit-in/200x150/filters:strip_icc()/pic4848330.jpg",
+      "image": "https://cf.geekdo-images.com/SoClIcwjDo_iZs0idVikDw__original/img/TEprFkOM3G_u2HnUvh05WITeXbg=/0x0/filters:format(jpeg)/pic4848330.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 10,
+      "weight": 2,
+      "rating": 7.6,
+      "rank": 0,
+      "cooperative": true,
+      "categories": [
+        "Horror",
+        "Movies / TV / Radio theme"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Cooperative Game",
+        "Dice Rolling",
+        "Pick-up and Deliver",
+        "Point to Point Movement",
+        "Solo / Solitaire Game",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
       "id": 283155,
       "name": "Calico",
       "year": 2020,
@@ -2012,6 +2135,81 @@
       ]
     },
     {
+      "id": 118,
+      "name": "Modern Art",
+      "year": 1992,
+      "thumbnail": "https://cf.geekdo-images.com/wLto-xaabHwKQe_Bc4iD1Q__small/img/AUqMholGVlwXLjMcxwiziE_7Ffw=/fit-in/200x150/filters:strip_icc()/pic3458036.png",
+      "image": "https://cf.geekdo-images.com/wLto-xaabHwKQe_Bc4iD1Q__original/img/s3Gai8XBTVfWFFlYpL4XF3kIlWU=/0x0/filters:format(png)/pic3458036.png",
+      "minPlayers": 3,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 10,
+      "weight": 2.3,
+      "rating": 7.5,
+      "rank": 0,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Economic"
+      ],
+      "mechanics": [
+        "Auction / Bidding",
+        "Auction: English",
+        "Auction: Once Around",
+        "Auction: Sealed Bid",
+        "Auction: Turn Order Until Pass",
+        "Commodity Speculation",
+        "Hand Management",
+        "Victory Points as a Resource"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 365119,
+      "name": "Party Panda Pirates",
+      "year": 2024,
+      "thumbnail": "https://cf.geekdo-images.com/Qwh8s6nWxmUhVUBklYSZ6A__small/img/qKERHuPnK11O6UlcKyExdYNwf14=/fit-in/200x150/filters:strip_icc()/pic7882358.jpg",
+      "image": "https://cf.geekdo-images.com/Qwh8s6nWxmUhVUBklYSZ6A__original/img/jHPa0SDjyK7nGXrh7H9LVFRa7Kc=/0x0/filters:format(jpeg)/pic7882358.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 6,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 8,
+      "weight": 1.2,
+      "rating": 7.5,
+      "rank": 0,
+      "cooperative": false,
+      "categories": [
+        "Action / Dexterity",
+        "Animals",
+        "Dice",
+        "Miniatures",
+        "Party Game",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Flicking",
+        "Impulse Movement",
+        "Predictive Bid",
+        "Slide / Push"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
       "id": 21241,
       "name": "Neuroshima Hex",
       "year": 2006,
@@ -2115,6 +2313,43 @@
         "Dice Rolling",
         "Paper-and-Pencil",
         "Variable Player Powers"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 356033,
+      "name": "Libertalia: Winds of Galecrest",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/6e-V_Xb2IsAsMNXU18Fi6A__small/img/KJIHXXkkIU7R-oK5i9byIyGdfm4=/fit-in/200x150/filters:strip_icc()/pic6669033.jpg",
+      "image": "https://cf.geekdo-images.com/6e-V_Xb2IsAsMNXU18Fi6A__original/img/gLDo-RR_9RvU_Hrs9DnHWy_TWpk=/0x0/filters:format(jpeg)/pic6669033.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 6,
+      "minTime": 45,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 14,
+      "weight": 2.2,
+      "rating": 7.4,
+      "rank": 0,
+      "cooperative": false,
+      "categories": [
+        "Fantasy",
+        "Pirates"
+      ],
+      "mechanics": [
+        "Action Queue",
+        "Hand Management",
+        "Selection Order Bid",
+        "Set Collection",
+        "Simultaneous Action Selection",
+        "Take That",
+        "Turn Order: Role Order",
+        "Variable Phase Order"
       ],
       "bestPlayers": [],
       "recPlayers": [],
@@ -2241,6 +2476,72 @@
       ]
     },
     {
+      "id": 302388,
+      "name": "Back to the Future: Back in Time",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/wjJsquLxPJc2WmvJ7SqVbQ__small/img/-yFUlIfonB9pRxJxYpLSYygfUfU=/fit-in/200x150/filters:strip_icc()/pic5240569.png",
+      "image": "https://cf.geekdo-images.com/wjJsquLxPJc2WmvJ7SqVbQ__original/img/DeFwanotoRCkXHEkxEEb027zs7w=/0x0/filters:format(png)/pic5240569.png",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 50,
+      "maxTime": 50,
+      "playTime": 50,
+      "minAge": 10,
+      "weight": 2.4,
+      "rating": 7.2,
+      "rank": 0,
+      "cooperative": true,
+      "categories": [
+        "Movies / TV / Radio theme"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Dice Rolling",
+        "Push Your Luck",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 374502,
+      "name": "Stranger Things: Upside Down",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/2L3GMevL8E4g-LSBuAS0JA__small/img/M-VLEXF9HskofKmdEzCFu-CMSQo=/fit-in/200x150/filters:strip_icc()/pic8288099.jpg",
+      "image": "https://cf.geekdo-images.com/2L3GMevL8E4g-LSBuAS0JA__original/img/2hM7xfSpbkOzay5rdKKyyZqRCTo=/0x0/filters:format(jpeg)/pic8288099.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 12,
+      "weight": 2.2,
+      "rating": 7.2,
+      "rank": 0,
+      "cooperative": true,
+      "categories": [
+        "Fighting",
+        "Horror",
+        "Movies / TV / Radio theme"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Hand Management",
+        "Point to Point Movement",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
       "id": 218121,
       "name": "Dice Hospital",
       "year": 2018,
@@ -2339,6 +2640,80 @@
         "Pieces as Map",
         "Sudden Death Ending",
         "Tile Placement"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 448446,
+      "name": "Campy Creatures: Volume 1 (Third Edition)",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/XA-u9nlmNSJgM5zFsl4KDw__small/img/QsPSHtK5WbCwyX581GK-G6_iJ0o=/fit-in/200x150/filters:strip_icc()/pic8944087.jpg",
+      "image": "https://cf.geekdo-images.com/XA-u9nlmNSJgM5zFsl4KDw__original/img/wL0V0kghcfQlUgcgt1Z2xhyKEfc=/0x0/filters:format(jpeg)/pic8944087.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 20,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 10,
+      "weight": 2,
+      "rating": 7.1,
+      "rank": 0,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Card Game",
+        "Deduction",
+        "Horror"
+      ],
+      "mechanics": [
+        "Auction / Bidding",
+        "Hand Management",
+        "Set Collection",
+        "Simultaneous Action Selection"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 372559,
+      "name": "Spots",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/TCBUzmSNUYw_yqJAXGWnNQ__small/img/BgniZvPRJVenqn7XHd4TQtsSuwI=/fit-in/200x150/filters:strip_icc()/pic7592453.png",
+      "image": "https://cf.geekdo-images.com/TCBUzmSNUYw_yqJAXGWnNQ__original/img/GklWmrbqMips7ref85Pa-X5eNQQ=/0x0/filters:format(png)/pic7592453.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 25,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 10,
+      "weight": 1.3,
+      "rating": 7.1,
+      "rank": 0,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Card Game",
+        "Dice"
+      ],
+      "mechanics": [
+        "Action Drafting",
+        "Contracts",
+        "Dice Rolling",
+        "Increase Value of Unchosen Resources",
+        "Push Your Luck",
+        "Race",
+        "Re-rolling and Locking",
+        "Set Collection",
+        "Variable Set-up"
       ],
       "bestPlayers": [],
       "recPlayers": [],
@@ -2576,6 +2951,40 @@
       "categories": [],
       "mechanics": [
         "Role Playing"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 392173,
+      "name": "Dumb Ways to Die",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/DpAxsNlEVqo4wOcVRkHUGw__small/img/qjeVUHyH08S-G4hqJaT_Md-bcoE=/fit-in/200x150/filters:strip_icc()/pic7642240.png",
+      "image": "https://cf.geekdo-images.com/DpAxsNlEVqo4wOcVRkHUGw__original/img/yyVzW4qmkJ3BGUbIUBS5T-KUm-U=/0x0/filters:format(png)/pic7642240.png",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 10,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 12,
+      "weight": 1.1,
+      "rating": 5.8,
+      "rank": 0,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Humor",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Player Elimination",
+        "Push Your Luck",
+        "Take That"
       ],
       "bestPlayers": [],
       "recPlayers": [],
