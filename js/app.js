@@ -261,7 +261,7 @@ function renderCollections(s) {
     const b = el('button', 'seg' + (state.mode === val ? ' seg--on' : ''), label);
     b.onclick = () => {
       state.mode = val;
-      updateColUI();
+      render();
     };
     seg.appendChild(b);
   });
