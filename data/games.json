@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T17:47:53.716Z",
+  "generatedAt": "2026-07-27T09:37:41.031Z",
   "collections": [
     {
       "id": "zntznt",
@@ -1224,6 +1224,42 @@
       ]
     },
     {
+      "id": 387647,
+      "name": "Battletech: Essentials",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/lzY7X4ZxbHYt33zwGHP-uA__small/img/4R05Xm-NgxvDkTvV4UdnGIcuz0M=/fit-in/200x150/filters:strip_icc()/pic7576862.jpg",
+      "image": "https://cf.geekdo-images.com/lzY7X4ZxbHYt33zwGHP-uA__original/img/q_EAirucluSbIcLJFh01IDXKZ48=/0x0/filters:format(jpeg)/pic7576862.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 2,
+      "minTime": 0,
+      "maxTime": 0,
+      "playTime": 0,
+      "minAge": 0,
+      "weight": 0,
+      "rating": 7.9,
+      "rank": 0,
+      "cooperative": false,
+      "categories": [
+        "Fighting",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Grid Movement",
+        "Hexagon Grid",
+        "Paper-and-Pencil",
+        "Solo / Solitaire Game",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [],
+      "pollVotes": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
       "id": 293207,
       "name": "Eila and Something Shiny",
       "year": 2021,
@@ -1315,42 +1351,6 @@
         "Deck, Bag, and Pool Building",
         "Scenario / Mission / Campaign Game",
         "Solo / Solitaire Game"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 387647,
-      "name": "Battletech: Essentials",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/lzY7X4ZxbHYt33zwGHP-uA__small/img/4R05Xm-NgxvDkTvV4UdnGIcuz0M=/fit-in/200x150/filters:strip_icc()/pic7576862.jpg",
-      "image": "https://cf.geekdo-images.com/lzY7X4ZxbHYt33zwGHP-uA__original/img/q_EAirucluSbIcLJFh01IDXKZ48=/0x0/filters:format(jpeg)/pic7576862.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 2,
-      "minTime": 0,
-      "maxTime": 0,
-      "playTime": 0,
-      "minAge": 0,
-      "weight": 0,
-      "rating": 7.8,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Fighting",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Grid Movement",
-        "Hexagon Grid",
-        "Paper-and-Pencil",
-        "Solo / Solitaire Game",
-        "Variable Player Powers",
-        "Variable Set-up"
       ],
       "bestPlayers": [],
       "recPlayers": [],
@@ -2526,12 +2526,14 @@
       "categories": [
         "Fighting",
         "Horror",
+        "Miniatures",
         "Movies / TV / Radio theme"
       ],
       "mechanics": [
         "Cooperative Game",
         "Hand Management",
         "Point to Point Movement",
+        "Push Your Luck",
         "Variable Player Powers"
       ],
       "bestPlayers": [],
