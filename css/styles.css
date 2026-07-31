@@ -265,9 +265,9 @@ a:hover { color: var(--accent); }
   background: var(--square-dark);
   color: var(--ink);
   border: 1px solid var(--line);
+  overflow: hidden; /* clips the avatar image to the rounded square */
 }
 .gk-shelf__btn--on .gk-shelf__avatar { background: var(--paper); border-color: var(--paper); }
-.gk-shelf__avatar { overflow: hidden; }
 .gk-shelf__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gk-shelf__text { display: grid; gap: 1px; min-width: 0; }
 .gk-shelf__label { font-weight: 600; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
