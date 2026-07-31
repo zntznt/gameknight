@@ -154,6 +154,18 @@ async function fetchPlaysThisMonth(username, counts) {
       return;
     }
     const plays = toArr(parsed?.plays?.play);
+    if (page === 1) {
+      // BGG reports how many plays match the query. Logging it distinguishes
+      // "this user logs no plays" from "we failed to parse the response" —
+      // otherwise both look identical downstream (every count zero).
+      const reported = num(parsed?.plays?.total);
+      console.log(
+        `      ${minDate}..${maxDate}: BGG reports total=${reported}, parsed ${plays.length} play(s) on page 1`
+      );
+      if (reported > 0 && plays.length === 0) {
+        console.warn(`    ⚠ "${username}": BGG says ${reported} plays but none parsed — parser issue.`);
+      }
+    }
     for (const p of plays) {
       const item = toArr(p.item)[0];
       const objectid = item && String(item.objectid);
