@@ -1,82 +1,96 @@
-// app.js — Gameknight orchestration.
-// Flow: collections → preference flowchart (live narrowing) → hard constraints → result.
+// app.js — Gameknight.
+//
+// One scrolling board of 11 numbered sections (00 shelves, 01–04 wants,
+// 05–10 limits), then a verdict view with tonight's pick. Nothing selected in a
+// section means that section simply doesn't filter — there is no skip control.
+//
+// Rendering is a full rebuild of each root on every state change. At collection
+// scale (tens to low hundreds of games) that stays well inside a frame and
+// keeps the data flow obvious; the strip's scroll offset is carried across.
 
 import { loadData, poolFor, applyFilters, questionPredicate } from './data.js';
-import { QUESTIONS } from './questions.js';
+import { QUESTIONS, WEIGHT_BUCKETS } from './questions.js';
 
-const $ = (sel, root = document) => root.querySelector(sel);
-const el = (tag, cls, html) => {
+/* ------------------------------------------------------------------ dom -- */
+const $ = (sel) => document.querySelector(sel);
+const el = (tag, cls, text) => {
   const n = document.createElement(tag);
   if (cls) n.className = cls;
-  if (html != null) n.innerHTML = html;
+  if (text != null) n.textContent = text; // textContent throughout: BGG strings are untrusted
   return n;
 };
-// Like el() but for untrusted strings (game names, owner/collection labels from
-// BGG). Uses textContent so a name like "Wits & Wagers" or a crafted
-// "<img onerror=...>" renders literally instead of as HTML.
-const txt = (tag, cls, text) => {
-  const n = document.createElement(tag);
-  if (cls) n.className = cls;
-  if (text != null) n.textContent = text;
-  return n;
-};
+const frag = () => document.createDocumentFragment();
 
+/* ---------------------------------------------------------------- state -- */
 const state = {
   data: null,
-  step: 'loading',
-  selected: new Set(),
-  mode: 'union', // 'union' | 'intersection'
+  view: 'board', // 'board' | 'verdict'
+  selected: [], // shelf ids
   answers: {}, // questionId -> [optionId]
-  prefIndex: 0,
-  constraints: { players: null, playerFit: 'rec', wLo: 0, wHi: 99, maxTime: null, minAge: null },
+  constraints: { players: null, playerFit: 'rec', wKey: 'any', maxTime: null, minAge: null },
+  sortBy: 'rating', // 'rating' | 'rank' | 'plays'
+  pickId: null, // manual "Deal another" choice
+  sheetGame: null,
+  failed: {}, // game ids whose thumbnail 404'd
 };
 
-const stage = () => $('#stage');
-const liveEl = () => $('#live');
+const SECTIONS = { players: '05', fit: '06', weight: '07', time: '08', age: '09', sort: '10' };
 
-// --- derived sets -----------------------------------------------------------
+/* -------------------------------------------------------------- derived -- */
+const bucketFor = (key) => WEIGHT_BUCKETS.find((b) => b.key === key) || WEIGHT_BUCKETS[0];
+
 function basePool() {
-  return poolFor(state.data, [...state.selected], state.mode);
+  return poolFor(state.data, state.selected);
 }
-function prefPredicates(upToIndex = QUESTIONS.length) {
-  return QUESTIONS.slice(0, upToIndex).map((q) => questionPredicate(q, state.answers[q.id]));
+
+// `skipId` lets a section measure counts as if its own answer weren't applied.
+function prefPreds(answers = state.answers, skipId = null) {
+  return QUESTIONS.filter((q) => q.id !== skipId).map((q) => questionPredicate(q, answers[q.id]));
 }
-function afterPrefs() {
-  return applyFilters(basePool(), prefPredicates());
-}
-function constraintPredicates() {
-  const c = state.constraints;
+
+// `skip` excludes one limit so its chips can each show their own count.
+function constraintPreds(c = state.constraints, skip = null) {
   const preds = [];
-  if (c.players) preds.push((g) => fitsPlayers(g, c.players, c.playerFit));
-  // Complexity buckets are half-open [lo, hi). Unknown weight (0) always passes.
-  if (c.wLo > 0 || c.wHi < 99)
-    preds.push((g) => !g.weight || (g.weight >= c.wLo && g.weight < c.wHi));
-  if (c.maxTime) preds.push((g) => {
-    const t = g.playTime || g.maxTime || g.minTime || 0;
-    return !t || t <= c.maxTime;
-  });
-  if (c.minAge) preds.push((g) => !g.minAge || g.minAge <= c.minAge);
+  const bk = bucketFor(c.wKey);
+  if (c.players && skip !== 'players') preds.push((g) => fitsPlayers(g, c.players, c.playerFit));
+  // Missing metadata always passes: unrated weight, unknown time, no minAge.
+  if (skip !== 'weight' && (bk.lo > 0 || bk.hi < 99)) {
+    preds.push((g) => !g.weight || (g.weight >= bk.lo && g.weight < bk.hi));
+  }
+  if (c.maxTime && skip !== 'time') {
+    preds.push((g) => {
+      const t = g.playTime || g.maxTime || g.minTime || 0;
+      return !t || t <= c.maxTime;
+    });
+  }
+  if (c.minAge && skip !== 'age') preds.push((g) => !g.minAge || g.minAge <= c.minAge);
   return preds;
 }
-function finalGames() {
-  return applyFilters(afterPrefs(), constraintPredicates());
+
+function remaining() {
+  return applyFilters(basePool(), [...prefPreds(), ...constraintPreds()]);
 }
 
-// Does a game play well at N players?
-//   'supported' — N is within the box's min–max range.
-//   'rec'       — the community's suggested-players poll recommends N.
-//   'best'      — the poll calls N a best count.
-// The "8" chip means "8 or more". Games without poll data fall back to the box.
+function anyFilters() {
+  const c = state.constraints;
+  return (
+    QUESTIONS.some((q) => (state.answers[q.id] || []).length > 0) ||
+    !!c.players || !!c.maxTime || !!c.minAge || c.wKey !== 'any'
+  );
+}
+
+/* ---------------------------------------------------------- player fit -- */
+// 'supported' = the box min–max. 'rec'/'best' = BGG's suggested-players poll.
+// A game with no poll votes falls back to the box range in all three modes.
+// The "8" chip means "8 or more".
 function fitsPlayers(g, n, mode) {
   const atLeast = n >= 8;
   const inBox = atLeast ? g.maxPlayers >= 8 : g.minPlayers <= n && g.maxPlayers >= n;
   if (mode === 'supported') return inBox;
   const arr = mode === 'best' ? g.bestPlayers : g.recPlayers;
-  if (!g.pollVotes || !Array.isArray(arr) || !arr.length) return inBox; // no poll → box range
+  if (!g.pollVotes || !Array.isArray(arr) || !arr.length) return inBox;
   return atLeast ? arr.some((c) => c >= 8) : arr.includes(n);
 }
-
-// Is the chosen player count a best / recommended count for this game?
 function isBestAt(g, n) {
   if (!n || !g.pollVotes || !Array.isArray(g.bestPlayers)) return false;
   return n >= 8 ? g.bestPlayers.some((c) => c >= 8) : g.bestPlayers.includes(n);
@@ -85,23 +99,37 @@ function isRecAt(g, n) {
   if (!n || !g.pollVotes || !Array.isArray(g.recPlayers)) return false;
   return n >= 8 ? g.recPlayers.some((c) => c >= 8) : g.recPlayers.includes(n);
 }
-
-// Fit tier for the chosen player count: best (3) > recommended (2) > supported /
-// no-poll (1). No player count chosen → neutral (0), so ordering falls to rating.
+// Only used to tint the shortlist tag — ordering comes from section 10.
 function fitTier(g) {
-  const n = state.constraints.players;
-  if (!n) return 0;
-  if (isBestAt(g, n)) return 3;
-  if (isRecAt(g, n)) return 2;
-  return 1;
+  const c = state.constraints;
+  if (!c.players || c.playerFit === 'supported') return 0;
+  const best = isBestAt(g, c.players);
+  const rec = isRecAt(g, c.players);
+  if (c.playerFit === 'best') return best ? 3 : rec ? 2 : 1;
+  return rec ? 3 : best ? 2 : 1;
 }
 
-// Rank by how well the game fits the table, then by BGG rating.
-function sortByFit(games) {
-  return games.slice().sort((a, b) => fitTier(b) - fitTier(a) || (b.rating || 0) - (a.rating || 0));
+/* -------------------------------------------------------------- sorting -- */
+const playsThisMonth = (g) => g.playsThisMonth || 0;
+
+function sortGames(games) {
+  const by = state.sortBy;
+  return games.slice().sort((a, b) => {
+    if (by === 'plays') {
+      const d = playsThisMonth(b) - playsThisMonth(a);
+      if (d) return d;
+    }
+    if (by === 'rank') {
+      const ra = a.rank > 0 ? a.rank : Infinity;
+      const rb = b.rank > 0 ? b.rank : Infinity;
+      if (ra !== rb) return ra - rb; // unranked sinks to the bottom
+    }
+    return (b.rating || 0) - (a.rating || 0); // ties always break on rating
+  });
 }
 
-// Compress [1,2,3,5] → "1–3, 5" for the "best at N" badge.
+/* ----------------------------------------------------------- formatting -- */
+// Compress [1,2,3,5] → "1–3, 5".
 function formatCounts(arr) {
   const a = [...new Set(arr)].sort((x, y) => x - y);
   const runs = [];
@@ -119,518 +147,730 @@ function formatCounts(arr) {
   return runs.map(([lo, hi]) => (lo === hi ? `${lo}` : `${lo}–${hi}`)).join(', ');
 }
 
-// --- thumbnails with graceful fallback --------------------------------------
-const TILE_COLORS = ['#7c5cff', '#2ec4b6', '#ff6b6b', '#ffb703', '#4cc9f0', '#f072b6', '#90be6d'];
-function thumb(game, size = 'sm') {
-  const wrap = el('div', `thumb thumb--${size}`);
-  const initials = (game.name || '?').replace(/[^A-Za-z0-9 ]/g, '').trim().slice(0, 2).toUpperCase() || '?';
-  const color = TILE_COLORS[Math.abs(game.id || 0) % TILE_COLORS.length];
-  const fallback = () => {
-    wrap.innerHTML = '';
-    wrap.style.background = color;
-    wrap.appendChild(el('span', 'thumb__ini', initials));
-  };
-  if (game.thumbnail) {
-    const img = el('img');
-    img.loading = 'lazy';
-    img.alt = game.name;
-    img.src = game.thumbnail;
-    img.onerror = fallback;
-    wrap.appendChild(img);
-  } else {
-    fallback();
+function timeStr(g) {
+  const lo = g.minTime;
+  const hi = g.playTime || g.maxTime || g.minTime;
+  if (!hi) return 'time unknown';
+  return lo && hi && lo !== hi ? `${lo}–${hi} min` : `${hi} min`;
+}
+
+function metaLine(g) {
+  const hi = g.maxPlayers >= 99 ? '∞' : g.maxPlayers;
+  const players =
+    g.minPlayers === g.maxPlayers
+      ? g.maxPlayers === 1
+        ? 'solo only'
+        : `${g.maxPlayers} players exactly`
+      : `${g.minPlayers}–${hi} players`;
+  const weight = g.weight ? `weight ${g.weight.toFixed(1)}` : 'weight unrated';
+  return [players, timeStr(g), weight].join('  ·  ');
+}
+
+// The headline number always matches section 10's choice.
+function sortTag(g, short) {
+  const by = state.sortBy;
+  if (by === 'rank') {
+    if (!(g.rank > 0)) return short ? '—' : 'unranked';
+    return short ? `#${g.rank}` : `BGG #${g.rank}`;
   }
-  wrap.title = game.name;
+  if (by === 'plays') {
+    const n = playsThisMonth(g);
+    if (short) return `${n}×`;
+    return n ? `${n} play${n === 1 ? '' : 's'} this month` : 'unplayed this month';
+  }
+  if (!g.rating) return short ? '—' : 'unrated';
+  return short ? `★ ${g.rating.toFixed(1)}` : `★ ${g.rating.toFixed(1)} rating`;
+}
+
+function tagsFor(g) {
+  const n = state.constraints.players;
+  const out = [{ text: sortTag(g), cls: 'gk-tag--sort' }];
+  if (g.pollVotes && Array.isArray(g.bestPlayers) && g.bestPlayers.length) {
+    out.push({
+      text: `best at ${formatCounts(g.bestPlayers)}`,
+      cls: isBestAt(g, n) ? 'gk-tag--fit' : '',
+    });
+  }
+  if (g.cooperative) out.push({ text: 'co-op', cls: '' });
+  (g.categories || []).slice(0, 2).forEach((c) => out.push({ text: c, cls: '' }));
+  (g.mechanics || []).slice(0, 2).forEach((m) => out.push({ text: m, cls: '' }));
+  return out;
+}
+
+function ownersLine(g) {
+  const cols = (state.data && state.data.collections) || [];
+  const names = (g.owners || []).map((id) => (cols.find((c) => c.id === id) || {}).label || id);
+  return names.length ? `Owned by ${names.join(' & ')}` : '';
+}
+
+/* ---------------------------------------------------------------- tiles -- */
+function initialsFor(g) {
+  return (g.name || '?').replace(/[^A-Za-z0-9 ]/g, '').trim().slice(0, 2).toUpperCase() || '?';
+}
+
+// A dead thumbnail is remembered per game id so the monogram sticks. Failures
+// arrive in bursts (a whole strip at once), so coalesce them into one re-render
+// instead of one per image.
+let failTimer = null;
+function markFailed(id) {
+  if (state.failed[id]) return;
+  state.failed[id] = true;
+  clearTimeout(failTimer);
+  failTimer = setTimeout(render, 60);
+}
+
+// size: 34 | 44 | 72 | 96
+function tile(g, size, tag = 'span') {
+  const wrap = el(tag, `gk-tile gk-tile--${size}`);
+  const broken = !g.thumbnail || state.failed[g.id];
+  if (broken) {
+    wrap.appendChild(el('span', 'gk-tile__ini', initialsFor(g)));
+    return wrap;
+  }
+  const img = el('img');
+  img.src = g.thumbnail;
+  img.alt = '';
+  img.loading = 'lazy';
+  img.onerror = () => markFailed(g.id);
+  wrap.appendChild(img);
   return wrap;
 }
 
-// --- the persistent "what remains" panel ------------------------------------
+function tagRow(g) {
+  const row = el('div', 'gk-tags');
+  tagsFor(g).forEach((t) => row.appendChild(el('span', `gk-tag ${t.cls}`.trim(), t.text)));
+  return row;
+}
+
+/* --------------------------------------------------- guided scroll ------- */
+// Advances on a section's FIRST pick, disarms when the reader takes over,
+// re-arms (and pulls the nearest section square) after an idle pause.
+const guide = { armed: true, progScroll: false, scrollRef: 0, lastActivity: Date.now(), timer: null };
+
+const headerH = () => {
+  const h = $('.gk-header');
+  return h ? h.offsetHeight : 82;
+};
+const sectionEls = () => [...document.querySelectorAll('main section[data-gk-section]')];
+
+function scrollToSection(i, correct = true) {
+  const node = sectionEls()[i];
+  if (!node) return;
+  const anchor = headerH() + 10;
+  const top = Math.max(0, node.getBoundingClientRect().top + window.scrollY - anchor);
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  guide.progScroll = true;
+  window.scrollTo({ top, behavior: reduced ? 'auto' : 'smooth' });
+  clearTimeout(guide.timer);
+  guide.timer = setTimeout(() => {
+    // The target can shift while we travel (revealing a control grows the page),
+    // so land, re-measure, and correct once.
+    const now = sectionEls()[i];
+    if (correct && now && Math.abs(now.getBoundingClientRect().top - anchor) > 24) {
+      scrollToSection(i, false);
+      return;
+    }
+    guide.progScroll = false;
+    guide.scrollRef = window.scrollY;
+    guide.lastActivity = Date.now();
+  }, 900);
+}
+
+function advanceFrom(sectionId) {
+  if (!guide.armed) return;
+  setTimeout(() => {
+    if (!guide.armed) return;
+    const i = sectionEls().findIndex((n) => n.dataset.gkSection === String(sectionId));
+    if (i >= 0) scrollToSection(i + 1);
+  }, 220);
+}
+
+function nearestSection() {
+  const anchor = headerH() + 12;
+  let index = 0;
+  let bestD = Infinity;
+  let delta = 0;
+  sectionEls().forEach((node, i) => {
+    const top = node.getBoundingClientRect().top;
+    const d = Math.abs(top - anchor);
+    if (d < bestD) {
+      bestD = d;
+      index = i;
+      delta = top - anchor;
+    }
+  });
+  return { index, delta };
+}
+
+function checkIdle() {
+  if (state.view !== 'board' || state.sheetGame || guide.progScroll) return;
+  if (Date.now() - guide.lastActivity < 2600) return;
+  const { index, delta } = nearestSection();
+  guide.armed = true; // re-arm unconditionally
+  guide.lastActivity = Date.now();
+  if (Math.abs(delta) > 26) scrollToSection(index);
+  else guide.scrollRef = window.scrollY;
+}
+
+/* --------------------------------------------------------------- render -- */
+function setState(patch) {
+  Object.assign(state, patch);
+  render();
+}
+// Any change to a filter, a shelf, or the sort clears the manual pick.
+function setConstraint(patch) {
+  Object.assign(state.constraints, patch);
+  state.pickId = null;
+  render();
+}
+
+function sectionHead(num, title, answered) {
+  const head = el('div', 'gk-sechead');
+  head.appendChild(el('span', `gk-badge${answered ? ' gk-badge--on' : ''}`, num));
+  head.appendChild(el('h2', 'gk-sectitle', title));
+  return head;
+}
+
+function makeSection(num, title, answered, body) {
+  const sec = el('section', 'gk-section');
+  sec.dataset.gkSection = num;
+  sec.appendChild(sectionHead(num, title, answered));
+  sec.appendChild(body);
+  return sec;
+}
+
+/* --- header live row ------------------------------------------------------ */
 function renderLive() {
-  const wrap = liveEl();
-  wrap.innerHTML = '';
-  if (state.step === 'collections' || state.step === 'loading' || state.step === 'setup' || state.step === 'error') {
-    wrap.hidden = true;
-    return;
-  }
-  wrap.hidden = false;
-  const games = state.step === 'result' || state.step === 'constraints' ? finalGames() : afterPrefs();
+  const root = $('#gkLive');
+  const prevScroll = root.querySelector('.gk-strip')?.scrollLeft || 0;
+  root.textContent = '';
+  if (!state.data) return;
+
+  const games = sortGames(remaining());
   const total = basePool().length;
 
-  const head = el('div', 'live__head');
-  head.appendChild(el('div', 'live__count', `<strong>${games.length}</strong> <span>of ${total} games remain</span>`));
-  wrap.appendChild(head);
+  const live = el('div', 'gk-live');
+  live.appendChild(el('span', `gk-live__n${games.length === 0 ? ' gk-live__n--zero' : ''}`, String(games.length)));
+  live.appendChild(el('span', 'gk-live__total', `/ ${total}`));
+  root.appendChild(live);
 
-  const strip = el('div', 'live__strip');
+  if (anyFilters()) {
+    const clear = el('button', 'gk-clear', 'clear');
+    clear.type = 'button';
+    clear.onclick = resetAll;
+    root.appendChild(clear);
+  }
+
+  const strip = el('div', 'gk-strip');
   if (games.length === 0) {
-    strip.appendChild(el('div', 'live__empty', 'Nothing fits — loosen a preference or constraint.'));
+    strip.appendChild(el('div', 'gk-strip__empty', 'Nothing fits. Something has to give.'));
   } else {
-    sortByFit(games).forEach((g) => {
-      const btn = el('button', 'thumb-btn');
+    games.forEach((g) => {
+      const btn = tile(g, 34, 'button');
       btn.type = 'button';
-      btn.setAttribute('aria-label', `${g.name} — view details`);
-      btn.appendChild(thumb(g, 'sm'));
-      btn.onclick = () => openGameModal(g);
+      btn.title = g.name;
+      btn.setAttribute('aria-label', `${g.name}, details`);
+      btn.onclick = () => setState({ sheetGame: g });
       strip.appendChild(btn);
     });
   }
-  wrap.appendChild(strip);
+  root.appendChild(strip);
+  strip.scrollLeft = prevScroll;
 }
 
-// --- steps ------------------------------------------------------------------
-function go(step) {
-  state.step = step;
+/* --- 00 shelves ----------------------------------------------------------- */
+function renderShelves() {
+  const grid = el('div', 'gk-shelves');
+  state.data.collections.forEach((col) => {
+    const on = state.selected.includes(col.id);
+    const count = state.data.games.filter((g) => (g.owners || []).includes(col.id)).length;
+
+    const wrap = el('div', 'gk-shelf');
+    const btn = el('button', `gk-shelf__btn${on ? ' gk-shelf__btn--on' : ''}`);
+    btn.type = 'button';
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.appendChild(
+      el('span', 'gk-shelf__avatar', (col.label || col.bggUser || '?').trim().charAt(0).toUpperCase())
+    );
+    const text = el('span', 'gk-shelf__text');
+    text.appendChild(el('span', 'gk-shelf__label', col.label));
+    text.appendChild(
+      el('span', 'gk-shelf__sub', `${col.bggUser ? '@' + col.bggUser : ''} · ${count} games`)
+    );
+    btn.appendChild(text);
+    btn.appendChild(el('span', 'gk-shelf__dot'));
+    btn.onclick = () => {
+      state.selected = on
+        ? state.selected.filter((x) => x !== col.id)
+        : [...state.selected, col.id];
+      state.pickId = null;
+      render();
+    };
+    wrap.appendChild(btn);
+
+    const link = el('a', 'gk-shelf__link', '↗');
+    link.href = col.bggUser ? `https://boardgamegeek.com/user/${col.bggUser}` : 'https://boardgamegeek.com';
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.title = col.bggUser ? `${col.bggUser} on BoardGameGeek` : 'BoardGameGeek';
+    wrap.appendChild(link);
+
+    grid.appendChild(wrap);
+  });
+  return makeSection('00', 'Whose shelves are we raiding?', true, grid);
+}
+
+/* --- 01–04 wants ---------------------------------------------------------- */
+function renderWants() {
+  const out = frag();
+  const base = basePool();
+
+  QUESTIONS.forEach((q, qi) => {
+    const num = String(qi + 1).padStart(2, '0');
+    const sel = new Set(state.answers[q.id] || []);
+    // Counts are honest against every OTHER filter, since there is no step order.
+    const context = applyFilters(base, [...prefPreds(state.answers, q.id), ...constraintPreds()]);
+
+    const grid = el('div', 'gk-options');
+    q.options.forEach((o) => {
+      const on = sel.has(o.id);
+      // For a multi-select, the count is the OR of the current selection plus this option.
+      const test = new Set(sel);
+      test.add(o.id);
+      const pred = q.type === 'single' ? o.match : questionPredicate(q, [...test]);
+      const count = context.filter(pred).length;
+
+      const btn = el('button', `gk-option${on ? ' gk-option--on' : ''}${count === 0 && !on ? ' gk-option--empty' : ''}`);
+      btn.type = 'button';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.appendChild(el('span', 'gk-option__label', o.label));
+      btn.appendChild(
+        el('span', `gk-option__count${count === 0 ? ' gk-option__count--zero' : ''}`, String(count))
+      );
+      btn.onclick = () => {
+        const firstPick = (state.answers[q.id] || []).length === 0;
+        const cur = new Set(state.answers[q.id] || []);
+        let next;
+        if (q.type === 'single') next = cur.has(o.id) ? [] : [o.id];
+        else {
+          if (cur.has(o.id)) cur.delete(o.id);
+          else cur.add(o.id);
+          next = [...cur];
+        }
+        state.answers = { ...state.answers, [q.id]: next };
+        state.pickId = null;
+        render();
+        if (firstPick) advanceFrom(num); // later picks must not move the page
+      };
+      grid.appendChild(btn);
+    });
+
+    out.appendChild(makeSection(num, q.title, sel.size > 0, grid));
+  });
+  return out;
+}
+
+/* --- 05–10 limits --------------------------------------------------------- */
+function chip({ label, sub, on, empty, onClick }) {
+  const btn = el('button', `gk-chip${on ? ' gk-chip--on' : ''}${empty ? ' gk-chip--empty' : ''}`);
+  btn.type = 'button';
+  btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  btn.appendChild(el('span', null, label));
+  btn.appendChild(el('span', 'gk-chip__sub', sub));
+  btn.onclick = onClick;
+  return btn;
+}
+
+function renderLimits() {
+  const out = frag();
+  const c = state.constraints;
+  const base = basePool();
+  const ctxFor = (skip) => applyFilters(base, [...prefPreds(), ...constraintPreds(c, skip)]);
+
+  // A chip row where "Any" clears the value; each chip counts its own value
+  // with every other filter applied.
+  const valueRow = (skip, values, current, key, fmt, sectionId, countFn) => {
+    const ctx = ctxFor(skip);
+    const grid = el('div', 'gk-chips');
+    const mk = (val, label) => {
+      const on = current === val;
+      const count = val === null ? ctx.length : ctx.filter((g) => countFn(g, val)).length;
+      return chip({
+        label,
+        sub: String(count),
+        on,
+        empty: count === 0 && !on,
+        onClick: () => {
+          const was = current;
+          setConstraint({ [key]: val });
+          if (was == null && val != null) advanceFrom(sectionId);
+        },
+      });
+    };
+    grid.appendChild(mk(null, 'Any'));
+    values.forEach((v) => grid.appendChild(mk(v, String(fmt(v)))));
+    return grid;
+  };
+
+  // 05 · players
+  out.appendChild(
+    makeSection(
+      SECTIONS.players,
+      'How many at the table?',
+      !!c.players,
+      valueRow(
+        'players',
+        [1, 2, 3, 4, 5, 6, 7, 8],
+        c.players,
+        'players',
+        (v) => (v === 8 ? '8+' : v),
+        SECTIONS.players,
+        (g, v) => fitsPlayers(g, v, c.playerFit)
+      )
+    )
+  );
+
+  // 06 · how well it needs to play at that count (always present)
+  {
+    const ctx = ctxFor('players');
+    const grid = el('div', 'gk-chips');
+    [['best', 'Best'], ['rec', 'Recommended'], ['supported', 'Box supports']].forEach(([val, label]) => {
+      const on = c.playerFit === val;
+      const count = c.players ? ctx.filter((g) => fitsPlayers(g, c.players, val)).length : ctx.length;
+      grid.appendChild(
+        chip({
+          label,
+          sub: String(count),
+          on,
+          empty: count === 0 && !on,
+          onClick: () => {
+            const was = c.playerFit;
+            setConstraint({ playerFit: val });
+            if (was !== val) advanceFrom(SECTIONS.fit);
+          },
+        })
+      );
+    });
+    const title = c.players
+      ? `How well does it need to play at ${c.players === 8 ? '8+' : c.players}?`
+      : 'How well does it need to play at our count?';
+    out.appendChild(makeSection(SECTIONS.fit, title, !!c.players, grid));
+  }
+
+  // 07 · weight
+  {
+    const ctx = ctxFor('weight');
+    const grid = el('div', 'gk-chips');
+    WEIGHT_BUCKETS.forEach((bk) => {
+      const on = c.wKey === bk.key;
+      const count =
+        bk.lo === 0 && bk.hi === 99
+          ? ctx.length
+          : ctx.filter((g) => !g.weight || (g.weight >= bk.lo && g.weight < bk.hi)).length;
+      grid.appendChild(
+        chip({
+          label: bk.label,
+          sub: String(count),
+          on,
+          empty: count === 0 && !on,
+          onClick: () => {
+            const was = c.wKey;
+            setConstraint({ wKey: bk.key });
+            if (was === 'any' && bk.key !== 'any') advanceFrom(SECTIONS.weight);
+          },
+        })
+      );
+    });
+    out.appendChild(
+      makeSection(SECTIONS.weight, 'How much brainpower are we willing to spend?', c.wKey !== 'any', grid)
+    );
+  }
+
+  // 08 · time
+  out.appendChild(
+    makeSection(
+      SECTIONS.time,
+      'How much time have we got to play?',
+      !!c.maxTime,
+      valueRow('time', [15, 30, 45, 60, 90, 120, 180], c.maxTime, 'maxTime', (v) => `≤ ${v}m`, SECTIONS.time, (g, v) => {
+        const t = g.playTime || g.maxTime || g.minTime || 0;
+        return !t || t <= v;
+      })
+    )
+  );
+
+  // 09 · age
+  out.appendChild(
+    makeSection(
+      SECTIONS.age,
+      'Anyone young among us?',
+      !!c.minAge,
+      valueRow('age', [6, 8, 10, 12, 14], c.minAge, 'minAge', (v) => `${v}+`, SECTIONS.age, (g, v) => !g.minAge || g.minAge <= v)
+    )
+  );
+
+  // 10 · sort — always answered, so the badge is always filled
+  {
+    const grid = el('div', 'gk-chips');
+    [
+      ['rating', 'BGG rating', 'high first'],
+      ['rank', 'BGG rank', 'low first'],
+      ['plays', 'Plays this month', 'most first'],
+    ].forEach(([val, label, hint]) => {
+      grid.appendChild(
+        chip({
+          label,
+          sub: hint,
+          on: state.sortBy === val,
+          empty: false,
+          onClick: () => setState({ sortBy: val, pickId: null }),
+        })
+      );
+    });
+    out.appendChild(makeSection(SECTIONS.sort, 'What score settles the decision?', true, grid));
+  }
+
+  return out;
+}
+
+/* --- board ---------------------------------------------------------------- */
+function renderBoard() {
+  const main = el('main', 'gk-main');
+  main.appendChild(renderShelves());
+  main.appendChild(renderWants());
+  main.appendChild(renderLimits());
+  $('#gkRoot').appendChild(main);
+
+  const bar = el('div', 'gk-bar');
+  const inner = el('div', 'gk-bar__inner');
+  const deal = el('button', 'gk-deal');
+  deal.type = 'button';
+  deal.appendChild(el('span', null, 'Make the move'));
+  deal.appendChild(el('span', 'gk-deal__knight', '♞'));
+  deal.disabled = remaining().length === 0;
+  deal.onclick = () => {
+    setState({ view: 'verdict' });
+    window.scrollTo({ top: 0 });
+  };
+  inner.appendChild(deal);
+  bar.appendChild(inner);
+  $('#gkBarRoot').appendChild(bar);
+}
+
+/* --- verdict -------------------------------------------------------------- */
+function renderVerdict() {
+  const main = el('main', 'gk-main gk-main--verdict');
+  const ranked = sortGames(remaining());
+  const hero = ranked.find((g) => g.id === state.pickId) || ranked[0];
+
+  const actions = el('div', 'gk-vactions');
+  const back = el('button', 'gk-vbtn');
+  back.type = 'button';
+  back.appendChild(el('span', 'gk-vbtn__glyph', '←'));
+  back.appendChild(el('span', null, 'Back to the board'));
+  back.onclick = () => {
+    setState({ view: 'board' });
+    window.scrollTo({ top: 0 });
+  };
+  actions.appendChild(back);
+  if (ranked.length > 1) {
+    const again = el('button', 'gk-vbtn');
+    again.type = 'button';
+    again.appendChild(el('span', null, 'Deal another'));
+    again.appendChild(el('span', 'gk-vbtn__glyph', '↻'));
+    again.onclick = () => {
+      const pool = ranked.filter((g) => !hero || g.id !== hero.id);
+      if (pool.length) setState({ pickId: pool[Math.floor(Math.random() * pool.length)].id });
+    };
+    actions.appendChild(again);
+  }
+  main.appendChild(actions);
+
+  if (!hero) {
+    const card = el('section', 'gk-empty');
+    card.appendChild(el('h1', 'gk-empty__title', 'Nothing survived.'));
+    card.appendChild(
+      el('p', 'gk-empty__body', 'Every game got filtered out. The shelf isn’t infinite, so drop a want or loosen a limit.')
+    );
+    const row = el('div', 'gk-empty__actions');
+    const toBoard = el('button', 'gk-btn-ink', 'Back to the board');
+    toBoard.type = 'button';
+    toBoard.onclick = () => {
+      setState({ view: 'board' });
+      window.scrollTo({ top: 0 });
+    };
+    const clear = el('button', 'gk-btn-outline', 'Clear everything');
+    clear.type = 'button';
+    clear.onclick = resetAll;
+    row.appendChild(toBoard);
+    row.appendChild(clear);
+    card.appendChild(row);
+    main.appendChild(card);
+    $('#gkRoot').appendChild(main);
+    return;
+  }
+
+  // hero card
+  const card = el('section', 'gk-hero');
+  const label = el('div', 'gk-hero__label');
+  label.appendChild(el('span', 'gk-hero__dot'));
+  label.appendChild(el('span', 'gk-hero__labeltext', 'Tonight’s move'));
+  card.appendChild(label);
+
+  const row = el('div', 'gk-hero__row');
+  row.appendChild(tile(hero, 96));
+  const text = el('div', 'gk-hero__text');
+  text.appendChild(el('h1', 'gk-hero__title', hero.name));
+  text.appendChild(el('div', 'gk-hero__meta', metaLine(hero)));
+  text.appendChild(tagRow(hero));
+  const owners = ownersLine(hero);
+  if (owners) text.appendChild(el('div', 'gk-hero__owners', owners));
+  row.appendChild(text);
+  card.appendChild(row);
+
+  const foot = el('div', 'gk-hero__foot');
+  const cta = el('a', 'gk-hero__cta', 'Rules & photos on BGG ↗');
+  cta.href = `https://boardgamegeek.com/boardgame/${hero.id}`;
+  cta.target = '_blank';
+  cta.rel = 'noopener';
+  foot.appendChild(cta);
+  card.appendChild(foot);
+  main.appendChild(card);
+
+  // shortlist
+  const rest = ranked.filter((g) => g.id !== hero.id);
+  if (rest.length) {
+    const sec = el('section', 'gk-shortlist');
+    const head = el('div', 'gk-shortlist__head');
+    head.appendChild(el('span', 'gk-shortlist__title', 'Also on the table'));
+    const byLabel = state.sortBy === 'plays' ? 'plays this month' : state.sortBy;
+    head.appendChild(el('span', 'gk-shortlist__count', `${rest.length} · by ${byLabel}`));
+    sec.appendChild(head);
+
+    const rows = el('div', 'gk-rows');
+    rest.forEach((g) => {
+      const btn = el('button', 'gk-row');
+      btn.type = 'button';
+      btn.appendChild(tile(g, 44));
+      const t = el('span', 'gk-row__text');
+      t.appendChild(el('span', 'gk-row__name', g.name));
+      t.appendChild(el('span', 'gk-row__meta', metaLine(g)));
+      btn.appendChild(t);
+      btn.appendChild(
+        el('span', `gk-row__tag${fitTier(g) === 3 ? ' gk-row__tag--fit' : ''}`, sortTag(g, true))
+      );
+      btn.onclick = () => setState({ sheetGame: g });
+      rows.appendChild(btn);
+    });
+    sec.appendChild(rows);
+    main.appendChild(sec);
+  }
+
+  $('#gkRoot').appendChild(main);
+}
+
+/* --- quick-look sheet ----------------------------------------------------- */
+function renderSheet() {
+  const root = $('#gkSheetRoot');
+  root.textContent = '';
+  const g = state.sheetGame;
+  if (!g) return;
+
+  const backdrop = el('div', 'gk-sheet-backdrop');
+  backdrop.onclick = () => setState({ sheetGame: null });
+
+  const sheet = el('div', 'gk-sheet');
+  sheet.setAttribute('role', 'dialog');
+  sheet.setAttribute('aria-modal', 'true');
+  sheet.setAttribute('aria-label', g.name);
+  sheet.onclick = (e) => e.stopPropagation();
+
+  const head = el('div', 'gk-sheet__head');
+  head.appendChild(tile(g, 72));
+  const titles = el('span', 'gk-sheet__titles');
+  titles.appendChild(el('span', 'gk-sheet__name', g.name));
+  titles.appendChild(el('span', 'gk-sheet__meta', metaLine(g)));
+  head.appendChild(titles);
+  const close = el('button', 'gk-sheet__close', '✕');
+  close.type = 'button';
+  close.setAttribute('aria-label', 'Close');
+  close.onclick = () => setState({ sheetGame: null });
+  head.appendChild(close);
+  sheet.appendChild(head);
+
+  const body = el('div', 'gk-sheet__body');
+  body.appendChild(tagRow(g));
+  const owners = ownersLine(g);
+  if (owners) body.appendChild(el('div', 'gk-sheet__owners', owners));
+  const foot = el('div', 'gk-sheet__foot');
+  const cta = el('a', 'gk-sheet__cta', 'On BGG ↗');
+  cta.href = `https://boardgamegeek.com/boardgame/${g.id}`;
+  cta.target = '_blank';
+  cta.rel = 'noopener';
+  foot.appendChild(cta);
+  body.appendChild(foot);
+  sheet.appendChild(body);
+
+  backdrop.appendChild(sheet);
+  root.appendChild(backdrop);
+  close.focus();
+}
+
+function resetAll() {
+  state.answers = {};
+  state.pickId = null;
+  state.constraints = { players: null, playerFit: 'rec', wKey: 'any', maxTime: null, minAge: null };
   render();
 }
+
 function render() {
+  const root = $('#gkRoot');
+  root.textContent = '';
+  $('#gkBarRoot').textContent = '';
+
+  if (!state.data) {
+    root.appendChild(el('div', 'gk-loading', 'Loading the shelf…'));
+    renderSheet();
+    return;
+  }
   renderLive();
-  const s = stage();
-  s.innerHTML = '';
-  ({
-    loading: renderLoading,
-    setup: renderSetup,
-    error: renderError,
-    collections: renderCollections,
-    prefs: renderPrefs,
-    constraints: renderConstraints,
-    result: renderResult,
-  }[state.step] || renderLoading)(s);
+  if (state.view === 'board') renderBoard();
+  else renderVerdict();
+  renderSheet();
 }
 
-function renderLoading(s) {
-  s.appendChild(el('div', 'card center', '<div class="spinner"></div><p>Loading the shelf…</p>'));
-}
-
-function renderError(s, msg) {
-  s.appendChild(el('div', 'card', `<h2>Something went wrong</h2><p class="muted">${msg || state._error || ''}</p>`));
-}
-
-function renderSetup(s) {
-  const card = el('div', 'card');
-  card.innerHTML = `
-    <h2>Welcome to Gameknight ♞</h2>
-    <p>No collections are loaded yet. To fill the shelf:</p>
-    <ol class="steps">
-      <li><strong>Get a BoardGameGeek API token.</strong> Since late 2025 the BGG
-        XML API requires one. Apply at
-        <a href="https://boardgamegeek.com/using_the_xml_api" target="_blank" rel="noopener">boardgamegeek.com/using_the_xml_api</a>.</li>
-      <li>Add the token to the repo as a secret named <code>BGG_TOKEN</code>
-        (Settings → Secrets and variables → Actions → New repository secret).</li>
-      <li>List your friends' BGG usernames in <code>data/collections.config.json</code>.</li>
-      <li>Run the <strong>Fetch BGG collections</strong> GitHub Action (Actions tab → Run workflow).</li>
-      <li>It commits a fresh <code>data/games.json</code> and this page fills up automatically.</li>
-    </ol>
-    <p class="muted">Right now you're seeing bundled sample data so you can try the flow.
-      Without the token, the fetch step returns 401.</p>`;
-  const btn = el('button', 'btn btn--primary', 'Try it with sample data →');
-  btn.onclick = () => go('collections');
-  card.appendChild(btn);
-  s.appendChild(card);
-}
-
-function renderCollections(s) {
-  const card = el('div', 'card');
-  card.appendChild(el('h2', null, 'Whose shelves are we raiding?'));
-  card.appendChild(el('p', 'muted', 'Pick one or several collections.'));
-
-  const list = el('div', 'collections');
-  state.data.collections.forEach((c) => {
-    const count = state.data.games.filter((g) => (g.owners || []).includes(c.id)).length;
-    const row = el('label', 'collection');
-    const cb = el('input');
-    cb.type = 'checkbox';
-    cb.checked = state.selected.has(c.id);
-    cb.onchange = () => {
-      cb.checked ? state.selected.add(c.id) : state.selected.delete(c.id);
-      updateColUI();
-    };
-    row.appendChild(cb);
-    const labelWrap = txt('span', 'collection__label', c.label + ' ');
-    labelWrap.appendChild(txt('span', 'muted', `· ${count} games`));
-    row.appendChild(labelWrap);
-    list.appendChild(row);
-  });
-  card.appendChild(list);
-
-  const modeWrap = el('div', 'mode');
-  modeWrap.appendChild(el('span', 'mode__label', 'When multiple are picked, include games…'));
-  const seg = el('div', 'segmented');
-  [
-    ['union', 'anyone owns'],
-    ['intersection', 'everyone owns'],
-  ].forEach(([val, label]) => {
-    const b = el('button', 'seg' + (state.mode === val ? ' seg--on' : ''), label);
-    b.onclick = () => {
-      state.mode = val;
-      render();
-    };
-    seg.appendChild(b);
-  });
-  modeWrap.appendChild(seg);
-  card.appendChild(modeWrap);
-
-  const foot = el('div', 'card__foot');
-  const startBtn = el('button', 'btn btn--primary', 'Start →');
-  startBtn.onclick = () => {
-    state.prefIndex = 0;
-    go('prefs');
-  };
-  const poolNote = el('span', 'muted pool-note');
-  foot.appendChild(poolNote);
-  foot.appendChild(startBtn);
-  card.appendChild(foot);
-  s.appendChild(card);
-
-  function updateColUI() {
-    const n = basePool().length;
-    poolNote.textContent = `${n} game${n === 1 ? '' : 's'} in play`;
-    startBtn.disabled = state.selected.size === 0;
-  }
-  updateColUI();
-}
-
-function renderPrefs(s) {
-  const q = QUESTIONS[state.prefIndex];
-  const answered = prefPredicates(state.prefIndex); // filters from PREVIOUS questions
-  const context = applyFilters(basePool(), answered);
-  const selected = new Set(state.answers[q.id] || []);
-
-  const card = el('div', 'card');
-  const prog = el('div', 'progress');
-  QUESTIONS.forEach((_, i) =>
-    prog.appendChild(el('span', 'progress__dot' + (i < state.prefIndex ? ' done' : i === state.prefIndex ? ' on' : '')))
-  );
-  card.appendChild(prog);
-  card.appendChild(el('div', 'kicker', `Preference ${state.prefIndex + 1} of ${QUESTIONS.length}`));
-  card.appendChild(el('h2', null, q.title));
-  if (q.subtitle) card.appendChild(el('p', 'muted', q.subtitle));
-
-  const opts = el('div', 'options');
-  q.options.forEach((o) => {
-    // live count: how many survive if this option were active alongside prior answers
-    const wouldRemain = context.filter((g) => o.match(g)).length;
-    const on = selected.has(o.id);
-    const b = el('button', 'option' + (on ? ' option--on' : '') + (wouldRemain === 0 ? ' option--empty' : ''));
-    b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    // o.label / o.hint come from questions.js (our own code), so HTML here is safe.
-    b.innerHTML = `<span class="option__label">${o.label}</span>${o.hint ? `<span class="option__hint">${o.hint}</span>` : ''}<span class="option__count">${wouldRemain}</span>`;
-    b.onclick = () => {
-      if (q.type === 'single') {
-        state.answers[q.id] = on ? [] : [o.id];
-      } else {
-        const set = new Set(state.answers[q.id] || []);
-        on ? set.delete(o.id) : set.add(o.id);
-        state.answers[q.id] = [...set];
-      }
-      render();
-    };
-    opts.appendChild(b);
-  });
-  card.appendChild(opts);
-
-  const foot = el('div', 'card__foot');
-  const back = el('button', 'btn btn--ghost', '← Back');
-  back.onclick = () => {
-    if (state.prefIndex === 0) go('collections');
-    else {
-      state.prefIndex--;
-      render();
-    }
-  };
-  const right = el('div', 'foot-right');
-  const skip = el('button', 'btn btn--ghost', 'Doesn’t matter');
-  skip.onclick = () => {
-    state.answers[q.id] = [];
-    next();
-  };
-  const nextBtn = el('button', 'btn btn--primary', state.prefIndex === QUESTIONS.length - 1 ? 'To constraints →' : 'Next →');
-  nextBtn.onclick = next;
-  right.appendChild(skip);
-  right.appendChild(nextBtn);
-  foot.appendChild(back);
-  foot.appendChild(right);
-  card.appendChild(foot);
-  s.appendChild(card);
-
-  function next() {
-    if (state.prefIndex === QUESTIONS.length - 1) go('constraints');
-    else {
-      state.prefIndex++;
-      render();
-    }
-  }
-}
-
-function renderConstraints(s) {
-  const card = el('div', 'card');
-  card.appendChild(el('div', 'kicker', 'The hard limits'));
-  card.appendChild(el('h2', null, 'Now the non-negotiables'));
-  card.appendChild(el('p', 'muted', 'These filter strictly. Leave any at “Any”.'));
-
-  const c = state.constraints;
-  const body = el('div', 'constraints');
-
-  // Player count
-  body.appendChild(
-    controlRow('Players at the table', playerControl())
-  );
-  // Complexity
-  body.appendChild(controlRow('Complexity (BGG weight)', weightControl()));
-  // Time
-  body.appendChild(controlRow('Time you’ve got', timeControl()));
-  // Age
-  body.appendChild(controlRow('Youngest player', ageControl()));
-
-  card.appendChild(body);
-
-  const foot = el('div', 'card__foot');
-  const back = el('button', 'btn btn--ghost', '← Back');
-  back.onclick = () => {
-    state.prefIndex = QUESTIONS.length - 1;
-    go('prefs');
-  };
-  const show = el('button', 'btn btn--primary', 'Show me the games →');
-  show.onclick = () => go('result');
-  foot.appendChild(back);
-  foot.appendChild(show);
-  card.appendChild(foot);
-  s.appendChild(card);
-
-  function controlRow(label, control) {
-    const row = el('div', 'crow');
-    row.appendChild(el('div', 'crow__label', label));
-    row.appendChild(control);
-    return row;
-  }
-
-  function chipRow(values, current, onPick, fmt = (v) => v) {
-    const wrap = el('div', 'chips');
-    const mk = (val, text) => {
-      const b = el('button', 'chip' + (current === val ? ' chip--on' : ''), text);
-      b.onclick = () => {
-        onPick(val);
-        render();
-      };
-      return b;
-    };
-    wrap.appendChild(mk(null, 'Any'));
-    values.forEach((v) => wrap.appendChild(mk(v, fmt(v))));
-    return wrap;
-  }
-
-  function playerControl() {
-    const box = el('div', 'pcontrol');
-    box.appendChild(chipRow([1, 2, 3, 4, 5, 6, 7, 8], c.players, (v) => (c.players = v), (v) => (v === 8 ? '8+' : v)));
-    if (c.players) {
-      const fit = el('div', 'fitsel');
-      fit.appendChild(el('span', 'fitsel__label', `How it plays at ${c.players === 8 ? '8+' : c.players}:`));
-      const seg = el('div', 'segmented');
-      [
-        ['best', 'Best'],
-        ['rec', 'Recommended'],
-        ['supported', 'Box supports'],
-      ].forEach(([val, label]) => {
-        const b = el('button', 'seg' + (c.playerFit === val ? ' seg--on' : ''), label);
-        b.onclick = () => {
-          c.playerFit = val;
-          render();
-        };
-        seg.appendChild(b);
-      });
-      fit.appendChild(seg);
-      box.appendChild(fit);
-    }
-    return box;
-  }
-  function ageControl() {
-    return chipRow([6, 8, 10, 12, 14], c.minAge, (v) => (c.minAge = v), (v) => `${v}+`);
-  }
-  function timeControl() {
-    return chipRow([15, 30, 45, 60, 90, 120, 180], c.maxTime, (v) => (c.maxTime = v), (v) => `≤ ${v}m`);
-  }
-  function weightControl() {
-    // Half-open [lo, hi) buckets on BGG weight (1–5), so none overlap.
-    const buckets = [
-      { label: 'Any', sub: '', lo: 0, hi: 99 },
-      { label: 'Light', sub: 'gateway', lo: 0, hi: 2.0 },
-      { label: 'Medium-light', sub: '2.0–2.5', lo: 2.0, hi: 2.5 },
-      { label: 'Medium', sub: '2.5–3.0', lo: 2.5, hi: 3.0 },
-      { label: 'Heavy', sub: '3.0–4.0', lo: 3.0, hi: 4.0 },
-      { label: 'Brain-melter', sub: '4.0+', lo: 4.0, hi: 99 },
-    ];
-    const wrap = el('div', 'weight');
-    buckets.forEach((bk) => {
-      const on = c.wLo === bk.lo && c.wHi === bk.hi;
-      const b = el('button', 'chip' + (on ? ' chip--on' : ''));
-      b.textContent = bk.label;
-      if (bk.sub) b.appendChild(el('span', 'chip__sub', bk.sub));
-      b.onclick = () => {
-        c.wLo = bk.lo;
-        c.wHi = bk.hi;
-        render();
-      };
-      wrap.appendChild(b);
-    });
-    return wrap;
-  }
-}
-
-function renderResult(s) {
-  const games = sortByFit(finalGames());
-  const card = el('div', 'card');
-  const head = el('div', 'result__head');
-  head.appendChild(el('h2', null, games.length ? `${games.length} game${games.length === 1 ? '' : 's'} for the table` : 'Nothing survived'));
-  if (games.length > 1) {
-    const roll = el('button', 'btn btn--primary', '🎲 Pick for me');
-    roll.onclick = () => {
-      const pick = games[Math.floor(deterministicRandom() * games.length)];
-      highlight(pick.id);
-    };
-    head.appendChild(roll);
-  }
-  card.appendChild(head);
-
-  if (!games.length) {
-    card.appendChild(el('p', 'muted', 'Every game got filtered out. Step back and relax a want or a constraint.'));
-  } else {
-    const grid = el('div', 'grid');
-    games.forEach((g) => grid.appendChild(gameCard(g)));
-    card.appendChild(grid);
-  }
-
-  const foot = el('div', 'card__foot');
-  const back = el('button', 'btn btn--ghost', '← Tweak constraints');
-  back.onclick = () => go('constraints');
-  const restart = el('button', 'btn btn--ghost', 'Start over');
-  restart.onclick = () => {
-    state.answers = {};
-    state.prefIndex = 0;
-    state.constraints = { players: null, playerFit: 'rec', wLo: 0, wHi: 99, maxTime: null, minAge: null };
-    go('collections');
-  };
-  foot.appendChild(back);
-  foot.appendChild(restart);
-  card.appendChild(foot);
-  s.appendChild(card);
-
-  function highlight(id) {
-    [...document.querySelectorAll('.gcard')].forEach((n) => n.classList.remove('gcard--pick'));
-    const node = document.querySelector(`.gcard[data-id="${id}"]`);
-    if (node) {
-      node.classList.add('gcard--pick');
-      node.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-}
-
-// Player-count/time/weight/co-op/best-count pills — shared by the result grid
-// card and the quick-look modal.
-function metaPills(g) {
-  const n = state.constraints.players;
-  const bestFit = isBestAt(g, n);
-  const meta = el('div', 'gcard__meta');
-  const pill = (t, cls) => el('span', 'pill' + (cls ? ' ' + cls : ''), t);
-  meta.appendChild(pill(`${g.minPlayers}–${g.maxPlayers >= 99 ? '∞' : g.maxPlayers} 👤`));
-  const t = g.playTime || g.maxTime || g.minTime;
-  if (t) meta.appendChild(pill(`${t}m ⏱`));
-  if (g.weight) meta.appendChild(pill(`${g.weight.toFixed(1)} 🧠`));
-  if (g.cooperative) meta.appendChild(pill('co-op 🤝'));
-  if (g.pollVotes && Array.isArray(g.bestPlayers) && g.bestPlayers.length)
-    // Accent the badge when your chosen count is one of the game's best counts.
-    meta.appendChild(pill(`best ${formatCounts(g.bestPlayers)} 👍`, bestFit ? 'pill--fit' : ''));
-  return meta;
-}
-function ownersLine(g) {
-  const owners = (g.owners || []).map((id) => (state.data.collections.find((c) => c.id === id) || {}).label || id);
-  return owners.length ? txt('div', 'gcard__owners', `On: ${owners.join(', ')}`) : null;
-}
-
-function gameCard(g) {
-  const bestFit = isBestAt(g, state.constraints.players);
-  // The whole card links to the game's BGG page.
-  const card = el('a', 'gcard' + (bestFit ? ' gcard--fit' : ''));
-  card.href = `https://boardgamegeek.com/boardgame/${g.id}`;
-  card.target = '_blank';
-  card.rel = 'noopener';
-  card.title = `${g.name} on BoardGameGeek`;
-  card.dataset.id = g.id;
-  card.appendChild(thumb(g, 'lg'));
-  const body = el('div', 'gcard__body');
-  body.appendChild(txt('div', 'gcard__name', g.name));
-  body.appendChild(metaPills(g));
-  const owners = ownersLine(g);
-  if (owners) body.appendChild(owners);
-  card.appendChild(body);
-  return card;
-}
-
-// --- quick-look modal, opened from the live thumbnail strip -----------------
-function onModalKeydown(e) {
-  if (e.key === 'Escape') closeModal();
-}
-function closeModal() {
-  const root = $('#modalRoot');
-  if (!root) return;
-  root.innerHTML = '';
-  document.removeEventListener('keydown', onModalKeydown);
-}
-function openGameModal(g) {
-  const root = $('#modalRoot');
-  if (!root) return;
-  const backdrop = el('div', 'modal__backdrop');
-  backdrop.onclick = closeModal;
-  const card = el('div', 'modal__card');
-  card.setAttribute('role', 'dialog');
-  card.setAttribute('aria-modal', 'true');
-  card.setAttribute('aria-label', g.name);
-  card.onclick = (e) => e.stopPropagation();
-  const closeBtn = el('button', 'modal__close', '✕');
-  closeBtn.type = 'button';
-  closeBtn.setAttribute('aria-label', 'Close');
-  closeBtn.onclick = closeModal;
-  card.appendChild(closeBtn);
-  card.appendChild(thumb(g, 'lg'));
-  const body = el('div', 'modal__body');
-  body.appendChild(txt('div', 'gcard__name', g.name));
-  body.appendChild(metaPills(g));
-  const owners = ownersLine(g);
-  if (owners) body.appendChild(owners);
-  const link = el('a', 'modal__link', 'View on BoardGameGeek ↗');
-  link.href = `https://boardgamegeek.com/boardgame/${g.id}`;
-  link.target = '_blank';
-  link.rel = 'noopener';
-  body.appendChild(link);
-  card.appendChild(body);
-  backdrop.appendChild(card);
-  root.innerHTML = '';
-  root.appendChild(backdrop);
-  document.addEventListener('keydown', onModalKeydown);
-  closeBtn.focus();
-}
-
-// A tiny deterministic-ish PRNG seeded off the current filtered set, so
-// "pick for me" varies but we avoid Math.random (keeps things testable).
-let rngSeed = 1;
-function deterministicRandom() {
-  rngSeed = (rngSeed * 1103515245 + 12345 + finalGames().length * 7 + Date.now()) % 2147483648;
-  return rngSeed / 2147483648;
-}
-
-// --- boot -------------------------------------------------------------------
+/* ----------------------------------------------------------------- boot -- */
 async function boot() {
-  render(); // loading
+  render();
   try {
     state.data = await loadData();
-    if (!state.data.games.length) {
-      go('setup');
-      return;
-    }
-    // preselect all collections for convenience
-    state.data.collections.forEach((c) => state.selected.add(c.id));
-    if (state.data.sample) go('setup');
-    else go('collections');
+    state.selected = (state.data.collections || []).map((c) => c.id); // all shelves on
   } catch (e) {
-    state._error = e.message;
-    go('error');
+    const root = $('#gkRoot');
+    root.textContent = '';
+    root.appendChild(el('div', 'gk-loading', `Could not load the shelf. ${e.message}`));
+    return;
   }
+  render();
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && state.sheetGame) setState({ sheetGame: null });
+  });
+
+  guide.scrollRef = window.scrollY;
+  window.addEventListener(
+    'scroll',
+    () => {
+      guide.lastActivity = Date.now();
+      if (guide.progScroll) return;
+      if (Math.abs(window.scrollY - guide.scrollRef) > 120) guide.armed = false;
+    },
+    { passive: true }
+  );
+  ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((ev) =>
+    window.addEventListener(ev, () => { guide.lastActivity = Date.now(); }, { passive: true })
+  );
+  setInterval(checkIdle, 400);
 }
+
 boot();

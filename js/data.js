@@ -8,16 +8,12 @@ export async function loadData() {
   return data;
 }
 
-// Combine the selected collections into a base pool.
-//   union        -> games owned by ANY selected collection
-//   intersection -> games owned by ALL selected collections (the "we can all play" set)
-export function poolFor(data, selectedIds, mode) {
+// The pool is the union of the selected shelves: a game is in play if anyone
+// selected owns it. (The old "everyone owns" intersection mode is gone.)
+export function poolFor(data, selectedIds) {
   const sel = new Set(selectedIds);
-  if (sel.size === 0) return [];
-  return data.games.filter((g) => {
-    const owned = (g.owners || []).filter((o) => sel.has(o));
-    return mode === 'intersection' ? owned.length === sel.size : owned.length > 0;
-  });
+  if (!data || sel.size === 0) return [];
+  return data.games.filter((g) => (g.owners || []).some((o) => sel.has(o)));
 }
 
 // Apply an array of predicate fns (nulls ignored). Returns the surviving games.
@@ -28,12 +24,12 @@ export function applyFilters(games, predicates) {
 }
 
 // Turn one question's selected option ids into a single predicate (or null).
+// Nothing selected → null → that question doesn't filter at all.
 export function questionPredicate(question, selectedIds) {
   const ids = selectedIds || [];
-  if (ids.length === 0) return null; // skipped / doesn't matter
+  if (ids.length === 0) return null;
   const chosen = question.options.filter((o) => ids.includes(o.id));
   if (chosen.length === 0) return null;
   if (question.type === 'single') return chosen[0].match;
-  // multi: game matches if it satisfies ANY chosen option
   return (g) => chosen.some((o) => o.match(g));
 }
