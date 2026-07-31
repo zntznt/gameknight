@@ -1,4 +1,4 @@
-// questions.js — the "wants" (sections 01–04 of the board).
+// questions.js. The "wants" (sections 01 to 04 of the board).
 // =============================================================================
 // This file IS the spec for what each answer filters on.
 //

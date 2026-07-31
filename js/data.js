@@ -1,4 +1,4 @@
-// data.js — load the baked collection data and expose pool/filter helpers.
+// data.js. Loads the baked collection data and exposes pool/filter helpers.
 
 export async function loadData() {
   const res = await fetch('./data/games.json', { cache: 'no-cache' });

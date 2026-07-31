@@ -1,4 +1,4 @@
-/* Gameknight — warm paper / chess-knight identity.
+/* Gameknight. Warm paper, chess-knight identity.
    Mobile-first and fluid: no media queries, sizing comes from clamp(),
    repeat(auto-fit, minmax()) and flex wrap, so it works from 320px up. */
 
@@ -22,7 +22,7 @@
 
 * { box-sizing: border-box; }
 /* No overflow-x:hidden here. It makes html/body a scroll container, which
-   silently kills `position: sticky` on the header — and the guided scroll
+   silently kills `position: sticky` on the header, and the guided scroll
    measures against a sticky header, so it breaks that too. The layout is
    genuinely non-overflowing instead (see .layout > * { min-width: 0 }). */
 html, body { margin: 0; padding: 0; }
@@ -54,7 +54,7 @@ a:hover { color: var(--accent); }
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
-/* The verdict is a short, self-contained read — the live count and strip are
+/* The verdict is a short, self-contained read. The live count and strip are
    board controls, so the header scrolls away with the page there. */
 .gk-header--flat { position: static; }
 .gk-headrow {
