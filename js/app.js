@@ -343,8 +343,11 @@ function makeSection(num, title, answered, body) {
 function renderLive() {
   const root = $('#gkLive');
   const prevScroll = root.querySelector('.gk-strip')?.scrollLeft || 0;
-  root.textContent = '';
-  if (!state.data) return;
+  if (!state.data) {
+    root.replaceChildren();
+    return;
+  }
+  const out = frag();
 
   const games = sortGames(remaining());
   const total = basePool().length;
@@ -352,13 +355,13 @@ function renderLive() {
   const live = el('div', 'gk-live');
   live.appendChild(el('span', `gk-live__n${games.length === 0 ? ' gk-live__n--zero' : ''}`, String(games.length)));
   live.appendChild(el('span', 'gk-live__total', `/ ${total}`));
-  root.appendChild(live);
+  out.appendChild(live);
 
   if (anyFilters()) {
     const clear = el('button', 'gk-clear', 'clear');
     clear.type = 'button';
     clear.onclick = resetAll;
-    root.appendChild(clear);
+    out.appendChild(clear);
   }
 
   const strip = el('div', 'gk-strip');
@@ -374,7 +377,8 @@ function renderLive() {
       strip.appendChild(btn);
     });
   }
-  root.appendChild(strip);
+  out.appendChild(strip);
+  root.replaceChildren(out);
   strip.scrollLeft = prevScroll;
 }
 
@@ -389,9 +393,21 @@ function renderShelves() {
     const btn = el('button', `gk-shelf__btn${on ? ' gk-shelf__btn--on' : ''}`);
     btn.type = 'button';
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    btn.appendChild(
-      el('span', 'gk-shelf__avatar', (col.label || col.bggUser || '?').trim().charAt(0).toUpperCase())
-    );
+    // The owner's BGG avatar when the bake found one, else a typographic
+    // monogram. A dead avatar URL falls back to the monogram too.
+    const monogram = (col.label || col.bggUser || '?').trim().charAt(0).toUpperCase();
+    const avatar = el('span', 'gk-shelf__avatar');
+    if (col.avatar && !state.failed[`av:${col.id}`]) {
+      const img = el('img');
+      img.src = col.avatar;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.onerror = () => markFailed(`av:${col.id}`);
+      avatar.appendChild(img);
+    } else {
+      avatar.textContent = monogram;
+    }
+    btn.appendChild(avatar);
     const text = el('span', 'gk-shelf__text');
     text.appendChild(el('span', 'gk-shelf__label', col.label));
     text.appendChild(
@@ -634,12 +650,11 @@ function renderLimits() {
 }
 
 /* --- board ---------------------------------------------------------------- */
-function renderBoard() {
+function buildBoard() {
   const main = el('main', 'gk-main');
   main.appendChild(renderShelves());
   main.appendChild(renderWants());
   main.appendChild(renderLimits());
-  $('#gkRoot').appendChild(main);
 
   const bar = el('div', 'gk-bar');
   const inner = el('div', 'gk-bar__inner');
@@ -654,11 +669,11 @@ function renderBoard() {
   };
   inner.appendChild(deal);
   bar.appendChild(inner);
-  $('#gkBarRoot').appendChild(bar);
+  return { main, bar };
 }
 
 /* --- verdict -------------------------------------------------------------- */
-function renderVerdict() {
+function buildVerdict() {
   const main = el('main', 'gk-main gk-main--verdict');
   const ranked = sortGames(remaining());
   const hero = ranked.find((g) => g.id === state.pickId) || ranked[0];
@@ -706,8 +721,7 @@ function renderVerdict() {
     row.appendChild(clear);
     card.appendChild(row);
     main.appendChild(card);
-    $('#gkRoot').appendChild(main);
-    return;
+    return main;
   }
 
   // hero card
@@ -766,7 +780,7 @@ function renderVerdict() {
     main.appendChild(sec);
   }
 
-  $('#gkRoot').appendChild(main);
+  return main;
 }
 
 /* --- quick-look sheet ----------------------------------------------------- */
@@ -825,18 +839,36 @@ function resetAll() {
 
 function render() {
   const root = $('#gkRoot');
-  root.textContent = '';
-  $('#gkBarRoot').textContent = '';
+  const barRoot = $('#gkBarRoot');
 
   if (!state.data) {
-    root.appendChild(el('div', 'gk-loading', 'Loading the shelf…'));
+    root.replaceChildren(el('div', 'gk-loading', 'Loading the shelf…'));
+    barRoot.replaceChildren();
     renderSheet();
     return;
   }
+
+  // Build first, swap second. Emptying the roots up front would collapse the
+  // page to zero height, and the browser resets scrollY when that happens —
+  // which is what used to throw you back to the top on every click. A single
+  // replaceChildren() never leaves the document short.
+  const keepY = window.scrollY;
+  const built = state.view === 'board' ? buildBoard() : { main: buildVerdict(), bar: null };
+
+  // The header only follows you on the board; on the verdict it scrolls away.
+  $('.gk-header').classList.toggle('gk-header--flat', state.view === 'verdict');
+
   renderLive();
-  if (state.view === 'board') renderBoard();
-  else renderVerdict();
+  root.replaceChildren(built.main);
+  if (built.bar) barRoot.replaceChildren(built.bar);
+  else barRoot.replaceChildren();
   renderSheet();
+
+  // Belt and braces: if the swap still moved us (a genuinely shorter page), put
+  // it back — unless a guided scroll is mid-flight and owns the position.
+  if (state.view === 'board' && !guide.progScroll && window.scrollY !== keepY) {
+    window.scrollTo(0, keepY);
+  }
 }
 
 /* ----------------------------------------------------------------- boot -- */
@@ -846,9 +878,7 @@ async function boot() {
     state.data = await loadData();
     state.selected = (state.data.collections || []).map((c) => c.id); // all shelves on
   } catch (e) {
-    const root = $('#gkRoot');
-    root.textContent = '';
-    root.appendChild(el('div', 'gk-loading', `Could not load the shelf. ${e.message}`));
+    $('#gkRoot').replaceChildren(el('div', 'gk-loading', `Could not load the shelf. ${e.message}`));
     return;
   }
   render();
