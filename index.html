@@ -1,54 +1,59 @@
-<!-- rebuild-poke: forcing a fresh GitHub Pages build after the source got stuck on a deleted Actions workflow -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gameknight ♞ — what should we play tonight?</title>
-    <meta name="description" content="Filter your board game collections down to the perfect game for the table." />
+    <meta name="description" content="Filter your BoardGameGeek collections down to the one game you should play tonight." />
+    <meta name="theme-color" content="#f4efe6" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%99%9E%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <div class="brand"><span class="brand__mark">♞</span> Gameknight</div>
-      <div class="tagline">What should we play tonight?</div>
-      <a
-        class="bgglink"
-        href="https://boardgamegeek.com"
-        target="_blank"
-        rel="noopener"
-        aria-label="Powered by BoardGameGeek"
-        title="Powered by BoardGameGeek"
-      >
-        <img
-          src="https://cf.geekdo-images.com/HZy35cmzmmyV9BarSuk6ug__imagepagezoom/img/pXXf-xfYw0boHLfc3sL_g1nsLtY=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic7779581.png"
-          alt="Powered by BGG"
-          loading="lazy"
-        />
-      </a>
-      <a
-        class="ghlink"
-        href="https://github.com/zntznt/gameknight"
-        target="_blank"
-        rel="noopener"
-        aria-label="View source on GitHub"
-        title="View source on GitHub"
-      >
-        <svg viewBox="0 0 16 16" aria-hidden="true">
-          <path
-            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+    <header class="gk-header">
+      <div class="gk-headrow gk-headrow--top">
+        <div class="gk-mark" aria-hidden="true">♞</div>
+        <div class="gk-wordmark">Gameknight</div>
+        <a
+          class="gk-bgg"
+          href="https://boardgamegeek.com"
+          target="_blank"
+          rel="noopener"
+          title="Powered by BoardGameGeek"
+        >
+          <img
+            src="https://cf.geekdo-images.com/HZy35cmzmmyV9BarSuk6ug__imagepagezoom/img/pXXf-xfYw0boHLfc3sL_g1nsLtY=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic7779581.png"
+            alt="Powered by BoardGameGeek"
+            loading="lazy"
           />
-        </svg>
-      </a>
+        </a>
+        <a
+          class="gk-gh"
+          href="https://github.com/zntznt/gameknight"
+          target="_blank"
+          rel="noopener"
+          title="Source on GitHub"
+          aria-label="Source on GitHub"
+        >
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="gk-headrow gk-headrow--live" id="gkLive" aria-live="polite"></div>
     </header>
 
-    <main class="layout">
-      <section id="live" class="live" hidden aria-live="polite"></section>
-      <section id="stage" class="stage"></section>
-    </main>
-
-    <div id="modalRoot"></div>
+    <div id="gkRoot"></div>
+    <div id="gkBarRoot"></div>
+    <div id="gkSheetRoot"></div>
 
     <script type="module" src="./js/app.js"></script>
   </body>

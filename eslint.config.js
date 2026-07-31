@@ -20,6 +20,8 @@ const browserGlobals = {
   requestAnimationFrame: 'readonly',
   setTimeout: 'readonly',
   clearTimeout: 'readonly',
+  setInterval: 'readonly',
+  clearInterval: 'readonly',
 };
 
 const nodeGlobals = {
