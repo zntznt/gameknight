@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T09:37:41.031Z",
+  "generatedAt": "2026-07-31T22:29:20.198Z",
   "collections": [
     {
       "id": "zntznt",
@@ -14,37 +14,2072 @@
   ],
   "games": [
     {
-      "id": 367527,
-      "name": "Fields of Fire: Deluxe Edition",
-      "year": 2025,
-      "thumbnail": "https://cf.geekdo-images.com/fk7citNbV8SdAOv_PmqPtQ__small/img/Q4AmCyCZmLy_icWKHsecqaKm8gI=/fit-in/200x150/filters:strip_icc()/pic8381357.png",
-      "image": "https://cf.geekdo-images.com/fk7citNbV8SdAOv_PmqPtQ__original/img/V37OIuT07rjrw9bvmufKCTriOxw=/0x0/filters:format(png)/pic8381357.png",
+      "id": 342942,
+      "name": "Ark Nova",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/SoU8p28Sk1s8MSvoM4N8pQ__small/img/4KuHNTWSMPf8vTNDKSRMMI3oOv8=/fit-in/200x150/filters:strip_icc()/pic6293412.jpg",
+      "image": "https://cf.geekdo-images.com/SoU8p28Sk1s8MSvoM4N8pQ__original/img/g4S18szTdrXCdIwVKzMKrZrYAcM=/0x0/filters:format(jpeg)/pic6293412.jpg",
       "minPlayers": 1,
-      "maxPlayers": 1,
-      "minTime": 180,
-      "maxTime": 360,
-      "playTime": 360,
-      "minAge": 13,
-      "weight": 4.6,
-      "rating": 9.2,
-      "rank": 0,
+      "maxPlayers": 4,
+      "minTime": 90,
+      "maxTime": 150,
+      "playTime": 150,
+      "minAge": 14,
+      "weight": 3.8,
+      "rating": 8.5,
+      "rank": 2,
       "cooperative": false,
       "categories": [
-        "Korean War",
-        "Modern Warfare",
-        "Vietnam War",
-        "Wargame",
-        "World War II"
+        "Animals",
+        "Card Game",
+        "Environmental"
       ],
       "mechanics": [
-        "Campaign / Battle Card Driven",
-        "Modular Board",
-        "Pieces as Map",
-        "Solo / Solitaire Game"
+        "Contracts",
+        "End Game Bonuses",
+        "Events",
+        "Grid Coverage",
+        "Hand Management",
+        "Hexagon Grid",
+        "Income",
+        "Increase Value of Unchosen Resources",
+        "Open Drafting",
+        "Race",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Tags",
+        "Tile Placement",
+        "Track Movement",
+        "Variable Player Powers",
+        "Variable Set-up"
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 2374,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 162886,
+      "name": "Spirit Island",
+      "year": 2017,
+      "thumbnail": "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__small/img/aUlIih2_R7P8IYKeyNl2heLQbu8=/fit-in/200x150/filters:strip_icc()/pic7013651.jpg",
+      "image": "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__original/img/9uLd9C3XAvInLCLhAoXqKVk56zs=/0x0/filters:format(jpeg)/pic7013651.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 90,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 13,
+      "weight": 4.1,
+      "rating": 8.3,
+      "rank": 11,
+      "cooperative": true,
+      "categories": [
+        "Environmental",
+        "Fantasy",
+        "Mythology",
+        "Territory Building"
+      ],
+      "mechanics": [
+        "Action Retrieval",
+        "Area Majority / Influence",
+        "Automatic Resource Growth",
+        "Campaign / Battle Card Driven",
+        "Cooperative Game",
+        "Deck, Bag, and Pool Building",
+        "Hand Management",
+        "Modular Board",
+        "Simultaneous Action Selection",
+        "Solo / Solitaire Game",
+        "Tags",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 2182,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 291457,
+      "name": "Gloomhaven: Jaws of the Lion",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__small/img/OMkN_E5eyWrkID_cHCnQEbIixGM=/fit-in/200x150/filters:strip_icc()/pic5055631.jpg",
+      "image": "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__original/img/PBzsLRqNKQKJxGnzpb7o3qLWPQM=/0x0/filters:format(jpeg)/pic5055631.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 3.6,
+      "rating": 8.4,
+      "rank": 12,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Exploration",
+        "Fantasy",
+        "Fighting",
+        "Miniatures"
+      ],
+      "mechanics": [
+        "Action Queue",
+        "Action Retrieval",
+        "Campaign / Battle Card Driven",
+        "Communication Limits",
+        "Cooperative Game",
+        "Critical Hits and Failures",
+        "Deck Construction",
+        "Grid Movement",
+        "Hand Management",
+        "Hexagon Grid",
+        "Line of Sight",
+        "Multi-Use Cards",
+        "Once-Per-Game Abilities",
+        "Player Elimination",
+        "Role Playing",
+        "Scenario / Mission / Campaign Game",
+        "Simultaneous Action Selection",
+        "Solo / Solitaire Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 873,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 169786,
+      "name": "Scythe",
+      "year": 2016,
+      "thumbnail": "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__small/img/eQ69OEDdjYjfKg6q5Navee87skU=/fit-in/200x150/filters:strip_icc()/pic3163924.jpg",
+      "image": "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__original/img/HlDb9F365w0tSP8uD1vf1pfniQE=/0x0/filters:format(jpeg)/pic3163924.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 115,
+      "maxTime": 115,
+      "playTime": 115,
+      "minAge": 14,
+      "weight": 3.5,
+      "rating": 8.1,
+      "rank": 26,
+      "cooperative": false,
+      "categories": [
+        "Economic",
+        "Fighting",
+        "Science Fiction",
+        "Territory Building"
+      ],
+      "mechanics": [
+        "Area Majority / Influence",
+        "Card Play Conflict Resolution",
+        "Contracts",
+        "End Game Bonuses",
+        "Force Commitment",
+        "Grid Movement",
+        "Hexagon Grid",
+        "King of the Hill",
+        "Movement Points",
+        "Narrative Choice / Paragraph",
+        "Solo / Solitaire Game",
+        "Take That",
+        "Tech Trees / Tech Tracks",
+        "Variable Player Powers",
+        "Variable Set-up",
+        "Victory Points as a Resource",
+        "Zone of Control"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 1676,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 312484,
+      "name": "Lost Ruins of Arnak",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__small/img/J8SVmGOJXZGxNjkT3xYNQU7Haxg=/fit-in/200x150/filters:strip_icc()/pic5674958.jpg",
+      "image": "https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__original/img/CXqwimJPonWy1oyXEMgPN_ZVmUI=/0x0/filters:format(jpeg)/pic5674958.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 12,
+      "weight": 2.9,
+      "rating": 8.1,
+      "rank": 30,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Card Game",
+        "Exploration",
+        "Fantasy"
+      ],
+      "mechanics": [
+        "Area Movement",
+        "Contracts",
+        "Deck, Bag, and Pool Building",
+        "Delayed Purchase",
+        "End Game Bonuses",
+        "Hand Management",
+        "Multi-Use Cards",
+        "Once-Per-Game Abilities",
+        "Open Drafting",
+        "Resource to Move",
+        "Solo / Solitaire Game",
+        "Track Movement",
+        "Turn Order: Progressive",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 1131,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 341169,
+      "name": "Great Western Trail: Second Edition",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/gDn7AhrDlmfCLSz9ZqoNFQ__small/img/0pt6XrFHTXpNetwMo9rdY7PdhfQ=/fit-in/200x150/filters:strip_icc()/pic5988511.jpg",
+      "image": "https://cf.geekdo-images.com/gDn7AhrDlmfCLSz9ZqoNFQ__original/img/yecB1xO32nnjBAyskVOTq9LBuLo=/0x0/filters:format(jpeg)/pic5988511.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 75,
+      "maxTime": 150,
+      "playTime": 150,
+      "minAge": 12,
+      "weight": 3.7,
+      "rating": 8.3,
+      "rank": 31,
+      "cooperative": false,
+      "categories": [
+        "American West",
+        "Animals"
+      ],
+      "mechanics": [
+        "Deck, Bag, and Pool Building",
+        "Hand Management",
+        "Ownership",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Tags",
+        "Track Movement",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 336,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 237182,
+      "name": "Root",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__small/img/ACovMZzGGIsBRyEQXFnsT8282NM=/fit-in/200x150/filters:strip_icc()/pic4254509.jpg",
+      "image": "https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__original/img/E0s2LvtFA1L5YKk-_44D4u2VD2s=/0x0/filters:format(jpeg)/pic4254509.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 14,
+      "weight": 3.8,
+      "rating": 8.1,
+      "rank": 34,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Fantasy",
+        "Negotiation",
+        "Territory Building",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Action Queue",
+        "Action Retrieval",
+        "Area Majority / Influence",
+        "Area Movement",
+        "Dice Rolling",
+        "Hand Management",
+        "Multi-Use Cards",
+        "Negotiation",
+        "Point to Point Movement",
+        "Race",
+        "Sudden Death Ending",
+        "Take That",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4
+      ],
+      "pollVotes": 1420,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 199792,
+      "name": "Everdell",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__small/img/Cf_mYxR_VvdjTEPXseSurni2JNI=/fit-in/200x150/filters:strip_icc()/pic3918905.png",
+      "image": "https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__original/img/HQ1ti16wT9lqja5_h3gUfHUIcVI=/0x0/filters:format(png)/pic3918905.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 40,
+      "maxTime": 80,
+      "playTime": 80,
+      "minAge": 10,
+      "weight": 2.8,
+      "rating": 8,
+      "rank": 45,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Card Game",
+        "City Building",
+        "Fantasy"
+      ],
+      "mechanics": [
+        "Contracts",
+        "End Game Bonuses",
+        "Hand Management",
+        "Income",
+        "Open Drafting",
+        "Ownership",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Tags",
+        "Variable Set-up",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 1123,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 256960,
+      "name": "Pax Pamir: Second Edition",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/oSM_AuKYfGIwOtKbVEsoVg__small/img/NyoufH5YBFCh1rKy4uy76bR4ITk=/fit-in/200x150/filters:strip_icc()/pic4503733.png",
+      "image": "https://cf.geekdo-images.com/oSM_AuKYfGIwOtKbVEsoVg__original/img/7DlaMCmuoJzm9AzelmStYIDgutI=/0x0/filters:format(png)/pic4503733.png",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 13,
+      "weight": 3.8,
+      "rating": 8.1,
+      "rank": 53,
+      "cooperative": false,
+      "categories": [
+        "Economic",
+        "Educational",
+        "Negotiation",
+        "Political",
+        "Post-Napoleonic"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Area Majority / Influence",
+        "Area Movement",
+        "Auction: Dutch",
+        "Bribery",
+        "Hand Management",
+        "Increase Value of Unchosen Resources",
+        "Negotiation",
+        "Open Drafting",
+        "Score-and-Reset Game",
+        "Simulation",
+        "Solo / Solitaire Game",
+        "Tags",
+        "Take That"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 629,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 255984,
+      "name": "Sleeping Gods",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/Zdt8l4oTBpFICsMyNof7Jg__small/img/71w4Tt3xOnuDEDTCG8ni63QUhVE=/fit-in/200x150/filters:strip_icc()/pic5975244.png",
+      "image": "https://cf.geekdo-images.com/Zdt8l4oTBpFICsMyNof7Jg__original/img/-okZ810RkA8fKKhIeZyX4cnqmbE=/0x0/filters:format(png)/pic5975244.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 1200,
+      "playTime": 1200,
+      "minAge": 13,
+      "weight": 3.3,
+      "rating": 8.1,
+      "rank": 75,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Exploration",
+        "Fantasy",
+        "Fighting",
+        "Nautical"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Cooperative Game",
+        "Events",
+        "Hand Management",
+        "Narrative Choice / Paragraph",
+        "Push Your Luck",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Storytelling"
+      ],
+      "bestPlayers": [
+        1,
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 425,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 124742,
+      "name": "Android: Netrunner",
+      "year": 2012,
+      "thumbnail": "https://cf.geekdo-images.com/2ewHIIG_TRq8bYlqk0jIMw__small/img/IJaOyyQ7Y59tW6nbKbjTMTFt-Ls=/fit-in/200x150/filters:strip_icc()/pic3738560.jpg",
+      "image": "https://cf.geekdo-images.com/2ewHIIG_TRq8bYlqk0jIMw__original/img/cassW39WF2QrPImJF59efADAmM0=/0x0/filters:format(jpeg)/pic3738560.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 2,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 14,
+      "weight": 3.4,
+      "rating": 7.9,
+      "rank": 85,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Card Game",
+        "Collectible Components",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Deck Construction",
+        "Hand Management",
+        "Race",
+        "Secret Unit Deployment",
+        "Take That",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2
+      ],
+      "pollVotes": 424,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 304783,
+      "name": "Hadrian&#039;s Wall",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/4XzRDw3VrgNpNfZlzZl66w__small/img/dGMBL60RMtAfcx741phN75mqlnA=/fit-in/200x150/filters:strip_icc()/pic5608818.png",
+      "image": "https://cf.geekdo-images.com/4XzRDw3VrgNpNfZlzZl66w__original/img/SfU1sNqUtpcvhcdzspDb5M9uSQQ=/0x0/filters:format(png)/pic5608818.png",
+      "minPlayers": 1,
+      "maxPlayers": 6,
+      "minTime": 30,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 12,
+      "weight": 3.2,
+      "rating": 7.9,
+      "rank": 173,
+      "cooperative": false,
+      "categories": [
+        "Ancient",
+        "City Building"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Paper-and-Pencil",
+        "Solo / Solitaire Game",
+        "Tech Trees / Tech Tracks"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 374,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 30549,
+      "name": "Pandemic",
+      "year": 2008,
+      "thumbnail": "https://cf.geekdo-images.com/S3ybV1LAp-8SnHIXLLjVqA__small/img/oqViRj6nVxK3m36NluTxU1PZkrk=/fit-in/200x150/filters:strip_icc()/pic1534148.jpg",
+      "image": "https://cf.geekdo-images.com/S3ybV1LAp-8SnHIXLLjVqA__original/img/IsrvRLpUV1TEyZsO5rC-btXaPz0=/0x0/filters:format(jpeg)/pic1534148.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 8,
+      "weight": 2.4,
+      "rating": 7.5,
+      "rank": 174,
+      "cooperative": true,
+      "categories": [
+        "Medical",
+        "Travel"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Chaining",
+        "Contracts",
+        "Cooperative Game",
+        "Events",
+        "Hand Management",
+        "Multi-Use Cards",
+        "Point to Point Movement",
+        "Set Collection",
+        "Simulation",
+        "Solo / Solitaire Game",
+        "Tags",
+        "Trading",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 2187,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 266524,
+      "name": "Parks",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/mF2cSNRk2O6HtE45Sl9TcA__small/img/K2AgL-KE_CTcvwahWd7zlt9YR0U=/fit-in/200x150/filters:strip_icc()/pic4852372.jpg",
+      "image": "https://cf.geekdo-images.com/mF2cSNRk2O6HtE45Sl9TcA__original/img/_KNgPoC_4l7iN0ntbFILexOJpfc=/0x0/filters:format(jpeg)/pic4852372.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 30,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 10,
+      "weight": 2.1,
+      "rating": 7.6,
+      "rank": 181,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Economic",
+        "Environmental",
+        "Travel"
+      ],
+      "mechanics": [
+        "Contracts",
+        "End Game Bonuses",
+        "Events",
+        "Modular Board",
+        "Solo / Solitaire Game",
+        "Track Movement",
+        "Turn Order: Claim Action",
+        "Variable Set-up",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 542,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 43111,
+      "name": "Chaos in the Old World",
+      "year": 2009,
+      "thumbnail": "https://cf.geekdo-images.com/yTe9522sHL-3nhfAMH2cTg__small/img/hzQEjxV31FkgVXiHwDD8n0wF2I0=/fit-in/200x150/filters:strip_icc()/pic1318481.jpg",
+      "image": "https://cf.geekdo-images.com/yTe9522sHL-3nhfAMH2cTg__original/img/zN6-x2bWP6lsDAC2FNsvU6ivQIc=/0x0/filters:format(jpeg)/pic1318481.jpg",
+      "minPlayers": 3,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 13,
+      "weight": 3.2,
+      "rating": 7.7,
+      "rank": 220,
+      "cooperative": false,
+      "categories": [
+        "Fantasy",
+        "Fighting",
+        "Horror",
+        "Mythology",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Area Majority / Influence",
+        "Area Movement",
+        "Dice Rolling",
+        "Events",
+        "Hand Management",
+        "Role Playing",
+        "Take That",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4
+      ],
+      "pollVotes": 454,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 118,
+      "name": "Modern Art",
+      "year": 1992,
+      "thumbnail": "https://cf.geekdo-images.com/wLto-xaabHwKQe_Bc4iD1Q__small/img/AUqMholGVlwXLjMcxwiziE_7Ffw=/fit-in/200x150/filters:strip_icc()/pic3458036.png",
+      "image": "https://cf.geekdo-images.com/wLto-xaabHwKQe_Bc4iD1Q__original/img/s3Gai8XBTVfWFFlYpL4XF3kIlWU=/0x0/filters:format(png)/pic3458036.png",
+      "minPlayers": 3,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 10,
+      "weight": 2.3,
+      "rating": 7.5,
+      "rank": 222,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Economic"
+      ],
+      "mechanics": [
+        "Auction / Bidding",
+        "Auction: English",
+        "Auction: Once Around",
+        "Auction: Sealed Bid",
+        "Auction: Turn Order Until Pass",
+        "Commodity Speculation",
+        "Hand Management",
+        "Victory Points as a Resource"
+      ],
+      "bestPlayers": [
+        4,
+        5
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 415,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 103343,
+      "name": "A Game of Thrones: The Board Game (Second Edition)",
+      "year": 2011,
+      "thumbnail": "https://cf.geekdo-images.com/M_7UvwZvuxBVjxdadsa5AA__small/img/ZQ9guRvmMgYfseBC3_xNscMOKKo=/fit-in/200x150/filters:strip_icc()/pic1077906.jpg",
+      "image": "https://cf.geekdo-images.com/M_7UvwZvuxBVjxdadsa5AA__original/img/3tv6H7jX5T9rqwuI84YZKZDBGcw=/0x0/filters:format(jpeg)/pic1077906.jpg",
+      "minPlayers": 3,
+      "maxPlayers": 6,
+      "minTime": 120,
+      "maxTime": 240,
+      "playTime": 240,
+      "minAge": 14,
+      "weight": 3.7,
+      "rating": 7.5,
+      "rank": 240,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Fantasy",
+        "Negotiation",
+        "Novel-based",
+        "Political",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Advantage Token",
+        "Alliances",
+        "Area Movement",
+        "Auction / Bidding",
+        "Auction: Sealed Bid",
+        "Card Play Conflict Resolution",
+        "Events",
+        "Hand Management",
+        "Income",
+        "Negotiation",
+        "Order Counters",
+        "Player Elimination",
+        "Simultaneous Action Selection",
+        "Sudden Death Ending",
+        "Turn Order: Auction",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        6
+      ],
+      "recPlayers": [
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 1066,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 282524,
+      "name": "Horrified",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/SoClIcwjDo_iZs0idVikDw__small/img/YSf5Z99aBqAlNKaGBj_oGb1oKH4=/fit-in/200x150/filters:strip_icc()/pic4848330.jpg",
+      "image": "https://cf.geekdo-images.com/SoClIcwjDo_iZs0idVikDw__original/img/TEprFkOM3G_u2HnUvh05WITeXbg=/0x0/filters:format(jpeg)/pic4848330.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 10,
+      "weight": 2,
+      "rating": 7.6,
+      "rank": 246,
+      "cooperative": true,
+      "categories": [
+        "Horror",
+        "Movies / TV / Radio theme"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Cooperative Game",
+        "Dice Rolling",
+        "Pick-up and Deliver",
+        "Point to Point Movement",
+        "Solo / Solitaire Game",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 301,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 306735,
+      "name": "Under Falling Skies",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/ecO5eAd3RkctQ0-Tbqv37Q__small/img/uxrJLWxvi-f8CGbDpxQBStzvGes=/fit-in/200x150/filters:strip_icc()/pic5428723.jpg",
+      "image": "https://cf.geekdo-images.com/ecO5eAd3RkctQ0-Tbqv37Q__original/img/eVUBGX1Hjp91YAlj3XJtRQ3y444=/0x0/filters:format(jpeg)/pic5428723.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 1,
+      "minTime": 20,
+      "maxTime": 40,
+      "playTime": 40,
+      "minAge": 12,
+      "weight": 2.4,
+      "rating": 7.6,
+      "rank": 264,
+      "cooperative": false,
+      "categories": [
+        "Dice",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Modular Board",
+        "Once-Per-Game Abilities",
+        "Re-rolling and Locking",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Square Grid",
+        "Sudden Death Ending",
+        "Variable Set-up",
+        "Worker Placement",
+        "Worker Placement with Dice Workers"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 248,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 283155,
+      "name": "Calico",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/qGkU6XsF1448F_A4P8TY5Q__small/img/l5ODCWYHD8_1x-WFqf-TJZhXT38=/fit-in/200x150/filters:strip_icc()/pic8124431.jpg",
+      "image": "https://cf.geekdo-images.com/qGkU6XsF1448F_A4P8TY5Q__original/img/sm-qIkkIoKuYRUgkfP6kkXTm1QY=/0x0/filters:format(jpeg)/pic8124431.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 10,
+      "weight": 2.2,
+      "rating": 7.5,
+      "rank": 272,
+      "cooperative": false,
+      "categories": [
+        "Abstract Strategy",
+        "Animals",
+        "Puzzle"
+      ],
+      "mechanics": [
+        "Enclosure",
+        "End Game Bonuses",
+        "Grid Coverage",
+        "Hexagon Grid",
+        "Open Drafting",
+        "Pattern Building",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Tile Placement"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 387,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 349067,
+      "name": "The Lord of the Rings: The Card Game – Revised Core Set",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/2zRlYhLyzKmOLZ-ULOX9_Q__small/img/Xtd2bt34MH-wIWVN_dobKvM7Rvs=/fit-in/200x150/filters:strip_icc()/pic7132021.jpg",
+      "image": "https://cf.geekdo-images.com/2zRlYhLyzKmOLZ-ULOX9_Q__original/img/JBGAYcOk8xOYypLr5omDHgbKaFg=/0x0/filters:format(jpeg)/pic7132021.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 3.6,
+      "rating": 8.4,
+      "rank": 324,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Card Game",
+        "Collectible Components",
+        "Fantasy",
+        "Novel-based"
+      ],
+      "mechanics": [
+        "Automatic Resource Growth",
+        "Cooperative Game",
+        "Deck Construction",
+        "Events",
+        "Hand Management",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        1,
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 113,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 284653,
+      "name": "Mind MGMT: The Psychic Espionage “Game.”",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/hYP-VIJGRFR8yB78-UN7Rg__small/img/e0Yk_RzMK0b7jwcoR96UeJpjy3c=/fit-in/200x150/filters:strip_icc()/pic5154610.jpg",
+      "image": "https://cf.geekdo-images.com/hYP-VIJGRFR8yB78-UN7Rg__original/img/3vUqoYuF2SrVU0n752sfU3bBhHc=/0x0/filters:format(jpeg)/pic5154610.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 13,
+      "weight": 2.9,
+      "rating": 7.8,
+      "rank": 325,
+      "cooperative": true,
+      "categories": [
+        "Comic Book / Strip",
+        "Deduction",
+        "Spies / Secret Agents"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Deduction",
+        "Grid Movement",
+        "Hidden Movement",
+        "Paper-and-Pencil",
+        "Point to Point Movement",
+        "Team-Based Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2,
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 208,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 318184,
+      "name": "Imperium: Classics",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/MN0OvKejfrfwD6bupQHp4g__small/img/MVh7xtQ4l17hprI4mFIk9Kswk6s=/fit-in/200x150/filters:strip_icc()/pic5623566.jpg",
+      "image": "https://cf.geekdo-images.com/MN0OvKejfrfwD6bupQHp4g__original/img/AYYyjw10ExHhOFLYectIclqQnxI=/0x0/filters:format(jpeg)/pic5623566.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 40,
+      "maxTime": 160,
+      "playTime": 160,
+      "minAge": 14,
+      "weight": 3.6,
+      "rating": 7.7,
+      "rank": 340,
+      "cooperative": false,
+      "categories": [
+        "Ancient",
+        "Card Game",
+        "Civilization"
+      ],
+      "mechanics": [
+        "Deck, Bag, and Pool Building",
+        "End Game Bonuses",
+        "Hand Management",
+        "Move Through Deck",
+        "Open Drafting",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Take That",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        1,
+        2
+      ],
+      "recPlayers": [
+        1,
+        2
+      ],
+      "pollVotes": 437,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 354934,
+      "name": "Legacy of Yu",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/cVE1FZQR3gqdlAmehJpaBw__small/img/D52Pgq1xs7MNiDjkinf4VLGroxQ=/fit-in/200x150/filters:strip_icc()/pic6630422.png",
+      "image": "https://cf.geekdo-images.com/cVE1FZQR3gqdlAmehJpaBw__original/img/F5aSQaJkh-PKGpq7I7mGFn9YFhg=/0x0/filters:format(png)/pic6630422.png",
+      "minPlayers": 1,
+      "maxPlayers": 1,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 12,
+      "weight": 2.9,
+      "rating": 8.1,
+      "rank": 375,
+      "cooperative": false,
+      "categories": [
+        "Ancient",
+        "City Building"
+      ],
+      "mechanics": [
+        "Chaining",
+        "Hand Management",
+        "Multi-Use Cards",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Sudden Death Ending",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 100,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 285192,
+      "name": "Destinies",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/oaD1ZQ3yGj6lacLdtqgdnQ__small/img/1mCz7HPEFMeqaqJHsDZwEUc9ftw=/fit-in/200x150/filters:strip_icc()/pic5558118.png",
+      "image": "https://cf.geekdo-images.com/oaD1ZQ3yGj6lacLdtqgdnQ__original/img/LJXy5--WfYNypO-Xd7nhkzU5Xzs=/0x0/filters:format(png)/pic5558118.png",
+      "minPlayers": 1,
+      "maxPlayers": 3,
+      "minTime": 90,
+      "maxTime": 150,
+      "playTime": 150,
+      "minAge": 14,
+      "weight": 1.9,
+      "rating": 7.6,
+      "rank": 415,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Exploration",
+        "Fantasy",
+        "Fighting",
+        "Medieval"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Map Addition",
+        "Role Playing",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Storytelling",
+        "Tile Placement"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 238,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 21241,
+      "name": "Neuroshima Hex",
+      "year": 2006,
+      "thumbnail": "https://cf.geekdo-images.com/JKniOrcvHvLWRlWc-naC8w__small/img/p7XKd7o6W3YRoFQye0ixdRYk-fU=/fit-in/200x150/filters:strip_icc()/pic8654429.png",
+      "image": "https://cf.geekdo-images.com/JKniOrcvHvLWRlWc-naC8w__original/img/ARpT9WzMYRVKbSib6LRxGimOpYQ=/0x0/filters:format(png)/pic8654429.png",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 8,
+      "weight": 2.6,
+      "rating": 7.4,
+      "rank": 420,
+      "cooperative": false,
+      "categories": [
+        "Collectible Components",
+        "Fighting",
+        "Puzzle",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Area Majority / Influence",
+        "Connections",
+        "Grid Movement",
+        "Hand Management",
+        "Hexagon Grid",
+        "Line of Sight",
+        "Player Elimination",
+        "Solo / Solitaire Game",
+        "Team-Based Game",
+        "Tile Placement",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 398,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 318182,
+      "name": "Imperium: Legends",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/-6AnQ0BuCM8u1lqAwTe8Rw__small/img/da5eYCvhYSmPb03hEhNwxR8-s6g=/fit-in/200x150/filters:strip_icc()/pic5623567.jpg",
+      "image": "https://cf.geekdo-images.com/-6AnQ0BuCM8u1lqAwTe8Rw__original/img/3isy4jQQdEpy8D-JKV2zLxrUjs8=/0x0/filters:format(jpeg)/pic5623567.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 40,
+      "maxTime": 160,
+      "playTime": 160,
+      "minAge": 14,
+      "weight": 3.8,
+      "rating": 7.8,
+      "rank": 455,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Civilization"
+      ],
+      "mechanics": [
+        "Deck, Bag, and Pool Building",
+        "End Game Bonuses",
+        "Hand Management",
+        "Move Through Deck",
+        "Open Drafting",
+        "Solo / Solitaire Game",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        1,
+        2
+      ],
+      "recPlayers": [
+        1,
+        2
+      ],
+      "pollVotes": 178,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 316412,
+      "name": "The LOOP",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/NPWdxDD5uLOBLBDdVgdLvA__small/img/7464PJPFWWPzsOUMvf8t860zct0=/fit-in/200x150/filters:strip_icc()/pic6034093.png",
+      "image": "https://cf.geekdo-images.com/NPWdxDD5uLOBLBDdVgdLvA__original/img/zlx0Qqcgt0TLu62F5sKUmYTDNvc=/0x0/filters:format(png)/pic6034093.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 12,
+      "weight": 2.8,
+      "rating": 7.7,
+      "rank": 506,
+      "cooperative": true,
+      "categories": [
+        "Card Game",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Cube Tower",
+        "Deck, Bag, and Pool Building",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 170,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 356033,
+      "name": "Libertalia: Winds of Galecrest",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/6e-V_Xb2IsAsMNXU18Fi6A__small/img/KJIHXXkkIU7R-oK5i9byIyGdfm4=/fit-in/200x150/filters:strip_icc()/pic6669033.jpg",
+      "image": "https://cf.geekdo-images.com/6e-V_Xb2IsAsMNXU18Fi6A__original/img/gLDo-RR_9RvU_Hrs9DnHWy_TWpk=/0x0/filters:format(jpeg)/pic6669033.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 6,
+      "minTime": 45,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 14,
+      "weight": 2.2,
+      "rating": 7.4,
+      "rank": 519,
+      "cooperative": false,
+      "categories": [
+        "Fantasy",
+        "Pirates"
+      ],
+      "mechanics": [
+        "Action Queue",
+        "Hand Management",
+        "Selection Order Bid",
+        "Set Collection",
+        "Simultaneous Action Selection",
+        "Take That",
+        "Turn Order: Role Order",
+        "Variable Phase Order"
+      ],
+      "bestPlayers": [
+        4,
+        5,
+        6
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 192,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 98778,
+      "name": "Hanabi",
+      "year": 2010,
+      "thumbnail": "https://cf.geekdo-images.com/JDVksMwfcqoem1k_xtZrOA__small/img/amCeCcEKhYGbVtDvpvIMnu3qTg0=/fit-in/200x150/filters:strip_icc()/pic2007286.jpg",
+      "image": "https://cf.geekdo-images.com/JDVksMwfcqoem1k_xtZrOA__original/img/5vNHZiTEhK4aRDuGXv5KImp9cmQ=/0x0/filters:format(jpeg)/pic2007286.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 25,
+      "maxTime": 25,
+      "playTime": 25,
+      "minAge": 8,
+      "weight": 1.7,
+      "rating": 7,
+      "rank": 603,
+      "cooperative": true,
+      "categories": [
+        "Card Game",
+        "Deduction",
+        "Memory"
+      ],
+      "mechanics": [
+        "Communication Limits",
+        "Cooperative Game",
+        "Hand Management",
+        "Memory",
+        "Ordering",
+        "Set Collection"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 670,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 307305,
+      "name": "Bullet♥︎",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/315gnIdET7dlQ_fASt8p0w__small/img/ZUVCes8DtY3pYnUJ3zghUkhT3fQ=/fit-in/200x150/filters:strip_icc()/pic6007944.jpg",
+      "image": "https://cf.geekdo-images.com/315gnIdET7dlQ_fASt8p0w__original/img/X2MDGNIMouqDtC6617rzlxW5LDw=/0x0/filters:format(jpeg)/pic6007944.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 10,
+      "maxTime": 20,
+      "playTime": 20,
+      "minAge": 13,
+      "weight": 2.2,
+      "rating": 7.6,
+      "rank": 658,
+      "cooperative": true,
+      "categories": [
+        "Fighting",
+        "Puzzle",
+        "Real-time",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Pattern Building",
+        "Push Your Luck",
+        "Real-Time",
+        "Solo / Solitaire Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 132,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 237179,
+      "name": "Weather Machine",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/E8qBDKe39KEFMo-LhTNDQQ__small/img/jFQaWbcjoUzxS7p76LsGzg4piQk=/fit-in/200x150/filters:strip_icc()/pic6333980.jpg",
+      "image": "https://cf.geekdo-images.com/E8qBDKe39KEFMo-LhTNDQQ__original/img/vDkGNR7MpOCxeuJFKs201FpybRU=/0x0/filters:format(jpeg)/pic6333980.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 150,
+      "playTime": 150,
+      "minAge": 14,
+      "weight": 4.6,
+      "rating": 7.7,
+      "rank": 717,
+      "cooperative": false,
+      "categories": [
+        "Environmental",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Set Collection",
+        "Tile Placement",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 210,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 131357,
+      "name": "Coup",
+      "year": 2012,
+      "thumbnail": "https://cf.geekdo-images.com/MWhSY_GOe2-bmlQ2rntSVg__small/img/vuR_0PCX1w2EkjO_LbchOHZPOwU=/fit-in/200x150/filters:strip_icc()/pic2016054.jpg",
+      "image": "https://cf.geekdo-images.com/MWhSY_GOe2-bmlQ2rntSVg__original/img/ayAAWBK1rAEumARNmROsOtvqW-4=/0x0/filters:format(jpeg)/pic2016054.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 6,
+      "minTime": 15,
+      "maxTime": 15,
+      "playTime": 15,
+      "minAge": 13,
+      "weight": 1.4,
+      "rating": 7,
+      "rank": 721,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Card Game",
+        "Deduction",
+        "Party Game",
+        "Political"
+      ],
+      "mechanics": [
+        "Hidden Roles",
+        "Memory",
+        "Player Elimination",
+        "Take That",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        5
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 661,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 361545,
+      "name": "Twilight Inscription",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/g36va6ofPCzNZXF-9GEpCg__small/img/F8SHn9giBPmooUkmJDz9kXAamS0=/fit-in/200x150/filters:strip_icc()/pic7132023.png",
+      "image": "https://cf.geekdo-images.com/g36va6ofPCzNZXF-9GEpCg__original/img/W-Goi5-dQP19Nj-MXa8xdEtpnVs=/0x0/filters:format(png)/pic7132023.png",
+      "minPlayers": 1,
+      "maxPlayers": 8,
+      "minTime": 90,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 3.2,
+      "rating": 7.4,
+      "rank": 794,
+      "cooperative": false,
+      "categories": [
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Paper-and-Pencil",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        3,
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 118,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 367518,
+      "name": "Imperium: Horizons",
+      "year": 2024,
+      "thumbnail": "https://cf.geekdo-images.com/RonhJsZOe0QOj-fzkgEf0g__small/img/FMrHdCcRlTrwgMlRXLq5pDONuVE=/fit-in/200x150/filters:strip_icc()/pic6993187.jpg",
+      "image": "https://cf.geekdo-images.com/RonhJsZOe0QOj-fzkgEf0g__original/img/DxjJMKLtdZzzDOaacaitwfkRLJU=/0x0/filters:format(jpeg)/pic6993187.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 40,
+      "maxTime": 160,
+      "playTime": 160,
+      "minAge": 14,
+      "weight": 4,
+      "rating": 8.5,
+      "rank": 815,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Civilization"
+      ],
+      "mechanics": [
+        "Deck, Bag, and Pool Building",
+        "End Game Bonuses",
+        "Hand Management",
+        "Move Through Deck",
+        "Open Drafting",
+        "Solo / Solitaire Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        1,
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 99,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 218603,
+      "name": "Photosynthesis",
+      "year": 2017,
+      "thumbnail": "https://cf.geekdo-images.com/HhkYuVxMy-XrRCBWmZ78Eg__small/img/eVdvmMALg8vjPr6eDoj-mqvDbUc=/fit-in/200x150/filters:strip_icc()/pic3364832.jpg",
+      "image": "https://cf.geekdo-images.com/HhkYuVxMy-XrRCBWmZ78Eg__original/img/V6bgfuxV2jfmRbz9pJVyK01x6dI=/0x0/filters:format(jpeg)/pic3364832.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 10,
+      "weight": 2.3,
+      "rating": 6.9,
+      "rank": 824,
+      "cooperative": false,
+      "categories": [
+        "Abstract Strategy",
+        "Economic"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Area Majority / Influence",
+        "Bias",
+        "End Game Bonuses",
+        "Hexagon Grid",
+        "Income",
+        "Turn Order: Progressive"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 308,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 296912,
+      "name": "Fort",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/hAsqLdANmtExR5Zi41v94Q__small/img/YqmIsRVLpQqM-r5i1rsN91Q6fzg=/fit-in/200x150/filters:strip_icc()/pic5241325.png",
+      "image": "https://cf.geekdo-images.com/hAsqLdANmtExR5Zi41v94Q__original/img/YSzUnMqcnTg-mSk8VEnBQaRRmJU=/0x0/filters:format(png)/pic5241325.png",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 20,
+      "maxTime": 40,
+      "playTime": 40,
+      "minAge": 10,
+      "weight": 2.4,
+      "rating": 7.1,
+      "rank": 831,
+      "cooperative": false,
+      "categories": [
+        "Card Game"
+      ],
+      "mechanics": [
+        "Deck, Bag, and Pool Building",
+        "Follow",
+        "Hand Management",
+        "Race",
+        "Turn Order: Progressive"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 222,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo",
+        "zntznt"
+      ]
+    },
+    {
+      "id": 372559,
+      "name": "Spots",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/TCBUzmSNUYw_yqJAXGWnNQ__small/img/BgniZvPRJVenqn7XHd4TQtsSuwI=/fit-in/200x150/filters:strip_icc()/pic7592453.png",
+      "image": "https://cf.geekdo-images.com/TCBUzmSNUYw_yqJAXGWnNQ__original/img/GklWmrbqMips7ref85Pa-X5eNQQ=/0x0/filters:format(png)/pic7592453.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 25,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 10,
+      "weight": 1.3,
+      "rating": 7.1,
+      "rank": 896,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Card Game",
+        "Dice"
+      ],
+      "mechanics": [
+        "Action Drafting",
+        "Contracts",
+        "Dice Rolling",
+        "Increase Value of Unchosen Resources",
+        "Push Your Luck",
+        "Race",
+        "Re-rolling and Locking",
+        "Set Collection",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        2,
+        3
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 135,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 332290,
+      "name": "Stardew Valley: The Board Game",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/X1oNtZV5H5BxtxlsTGIsHA__small/img/wvQPqF45KlfnRB-Z4ESK9VXzZMM=/fit-in/200x150/filters:strip_icc()/pic6037615.png",
+      "image": "https://cf.geekdo-images.com/X1oNtZV5H5BxtxlsTGIsHA__original/img/xkYA7A3vJLA2wqkaRorXcHgjQDk=/0x0/filters:format(png)/pic6037615.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 150,
+      "playTime": 150,
+      "minAge": 13,
+      "weight": 2.8,
+      "rating": 7.4,
+      "rank": 931,
+      "cooperative": true,
+      "categories": [
+        "Animals",
+        "Farming",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Dice Rolling",
+        "Die Icon Resolution",
+        "Events",
+        "Point to Point Movement",
+        "Random Production",
+        "Solo / Solitaire Game",
+        "Variable Set-up",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 136,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 218121,
+      "name": "Dice Hospital",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/V6m5SH45BlP6t7-HuGWA-w__small/img/R_6kq0mu1RY7RJVvtI9hRClqpNY=/fit-in/200x150/filters:strip_icc()/pic3562670.jpg",
+      "image": "https://cf.geekdo-images.com/V6m5SH45BlP6t7-HuGWA-w__original/img/b3B7VSa1WYqfIZhuAj1ClZM9GFg=/0x0/filters:format(jpeg)/pic3562670.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 10,
+      "weight": 2.3,
+      "rating": 7.1,
+      "rank": 964,
+      "cooperative": false,
+      "categories": [
+        "Dice",
+        "Medical"
+      ],
+      "mechanics": [
+        "Action Drafting",
+        "Action Points",
+        "Dice Rolling",
+        "Hexagon Grid",
+        "I Cut, You Choose",
+        "Modular Board",
+        "Solo / Solitaire Game",
+        "Variable Phase Order",
+        "Worker Placement",
+        "Worker Placement with Dice Workers"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 96,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 293207,
+      "name": "Eila and Something Shiny",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/ddeXV_p59xHZJtIyNSclvg__small/img/LnGEEwnCNfGjR9JEgCf2xAoi3no=/fit-in/200x150/filters:strip_icc()/pic5391049.jpg",
+      "image": "https://cf.geekdo-images.com/ddeXV_p59xHZJtIyNSclvg__original/img/tZc2EYPuGTzURBV786LypUP8Cvs=/0x0/filters:format(jpeg)/pic5391049.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 1,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 12,
+      "weight": 2,
+      "rating": 7.9,
+      "rank": 1088,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Animals",
+        "Fantasy"
+      ],
+      "mechanics": [
+        "Narrative Choice / Paragraph",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Storytelling"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 83,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 313010,
+      "name": "Cosmic Encounter: 42nd Anniversary Edition",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/-pnk2c0HTQQrhqRjjG835Q__small/img/GNv4-bHiFZLXPoyT7q8BW_Q5omo=/fit-in/200x150/filters:strip_icc()/pic4243113.jpg",
+      "image": "https://cf.geekdo-images.com/-pnk2c0HTQQrhqRjjG835Q__original/img/BMYXX1Q0euiqYuz0WlxkAAcaxD0=/0x0/filters:format(jpeg)/pic4243113.jpg",
+      "minPlayers": 3,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 2.5,
+      "rating": 8.1,
+      "rank": 1128,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Negotiation",
+        "Science Fiction",
+        "Space Exploration"
+      ],
+      "mechanics": [
+        "Alliances",
+        "Card Play Conflict Resolution",
+        "Hand Management",
+        "Interrupts",
+        "Negotiation",
+        "Prisoner&#039;s Dilemma",
+        "Race",
+        "Simultaneous Action Selection",
+        "Take That",
+        "Trading",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        5
+      ],
+      "recPlayers": [
+        4,
+        5
+      ],
+      "pollVotes": 42,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 408637,
+      "name": "The Anarchy",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/HJmk-KN7SCLH46kQ1JnkDw__small/img/xyJIOEBvETtxW7L2Vt82yAObBvw=/fit-in/200x150/filters:strip_icc()/pic7908662.jpg",
+      "image": "https://cf.geekdo-images.com/HJmk-KN7SCLH46kQ1JnkDw__original/img/VyLpu7eFwXuQVQUUbrx7vldCPIY=/0x0/filters:format(jpeg)/pic7908662.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 13,
+      "weight": 3.9,
+      "rating": 8.4,
+      "rank": 1131,
+      "cooperative": false,
+      "categories": [
+        "City Building",
+        "Medieval"
+      ],
+      "mechanics": [
+        "Chaining",
+        "Income",
+        "Multi-Use Cards",
+        "Paper-and-Pencil",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Tech Trees / Tech Tracks",
+        "Track Movement"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1,
+        2
+      ],
+      "pollVotes": 77,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 335212,
+      "name": "Sentinels of the Multiverse: Definitive Edition",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/eUtemWRT9XXMoRj3b5smUQ__small/img/0lhKsD34Tt6sKH6HWrLrM8-uPCw=/fit-in/200x150/filters:strip_icc()/pic6770323.png",
+      "image": "https://cf.geekdo-images.com/eUtemWRT9XXMoRj3b5smUQ__original/img/LSHeGkeel5GmpJzSusy3iTAQ230=/0x0/filters:format(png)/pic6770323.png",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 30,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 8,
+      "weight": 2.8,
+      "rating": 8.1,
+      "rank": 1148,
+      "cooperative": true,
+      "categories": [
+        "Card Game",
+        "Comic Book / Strip",
+        "Fighting"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Hand Management",
+        "Solo / Solitaire Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 61,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -63,7 +2098,7 @@
       "minAge": 0,
       "weight": 3.5,
       "rating": 9.1,
-      "rank": 0,
+      "rank": 1381,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -81,9 +2116,747 @@
         "Take That",
         "Variable Player Powers"
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2
+      ],
+      "pollVotes": 14,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 302388,
+      "name": "Back to the Future: Back in Time",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/wjJsquLxPJc2WmvJ7SqVbQ__small/img/-yFUlIfonB9pRxJxYpLSYygfUfU=/fit-in/200x150/filters:strip_icc()/pic5240569.png",
+      "image": "https://cf.geekdo-images.com/wjJsquLxPJc2WmvJ7SqVbQ__original/img/DeFwanotoRCkXHEkxEEb027zs7w=/0x0/filters:format(png)/pic5240569.png",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 50,
+      "maxTime": 50,
+      "playTime": 50,
+      "minAge": 10,
+      "weight": 2.4,
+      "rating": 7.2,
+      "rank": 1455,
+      "cooperative": true,
+      "categories": [
+        "Movies / TV / Radio theme"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Dice Rolling",
+        "Push Your Luck",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 68,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 306709,
+      "name": "The Night Cage",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/txQ7QzbQz89AO5BmVv7OqA__small/img/sneKRoRyk2ylPHxapTVVu66XbH4=/fit-in/200x150/filters:strip_icc()/pic5331288.png",
+      "image": "https://cf.geekdo-images.com/txQ7QzbQz89AO5BmVv7OqA__original/img/sj4Qg_VXKyNZFLftFjRv7p4-RKk=/0x0/filters:format(png)/pic5331288.png",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 40,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 14,
+      "weight": 2.2,
+      "rating": 7.1,
+      "rank": 1685,
+      "cooperative": true,
+      "categories": [
+        "Fantasy",
+        "Horror",
+        "Maze"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Grid Movement",
+        "Pieces as Map",
+        "Sudden Death Ending",
+        "Tile Placement"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 62,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 371972,
+      "name": "Ierusalem: Anno Domini",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/TmeInxjp7SV_AtDLx2Kjbw__small/img/qofZgE_cizx-crfjiE310D1BFfQ=/fit-in/200x150/filters:strip_icc()/pic7141460.jpg",
+      "image": "https://cf.geekdo-images.com/TmeInxjp7SV_AtDLx2Kjbw__original/img/LgDPSEdVdADTwtQPfKsQ8a75vVY=/0x0/filters:format(jpeg)/pic7141460.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 90,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 12,
+      "weight": 3.1,
+      "rating": 7.5,
+      "rank": 1745,
+      "cooperative": false,
+      "categories": [
+        "Ancient",
+        "Religious"
+      ],
+      "mechanics": [
+        "Advantage Token",
+        "Grid Coverage",
+        "Grid Movement",
+        "Hand Management",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Worker Placement, Different Worker Types"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 79,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 383206,
+      "name": "Freelancers: A Crossroads Game",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/DuZnEeI06_5UKpv4t28Kyg__small/img/9DsH5vXeOaLACqql6hK0A0U8Hp0=/fit-in/200x150/filters:strip_icc()/pic7429703.jpg",
+      "image": "https://cf.geekdo-images.com/DuZnEeI06_5UKpv4t28Kyg__original/img/72dgRrE3TIpiI_vtAHKsYS9B1C0=/0x0/filters:format(jpeg)/pic7429703.jpg",
+      "minPlayers": 3,
+      "maxPlayers": 7,
+      "minTime": 90,
+      "maxTime": 180,
+      "playTime": 180,
+      "minAge": 14,
+      "weight": 2.1,
+      "rating": 7.7,
+      "rank": 1945,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Dice",
+        "Fantasy"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Deck, Bag, and Pool Building",
+        "Role Playing",
+        "Scenario / Mission / Campaign Game",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        4,
+        5
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pollVotes": 21,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 304531,
+      "name": "Ascension Tactics: Miniatures Deckbuilding Game",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/891ZOmibeW3iRhEcdN0B5w__small/img/FYY0vCDutJuUoq0Xa1zXjGb7p-c=/fit-in/200x150/filters:strip_icc()/pic7364675.png",
+      "image": "https://cf.geekdo-images.com/891ZOmibeW3iRhEcdN0B5w__original/img/KQojWcEDJSItT4irky_t5Ut8kNI=/0x0/filters:format(png)/pic7364675.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 10,
+      "weight": 2.5,
+      "rating": 7.8,
+      "rank": 2068,
+      "cooperative": true,
+      "categories": [
+        "Fantasy",
+        "Miniatures"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Deck, Bag, and Pool Building",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 35,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 274428,
+      "name": "Gaslands: Refuelled",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/dw87_x42fS48r1khpxkFvg__small/img/pidb6HQ1dmIPaRDUVkV8q9kJi7s=/fit-in/200x150/filters:strip_icc()/pic4764270.jpg",
+      "image": "https://cf.geekdo-images.com/dw87_x42fS48r1khpxkFvg__original/img/Yme-TqBexyfZhOPMlmvs33rlSig=/0x0/filters:format(jpeg)/pic4764270.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 8,
+      "minTime": 45,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 11,
+      "weight": 2.7,
+      "rating": 8.2,
+      "rank": 2239,
+      "cooperative": false,
+      "categories": [
+        "Book",
+        "Miniatures",
+        "Racing",
+        "Science Fiction",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Impulse Movement",
+        "Movement Template",
+        "Push Your Luck",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2,
+        3
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 20,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 273264,
+      "name": "Iron Helm",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/SfPHguFeC9WwVjklDdafyA__small/img/E_hLZmp8L0Zn13iASn-qoc0tmCo=/fit-in/200x150/filters:strip_icc()/pic6690315.png",
+      "image": "https://cf.geekdo-images.com/SfPHguFeC9WwVjklDdafyA__original/img/IfLUcr6-dOi-VkIejfvw-58BzOU=/0x0/filters:format(png)/pic6690315.png",
+      "minPlayers": 1,
+      "maxPlayers": 1,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 12,
+      "weight": 2,
+      "rating": 8.1,
+      "rank": 2430,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Card Game",
+        "Fantasy",
+        "Print & Play"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Push Your Luck",
+        "Solo / Solitaire Game"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 29,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 231327,
+      "name": "The Grizzled: Armistice Edition",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/UtbMCLhn7V4A2jZLfgGQjw__small/img/VDTE9cmoC87z4fiOAOFH82P_r1c=/fit-in/200x150/filters:strip_icc()/pic6434099.jpg",
+      "image": "https://cf.geekdo-images.com/UtbMCLhn7V4A2jZLfgGQjw__original/img/2qoiJkusHN7w5rUy_FJHCTaXWRE=/0x0/filters:format(jpeg)/pic6434099.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 14,
+      "weight": 2.3,
+      "rating": 7.6,
+      "rank": 2590,
+      "cooperative": true,
+      "categories": [
+        "Card Game",
+        "World War I"
+      ],
+      "mechanics": [
+        "Communication Limits",
+        "Cooperative Game",
+        "Hand Management",
+        "Move Through Deck",
+        "Push Your Luck",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 19,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 296694,
+      "name": "BattleTech: A Game of Armored Combat",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/r1wbk3AK3J07jdb8n2pIDA__small/img/mybGIrjUjTQYvsii64H-2haPipA=/fit-in/200x150/filters:strip_icc()/pic4550063.png",
+      "image": "https://cf.geekdo-images.com/r1wbk3AK3J07jdb8n2pIDA__original/img/-Cfh41VKYNbV4asx73ZTjCx1nns=/0x0/filters:format(png)/pic4550063.png",
+      "minPlayers": 2,
+      "maxPlayers": 2,
+      "minTime": 120,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 12,
+      "weight": 3.8,
+      "rating": 8.3,
+      "rank": 2901,
+      "cooperative": false,
+      "categories": [
+        "Fighting",
+        "Miniatures",
+        "Science Fiction",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Paper-and-Pencil",
+        "Player Elimination",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2
+      ],
+      "pollVotes": 13,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 374502,
+      "name": "Stranger Things: Upside Down",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/2L3GMevL8E4g-LSBuAS0JA__small/img/M-VLEXF9HskofKmdEzCFu-CMSQo=/fit-in/200x150/filters:strip_icc()/pic8288099.jpg",
+      "image": "https://cf.geekdo-images.com/2L3GMevL8E4g-LSBuAS0JA__original/img/2hM7xfSpbkOzay5rdKKyyZqRCTo=/0x0/filters:format(jpeg)/pic8288099.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 12,
+      "weight": 2.2,
+      "rating": 7.2,
+      "rank": 2928,
+      "cooperative": true,
+      "categories": [
+        "Fighting",
+        "Horror",
+        "Miniatures",
+        "Movies / TV / Radio theme"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Hand Management",
+        "Point to Point Movement",
+        "Push Your Luck",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 30,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 367527,
+      "name": "Fields of Fire: Deluxe Edition",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/fk7citNbV8SdAOv_PmqPtQ__small/img/Q4AmCyCZmLy_icWKHsecqaKm8gI=/fit-in/200x150/filters:strip_icc()/pic8381357.png",
+      "image": "https://cf.geekdo-images.com/fk7citNbV8SdAOv_PmqPtQ__original/img/V37OIuT07rjrw9bvmufKCTriOxw=/0x0/filters:format(png)/pic8381357.png",
+      "minPlayers": 1,
+      "maxPlayers": 1,
+      "minTime": 180,
+      "maxTime": 360,
+      "playTime": 360,
+      "minAge": 13,
+      "weight": 4.6,
+      "rating": 9.2,
+      "rank": 2963,
+      "cooperative": false,
+      "categories": [
+        "Korean War",
+        "Modern Warfare",
+        "Vietnam War",
+        "Wargame",
+        "World War II"
+      ],
+      "mechanics": [
+        "Campaign / Battle Card Driven",
+        "Modular Board",
+        "Pieces as Map",
+        "Solo / Solitaire Game"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 15,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 250561,
+      "name": "Kick-Ass: The Board Game",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/3jeHpx6VHCeWwyOSIV0GBA__small/img/WkWJGx3Mx6l3QGDMY-aF5Osd-LA=/fit-in/200x150/filters:strip_icc()/pic4073267.png",
+      "image": "https://cf.geekdo-images.com/3jeHpx6VHCeWwyOSIV0GBA__original/img/mHFzuDSzF1VJwHT-0Q46Y4A7oQg=/0x0/filters:format(png)/pic4073267.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 18,
+      "weight": 3,
+      "rating": 7.3,
+      "rank": 3534,
+      "cooperative": true,
+      "categories": [
+        "Comic Book / Strip",
+        "Miniatures",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Area Movement",
+        "Command Cards",
+        "Cooperative Game",
+        "Deck Construction",
+        "Dice Rolling",
+        "Die Icon Resolution",
+        "Hand Management",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 29,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 337864,
+      "name": "Five Parsecs From Home: Solo Adventure Wargaming",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/X4fYNP-hoc4ldh3VYu9afQ__small/img/jMTnzHWPVYmwHDbLQK1Z7U91wZM=/fit-in/200x150/filters:strip_icc()/pic6152777.jpg",
+      "image": "https://cf.geekdo-images.com/X4fYNP-hoc4ldh3VYu9afQ__original/img/SONUX60WOrjGRH90LdJa9Hqwbzk=/0x0/filters:format(jpeg)/pic6152777.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 1,
+      "minTime": 90,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 0,
+      "weight": 2.9,
+      "rating": 8.5,
+      "rank": 4806,
+      "cooperative": false,
+      "categories": [
+        "Book",
+        "Miniatures",
+        "Science Fiction",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Measurement Movement",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 12,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 393910,
+      "name": "The Texas Chainsaw Massacre: Slaughterhouse",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/f6lxzslnfjHMeuHt56Bz-w__small/img/dDU2_barvW3vPhtYcY1ZnbQ8Vi0=/fit-in/200x150/filters:strip_icc()/pic7607389.jpg",
+      "image": "https://cf.geekdo-images.com/f6lxzslnfjHMeuHt56Bz-w__original/img/rLTcA_QFtEZB335DJf8Y1JHdlfc=/0x0/filters:format(jpeg)/pic7607389.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 13,
+      "weight": 2.5,
+      "rating": 7.8,
+      "rank": 5439,
+      "cooperative": true,
+      "categories": [
+        "Horror",
+        "Movies / TV / Radio theme"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Area Movement",
+        "Critical Hits and Failures",
+        "Dice Rolling",
+        "Interrupts",
+        "Multi-Use Cards",
+        "Multiple Maps",
+        "Once-Per-Game Abilities",
+        "Pick-up and Deliver",
+        "Player Elimination",
+        "Scenario / Mission / Campaign Game",
+        "Semi-Cooperative Game",
+        "Trading",
+        "Variable Phase Order",
+        "Zone of Control"
+      ],
+      "bestPlayers": [
+        5
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 11,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 365119,
+      "name": "Party Panda Pirates",
+      "year": 2024,
+      "thumbnail": "https://cf.geekdo-images.com/Qwh8s6nWxmUhVUBklYSZ6A__small/img/qKERHuPnK11O6UlcKyExdYNwf14=/fit-in/200x150/filters:strip_icc()/pic7882358.jpg",
+      "image": "https://cf.geekdo-images.com/Qwh8s6nWxmUhVUBklYSZ6A__original/img/jHPa0SDjyK7nGXrh7H9LVFRa7Kc=/0x0/filters:format(jpeg)/pic7882358.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 6,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 8,
+      "weight": 1.2,
+      "rating": 7.5,
+      "rank": 5513,
+      "cooperative": false,
+      "categories": [
+        "Action / Dexterity",
+        "Animals",
+        "Dice",
+        "Miniatures",
+        "Party Game",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Flicking",
+        "Impulse Movement",
+        "Predictive Bid",
+        "Slide / Push"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 9,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 361918,
+      "name": "BattleTech: Alpha Strike Box Set",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/HvmnXCcp685tqIlUTwAF-Q__small/img/76QCXd9-6vAgOmMPqbO0usVVpQU=/fit-in/200x150/filters:strip_icc()/pic8146477.jpg",
+      "image": "https://cf.geekdo-images.com/HvmnXCcp685tqIlUTwAF-Q__original/img/Wc8BYJ705ibHA37yp1SmvjBvi9Y=/0x0/filters:format(jpeg)/pic8146477.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 2,
+      "minTime": 90,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 2.2,
+      "rating": 8.4,
+      "rank": 6636,
+      "cooperative": false,
+      "categories": [
+        "Dice",
+        "Miniatures",
+        "Science Fiction",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Line of Sight",
+        "Measurement Movement",
+        "Roles with Asymmetric Information",
+        "Scenario / Mission / Campaign Game",
+        "Turn Order: Random",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2
+      ],
+      "pollVotes": 3,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 287783,
+      "name": "The Last Hundred Yards: Volume 2 – Airborne Over Europe",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/_IsufnvGdZHmZYMwYP7ANw__small/img/3RM234l0c0iFVQQEnpZPeVkBc_k=/fit-in/200x150/filters:strip_icc()/pic6324764.jpg",
+      "image": "https://cf.geekdo-images.com/_IsufnvGdZHmZYMwYP7ANw__original/img/3jaW4Zx2TNiffiVQBK25rk38lGk=/0x0/filters:format(jpeg)/pic6324764.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 2,
+      "minTime": 120,
+      "maxTime": 240,
+      "playTime": 240,
+      "minAge": 14,
+      "weight": 3.6,
+      "rating": 8.1,
+      "rank": 6748,
+      "cooperative": false,
+      "categories": [
+        "Wargame",
+        "World War II"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Hexagon Grid",
+        "Modular Board",
+        "Simulation"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2
+      ],
+      "pollVotes": 7,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -102,7 +2875,7 @@
       "minAge": 13,
       "weight": 4,
       "rating": 8.6,
-      "rank": 0,
+      "rank": 7417,
       "cooperative": false,
       "categories": [
         "Aviation / Flight",
@@ -119,11 +2892,438 @@
         "Solo / Solitaire Game",
         "Variable Set-up"
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 7,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 341306,
+      "name": "Panzer North Africa",
+      "year": 2024,
+      "thumbnail": "https://cf.geekdo-images.com/Yy5FpEorbZJQ53qbeNAuUQ__small/img/g3Y_supztB5ivbHFc4bh6CkWDUY=/fit-in/200x150/filters:strip_icc()/pic7017809.jpg",
+      "image": "https://cf.geekdo-images.com/Yy5FpEorbZJQ53qbeNAuUQ__original/img/4hRRYJ2cQF3vpF9SZEnDzGma2C0=/0x0/filters:format(jpeg)/pic7017809.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 3,
+      "minTime": 60,
+      "maxTime": 180,
+      "playTime": 180,
+      "minAge": 14,
+      "weight": 3.9,
+      "rating": 8.6,
+      "rank": 8172,
+      "cooperative": false,
+      "categories": [
+        "Wargame",
+        "World War II"
+      ],
+      "mechanics": [
+        "Hexagon Grid",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2
+      ],
+      "pollVotes": 7,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 322624,
+      "name": "Fellowships of Fate",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/DAUNRvKd6rMgTRg_8WarfA__small/img/zdPGSEncGYNgbwb6YWjF0OdIO_A=/fit-in/200x150/filters:strip_icc()/pic5813921.png",
+      "image": "https://cf.geekdo-images.com/DAUNRvKd6rMgTRg_8WarfA__original/img/oijbBUFPOJZpkAnO7iLiYg-lEmQ=/0x0/filters:format(png)/pic5813921.png",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 12,
+      "weight": 1.5,
+      "rating": 6.9,
+      "rank": 10483,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Card Game",
+        "Fantasy",
+        "Medieval"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Multi-Use Cards",
+        "Open Drafting"
+      ],
+      "bestPlayers": [
+        4,
+        5
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 7,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 370687,
+      "name": "Find the Source",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/ydpVQOcwVGQ2QgIMQ7whaQ__small/img/JWBze9ccrojW9ULvsjNIboDcgAE=/fit-in/200x150/filters:strip_icc()/pic7708876.jpg",
+      "image": "https://cf.geekdo-images.com/ydpVQOcwVGQ2QgIMQ7whaQ__original/img/-BexFMJupt02Y7Xz1jNz-DIcKxw=/0x0/filters:format(jpeg)/pic7708876.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 3,
+      "minTime": 10,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 10,
+      "weight": 2.6,
+      "rating": 7.2,
+      "rank": 11678,
+      "cooperative": true,
+      "categories": [
+        "Dice",
+        "Print & Play",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Area Movement",
+        "Chaining",
+        "Cooperative Game",
+        "Deduction",
+        "Dice Rolling",
+        "Multiple Maps",
+        "Once-Per-Game Abilities",
+        "Paper-and-Pencil",
+        "Pattern Recognition",
+        "Re-rolling and Locking",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Tech Trees / Tech Tracks"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 9,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 448446,
+      "name": "Campy Creatures: Volume 1 (Third Edition)",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/XA-u9nlmNSJgM5zFsl4KDw__small/img/QsPSHtK5WbCwyX581GK-G6_iJ0o=/fit-in/200x150/filters:strip_icc()/pic8944087.jpg",
+      "image": "https://cf.geekdo-images.com/XA-u9nlmNSJgM5zFsl4KDw__original/img/wL0V0kghcfQlUgcgt1Z2xhyKEfc=/0x0/filters:format(jpeg)/pic8944087.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 20,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 10,
+      "weight": 2,
+      "rating": 7.1,
+      "rank": 12145,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Card Game",
+        "Deduction",
+        "Horror"
+      ],
+      "mechanics": [
+        "Auction / Bidding",
+        "Hand Management",
+        "Set Collection",
+        "Simultaneous Action Selection"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        4,
+        5
+      ],
+      "pollVotes": 3,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
+      ]
+    },
+    {
+      "id": 304666,
+      "name": "Wild Life: The Card Game",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/5Dynk1vF7_7RICstUAU8Eg__small/img/IJ232yftZroNdVs_SanCqVMWiy8=/fit-in/200x150/filters:strip_icc()/pic6305336.png",
+      "image": "https://cf.geekdo-images.com/5Dynk1vF7_7RICstUAU8Eg__original/img/aq6yoSGs8MtV8XyjKrpMM7KtkkQ=/0x0/filters:format(png)/pic6305336.png",
+      "minPlayers": 2,
+      "maxPlayers": 7,
+      "minTime": 15,
+      "maxTime": 20,
+      "playTime": 20,
+      "minAge": 13,
+      "weight": 1.3,
+      "rating": 7.3,
+      "rank": 14050,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Card Game",
+        "Educational",
+        "Environmental"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Set Collection",
+        "Take That",
+        "Turn Order: Progressive"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 4,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 387647,
+      "name": "Battletech: Essentials",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/lzY7X4ZxbHYt33zwGHP-uA__small/img/4R05Xm-NgxvDkTvV4UdnGIcuz0M=/fit-in/200x150/filters:strip_icc()/pic7576862.jpg",
+      "image": "https://cf.geekdo-images.com/lzY7X4ZxbHYt33zwGHP-uA__original/img/q_EAirucluSbIcLJFh01IDXKZ48=/0x0/filters:format(jpeg)/pic7576862.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 2,
+      "minTime": 0,
+      "maxTime": 0,
+      "playTime": 0,
+      "minAge": 0,
+      "weight": 0,
+      "rating": 7.9,
+      "rank": 14886,
+      "cooperative": false,
+      "categories": [
+        "Fighting",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Grid Movement",
+        "Hexagon Grid",
+        "Paper-and-Pencil",
+        "Solo / Solitaire Game",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2
+      ],
+      "pollVotes": 1,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 50381,
+      "name": "Cards Against Humanity",
+      "year": 2009,
+      "thumbnail": "https://cf.geekdo-images.com/nYLrPiI9gnvlrwOrKQ4_CA__small/img/fIhQLjWueNPYZhCZ_LzjAIhPm5U=/fit-in/200x150/filters:strip_icc()/pic2909692.jpg",
+      "image": "https://cf.geekdo-images.com/nYLrPiI9gnvlrwOrKQ4_CA__original/img/EgMpdhoG38LUTApk0kyFFsmoQPk=/0x0/filters:format(jpeg)/pic2909692.jpg",
+      "minPlayers": 4,
+      "maxPlayers": 30,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 17,
+      "weight": 1.2,
+      "rating": 5.7,
+      "rank": 17137,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Humor",
+        "Mature / Adult",
+        "Party Game",
+        "Print & Play"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Player Judge",
+        "Simultaneous Action Selection"
+      ],
+      "bestPlayers": [
+        6,
+        7,
+        8
+      ],
+      "recPlayers": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "pollVotes": 223,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 282390,
+      "name": "Tattoo Brawl",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/mOLrM_7X45Rvq2ce11QHsg__small/img/PO_hyLWICkztOZ_eJgzRh-E9uy4=/fit-in/200x150/filters:strip_icc()/pic4803295.png",
+      "image": "https://cf.geekdo-images.com/mOLrM_7X45Rvq2ce11QHsg__original/img/dmA0BglcUpeb_b3qQ6f_8wXJy7k=/0x0/filters:format(png)/pic4803295.png",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 40,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 8,
+      "weight": 2.2,
+      "rating": 7,
+      "rank": 18004,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Economic"
+      ],
+      "mechanics": [
+        "Action Retrieval",
+        "Deck, Bag, and Pool Building",
+        "Once-Per-Game Abilities",
+        "Open Drafting",
+        "Pattern Building",
+        "Simulation",
+        "Take That",
+        "Trading"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 1,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 195271,
+      "name": "Karen and the Pirate Island",
+      "year": 2016,
+      "thumbnail": "https://cf.geekdo-images.com/JDWiLvEQgKs7qkV25Mgp2w__small/img/z-OCodT8aYcq6VaYhltiJ0woyo8=/fit-in/200x150/filters:strip_icc()/pic3166544.jpg",
+      "image": "https://cf.geekdo-images.com/JDWiLvEQgKs7qkV25Mgp2w__original/img/oMkOXIViWq0TXHdzEzeY5IKGKtM=/0x0/filters:format(jpeg)/pic3166544.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 1,
+      "minTime": 15,
+      "maxTime": 0,
+      "playTime": 0,
+      "minAge": 15,
+      "weight": 1.5,
+      "rating": 6.8,
+      "rank": 20484,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Pirates"
+      ],
+      "mechanics": [
+        "Deck, Bag, and Pool Building"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 1,
+      "playsThisMonth": 0,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 392173,
+      "name": "Dumb Ways to Die",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/DpAxsNlEVqo4wOcVRkHUGw__small/img/qjeVUHyH08S-G4hqJaT_Md-bcoE=/fit-in/200x150/filters:strip_icc()/pic7642240.png",
+      "image": "https://cf.geekdo-images.com/DpAxsNlEVqo4wOcVRkHUGw__original/img/yyVzW4qmkJ3BGUbIUBS5T-KUm-U=/0x0/filters:format(png)/pic7642240.png",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 10,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 12,
+      "weight": 1.1,
+      "rating": 5.8,
+      "rank": 25077,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Humor",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Player Elimination",
+        "Push Your Luck",
+        "Take That"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 6,
+      "playsThisMonth": 0,
+      "owners": [
+        "gabo"
       ]
     },
     {
@@ -156,119 +3356,7 @@
       "bestPlayers": [],
       "recPlayers": [],
       "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 341306,
-      "name": "Panzer North Africa",
-      "year": 2024,
-      "thumbnail": "https://cf.geekdo-images.com/Yy5FpEorbZJQ53qbeNAuUQ__small/img/g3Y_supztB5ivbHFc4bh6CkWDUY=/fit-in/200x150/filters:strip_icc()/pic7017809.jpg",
-      "image": "https://cf.geekdo-images.com/Yy5FpEorbZJQ53qbeNAuUQ__original/img/4hRRYJ2cQF3vpF9SZEnDzGma2C0=/0x0/filters:format(jpeg)/pic7017809.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 3,
-      "minTime": 60,
-      "maxTime": 180,
-      "playTime": 180,
-      "minAge": 14,
-      "weight": 3.9,
-      "rating": 8.6,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Wargame",
-        "World War II"
-      ],
-      "mechanics": [
-        "Hexagon Grid",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 342942,
-      "name": "Ark Nova",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/SoU8p28Sk1s8MSvoM4N8pQ__small/img/4KuHNTWSMPf8vTNDKSRMMI3oOv8=/fit-in/200x150/filters:strip_icc()/pic6293412.jpg",
-      "image": "https://cf.geekdo-images.com/SoU8p28Sk1s8MSvoM4N8pQ__original/img/g4S18szTdrXCdIwVKzMKrZrYAcM=/0x0/filters:format(jpeg)/pic6293412.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 90,
-      "maxTime": 150,
-      "playTime": 150,
-      "minAge": 14,
-      "weight": 3.8,
-      "rating": 8.5,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Animals",
-        "Card Game",
-        "Environmental"
-      ],
-      "mechanics": [
-        "Contracts",
-        "End Game Bonuses",
-        "Events",
-        "Grid Coverage",
-        "Hand Management",
-        "Hexagon Grid",
-        "Income",
-        "Increase Value of Unchosen Resources",
-        "Open Drafting",
-        "Race",
-        "Set Collection",
-        "Solo / Solitaire Game",
-        "Tags",
-        "Tile Placement",
-        "Track Movement",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 337864,
-      "name": "Five Parsecs From Home: Solo Adventure Wargaming",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/X4fYNP-hoc4ldh3VYu9afQ__small/img/jMTnzHWPVYmwHDbLQK1Z7U91wZM=/fit-in/200x150/filters:strip_icc()/pic6152777.jpg",
-      "image": "https://cf.geekdo-images.com/X4fYNP-hoc4ldh3VYu9afQ__original/img/SONUX60WOrjGRH90LdJa9Hqwbzk=/0x0/filters:format(jpeg)/pic6152777.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 1,
-      "minTime": 90,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 0,
-      "weight": 2.9,
-      "rating": 8.5,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Book",
-        "Miniatures",
-        "Science Fiction",
-        "Wargame"
-      ],
-      "mechanics": [
-        "Measurement Movement",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -297,45 +3385,14 @@
       "mechanics": [
         "Solo / Solitaire Game"
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 367518,
-      "name": "Imperium: Horizons",
-      "year": 2024,
-      "thumbnail": "https://cf.geekdo-images.com/RonhJsZOe0QOj-fzkgEf0g__small/img/FMrHdCcRlTrwgMlRXLq5pDONuVE=/fit-in/200x150/filters:strip_icc()/pic6993187.jpg",
-      "image": "https://cf.geekdo-images.com/RonhJsZOe0QOj-fzkgEf0g__original/img/DxjJMKLtdZzzDOaacaitwfkRLJU=/0x0/filters:format(jpeg)/pic6993187.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 40,
-      "maxTime": 160,
-      "playTime": 160,
-      "minAge": 14,
-      "weight": 4,
-      "rating": 8.5,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Card Game",
-        "Civilization"
+      "bestPlayers": [
+        1
       ],
-      "mechanics": [
-        "Deck, Bag, and Pool Building",
-        "End Game Bonuses",
-        "Hand Management",
-        "Move Through Deck",
-        "Open Drafting",
-        "Solo / Solitaire Game",
-        "Variable Player Powers"
+      "recPlayers": [
+        1
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "pollVotes": 1,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -372,330 +3429,17 @@
         "Simulation",
         "Solo / Solitaire Game"
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 408637,
-      "name": "The Anarchy",
-      "year": 2025,
-      "thumbnail": "https://cf.geekdo-images.com/HJmk-KN7SCLH46kQ1JnkDw__small/img/xyJIOEBvETtxW7L2Vt82yAObBvw=/fit-in/200x150/filters:strip_icc()/pic7908662.jpg",
-      "image": "https://cf.geekdo-images.com/HJmk-KN7SCLH46kQ1JnkDw__original/img/VyLpu7eFwXuQVQUUbrx7vldCPIY=/0x0/filters:format(jpeg)/pic7908662.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 13,
-      "weight": 3.9,
-      "rating": 8.4,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "City Building",
-        "Medieval"
+      "bestPlayers": [
+        2
       ],
-      "mechanics": [
-        "Chaining",
-        "Income",
-        "Multi-Use Cards",
-        "Paper-and-Pencil",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Tech Trees / Tech Tracks",
-        "Track Movement"
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 361918,
-      "name": "BattleTech: Alpha Strike Box Set",
-      "year": 2022,
-      "thumbnail": "https://cf.geekdo-images.com/HvmnXCcp685tqIlUTwAF-Q__small/img/76QCXd9-6vAgOmMPqbO0usVVpQU=/fit-in/200x150/filters:strip_icc()/pic8146477.jpg",
-      "image": "https://cf.geekdo-images.com/HvmnXCcp685tqIlUTwAF-Q__original/img/Wc8BYJ705ibHA37yp1SmvjBvi9Y=/0x0/filters:format(jpeg)/pic8146477.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 2,
-      "minTime": 90,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 14,
-      "weight": 2.2,
-      "rating": 8.4,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Dice",
-        "Miniatures",
-        "Science Fiction",
-        "Wargame"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Line of Sight",
-        "Measurement Movement",
-        "Roles with Asymmetric Information",
-        "Scenario / Mission / Campaign Game",
-        "Turn Order: Random",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 291457,
-      "name": "Gloomhaven: Jaws of the Lion",
-      "year": 2020,
-      "thumbnail": "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__small/img/OMkN_E5eyWrkID_cHCnQEbIixGM=/fit-in/200x150/filters:strip_icc()/pic5055631.jpg",
-      "image": "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__original/img/PBzsLRqNKQKJxGnzpb7o3qLWPQM=/0x0/filters:format(jpeg)/pic5055631.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 30,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 14,
-      "weight": 3.6,
-      "rating": 8.4,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Adventure",
-        "Exploration",
-        "Fantasy",
-        "Fighting",
-        "Miniatures"
-      ],
-      "mechanics": [
-        "Action Queue",
-        "Action Retrieval",
-        "Campaign / Battle Card Driven",
-        "Communication Limits",
-        "Cooperative Game",
-        "Critical Hits and Failures",
-        "Deck Construction",
-        "Grid Movement",
-        "Hand Management",
-        "Hexagon Grid",
-        "Line of Sight",
-        "Multi-Use Cards",
-        "Once-Per-Game Abilities",
-        "Player Elimination",
-        "Role Playing",
-        "Scenario / Mission / Campaign Game",
-        "Simultaneous Action Selection",
-        "Solo / Solitaire Game",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 349067,
-      "name": "The Lord of the Rings: The Card Game – Revised Core Set",
-      "year": 2022,
-      "thumbnail": "https://cf.geekdo-images.com/2zRlYhLyzKmOLZ-ULOX9_Q__small/img/Xtd2bt34MH-wIWVN_dobKvM7Rvs=/fit-in/200x150/filters:strip_icc()/pic7132021.jpg",
-      "image": "https://cf.geekdo-images.com/2zRlYhLyzKmOLZ-ULOX9_Q__original/img/JBGAYcOk8xOYypLr5omDHgbKaFg=/0x0/filters:format(jpeg)/pic7132021.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 30,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 14,
-      "weight": 3.6,
-      "rating": 8.4,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Adventure",
-        "Card Game",
-        "Collectible Components",
-        "Fantasy",
-        "Novel-based"
-      ],
-      "mechanics": [
-        "Automatic Resource Growth",
-        "Cooperative Game",
-        "Deck Construction",
-        "Events",
-        "Hand Management",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 296694,
-      "name": "BattleTech: A Game of Armored Combat",
-      "year": 2019,
-      "thumbnail": "https://cf.geekdo-images.com/r1wbk3AK3J07jdb8n2pIDA__small/img/mybGIrjUjTQYvsii64H-2haPipA=/fit-in/200x150/filters:strip_icc()/pic4550063.png",
-      "image": "https://cf.geekdo-images.com/r1wbk3AK3J07jdb8n2pIDA__original/img/-Cfh41VKYNbV4asx73ZTjCx1nns=/0x0/filters:format(png)/pic4550063.png",
-      "minPlayers": 2,
-      "maxPlayers": 2,
-      "minTime": 120,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 12,
-      "weight": 3.8,
-      "rating": 8.3,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Fighting",
-        "Miniatures",
-        "Science Fiction",
-        "Wargame"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Paper-and-Pencil",
-        "Player Elimination",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 341169,
-      "name": "Great Western Trail: Second Edition",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/gDn7AhrDlmfCLSz9ZqoNFQ__small/img/0pt6XrFHTXpNetwMo9rdY7PdhfQ=/fit-in/200x150/filters:strip_icc()/pic5988511.jpg",
-      "image": "https://cf.geekdo-images.com/gDn7AhrDlmfCLSz9ZqoNFQ__original/img/yecB1xO32nnjBAyskVOTq9LBuLo=/0x0/filters:format(jpeg)/pic5988511.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 75,
-      "maxTime": 150,
-      "playTime": 150,
-      "minAge": 12,
-      "weight": 3.7,
-      "rating": 8.3,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "American West",
-        "Animals"
-      ],
-      "mechanics": [
-        "Deck, Bag, and Pool Building",
-        "Hand Management",
-        "Ownership",
-        "Set Collection",
-        "Solo / Solitaire Game",
-        "Tags",
-        "Track Movement",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 162886,
-      "name": "Spirit Island",
-      "year": 2017,
-      "thumbnail": "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__small/img/aUlIih2_R7P8IYKeyNl2heLQbu8=/fit-in/200x150/filters:strip_icc()/pic7013651.jpg",
-      "image": "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__original/img/9uLd9C3XAvInLCLhAoXqKVk56zs=/0x0/filters:format(jpeg)/pic7013651.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 90,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 13,
-      "weight": 4.1,
-      "rating": 8.3,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Environmental",
-        "Fantasy",
-        "Mythology",
-        "Territory Building"
-      ],
-      "mechanics": [
-        "Action Retrieval",
-        "Area Majority / Influence",
-        "Automatic Resource Growth",
-        "Campaign / Battle Card Driven",
-        "Cooperative Game",
-        "Deck, Bag, and Pool Building",
-        "Hand Management",
-        "Modular Board",
-        "Simultaneous Action Selection",
-        "Solo / Solitaire Game",
-        "Tags",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 274428,
-      "name": "Gaslands: Refuelled",
-      "year": 2019,
-      "thumbnail": "https://cf.geekdo-images.com/dw87_x42fS48r1khpxkFvg__small/img/pidb6HQ1dmIPaRDUVkV8q9kJi7s=/fit-in/200x150/filters:strip_icc()/pic4764270.jpg",
-      "image": "https://cf.geekdo-images.com/dw87_x42fS48r1khpxkFvg__original/img/Yme-TqBexyfZhOPMlmvs33rlSig=/0x0/filters:format(jpeg)/pic4764270.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 8,
-      "minTime": 45,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 11,
-      "weight": 2.7,
-      "rating": 8.2,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Book",
-        "Miniatures",
-        "Racing",
-        "Science Fiction",
-        "Wargame"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Impulse Movement",
-        "Movement Template",
-        "Push Your Luck",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "pollVotes": 4,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -730,668 +3474,18 @@
         "Variable Player Powers",
         "Worker Placement"
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 313010,
-      "name": "Cosmic Encounter: 42nd Anniversary Edition",
-      "year": 2018,
-      "thumbnail": "https://cf.geekdo-images.com/-pnk2c0HTQQrhqRjjG835Q__small/img/GNv4-bHiFZLXPoyT7q8BW_Q5omo=/fit-in/200x150/filters:strip_icc()/pic4243113.jpg",
-      "image": "https://cf.geekdo-images.com/-pnk2c0HTQQrhqRjjG835Q__original/img/BMYXX1Q0euiqYuz0WlxkAAcaxD0=/0x0/filters:format(jpeg)/pic4243113.jpg",
-      "minPlayers": 3,
-      "maxPlayers": 5,
-      "minTime": 60,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 14,
-      "weight": 2.5,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Bluffing",
-        "Negotiation",
-        "Science Fiction",
-        "Space Exploration"
+      "bestPlayers": [
+        2,
+        3
       ],
-      "mechanics": [
-        "Alliances",
-        "Card Play Conflict Resolution",
-        "Hand Management",
-        "Interrupts",
-        "Negotiation",
-        "Prisoner&#039;s Dilemma",
-        "Race",
-        "Simultaneous Action Selection",
-        "Take That",
-        "Trading",
-        "Variable Player Powers"
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 273264,
-      "name": "Iron Helm",
-      "year": 2019,
-      "thumbnail": "https://cf.geekdo-images.com/SfPHguFeC9WwVjklDdafyA__small/img/E_hLZmp8L0Zn13iASn-qoc0tmCo=/fit-in/200x150/filters:strip_icc()/pic6690315.png",
-      "image": "https://cf.geekdo-images.com/SfPHguFeC9WwVjklDdafyA__original/img/IfLUcr6-dOi-VkIejfvw-58BzOU=/0x0/filters:format(png)/pic6690315.png",
-      "minPlayers": 1,
-      "maxPlayers": 1,
-      "minTime": 30,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 12,
-      "weight": 2,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Adventure",
-        "Card Game",
-        "Fantasy",
-        "Print & Play"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Push Your Luck",
-        "Solo / Solitaire Game"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 287783,
-      "name": "The Last Hundred Yards: Volume 2 – Airborne Over Europe",
-      "year": 2020,
-      "thumbnail": "https://cf.geekdo-images.com/_IsufnvGdZHmZYMwYP7ANw__small/img/3RM234l0c0iFVQQEnpZPeVkBc_k=/fit-in/200x150/filters:strip_icc()/pic6324764.jpg",
-      "image": "https://cf.geekdo-images.com/_IsufnvGdZHmZYMwYP7ANw__original/img/3jaW4Zx2TNiffiVQBK25rk38lGk=/0x0/filters:format(jpeg)/pic6324764.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 2,
-      "minTime": 120,
-      "maxTime": 240,
-      "playTime": 240,
-      "minAge": 14,
-      "weight": 3.6,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Wargame",
-        "World War II"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Hexagon Grid",
-        "Modular Board",
-        "Simulation"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 354934,
-      "name": "Legacy of Yu",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/cVE1FZQR3gqdlAmehJpaBw__small/img/D52Pgq1xs7MNiDjkinf4VLGroxQ=/fit-in/200x150/filters:strip_icc()/pic6630422.png",
-      "image": "https://cf.geekdo-images.com/cVE1FZQR3gqdlAmehJpaBw__original/img/F5aSQaJkh-PKGpq7I7mGFn9YFhg=/0x0/filters:format(png)/pic6630422.png",
-      "minPlayers": 1,
-      "maxPlayers": 1,
-      "minTime": 60,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 12,
-      "weight": 2.9,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Ancient",
-        "City Building"
-      ],
-      "mechanics": [
-        "Chaining",
-        "Hand Management",
-        "Multi-Use Cards",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Sudden Death Ending",
-        "Worker Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 312484,
-      "name": "Lost Ruins of Arnak",
-      "year": 2020,
-      "thumbnail": "https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__small/img/J8SVmGOJXZGxNjkT3xYNQU7Haxg=/fit-in/200x150/filters:strip_icc()/pic5674958.jpg",
-      "image": "https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__original/img/CXqwimJPonWy1oyXEMgPN_ZVmUI=/0x0/filters:format(jpeg)/pic5674958.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 30,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 12,
-      "weight": 2.9,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Adventure",
-        "Card Game",
-        "Exploration",
-        "Fantasy"
-      ],
-      "mechanics": [
-        "Area Movement",
-        "Contracts",
-        "Deck, Bag, and Pool Building",
-        "Delayed Purchase",
-        "End Game Bonuses",
-        "Hand Management",
-        "Multi-Use Cards",
-        "Once-Per-Game Abilities",
-        "Open Drafting",
-        "Resource to Move",
-        "Solo / Solitaire Game",
-        "Track Movement",
-        "Turn Order: Progressive",
-        "Worker Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 256960,
-      "name": "Pax Pamir: Second Edition",
-      "year": 2019,
-      "thumbnail": "https://cf.geekdo-images.com/oSM_AuKYfGIwOtKbVEsoVg__small/img/NyoufH5YBFCh1rKy4uy76bR4ITk=/fit-in/200x150/filters:strip_icc()/pic4503733.png",
-      "image": "https://cf.geekdo-images.com/oSM_AuKYfGIwOtKbVEsoVg__original/img/7DlaMCmuoJzm9AzelmStYIDgutI=/0x0/filters:format(png)/pic4503733.png",
-      "minPlayers": 1,
-      "maxPlayers": 5,
-      "minTime": 45,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 13,
-      "weight": 3.8,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Economic",
-        "Educational",
-        "Negotiation",
-        "Political",
-        "Post-Napoleonic"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Area Majority / Influence",
-        "Area Movement",
-        "Auction: Dutch",
-        "Bribery",
-        "Hand Management",
-        "Increase Value of Unchosen Resources",
-        "Negotiation",
-        "Open Drafting",
-        "Score-and-Reset Game",
-        "Simulation",
-        "Solo / Solitaire Game",
-        "Tags",
-        "Take That"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 237182,
-      "name": "Root",
-      "year": 2018,
-      "thumbnail": "https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__small/img/ACovMZzGGIsBRyEQXFnsT8282NM=/fit-in/200x150/filters:strip_icc()/pic4254509.jpg",
-      "image": "https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__original/img/E0s2LvtFA1L5YKk-_44D4u2VD2s=/0x0/filters:format(jpeg)/pic4254509.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 14,
-      "weight": 3.8,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Animals",
-        "Fantasy",
-        "Negotiation",
-        "Territory Building",
-        "Wargame"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Action Queue",
-        "Action Retrieval",
-        "Area Majority / Influence",
-        "Area Movement",
-        "Dice Rolling",
-        "Hand Management",
-        "Multi-Use Cards",
-        "Negotiation",
-        "Point to Point Movement",
-        "Race",
-        "Sudden Death Ending",
-        "Take That",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 169786,
-      "name": "Scythe",
-      "year": 2016,
-      "thumbnail": "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__small/img/eQ69OEDdjYjfKg6q5Navee87skU=/fit-in/200x150/filters:strip_icc()/pic3163924.jpg",
-      "image": "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__original/img/HlDb9F365w0tSP8uD1vf1pfniQE=/0x0/filters:format(jpeg)/pic3163924.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 5,
-      "minTime": 115,
-      "maxTime": 115,
-      "playTime": 115,
-      "minAge": 14,
-      "weight": 3.5,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Economic",
-        "Fighting",
-        "Science Fiction",
-        "Territory Building"
-      ],
-      "mechanics": [
-        "Area Majority / Influence",
-        "Card Play Conflict Resolution",
-        "Contracts",
-        "End Game Bonuses",
-        "Force Commitment",
-        "Grid Movement",
-        "Hexagon Grid",
-        "King of the Hill",
-        "Movement Points",
-        "Narrative Choice / Paragraph",
-        "Solo / Solitaire Game",
-        "Take That",
-        "Tech Trees / Tech Tracks",
-        "Variable Player Powers",
-        "Variable Set-up",
-        "Victory Points as a Resource",
-        "Zone of Control"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 335212,
-      "name": "Sentinels of the Multiverse: Definitive Edition",
-      "year": 2022,
-      "thumbnail": "https://cf.geekdo-images.com/eUtemWRT9XXMoRj3b5smUQ__small/img/0lhKsD34Tt6sKH6HWrLrM8-uPCw=/fit-in/200x150/filters:strip_icc()/pic6770323.png",
-      "image": "https://cf.geekdo-images.com/eUtemWRT9XXMoRj3b5smUQ__original/img/LSHeGkeel5GmpJzSusy3iTAQ230=/0x0/filters:format(png)/pic6770323.png",
-      "minPlayers": 1,
-      "maxPlayers": 5,
-      "minTime": 30,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 8,
-      "weight": 2.8,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Card Game",
-        "Comic Book / Strip",
-        "Fighting"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Hand Management",
-        "Solo / Solitaire Game",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 255984,
-      "name": "Sleeping Gods",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/Zdt8l4oTBpFICsMyNof7Jg__small/img/71w4Tt3xOnuDEDTCG8ni63QUhVE=/fit-in/200x150/filters:strip_icc()/pic5975244.png",
-      "image": "https://cf.geekdo-images.com/Zdt8l4oTBpFICsMyNof7Jg__original/img/-okZ810RkA8fKKhIeZyX4cnqmbE=/0x0/filters:format(png)/pic5975244.png",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 1200,
-      "playTime": 1200,
-      "minAge": 13,
-      "weight": 3.3,
-      "rating": 8.1,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Adventure",
-        "Exploration",
-        "Fantasy",
-        "Fighting",
-        "Nautical"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Cooperative Game",
-        "Events",
-        "Hand Management",
-        "Narrative Choice / Paragraph",
-        "Push Your Luck",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Storytelling"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 199792,
-      "name": "Everdell",
-      "year": 2018,
-      "thumbnail": "https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__small/img/Cf_mYxR_VvdjTEPXseSurni2JNI=/fit-in/200x150/filters:strip_icc()/pic3918905.png",
-      "image": "https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__original/img/HQ1ti16wT9lqja5_h3gUfHUIcVI=/0x0/filters:format(png)/pic3918905.png",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 40,
-      "maxTime": 80,
-      "playTime": 80,
-      "minAge": 10,
-      "weight": 2.8,
-      "rating": 8,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Animals",
-        "Card Game",
-        "City Building",
-        "Fantasy"
-      ],
-      "mechanics": [
-        "Contracts",
-        "End Game Bonuses",
-        "Hand Management",
-        "Income",
-        "Open Drafting",
-        "Ownership",
-        "Set Collection",
-        "Solo / Solitaire Game",
-        "Tags",
-        "Variable Set-up",
-        "Worker Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 124742,
-      "name": "Android: Netrunner",
-      "year": 2012,
-      "thumbnail": "https://cf.geekdo-images.com/2ewHIIG_TRq8bYlqk0jIMw__small/img/IJaOyyQ7Y59tW6nbKbjTMTFt-Ls=/fit-in/200x150/filters:strip_icc()/pic3738560.jpg",
-      "image": "https://cf.geekdo-images.com/2ewHIIG_TRq8bYlqk0jIMw__original/img/cassW39WF2QrPImJF59efADAmM0=/0x0/filters:format(jpeg)/pic3738560.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 2,
-      "minTime": 45,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 14,
-      "weight": 3.4,
-      "rating": 7.9,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Bluffing",
-        "Card Game",
-        "Collectible Components",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Deck Construction",
-        "Hand Management",
-        "Race",
-        "Secret Unit Deployment",
-        "Take That",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 387647,
-      "name": "Battletech: Essentials",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/lzY7X4ZxbHYt33zwGHP-uA__small/img/4R05Xm-NgxvDkTvV4UdnGIcuz0M=/fit-in/200x150/filters:strip_icc()/pic7576862.jpg",
-      "image": "https://cf.geekdo-images.com/lzY7X4ZxbHYt33zwGHP-uA__original/img/q_EAirucluSbIcLJFh01IDXKZ48=/0x0/filters:format(jpeg)/pic7576862.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 2,
-      "minTime": 0,
-      "maxTime": 0,
-      "playTime": 0,
-      "minAge": 0,
-      "weight": 0,
-      "rating": 7.9,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Fighting",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Grid Movement",
-        "Hexagon Grid",
-        "Paper-and-Pencil",
-        "Solo / Solitaire Game",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 293207,
-      "name": "Eila and Something Shiny",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/ddeXV_p59xHZJtIyNSclvg__small/img/LnGEEwnCNfGjR9JEgCf2xAoi3no=/fit-in/200x150/filters:strip_icc()/pic5391049.jpg",
-      "image": "https://cf.geekdo-images.com/ddeXV_p59xHZJtIyNSclvg__original/img/tZc2EYPuGTzURBV786LypUP8Cvs=/0x0/filters:format(jpeg)/pic5391049.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 1,
-      "minTime": 30,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 12,
-      "weight": 2,
-      "rating": 7.9,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Adventure",
-        "Animals",
-        "Fantasy"
-      ],
-      "mechanics": [
-        "Narrative Choice / Paragraph",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Storytelling"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 304783,
-      "name": "Hadrian&#039;s Wall",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/4XzRDw3VrgNpNfZlzZl66w__small/img/dGMBL60RMtAfcx741phN75mqlnA=/fit-in/200x150/filters:strip_icc()/pic5608818.png",
-      "image": "https://cf.geekdo-images.com/4XzRDw3VrgNpNfZlzZl66w__original/img/SfU1sNqUtpcvhcdzspDb5M9uSQQ=/0x0/filters:format(png)/pic5608818.png",
-      "minPlayers": 1,
-      "maxPlayers": 6,
-      "minTime": 30,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 12,
-      "weight": 3.2,
-      "rating": 7.9,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Ancient",
-        "City Building"
-      ],
-      "mechanics": [
-        "Hand Management",
-        "Paper-and-Pencil",
-        "Solo / Solitaire Game",
-        "Tech Trees / Tech Tracks"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 304531,
-      "name": "Ascension Tactics: Miniatures Deckbuilding Game",
-      "year": 2022,
-      "thumbnail": "https://cf.geekdo-images.com/891ZOmibeW3iRhEcdN0B5w__small/img/FYY0vCDutJuUoq0Xa1zXjGb7p-c=/fit-in/200x150/filters:strip_icc()/pic7364675.png",
-      "image": "https://cf.geekdo-images.com/891ZOmibeW3iRhEcdN0B5w__original/img/KQojWcEDJSItT4irky_t5Ut8kNI=/0x0/filters:format(png)/pic7364675.png",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 45,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 10,
-      "weight": 2.5,
-      "rating": 7.8,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Fantasy",
-        "Miniatures"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Deck, Bag, and Pool Building",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 318182,
-      "name": "Imperium: Legends",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/-6AnQ0BuCM8u1lqAwTe8Rw__small/img/da5eYCvhYSmPb03hEhNwxR8-s6g=/fit-in/200x150/filters:strip_icc()/pic5623567.jpg",
-      "image": "https://cf.geekdo-images.com/-6AnQ0BuCM8u1lqAwTe8Rw__original/img/3isy4jQQdEpy8D-JKV2zLxrUjs8=/0x0/filters:format(jpeg)/pic5623567.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 40,
-      "maxTime": 160,
-      "playTime": 160,
-      "minAge": 14,
-      "weight": 3.8,
-      "rating": 7.8,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Card Game",
-        "Civilization"
-      ],
-      "mechanics": [
-        "Deck, Bag, and Pool Building",
-        "End Game Bonuses",
-        "Hand Management",
-        "Move Through Deck",
-        "Open Drafting",
-        "Solo / Solitaire Game",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "pollVotes": 62,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -1424,93 +3518,17 @@
         "Solo / Solitaire Game",
         "Variable Phase Order"
       ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2
+      ],
+      "pollVotes": 2,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
-      ]
-    },
-    {
-      "id": 284653,
-      "name": "Mind MGMT: The Psychic Espionage “Game.”",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/hYP-VIJGRFR8yB78-UN7Rg__small/img/e0Yk_RzMK0b7jwcoR96UeJpjy3c=/fit-in/200x150/filters:strip_icc()/pic5154610.jpg",
-      "image": "https://cf.geekdo-images.com/hYP-VIJGRFR8yB78-UN7Rg__original/img/3vUqoYuF2SrVU0n752sfU3bBhHc=/0x0/filters:format(jpeg)/pic5154610.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 5,
-      "minTime": 60,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 13,
-      "weight": 2.9,
-      "rating": 7.8,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Comic Book / Strip",
-        "Deduction",
-        "Spies / Secret Agents"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Deduction",
-        "Grid Movement",
-        "Hidden Movement",
-        "Paper-and-Pencil",
-        "Point to Point Movement",
-        "Team-Based Game",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 393910,
-      "name": "The Texas Chainsaw Massacre: Slaughterhouse",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/f6lxzslnfjHMeuHt56Bz-w__small/img/dDU2_barvW3vPhtYcY1ZnbQ8Vi0=/fit-in/200x150/filters:strip_icc()/pic7607389.jpg",
-      "image": "https://cf.geekdo-images.com/f6lxzslnfjHMeuHt56Bz-w__original/img/rLTcA_QFtEZB335DJf8Y1JHdlfc=/0x0/filters:format(jpeg)/pic7607389.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "minTime": 45,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 13,
-      "weight": 2.5,
-      "rating": 7.8,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Horror",
-        "Movies / TV / Radio theme"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Area Movement",
-        "Critical Hits and Failures",
-        "Dice Rolling",
-        "Interrupts",
-        "Multi-Use Cards",
-        "Multiple Maps",
-        "Once-Per-Game Abilities",
-        "Pick-up and Deliver",
-        "Player Elimination",
-        "Scenario / Mission / Campaign Game",
-        "Semi-Cooperative Game",
-        "Trading",
-        "Variable Phase Order",
-        "Zone of Control"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
       ]
     },
     {
@@ -1547,1390 +3565,7 @@
       "bestPlayers": [],
       "recPlayers": [],
       "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 43111,
-      "name": "Chaos in the Old World",
-      "year": 2009,
-      "thumbnail": "https://cf.geekdo-images.com/yTe9522sHL-3nhfAMH2cTg__small/img/hzQEjxV31FkgVXiHwDD8n0wF2I0=/fit-in/200x150/filters:strip_icc()/pic1318481.jpg",
-      "image": "https://cf.geekdo-images.com/yTe9522sHL-3nhfAMH2cTg__original/img/zN6-x2bWP6lsDAC2FNsvU6ivQIc=/0x0/filters:format(jpeg)/pic1318481.jpg",
-      "minPlayers": 3,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 13,
-      "weight": 3.2,
-      "rating": 7.7,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Fantasy",
-        "Fighting",
-        "Horror",
-        "Mythology",
-        "Wargame"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Area Majority / Influence",
-        "Area Movement",
-        "Dice Rolling",
-        "Events",
-        "Hand Management",
-        "Role Playing",
-        "Take That",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 383206,
-      "name": "Freelancers: A Crossroads Game",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/DuZnEeI06_5UKpv4t28Kyg__small/img/9DsH5vXeOaLACqql6hK0A0U8Hp0=/fit-in/200x150/filters:strip_icc()/pic7429703.jpg",
-      "image": "https://cf.geekdo-images.com/DuZnEeI06_5UKpv4t28Kyg__original/img/72dgRrE3TIpiI_vtAHKsYS9B1C0=/0x0/filters:format(jpeg)/pic7429703.jpg",
-      "minPlayers": 3,
-      "maxPlayers": 7,
-      "minTime": 90,
-      "maxTime": 180,
-      "playTime": 180,
-      "minAge": 14,
-      "weight": 2.1,
-      "rating": 7.7,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Adventure",
-        "Dice",
-        "Fantasy"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Deck, Bag, and Pool Building",
-        "Role Playing",
-        "Scenario / Mission / Campaign Game",
-        "Worker Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 318184,
-      "name": "Imperium: Classics",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/MN0OvKejfrfwD6bupQHp4g__small/img/MVh7xtQ4l17hprI4mFIk9Kswk6s=/fit-in/200x150/filters:strip_icc()/pic5623566.jpg",
-      "image": "https://cf.geekdo-images.com/MN0OvKejfrfwD6bupQHp4g__original/img/AYYyjw10ExHhOFLYectIclqQnxI=/0x0/filters:format(jpeg)/pic5623566.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 40,
-      "maxTime": 160,
-      "playTime": 160,
-      "minAge": 14,
-      "weight": 3.6,
-      "rating": 7.7,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Ancient",
-        "Card Game",
-        "Civilization"
-      ],
-      "mechanics": [
-        "Deck, Bag, and Pool Building",
-        "End Game Bonuses",
-        "Hand Management",
-        "Move Through Deck",
-        "Open Drafting",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Take That",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 316412,
-      "name": "The LOOP",
-      "year": 2020,
-      "thumbnail": "https://cf.geekdo-images.com/NPWdxDD5uLOBLBDdVgdLvA__small/img/7464PJPFWWPzsOUMvf8t860zct0=/fit-in/200x150/filters:strip_icc()/pic6034093.png",
-      "image": "https://cf.geekdo-images.com/NPWdxDD5uLOBLBDdVgdLvA__original/img/zlx0Qqcgt0TLu62F5sKUmYTDNvc=/0x0/filters:format(png)/pic6034093.png",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 12,
-      "weight": 2.8,
-      "rating": 7.7,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Card Game",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Cube Tower",
-        "Deck, Bag, and Pool Building",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 237179,
-      "name": "Weather Machine",
-      "year": 2022,
-      "thumbnail": "https://cf.geekdo-images.com/E8qBDKe39KEFMo-LhTNDQQ__small/img/jFQaWbcjoUzxS7p76LsGzg4piQk=/fit-in/200x150/filters:strip_icc()/pic6333980.jpg",
-      "image": "https://cf.geekdo-images.com/E8qBDKe39KEFMo-LhTNDQQ__original/img/vDkGNR7MpOCxeuJFKs201FpybRU=/0x0/filters:format(jpeg)/pic6333980.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 150,
-      "playTime": 150,
-      "minAge": 14,
-      "weight": 4.6,
-      "rating": 7.7,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Environmental",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Set Collection",
-        "Tile Placement",
-        "Worker Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 307305,
-      "name": "Bullet♥︎",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/315gnIdET7dlQ_fASt8p0w__small/img/ZUVCes8DtY3pYnUJ3zghUkhT3fQ=/fit-in/200x150/filters:strip_icc()/pic6007944.jpg",
-      "image": "https://cf.geekdo-images.com/315gnIdET7dlQ_fASt8p0w__original/img/X2MDGNIMouqDtC6617rzlxW5LDw=/0x0/filters:format(jpeg)/pic6007944.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 10,
-      "maxTime": 20,
-      "playTime": 20,
-      "minAge": 13,
-      "weight": 2.2,
-      "rating": 7.6,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Fighting",
-        "Puzzle",
-        "Real-time",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Pattern Building",
-        "Push Your Luck",
-        "Real-Time",
-        "Solo / Solitaire Game",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 285192,
-      "name": "Destinies",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/oaD1ZQ3yGj6lacLdtqgdnQ__small/img/1mCz7HPEFMeqaqJHsDZwEUc9ftw=/fit-in/200x150/filters:strip_icc()/pic5558118.png",
-      "image": "https://cf.geekdo-images.com/oaD1ZQ3yGj6lacLdtqgdnQ__original/img/LJXy5--WfYNypO-Xd7nhkzU5Xzs=/0x0/filters:format(png)/pic5558118.png",
-      "minPlayers": 1,
-      "maxPlayers": 3,
-      "minTime": 90,
-      "maxTime": 150,
-      "playTime": 150,
-      "minAge": 14,
-      "weight": 1.9,
-      "rating": 7.6,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Adventure",
-        "Exploration",
-        "Fantasy",
-        "Fighting",
-        "Medieval"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Map Addition",
-        "Role Playing",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Storytelling",
-        "Tile Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 266524,
-      "name": "Parks",
-      "year": 2019,
-      "thumbnail": "https://cf.geekdo-images.com/mF2cSNRk2O6HtE45Sl9TcA__small/img/K2AgL-KE_CTcvwahWd7zlt9YR0U=/fit-in/200x150/filters:strip_icc()/pic4852372.jpg",
-      "image": "https://cf.geekdo-images.com/mF2cSNRk2O6HtE45Sl9TcA__original/img/_KNgPoC_4l7iN0ntbFILexOJpfc=/0x0/filters:format(jpeg)/pic4852372.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 5,
-      "minTime": 30,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 10,
-      "weight": 2.1,
-      "rating": 7.6,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Animals",
-        "Economic",
-        "Environmental",
-        "Travel"
-      ],
-      "mechanics": [
-        "Contracts",
-        "End Game Bonuses",
-        "Events",
-        "Modular Board",
-        "Solo / Solitaire Game",
-        "Track Movement",
-        "Turn Order: Claim Action",
-        "Variable Set-up",
-        "Worker Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 306735,
-      "name": "Under Falling Skies",
-      "year": 2020,
-      "thumbnail": "https://cf.geekdo-images.com/ecO5eAd3RkctQ0-Tbqv37Q__small/img/uxrJLWxvi-f8CGbDpxQBStzvGes=/fit-in/200x150/filters:strip_icc()/pic5428723.jpg",
-      "image": "https://cf.geekdo-images.com/ecO5eAd3RkctQ0-Tbqv37Q__original/img/eVUBGX1Hjp91YAlj3XJtRQ3y444=/0x0/filters:format(jpeg)/pic5428723.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 1,
-      "minTime": 20,
-      "maxTime": 40,
-      "playTime": 40,
-      "minAge": 12,
-      "weight": 2.4,
-      "rating": 7.6,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Dice",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Modular Board",
-        "Once-Per-Game Abilities",
-        "Re-rolling and Locking",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Square Grid",
-        "Sudden Death Ending",
-        "Variable Set-up",
-        "Worker Placement",
-        "Worker Placement with Dice Workers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 231327,
-      "name": "The Grizzled: Armistice Edition",
-      "year": 2018,
-      "thumbnail": "https://cf.geekdo-images.com/UtbMCLhn7V4A2jZLfgGQjw__small/img/VDTE9cmoC87z4fiOAOFH82P_r1c=/fit-in/200x150/filters:strip_icc()/pic6434099.jpg",
-      "image": "https://cf.geekdo-images.com/UtbMCLhn7V4A2jZLfgGQjw__original/img/2qoiJkusHN7w5rUy_FJHCTaXWRE=/0x0/filters:format(jpeg)/pic6434099.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 45,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 14,
-      "weight": 2.3,
-      "rating": 7.6,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Card Game",
-        "World War I"
-      ],
-      "mechanics": [
-        "Communication Limits",
-        "Cooperative Game",
-        "Hand Management",
-        "Move Through Deck",
-        "Push Your Luck",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 282524,
-      "name": "Horrified",
-      "year": 2019,
-      "thumbnail": "https://cf.geekdo-images.com/SoClIcwjDo_iZs0idVikDw__small/img/YSf5Z99aBqAlNKaGBj_oGb1oKH4=/fit-in/200x150/filters:strip_icc()/pic4848330.jpg",
-      "image": "https://cf.geekdo-images.com/SoClIcwjDo_iZs0idVikDw__original/img/TEprFkOM3G_u2HnUvh05WITeXbg=/0x0/filters:format(jpeg)/pic4848330.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 5,
-      "minTime": 60,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 10,
-      "weight": 2,
-      "rating": 7.6,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Horror",
-        "Movies / TV / Radio theme"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Cooperative Game",
-        "Dice Rolling",
-        "Pick-up and Deliver",
-        "Point to Point Movement",
-        "Solo / Solitaire Game",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 283155,
-      "name": "Calico",
-      "year": 2020,
-      "thumbnail": "https://cf.geekdo-images.com/qGkU6XsF1448F_A4P8TY5Q__small/img/l5ODCWYHD8_1x-WFqf-TJZhXT38=/fit-in/200x150/filters:strip_icc()/pic8124431.jpg",
-      "image": "https://cf.geekdo-images.com/qGkU6XsF1448F_A4P8TY5Q__original/img/sm-qIkkIoKuYRUgkfP6kkXTm1QY=/0x0/filters:format(jpeg)/pic8124431.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 30,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 10,
-      "weight": 2.2,
-      "rating": 7.5,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Abstract Strategy",
-        "Animals",
-        "Puzzle"
-      ],
-      "mechanics": [
-        "Enclosure",
-        "End Game Bonuses",
-        "Grid Coverage",
-        "Hexagon Grid",
-        "Open Drafting",
-        "Pattern Building",
-        "Set Collection",
-        "Solo / Solitaire Game",
-        "Tile Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 103343,
-      "name": "A Game of Thrones: The Board Game (Second Edition)",
-      "year": 2011,
-      "thumbnail": "https://cf.geekdo-images.com/M_7UvwZvuxBVjxdadsa5AA__small/img/ZQ9guRvmMgYfseBC3_xNscMOKKo=/fit-in/200x150/filters:strip_icc()/pic1077906.jpg",
-      "image": "https://cf.geekdo-images.com/M_7UvwZvuxBVjxdadsa5AA__original/img/3tv6H7jX5T9rqwuI84YZKZDBGcw=/0x0/filters:format(jpeg)/pic1077906.jpg",
-      "minPlayers": 3,
-      "maxPlayers": 6,
-      "minTime": 120,
-      "maxTime": 240,
-      "playTime": 240,
-      "minAge": 14,
-      "weight": 3.7,
-      "rating": 7.5,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Bluffing",
-        "Fantasy",
-        "Negotiation",
-        "Novel-based",
-        "Political",
-        "Wargame"
-      ],
-      "mechanics": [
-        "Advantage Token",
-        "Alliances",
-        "Area Movement",
-        "Auction / Bidding",
-        "Auction: Sealed Bid",
-        "Card Play Conflict Resolution",
-        "Events",
-        "Hand Management",
-        "Income",
-        "Negotiation",
-        "Order Counters",
-        "Player Elimination",
-        "Simultaneous Action Selection",
-        "Sudden Death Ending",
-        "Turn Order: Auction",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 371972,
-      "name": "Ierusalem: Anno Domini",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/TmeInxjp7SV_AtDLx2Kjbw__small/img/qofZgE_cizx-crfjiE310D1BFfQ=/fit-in/200x150/filters:strip_icc()/pic7141460.jpg",
-      "image": "https://cf.geekdo-images.com/TmeInxjp7SV_AtDLx2Kjbw__original/img/LgDPSEdVdADTwtQPfKsQ8a75vVY=/0x0/filters:format(jpeg)/pic7141460.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 90,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 12,
-      "weight": 3.1,
-      "rating": 7.5,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Ancient",
-        "Religious"
-      ],
-      "mechanics": [
-        "Advantage Token",
-        "Grid Coverage",
-        "Grid Movement",
-        "Hand Management",
-        "Set Collection",
-        "Solo / Solitaire Game",
-        "Worker Placement, Different Worker Types"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 30549,
-      "name": "Pandemic",
-      "year": 2008,
-      "thumbnail": "https://cf.geekdo-images.com/S3ybV1LAp-8SnHIXLLjVqA__small/img/oqViRj6nVxK3m36NluTxU1PZkrk=/fit-in/200x150/filters:strip_icc()/pic1534148.jpg",
-      "image": "https://cf.geekdo-images.com/S3ybV1LAp-8SnHIXLLjVqA__original/img/IsrvRLpUV1TEyZsO5rC-btXaPz0=/0x0/filters:format(jpeg)/pic1534148.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 45,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 8,
-      "weight": 2.4,
-      "rating": 7.5,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Medical",
-        "Travel"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Chaining",
-        "Contracts",
-        "Cooperative Game",
-        "Events",
-        "Hand Management",
-        "Multi-Use Cards",
-        "Point to Point Movement",
-        "Set Collection",
-        "Simulation",
-        "Solo / Solitaire Game",
-        "Tags",
-        "Trading",
-        "Variable Player Powers",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 118,
-      "name": "Modern Art",
-      "year": 1992,
-      "thumbnail": "https://cf.geekdo-images.com/wLto-xaabHwKQe_Bc4iD1Q__small/img/AUqMholGVlwXLjMcxwiziE_7Ffw=/fit-in/200x150/filters:strip_icc()/pic3458036.png",
-      "image": "https://cf.geekdo-images.com/wLto-xaabHwKQe_Bc4iD1Q__original/img/s3Gai8XBTVfWFFlYpL4XF3kIlWU=/0x0/filters:format(png)/pic3458036.png",
-      "minPlayers": 3,
-      "maxPlayers": 5,
-      "minTime": 45,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 10,
-      "weight": 2.3,
-      "rating": 7.5,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Card Game",
-        "Economic"
-      ],
-      "mechanics": [
-        "Auction / Bidding",
-        "Auction: English",
-        "Auction: Once Around",
-        "Auction: Sealed Bid",
-        "Auction: Turn Order Until Pass",
-        "Commodity Speculation",
-        "Hand Management",
-        "Victory Points as a Resource"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 365119,
-      "name": "Party Panda Pirates",
-      "year": 2024,
-      "thumbnail": "https://cf.geekdo-images.com/Qwh8s6nWxmUhVUBklYSZ6A__small/img/qKERHuPnK11O6UlcKyExdYNwf14=/fit-in/200x150/filters:strip_icc()/pic7882358.jpg",
-      "image": "https://cf.geekdo-images.com/Qwh8s6nWxmUhVUBklYSZ6A__original/img/jHPa0SDjyK7nGXrh7H9LVFRa7Kc=/0x0/filters:format(jpeg)/pic7882358.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 6,
-      "minTime": 30,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 8,
-      "weight": 1.2,
-      "rating": 7.5,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Action / Dexterity",
-        "Animals",
-        "Dice",
-        "Miniatures",
-        "Party Game",
-        "Video Game Theme"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Flicking",
-        "Impulse Movement",
-        "Predictive Bid",
-        "Slide / Push"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 21241,
-      "name": "Neuroshima Hex",
-      "year": 2006,
-      "thumbnail": "https://cf.geekdo-images.com/JKniOrcvHvLWRlWc-naC8w__small/img/p7XKd7o6W3YRoFQye0ixdRYk-fU=/fit-in/200x150/filters:strip_icc()/pic8654429.png",
-      "image": "https://cf.geekdo-images.com/JKniOrcvHvLWRlWc-naC8w__original/img/ARpT9WzMYRVKbSib6LRxGimOpYQ=/0x0/filters:format(png)/pic8654429.png",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 30,
-      "maxTime": 30,
-      "playTime": 30,
-      "minAge": 8,
-      "weight": 2.6,
-      "rating": 7.4,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Collectible Components",
-        "Fighting",
-        "Puzzle",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Area Majority / Influence",
-        "Connections",
-        "Grid Movement",
-        "Hand Management",
-        "Hexagon Grid",
-        "Line of Sight",
-        "Player Elimination",
-        "Solo / Solitaire Game",
-        "Team-Based Game",
-        "Tile Placement",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 332290,
-      "name": "Stardew Valley: The Board Game",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/X1oNtZV5H5BxtxlsTGIsHA__small/img/wvQPqF45KlfnRB-Z4ESK9VXzZMM=/fit-in/200x150/filters:strip_icc()/pic6037615.png",
-      "image": "https://cf.geekdo-images.com/X1oNtZV5H5BxtxlsTGIsHA__original/img/xkYA7A3vJLA2wqkaRorXcHgjQDk=/0x0/filters:format(png)/pic6037615.png",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 150,
-      "playTime": 150,
-      "minAge": 13,
-      "weight": 2.8,
-      "rating": 7.4,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Animals",
-        "Farming",
-        "Video Game Theme"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Dice Rolling",
-        "Die Icon Resolution",
-        "Events",
-        "Point to Point Movement",
-        "Random Production",
-        "Solo / Solitaire Game",
-        "Variable Set-up",
-        "Worker Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 361545,
-      "name": "Twilight Inscription",
-      "year": 2022,
-      "thumbnail": "https://cf.geekdo-images.com/g36va6ofPCzNZXF-9GEpCg__small/img/F8SHn9giBPmooUkmJDz9kXAamS0=/fit-in/200x150/filters:strip_icc()/pic7132023.png",
-      "image": "https://cf.geekdo-images.com/g36va6ofPCzNZXF-9GEpCg__original/img/W-Goi5-dQP19Nj-MXa8xdEtpnVs=/0x0/filters:format(png)/pic7132023.png",
-      "minPlayers": 1,
-      "maxPlayers": 8,
-      "minTime": 90,
-      "maxTime": 120,
-      "playTime": 120,
-      "minAge": 14,
-      "weight": 3.2,
-      "rating": 7.4,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Dice Rolling",
-        "Paper-and-Pencil",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 356033,
-      "name": "Libertalia: Winds of Galecrest",
-      "year": 2022,
-      "thumbnail": "https://cf.geekdo-images.com/6e-V_Xb2IsAsMNXU18Fi6A__small/img/KJIHXXkkIU7R-oK5i9byIyGdfm4=/fit-in/200x150/filters:strip_icc()/pic6669033.jpg",
-      "image": "https://cf.geekdo-images.com/6e-V_Xb2IsAsMNXU18Fi6A__original/img/gLDo-RR_9RvU_Hrs9DnHWy_TWpk=/0x0/filters:format(jpeg)/pic6669033.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 6,
-      "minTime": 45,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 14,
-      "weight": 2.2,
-      "rating": 7.4,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Fantasy",
-        "Pirates"
-      ],
-      "mechanics": [
-        "Action Queue",
-        "Hand Management",
-        "Selection Order Bid",
-        "Set Collection",
-        "Simultaneous Action Selection",
-        "Take That",
-        "Turn Order: Role Order",
-        "Variable Phase Order"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 250561,
-      "name": "Kick-Ass: The Board Game",
-      "year": 2018,
-      "thumbnail": "https://cf.geekdo-images.com/3jeHpx6VHCeWwyOSIV0GBA__small/img/WkWJGx3Mx6l3QGDMY-aF5Osd-LA=/fit-in/200x150/filters:strip_icc()/pic4073267.png",
-      "image": "https://cf.geekdo-images.com/3jeHpx6VHCeWwyOSIV0GBA__original/img/mHFzuDSzF1VJwHT-0Q46Y4A7oQg=/0x0/filters:format(png)/pic4073267.png",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 18,
-      "weight": 3,
-      "rating": 7.3,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Comic Book / Strip",
-        "Miniatures",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Area Movement",
-        "Command Cards",
-        "Cooperative Game",
-        "Deck Construction",
-        "Dice Rolling",
-        "Die Icon Resolution",
-        "Hand Management",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 304666,
-      "name": "Wild Life: The Card Game",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/5Dynk1vF7_7RICstUAU8Eg__small/img/IJ232yftZroNdVs_SanCqVMWiy8=/fit-in/200x150/filters:strip_icc()/pic6305336.png",
-      "image": "https://cf.geekdo-images.com/5Dynk1vF7_7RICstUAU8Eg__original/img/aq6yoSGs8MtV8XyjKrpMM7KtkkQ=/0x0/filters:format(png)/pic6305336.png",
-      "minPlayers": 2,
-      "maxPlayers": 7,
-      "minTime": 15,
-      "maxTime": 20,
-      "playTime": 20,
-      "minAge": 13,
-      "weight": 1.3,
-      "rating": 7.3,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Animals",
-        "Card Game",
-        "Educational",
-        "Environmental"
-      ],
-      "mechanics": [
-        "Hand Management",
-        "Set Collection",
-        "Take That",
-        "Turn Order: Progressive"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 370687,
-      "name": "Find the Source",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/ydpVQOcwVGQ2QgIMQ7whaQ__small/img/JWBze9ccrojW9ULvsjNIboDcgAE=/fit-in/200x150/filters:strip_icc()/pic7708876.jpg",
-      "image": "https://cf.geekdo-images.com/ydpVQOcwVGQ2QgIMQ7whaQ__original/img/-BexFMJupt02Y7Xz1jNz-DIcKxw=/0x0/filters:format(jpeg)/pic7708876.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 3,
-      "minTime": 10,
-      "maxTime": 30,
-      "playTime": 30,
-      "minAge": 10,
-      "weight": 2.6,
-      "rating": 7.2,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Dice",
-        "Print & Play",
-        "Science Fiction"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Area Movement",
-        "Chaining",
-        "Cooperative Game",
-        "Deduction",
-        "Dice Rolling",
-        "Multiple Maps",
-        "Once-Per-Game Abilities",
-        "Paper-and-Pencil",
-        "Pattern Recognition",
-        "Re-rolling and Locking",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Tech Trees / Tech Tracks"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 302388,
-      "name": "Back to the Future: Back in Time",
-      "year": 2020,
-      "thumbnail": "https://cf.geekdo-images.com/wjJsquLxPJc2WmvJ7SqVbQ__small/img/-yFUlIfonB9pRxJxYpLSYygfUfU=/fit-in/200x150/filters:strip_icc()/pic5240569.png",
-      "image": "https://cf.geekdo-images.com/wjJsquLxPJc2WmvJ7SqVbQ__original/img/DeFwanotoRCkXHEkxEEb027zs7w=/0x0/filters:format(png)/pic5240569.png",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 50,
-      "maxTime": 50,
-      "playTime": 50,
-      "minAge": 10,
-      "weight": 2.4,
-      "rating": 7.2,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Movies / TV / Radio theme"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Dice Rolling",
-        "Push Your Luck",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 374502,
-      "name": "Stranger Things: Upside Down",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/2L3GMevL8E4g-LSBuAS0JA__small/img/M-VLEXF9HskofKmdEzCFu-CMSQo=/fit-in/200x150/filters:strip_icc()/pic8288099.jpg",
-      "image": "https://cf.geekdo-images.com/2L3GMevL8E4g-LSBuAS0JA__original/img/2hM7xfSpbkOzay5rdKKyyZqRCTo=/0x0/filters:format(jpeg)/pic8288099.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 12,
-      "weight": 2.2,
-      "rating": 7.2,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Fighting",
-        "Horror",
-        "Miniatures",
-        "Movies / TV / Radio theme"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Hand Management",
-        "Point to Point Movement",
-        "Push Your Luck",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 218121,
-      "name": "Dice Hospital",
-      "year": 2018,
-      "thumbnail": "https://cf.geekdo-images.com/V6m5SH45BlP6t7-HuGWA-w__small/img/R_6kq0mu1RY7RJVvtI9hRClqpNY=/fit-in/200x150/filters:strip_icc()/pic3562670.jpg",
-      "image": "https://cf.geekdo-images.com/V6m5SH45BlP6t7-HuGWA-w__original/img/b3B7VSa1WYqfIZhuAj1ClZM9GFg=/0x0/filters:format(jpeg)/pic3562670.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 45,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 10,
-      "weight": 2.3,
-      "rating": 7.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Dice",
-        "Medical"
-      ],
-      "mechanics": [
-        "Action Drafting",
-        "Action Points",
-        "Dice Rolling",
-        "Hexagon Grid",
-        "I Cut, You Choose",
-        "Modular Board",
-        "Solo / Solitaire Game",
-        "Variable Phase Order",
-        "Worker Placement",
-        "Worker Placement with Dice Workers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 296912,
-      "name": "Fort",
-      "year": 2020,
-      "thumbnail": "https://cf.geekdo-images.com/hAsqLdANmtExR5Zi41v94Q__small/img/YqmIsRVLpQqM-r5i1rsN91Q6fzg=/fit-in/200x150/filters:strip_icc()/pic5241325.png",
-      "image": "https://cf.geekdo-images.com/hAsqLdANmtExR5Zi41v94Q__original/img/YSzUnMqcnTg-mSk8VEnBQaRRmJU=/0x0/filters:format(png)/pic5241325.png",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 20,
-      "maxTime": 40,
-      "playTime": 40,
-      "minAge": 10,
-      "weight": 2.4,
-      "rating": 7.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Card Game"
-      ],
-      "mechanics": [
-        "Deck, Bag, and Pool Building",
-        "Follow",
-        "Hand Management",
-        "Race",
-        "Turn Order: Progressive"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo",
-        "zntznt"
-      ]
-    },
-    {
-      "id": 306709,
-      "name": "The Night Cage",
-      "year": 2021,
-      "thumbnail": "https://cf.geekdo-images.com/txQ7QzbQz89AO5BmVv7OqA__small/img/sneKRoRyk2ylPHxapTVVu66XbH4=/fit-in/200x150/filters:strip_icc()/pic5331288.png",
-      "image": "https://cf.geekdo-images.com/txQ7QzbQz89AO5BmVv7OqA__original/img/sj4Qg_VXKyNZFLftFjRv7p4-RKk=/0x0/filters:format(png)/pic5331288.png",
-      "minPlayers": 1,
-      "maxPlayers": 5,
-      "minTime": 40,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 14,
-      "weight": 2.2,
-      "rating": 7.1,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Fantasy",
-        "Horror",
-        "Maze"
-      ],
-      "mechanics": [
-        "Cooperative Game",
-        "Grid Movement",
-        "Pieces as Map",
-        "Sudden Death Ending",
-        "Tile Placement"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 448446,
-      "name": "Campy Creatures: Volume 1 (Third Edition)",
-      "year": 2025,
-      "thumbnail": "https://cf.geekdo-images.com/XA-u9nlmNSJgM5zFsl4KDw__small/img/QsPSHtK5WbCwyX581GK-G6_iJ0o=/fit-in/200x150/filters:strip_icc()/pic8944087.jpg",
-      "image": "https://cf.geekdo-images.com/XA-u9nlmNSJgM5zFsl4KDw__original/img/wL0V0kghcfQlUgcgt1Z2xhyKEfc=/0x0/filters:format(jpeg)/pic8944087.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "minTime": 20,
-      "maxTime": 30,
-      "playTime": 30,
-      "minAge": 10,
-      "weight": 2,
-      "rating": 7.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Bluffing",
-        "Card Game",
-        "Deduction",
-        "Horror"
-      ],
-      "mechanics": [
-        "Auction / Bidding",
-        "Hand Management",
-        "Set Collection",
-        "Simultaneous Action Selection"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 372559,
-      "name": "Spots",
-      "year": 2022,
-      "thumbnail": "https://cf.geekdo-images.com/TCBUzmSNUYw_yqJAXGWnNQ__small/img/BgniZvPRJVenqn7XHd4TQtsSuwI=/fit-in/200x150/filters:strip_icc()/pic7592453.png",
-      "image": "https://cf.geekdo-images.com/TCBUzmSNUYw_yqJAXGWnNQ__original/img/GklWmrbqMips7ref85Pa-X5eNQQ=/0x0/filters:format(png)/pic7592453.png",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 25,
-      "maxTime": 30,
-      "playTime": 30,
-      "minAge": 10,
-      "weight": 1.3,
-      "rating": 7.1,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Animals",
-        "Card Game",
-        "Dice"
-      ],
-      "mechanics": [
-        "Action Drafting",
-        "Contracts",
-        "Dice Rolling",
-        "Increase Value of Unchosen Resources",
-        "Push Your Luck",
-        "Race",
-        "Re-rolling and Locking",
-        "Set Collection",
-        "Variable Set-up"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 131357,
-      "name": "Coup",
-      "year": 2012,
-      "thumbnail": "https://cf.geekdo-images.com/MWhSY_GOe2-bmlQ2rntSVg__small/img/vuR_0PCX1w2EkjO_LbchOHZPOwU=/fit-in/200x150/filters:strip_icc()/pic2016054.jpg",
-      "image": "https://cf.geekdo-images.com/MWhSY_GOe2-bmlQ2rntSVg__original/img/ayAAWBK1rAEumARNmROsOtvqW-4=/0x0/filters:format(jpeg)/pic2016054.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 6,
-      "minTime": 15,
-      "maxTime": 15,
-      "playTime": 15,
-      "minAge": 13,
-      "weight": 1.4,
-      "rating": 7,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Bluffing",
-        "Card Game",
-        "Deduction",
-        "Party Game",
-        "Political"
-      ],
-      "mechanics": [
-        "Hidden Roles",
-        "Memory",
-        "Player Elimination",
-        "Take That",
-        "Variable Player Powers"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 98778,
-      "name": "Hanabi",
-      "year": 2010,
-      "thumbnail": "https://cf.geekdo-images.com/JDVksMwfcqoem1k_xtZrOA__small/img/amCeCcEKhYGbVtDvpvIMnu3qTg0=/fit-in/200x150/filters:strip_icc()/pic2007286.jpg",
-      "image": "https://cf.geekdo-images.com/JDVksMwfcqoem1k_xtZrOA__original/img/5vNHZiTEhK4aRDuGXv5KImp9cmQ=/0x0/filters:format(jpeg)/pic2007286.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "minTime": 25,
-      "maxTime": 25,
-      "playTime": 25,
-      "minAge": 8,
-      "weight": 1.7,
-      "rating": 7,
-      "rank": 0,
-      "cooperative": true,
-      "categories": [
-        "Card Game",
-        "Deduction",
-        "Memory"
-      ],
-      "mechanics": [
-        "Communication Limits",
-        "Cooperative Game",
-        "Hand Management",
-        "Memory",
-        "Ordering",
-        "Set Collection"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 282390,
-      "name": "Tattoo Brawl",
-      "year": 2019,
-      "thumbnail": "https://cf.geekdo-images.com/mOLrM_7X45Rvq2ce11QHsg__small/img/PO_hyLWICkztOZ_eJgzRh-E9uy4=/fit-in/200x150/filters:strip_icc()/pic4803295.png",
-      "image": "https://cf.geekdo-images.com/mOLrM_7X45Rvq2ce11QHsg__original/img/dmA0BglcUpeb_b3qQ6f_8wXJy7k=/0x0/filters:format(png)/pic4803295.png",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 40,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 8,
-      "weight": 2.2,
-      "rating": 7,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Card Game",
-        "Economic"
-      ],
-      "mechanics": [
-        "Action Retrieval",
-        "Deck, Bag, and Pool Building",
-        "Once-Per-Game Abilities",
-        "Open Drafting",
-        "Pattern Building",
-        "Simulation",
-        "Take That",
-        "Trading"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 322624,
-      "name": "Fellowships of Fate",
-      "year": 2019,
-      "thumbnail": "https://cf.geekdo-images.com/DAUNRvKd6rMgTRg_8WarfA__small/img/zdPGSEncGYNgbwb6YWjF0OdIO_A=/fit-in/200x150/filters:strip_icc()/pic5813921.png",
-      "image": "https://cf.geekdo-images.com/DAUNRvKd6rMgTRg_8WarfA__original/img/oijbBUFPOJZpkAnO7iLiYg-lEmQ=/0x0/filters:format(png)/pic5813921.png",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "minTime": 45,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 12,
-      "weight": 1.5,
-      "rating": 6.9,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Adventure",
-        "Card Game",
-        "Fantasy",
-        "Medieval"
-      ],
-      "mechanics": [
-        "Hand Management",
-        "Multi-Use Cards",
-        "Open Drafting"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 218603,
-      "name": "Photosynthesis",
-      "year": 2017,
-      "thumbnail": "https://cf.geekdo-images.com/HhkYuVxMy-XrRCBWmZ78Eg__small/img/eVdvmMALg8vjPr6eDoj-mqvDbUc=/fit-in/200x150/filters:strip_icc()/pic3364832.jpg",
-      "image": "https://cf.geekdo-images.com/HhkYuVxMy-XrRCBWmZ78Eg__original/img/V6bgfuxV2jfmRbz9pJVyK01x6dI=/0x0/filters:format(jpeg)/pic3364832.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 4,
-      "minTime": 30,
-      "maxTime": 60,
-      "playTime": 60,
-      "minAge": 10,
-      "weight": 2.3,
-      "rating": 6.9,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Abstract Strategy",
-        "Economic"
-      ],
-      "mechanics": [
-        "Action Points",
-        "Area Majority / Influence",
-        "Bias",
-        "End Game Bonuses",
-        "Hexagon Grid",
-        "Income",
-        "Turn Order: Progressive"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 195271,
-      "name": "Karen and the Pirate Island",
-      "year": 2016,
-      "thumbnail": "https://cf.geekdo-images.com/JDWiLvEQgKs7qkV25Mgp2w__small/img/z-OCodT8aYcq6VaYhltiJ0woyo8=/fit-in/200x150/filters:strip_icc()/pic3166544.jpg",
-      "image": "https://cf.geekdo-images.com/JDWiLvEQgKs7qkV25Mgp2w__original/img/oMkOXIViWq0TXHdzEzeY5IKGKtM=/0x0/filters:format(jpeg)/pic3166544.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 1,
-      "minTime": 15,
-      "maxTime": 0,
-      "playTime": 0,
-      "minAge": 15,
-      "weight": 1.5,
-      "rating": 6.8,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Adventure",
-        "Pirates"
-      ],
-      "mechanics": [
-        "Deck, Bag, and Pool Building"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2958,75 +3593,7 @@
       "bestPlayers": [],
       "recPlayers": [],
       "pollVotes": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 392173,
-      "name": "Dumb Ways to Die",
-      "year": 2023,
-      "thumbnail": "https://cf.geekdo-images.com/DpAxsNlEVqo4wOcVRkHUGw__small/img/qjeVUHyH08S-G4hqJaT_Md-bcoE=/fit-in/200x150/filters:strip_icc()/pic7642240.png",
-      "image": "https://cf.geekdo-images.com/DpAxsNlEVqo4wOcVRkHUGw__original/img/yyVzW4qmkJ3BGUbIUBS5T-KUm-U=/0x0/filters:format(png)/pic7642240.png",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "minTime": 10,
-      "maxTime": 30,
-      "playTime": 30,
-      "minAge": 12,
-      "weight": 1.1,
-      "rating": 5.8,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Card Game",
-        "Humor",
-        "Video Game Theme"
-      ],
-      "mechanics": [
-        "Hand Management",
-        "Player Elimination",
-        "Push Your Luck",
-        "Take That"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
-      "owners": [
-        "gabo"
-      ]
-    },
-    {
-      "id": 50381,
-      "name": "Cards Against Humanity",
-      "year": 2009,
-      "thumbnail": "https://cf.geekdo-images.com/nYLrPiI9gnvlrwOrKQ4_CA__small/img/fIhQLjWueNPYZhCZ_LzjAIhPm5U=/fit-in/200x150/filters:strip_icc()/pic2909692.jpg",
-      "image": "https://cf.geekdo-images.com/nYLrPiI9gnvlrwOrKQ4_CA__original/img/EgMpdhoG38LUTApk0kyFFsmoQPk=/0x0/filters:format(jpeg)/pic2909692.jpg",
-      "minPlayers": 4,
-      "maxPlayers": 30,
-      "minTime": 30,
-      "maxTime": 30,
-      "playTime": 30,
-      "minAge": 17,
-      "weight": 1.2,
-      "rating": 5.7,
-      "rank": 0,
-      "cooperative": false,
-      "categories": [
-        "Card Game",
-        "Humor",
-        "Mature / Adult",
-        "Party Game",
-        "Print & Play"
-      ],
-      "mechanics": [
-        "Hand Management",
-        "Player Judge",
-        "Simultaneous Action Selection"
-      ],
-      "bestPlayers": [],
-      "recPlayers": [],
-      "pollVotes": 0,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
