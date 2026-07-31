@@ -120,6 +120,21 @@ async function fetchCollectionIds(username, options) {
   return items.map((it) => String(it.objectid)).filter(Boolean);
 }
 
+// A shelf owner's BGG avatar, or '' when they haven't set one (BGG answers
+// "N/A"). Avatar URLs can come back protocol-relative, so normalise to https.
+async function fetchAvatar(username) {
+  try {
+    const xml = await bggGet(`${API}/user?name=${encodeURIComponent(username)}`);
+    const parsed = parser.parse(xml);
+    const raw = parsed?.user?.avatarlink?.value;
+    if (!raw || raw === 'N/A') return '';
+    return raw.startsWith('//') ? `https:${raw}` : raw;
+  } catch (e) {
+    console.warn(`    ⚠ avatar lookup failed for "${username}": ${e.message}`);
+    return '';
+  }
+}
+
 // Plays logged this calendar month, summed per game across every shelf owner.
 // The collection endpoint's `numplays` is LIFETIME, so it can't substitute.
 // 100 plays per page — paginate until a short page comes back.
@@ -283,7 +298,14 @@ async function main() {
     .filter(Boolean)
     .sort((a, b) => (a.rank || 99999) - (b.rank || 99999) || (b.rating || 0) - (a.rating || 0));
 
-  const collectionsOut = collections.map(({ id, label, bggUser }) => ({ id, label, bggUser }));
+  // 5) shelf avatars
+  const collectionsOut = [];
+  for (const { id, label, bggUser } of collections) {
+    const avatar = await fetchAvatar(bggUser);
+    console.log(`  → avatar for ${bggUser}: ${avatar ? 'found' : 'none set'}`);
+    collectionsOut.push({ id, label, bggUser, avatar });
+    await sleep(1200);
+  }
 
   // Skip the write (and therefore the commit) if only the timestamp would change.
   let unchanged = false;
