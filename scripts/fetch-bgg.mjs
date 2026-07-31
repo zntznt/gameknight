@@ -8,7 +8,7 @@
 //
 // Since late 2025 the BGG XML API requires a Bearer token (register at
 // https://boardgamegeek.com/using_the_xml_api). Provide it via the BGG_TOKEN
-// environment variable — in CI, store it as the repo secret BGG_TOKEN.
+// environment variable. In CI, store it as the repo secret BGG_TOKEN.
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { XMLParser } from 'fast-xml-parser';
@@ -28,7 +28,7 @@ const parser = new XMLParser({
   // NB: isArray is consulted for ATTRIBUTES as well as elements. Without the
   // !isAttribute guard, the name="..." attribute on <rank> and <poll> gets
   // wrapped in an array, so `r.name === 'boardgame'` and
-  // `p.name === 'suggested_numplayers'` silently never match — which zeroed
+  // `p.name === 'suggested_numplayers'` silently never match, which zeroed
   // every rank and dropped every player poll from the bake.
   isArray: (name, _jpath, _isLeafNode, isAttribute) =>
     !isAttribute && ['item', 'link', 'name', 'rank', 'poll', 'results', 'result'].includes(name),
@@ -79,8 +79,8 @@ async function bggGet(url, { tries = 8 } = {}) {
     if (res.status === 401) {
       throw new Error(
         TOKEN
-          ? 'BGG returned 401 — the BGG_TOKEN is invalid or expired. Re-check it at https://boardgamegeek.com/using_the_xml_api'
-          : 'BGG returned 401 — the XML API now requires a Bearer token. Register at https://boardgamegeek.com/using_the_xml_api and pass it as BGG_TOKEN (repo secret in CI).'
+          ? 'BGG returned 401. The BGG_TOKEN is invalid or expired. Re-check it at https://boardgamegeek.com/using_the_xml_api'
+          : 'BGG returned 401. The XML API now requires a Bearer token. Register at https://boardgamegeek.com/using_the_xml_api and pass it as BGG_TOKEN (repo secret in CI).'
       );
     }
     throw new Error(`BGG ${res.status} for ${url}`);
@@ -100,17 +100,17 @@ async function fetchCollectionIds(username, options) {
   // Safety net: with no status filter, BGG returns the user's ENTIRE collection
   // (rated, commented, previously owned, wishlisted…). Fall back to owned-only.
   if (flags.length === 0) {
-    console.warn(`    ⚠ No status filter set for "${username}" — defaulting to own=1.`);
+    console.warn(`    ⚠ No status filter set for "${username}", defaulting to own=1.`);
     flags.push('own=1');
   }
-  // excludesubtype drops expansions — you can't sit down and play an expansion.
+  // excludesubtype drops expansions, since you can't sit down and play one.
   const url = `${API}/collection?username=${encodeURIComponent(username)}&brief=1&excludesubtype=boardgameexpansion&${flags.join('&')}`;
   console.log(`  → collection for ${username}`);
   const xml = await bggGet(url);
   const parsed = parser.parse(xml);
   if (parsed?.errors) {
     const msg = toArr(parsed.errors.error).map((e) => e.message).join('; ');
-    console.warn(`    ⚠ BGG rejected "${username}": ${msg || 'unknown error'} — skipping.`);
+    console.warn(`    ⚠ BGG rejected "${username}": ${msg || 'unknown error'}. Skipping.`);
     return [];
   }
   const items = toArr(parsed?.items?.item);
@@ -142,7 +142,7 @@ function monthRange() {
   return { min, max: now.toISOString().slice(0, 10) };
 }
 
-// How much a game is being played on BGG *by everyone* this month — a "what's
+// How much a game is being played on BGG *by everyone* this month, a "what's
 // hot right now" signal, which is what section 10 sorts by. This is global, to
 // match the other two sorts (BGG rating and BGG rank); it is deliberately NOT
 // the shelf owners' own logged plays, which would be near-zero for anyone who
@@ -150,7 +150,7 @@ function monthRange() {
 //
 // /plays accepts `id` (a thing id) INSTEAD of `username`, returning every
 // user's plays of that game. We only need the count, and the response's root
-// `total` attribute carries it for the filtered range — so one page-1 request
+// `total` attribute carries it for the filtered range, so one page-1 request
 // per game, no pagination through thousands of plays.
 async function fetchGlobalPlays(gameId, range) {
   const url = `${API}/plays?id=${gameId}&mindate=${range.min}&maxdate=${range.max}&page=1`;
@@ -174,7 +174,7 @@ async function fetchThings(ids) {
 // Parse the "suggested_numplayers" community poll into best/recommended counts.
 //   • Recommended at N  ⇔  Best + Recommended votes > Not-Recommended votes
 //   • Best at N         ⇔  Best votes lead the other two
-// (Best ⊆ Recommended by construction.) "N+" overflow entries are skipped —
+// (Best ⊆ Recommended by construction.) "N+" overflow entries are skipped:
 // they mean "more than the box max", which our exact-N filter doesn't use.
 function parsePlayerPoll(it) {
   const poll = toArr(it.poll).find((p) => p.name === 'suggested_numplayers');
@@ -239,7 +239,7 @@ async function main() {
   const collections = (config.collections || []).filter((c) => c.bggUser);
   const options = config.options || { own: true };
   if (!collections.length) {
-    console.error('No collections with a bggUser in collections.config.json — nothing to do.');
+    console.error('No collections with a bggUser in collections.config.json. Nothing to do.');
     process.exit(1);
   }
   if (!TOKEN) {
@@ -291,7 +291,7 @@ async function main() {
   const busiest = Math.max(0, ...playCounts.values());
   console.log(`  ${played}/${allIds.length} games played on BGG this month (busiest: ${busiest})`);
   if (played === 0) {
-    console.warn('    ⚠ every game came back with 0 global plays — check the plays query.');
+    console.warn('    ⚠ every game came back with 0 global plays. Check the plays query.');
   }
 
   // 4) stitch owners + plays back on and sort by rank
@@ -322,10 +322,10 @@ async function main() {
       JSON.stringify(prev.games) === JSON.stringify(games) &&
       JSON.stringify(prev.collections) === JSON.stringify(collectionsOut);
   } catch {
-    /* no previous file — treat as changed */
+    /* no previous file, treat as changed */
   }
   if (unchanged) {
-    console.log('✓ No changes since last run — leaving data/games.json untouched.');
+    console.log('✓ No changes since last run. Leaving data/games.json untouched.');
     return;
   }
 

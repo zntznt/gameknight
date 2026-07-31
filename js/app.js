@@ -1,8 +1,8 @@
-// app.js — Gameknight.
+// app.js. Gameknight.
 //
 // One scrolling board of 11 numbered sections (00 shelves, 01–04 wants,
 // 05–10 limits), then a verdict view with tonight's pick. Nothing selected in a
-// section means that section simply doesn't filter — there is no skip control.
+// section means that section simply doesn't filter. There is no skip control.
 //
 // Rendering is a full rebuild of each root on every state change. At collection
 // scale (tens to low hundreds of games) that stays well inside a frame and
@@ -99,7 +99,7 @@ function isRecAt(g, n) {
   if (!n || !g.pollVotes || !Array.isArray(g.recPlayers)) return false;
   return n >= 8 ? g.recPlayers.some((c) => c >= 8) : g.recPlayers.includes(n);
 }
-// Only used to tint the shortlist tag — ordering comes from section 10.
+// Only used to tint the shortlist tag. Ordering comes from section 10.
 function fitTier(g) {
   const c = state.constraints;
   if (!c.players || c.playerFit === 'supported') return 0;
@@ -170,7 +170,7 @@ function metaLine(g) {
 function sortTag(g, short) {
   const by = state.sortBy;
   if (by === 'rank') {
-    if (!(g.rank > 0)) return short ? '—' : 'unranked';
+    if (!(g.rank > 0)) return short ? 'n/a' : 'unranked';
     return short ? `#${g.rank}` : `BGG #${g.rank}`;
   }
   if (by === 'plays') {
@@ -178,7 +178,7 @@ function sortTag(g, short) {
     if (short) return `${n}×`;
     return n ? `${n} play${n === 1 ? '' : 's'} this month` : 'unplayed this month';
   }
-  if (!g.rating) return short ? '—' : 'unrated';
+  if (!g.rating) return short ? 'n/a' : 'unrated';
   return short ? `★ ${g.rating.toFixed(1)}` : `★ ${g.rating.toFixed(1)} rating`;
 }
 
@@ -625,7 +625,7 @@ function renderLimits() {
     )
   );
 
-  // 10 · sort — always answered, so the badge is always filled
+  // 10 · sort. Always answered, so the badge is always filled.
   {
     const grid = el('div', 'gk-chips');
     [
@@ -849,7 +849,7 @@ function render() {
   }
 
   // Build first, swap second. Emptying the roots up front would collapse the
-  // page to zero height, and the browser resets scrollY when that happens —
+  // page to zero height, and the browser resets scrollY when that happens,
   // which is what used to throw you back to the top on every click. A single
   // replaceChildren() never leaves the document short.
   const keepY = window.scrollY;
@@ -865,7 +865,7 @@ function render() {
   renderSheet();
 
   // Belt and braces: if the swap still moved us (a genuinely shorter page), put
-  // it back — unless a guided scroll is mid-flight and owns the position.
+  // it back, unless a guided scroll is mid-flight and owns the position.
   if (state.view === 'board' && !guide.progScroll && window.scrollY !== keepY) {
     window.scrollTo(0, keepY);
   }

@@ -1,13 +1,13 @@
 # Gameknight ♞
 
 Point Gameknight at your board game collection (or your whole friend group's
-shelves), answer a short flowchart of **wants** — co-op or cutthroat, what
-theme you're in the mood for, which mechanisms you're craving — and watch the
+shelves), answer a short flowchart of **wants** (co-op or cutthroat, what
+theme you're in the mood for, which mechanisms you're craving) and watch the
 list narrow **live** as you go. Only at the end does it ask the boring
 **constraints**: how many players, how much brain, how much time. What's left is
 what you should actually play tonight.
 
-It's a static site built for **GitHub Pages** — no server, no tracking, works
+It's a static site built for **GitHub Pages**: no server, no tracking, works
 offline once loaded.
 
 ## The trick with BoardGameGeek
@@ -17,7 +17,7 @@ BGG's XML API has no CORS support and its collection endpoint is asynchronous
 that entirely: a **GitHub Action fetches everything server-side**, enriches each
 game with full details (weight, player counts, time, mechanics, categories),
 and commits the result as a plain [`data/games.json`](data/games.json). The page
-just loads that file — instant, no proxy, no rate limits at runtime.
+just loads that file: instant, no proxy, no rate limits at runtime.
 
 ```
 BGG XML API ──(GitHub Action, weekly)──▶ data/games.json ──▶ static page (Pages)
@@ -45,19 +45,19 @@ BGG XML API ──(GitHub Action, weekly)──▶ data/games.json ──▶ sta
    [boardgamegeek.com/using_the_xml_api](https://boardgamegeek.com/using_the_xml_api),
    then in this repo go to **Settings → Secrets and variables → Actions → New
    repository secret** and add it as `BGG_TOKEN`. Without it the fetch returns
-   `401`. The token lives only in the secret and the CI job — it is never
+   `401`. The token lives only in the secret and the CI job. It is never
    committed or shipped to the browser.
 
 3. **Bake the data.** In the **Actions** tab, run **Fetch BGG collections**
    (also runs weekly on its own). It authenticates with `BGG_TOKEN`, writes a
    fresh `data/games.json`, and commits it. First run for a large collection can
-   take a couple of minutes — BGG queues collection requests and we wait
+   take a couple of minutes, since BGG queues collection requests and we wait
    politely.
 
 4. **Publish.** Settings → Pages → Build and deployment → Source =
    **Deploy from a branch** → Branch `main`, folder `/ (root)` → Save. GitHub
    serves the static files directly (a `.nojekyll` file is included so it skips
-   Jekyll). No build step and no deploy workflow — every push to `main`
+   Jekyll). No build step and no deploy workflow, so every push to `main`
    republishes automatically.
 
 Until you run step 3, the app shows bundled **sample data** so you can try the
@@ -77,7 +77,7 @@ BGG_TOKEN=your_token_here npm run fetch
 ### Linting
 
 ESLint (JS) and Stylelint (CSS) run on every push and PR via
-[`.github/workflows/lint.yml`](.github/workflows/lint.yml). Both are dev-only —
+[`.github/workflows/lint.yml`](.github/workflows/lint.yml). Both are dev-only:
 nothing is added to what the browser downloads, and there's still no build step.
 
 ```bash
@@ -107,13 +107,13 @@ and the JS config keeps the correctness rules (`array-callback-return`,
 
 Every preference question lives in `js/questions.js` as a plain object with a
 `match(game)` predicate per answer. Preferences are ANDed across questions and
-ORed within a multi-select. Every question is skippable — a *want* isn't a
+ORed within a multi-select. Every question is skippable, because a *want* isn't a
 *requirement*. Add, remove, or reword questions there; no rebuild needed.
 
 ## Notes
 
 - **Union vs. intersection:** with several collections selected, choose "anyone
-  owns" (union) or "everyone owns" (intersection — the safe bet if the owner
+  owns" (union) or "everyone owns" (intersection, the safe bet if the owner
   might not show up).
 - **Plays-well-at-N:** the player-count filter uses BGG's *suggested number of
   players* poll, not just the box range. Pick **Best** (the sweet spot),
@@ -121,5 +121,5 @@ ORed within a multi-select. Every question is skippable — a *want* isn't a
   in the min–max range). Games without poll votes fall back to the box range.
   Result cards show a **best N** badge from the same poll.
 - **Missing metadata** (e.g. unrated weight, no player poll) never silently
-  drops a game from a constraint filter — unknowns pass / fall back to the box.
+  drops a game from a constraint filter. Unknowns pass, or fall back to the box.
 - Game data © BoardGameGeek; fetched via their XML API for personal use.

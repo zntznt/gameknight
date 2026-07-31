@@ -1,8 +1,8 @@
 // ESLint flat config.
 //
 // Two environments live in this repo:
-//   js/       — browser ES modules, loaded directly by index.html (no build step)
-//   scripts/  — Node, run by the GitHub Action that bakes data/games.json
+//   js/       browser ES modules, loaded directly by index.html (no build step)
+//   scripts/  Node, run by the GitHub Action that bakes data/games.json
 //
 // Lint-only tooling: nothing here is shipped to the browser.
 //
