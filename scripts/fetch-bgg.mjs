@@ -28,7 +28,7 @@ const parser = new XMLParser({
   isArray: (name) => ['item', 'link', 'name', 'rank', 'poll', 'results', 'result'].includes(name),
 });
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const sleep = (ms) => new Promise((r) => { setTimeout(r, ms); });
 const toArr = (v) => (v == null ? [] : Array.isArray(v) ? v : [v]);
 const num = (v) => {
   const n = parseFloat(v);
@@ -37,6 +37,7 @@ const num = (v) => {
 
 // Fetch with retry, honoring BGG's 202 "still queuing, try again" response.
 async function bggGet(url, { tries = 8 } = {}) {
+  let lastNetworkError = null;
   for (let i = 0; i < tries; i++) {
     let res;
     try {
@@ -44,6 +45,9 @@ async function bggGet(url, { tries = 8 } = {}) {
       if (TOKEN) headers['Authorization'] = `Bearer ${TOKEN}`;
       res = await fetch(url, { headers });
     } catch (e) {
+      // Keep the cause around: if every attempt fails at the network layer,
+      // "kept us waiting too long" alone gives no clue why.
+      lastNetworkError = e;
       await sleep(2000 * (i + 1));
       continue;
     }
@@ -75,7 +79,11 @@ async function bggGet(url, { tries = 8 } = {}) {
     }
     throw new Error(`BGG ${res.status} for ${url}`);
   }
-  throw new Error(`BGG kept us waiting too long: ${url}`);
+  throw new Error(
+    lastNetworkError
+      ? `BGG unreachable after ${tries} attempts (${lastNetworkError.message}): ${url}`
+      : `BGG kept us waiting too long: ${url}`
+  );
 }
 
 async function fetchCollectionIds(username, options) {

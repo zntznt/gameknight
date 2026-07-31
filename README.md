@@ -74,6 +74,23 @@ npm install
 BGG_TOKEN=your_token_here npm run fetch
 ```
 
+### Linting
+
+ESLint (JS) and Stylelint (CSS) run on every push and PR via
+[`.github/workflows/lint.yml`](.github/workflows/lint.yml). Both are dev-only —
+nothing is added to what the browser downloads, and there's still no build step.
+
+```bash
+npm install
+npm run lint       # check JS + CSS
+npm run lint:fix   # autofix what's safely fixable
+```
+
+The rules favour catching bugs over enforcing style: the CSS config disables
+the cosmetic rules that would fight this file's compact one-line declarations,
+and the JS config keeps the correctness rules (`array-callback-return`,
+`no-constant-binary-expression`, `consistent-return`, …).
+
 ## How it's wired
 
 | File | Role |
