@@ -135,46 +135,32 @@ async function fetchAvatar(username) {
   }
 }
 
-// Plays logged this calendar month, summed per game across every shelf owner.
-// The collection endpoint's `numplays` is LIFETIME, so it can't substitute.
-// 100 plays per page — paginate until a short page comes back.
-async function fetchPlaysThisMonth(username, counts) {
+// The current calendar month, as BGG's date filters want it.
+function monthRange() {
   const now = new Date();
-  const yyyy = now.getUTCFullYear();
-  const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
-  const minDate = `${yyyy}-${mm}-01`;
-  const maxDate = now.toISOString().slice(0, 10);
+  const min = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}-01`;
+  return { min, max: now.toISOString().slice(0, 10) };
+}
 
-  for (let page = 1; page <= 20; page++) {
-    const url = `${API}/plays?username=${encodeURIComponent(username)}&mindate=${minDate}&maxdate=${maxDate}&page=${page}`;
-    const xml = await bggGet(url);
-    const parsed = parser.parse(xml);
-    if (parsed?.errors) {
-      console.warn(`    ⚠ plays unavailable for "${username}" — skipping.`);
-      return;
-    }
-    const plays = toArr(parsed?.plays?.play);
-    if (page === 1) {
-      // BGG reports how many plays match the query. Logging it distinguishes
-      // "this user logs no plays" from "we failed to parse the response" —
-      // otherwise both look identical downstream (every count zero).
-      const reported = num(parsed?.plays?.total);
-      console.log(
-        `      ${minDate}..${maxDate}: BGG reports total=${reported}, parsed ${plays.length} play(s) on page 1`
-      );
-      if (reported > 0 && plays.length === 0) {
-        console.warn(`    ⚠ "${username}": BGG says ${reported} plays but none parsed — parser issue.`);
-      }
-    }
-    for (const p of plays) {
-      const item = toArr(p.item)[0];
-      const objectid = item && String(item.objectid);
-      if (!objectid) continue;
-      const qty = num(p.quantity) || 1;
-      counts.set(objectid, (counts.get(objectid) || 0) + qty);
-    }
-    if (plays.length < 100) return; // short page = last page
-    await sleep(1500);
+// How much a game is being played on BGG *by everyone* this month — a "what's
+// hot right now" signal, which is what section 10 sorts by. This is global, to
+// match the other two sorts (BGG rating and BGG rank); it is deliberately NOT
+// the shelf owners' own logged plays, which would be near-zero for anyone who
+// doesn't keep a play log.
+//
+// /plays accepts `id` (a thing id) INSTEAD of `username`, returning every
+// user's plays of that game. We only need the count, and the response's root
+// `total` attribute carries it for the filtered range — so one page-1 request
+// per game, no pagination through thousands of plays.
+async function fetchGlobalPlays(gameId, range) {
+  const url = `${API}/plays?id=${gameId}&mindate=${range.min}&maxdate=${range.max}&page=1`;
+  try {
+    const parsed = parser.parse(await bggGet(url));
+    if (parsed?.errors) return 0;
+    return num(parsed?.plays?.total);
+  } catch (e) {
+    console.warn(`    ⚠ plays lookup failed for game ${gameId}: ${e.message}`);
+    return 0;
   }
 }
 
@@ -291,14 +277,22 @@ async function main() {
     await sleep(2000);
   }
 
-  // 3) plays logged this month, across every shelf owner
-  const playCounts = new Map(); // gameId -> plays this month
-  for (const c of collections) {
-    console.log(`  → plays this month for ${c.bggUser}`);
-    await fetchPlaysThisMonth(c.bggUser, playCounts);
-    await sleep(1500);
+  // 3) global plays this month, per game (one request each)
+  const range = monthRange();
+  const playCounts = new Map(); // gameId -> plays logged on BGG this month
+  console.log(`  → global plays ${range.min}..${range.max} for ${allIds.length} games`);
+  for (let i = 0; i < allIds.length; i++) {
+    const id = allIds[i];
+    playCounts.set(id, await fetchGlobalPlays(id, range));
+    if ((i + 1) % 20 === 0) console.log(`      ${i + 1}/${allIds.length}`);
+    await sleep(1200); // ~80 requests: pace them
   }
-  console.log(`  ${playCounts.size} games played this month`);
+  const played = [...playCounts.values()].filter((n) => n > 0).length;
+  const busiest = Math.max(0, ...playCounts.values());
+  console.log(`  ${played}/${allIds.length} games played on BGG this month (busiest: ${busiest})`);
+  if (played === 0) {
+    console.warn('    ⚠ every game came back with 0 global plays — check the plays query.');
+  }
 
   // 4) stitch owners + plays back on and sort by rank
   const games = allIds
