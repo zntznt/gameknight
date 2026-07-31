@@ -620,7 +620,10 @@ async function boot() {
   render(); // loading
   try {
     state.data = await loadData();
-    if (!state.data.games.length) return go('setup');
+    if (!state.data.games.length) {
+      go('setup');
+      return;
+    }
     // preselect all collections for convenience
     state.data.collections.forEach((c) => state.selected.add(c.id));
     if (state.data.sample) go('setup');

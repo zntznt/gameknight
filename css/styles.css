@@ -17,7 +17,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; overflow-x: hidden; }
 body {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
   background: radial-gradient(1200px 700px at 80% -10%, #24264d 0%, var(--bg) 55%) fixed;
   min-height: 100vh;
@@ -303,8 +303,10 @@ code { background: #0d0e1f; padding: 2px 6px; border-radius: 6px; font-size: 13p
   text-decoration: none; color: inherit; cursor: pointer;
 }
 .gcard:hover { border-color: var(--primary); transform: translateY(-2px); }
-.gcard__name { text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.15s ease; }
-.gcard:hover .gcard__name { text-decoration-color: var(--primary-2); }
+/* Hover underline belongs to the linked result card only. The quick-look modal
+   reuses .gcard__name for its title, where a link underline would mislead —
+   so this is scoped under .gcard rather than set on .gcard__name itself. */
+.gcard:hover .gcard__name { text-decoration: underline; text-decoration-color: var(--primary-2); }
 .gcard--pick { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), 0 12px 30px rgba(46, 196, 182, 0.25); transform: translateY(-2px); }
 .gcard--fit { border-color: rgba(46, 196, 182, 0.5); }
 .pill--fit { background: var(--accent); color: #0f1020; border-color: transparent; font-weight: 700; }
