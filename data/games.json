@@ -1,15 +1,17 @@
 {
-  "generatedAt": "2026-07-31T22:29:20.198Z",
+  "generatedAt": "2026-07-31T23:17:30.727Z",
   "collections": [
     {
       "id": "zntznt",
       "label": "Zeo",
-      "bggUser": "zntznt"
+      "bggUser": "zntznt",
+      "avatar": "https://cf.geekdo-static.com/avatars/avatar_id190558.png"
     },
     {
       "id": "gabo",
       "label": "Gabo",
-      "bggUser": "AranGba"
+      "bggUser": "AranGba",
+      "avatar": ""
     }
   ],
   "games": [
@@ -62,7 +64,7 @@
         3
       ],
       "pollVotes": 2374,
-      "playsThisMonth": 0,
+      "playsThisMonth": 8484,
       "owners": [
         "zntznt"
       ]
@@ -114,7 +116,7 @@
         4
       ],
       "pollVotes": 2182,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3966,
       "owners": [
         "zntznt"
       ]
@@ -173,7 +175,7 @@
         4
       ],
       "pollVotes": 873,
-      "playsThisMonth": 0,
+      "playsThisMonth": 868,
       "owners": [
         "zntznt"
       ]
@@ -230,7 +232,7 @@
         5
       ],
       "pollVotes": 1676,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1463,
       "owners": [
         "zntznt"
       ]
@@ -283,7 +285,7 @@
         4
       ],
       "pollVotes": 1131,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3027,
       "owners": [
         "zntznt"
       ]
@@ -328,7 +330,7 @@
         4
       ],
       "pollVotes": 336,
-      "playsThisMonth": 0,
+      "playsThisMonth": 619,
       "owners": [
         "zntznt"
       ]
@@ -381,7 +383,7 @@
         4
       ],
       "pollVotes": 1420,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2085,
       "owners": [
         "zntznt"
       ]
@@ -431,7 +433,7 @@
         4
       ],
       "pollVotes": 1123,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1555,
       "owners": [
         "zntznt"
       ]
@@ -486,7 +488,7 @@
         5
       ],
       "pollVotes": 629,
-      "playsThisMonth": 0,
+      "playsThisMonth": 530,
       "owners": [
         "zntznt"
       ]
@@ -535,7 +537,7 @@
         3
       ],
       "pollVotes": 425,
-      "playsThisMonth": 0,
+      "playsThisMonth": 276,
       "owners": [
         "zntznt"
       ]
@@ -578,7 +580,7 @@
         2
       ],
       "pollVotes": 424,
-      "playsThisMonth": 0,
+      "playsThisMonth": 500,
       "owners": [
         "zntznt"
       ]
@@ -618,7 +620,7 @@
         3
       ],
       "pollVotes": 374,
-      "playsThisMonth": 0,
+      "playsThisMonth": 566,
       "owners": [
         "zntznt"
       ]
@@ -670,7 +672,7 @@
         4
       ],
       "pollVotes": 2187,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1060,
       "owners": [
         "zntznt"
       ]
@@ -718,7 +720,7 @@
         4
       ],
       "pollVotes": 542,
-      "playsThisMonth": 0,
+      "playsThisMonth": 470,
       "owners": [
         "zntznt"
       ]
@@ -765,7 +767,7 @@
         4
       ],
       "pollVotes": 454,
-      "playsThisMonth": 0,
+      "playsThisMonth": 46,
       "owners": [
         "zntznt"
       ]
@@ -810,7 +812,7 @@
         5
       ],
       "pollVotes": 415,
-      "playsThisMonth": 0,
+      "playsThisMonth": 306,
       "owners": [
         "gabo"
       ]
@@ -866,7 +868,7 @@
         6
       ],
       "pollVotes": 1066,
-      "playsThisMonth": 0,
+      "playsThisMonth": 81,
       "owners": [
         "zntznt"
       ]
@@ -912,7 +914,7 @@
         5
       ],
       "pollVotes": 301,
-      "playsThisMonth": 0,
+      "playsThisMonth": 308,
       "owners": [
         "gabo"
       ]
@@ -957,7 +959,7 @@
         1
       ],
       "pollVotes": 248,
-      "playsThisMonth": 0,
+      "playsThisMonth": 415,
       "owners": [
         "zntznt"
       ]
@@ -1004,7 +1006,7 @@
         4
       ],
       "pollVotes": 387,
-      "playsThisMonth": 0,
+      "playsThisMonth": 749,
       "owners": [
         "zntznt"
       ]
@@ -1053,7 +1055,7 @@
         3
       ],
       "pollVotes": 113,
-      "playsThisMonth": 0,
+      "playsThisMonth": 379,
       "owners": [
         "zntznt"
       ]
@@ -1101,7 +1103,7 @@
         5
       ],
       "pollVotes": 208,
-      "playsThisMonth": 0,
+      "playsThisMonth": 232,
       "owners": [
         "zntznt"
       ]
@@ -1148,7 +1150,7 @@
         2
       ],
       "pollVotes": 437,
-      "playsThisMonth": 0,
+      "playsThisMonth": 379,
       "owners": [
         "zntznt"
       ]
@@ -1189,7 +1191,7 @@
         1
       ],
       "pollVotes": 100,
-      "playsThisMonth": 0,
+      "playsThisMonth": 317,
       "owners": [
         "zntznt"
       ]
@@ -1235,7 +1237,7 @@
         3
       ],
       "pollVotes": 238,
-      "playsThisMonth": 0,
+      "playsThisMonth": 107,
       "owners": [
         "zntznt"
       ]
@@ -1284,7 +1286,7 @@
         4
       ],
       "pollVotes": 398,
-      "playsThisMonth": 0,
+      "playsThisMonth": 128,
       "owners": [
         "zntznt"
       ]
@@ -1328,7 +1330,7 @@
         2
       ],
       "pollVotes": 178,
-      "playsThisMonth": 0,
+      "playsThisMonth": 124,
       "owners": [
         "zntznt"
       ]
@@ -1372,7 +1374,7 @@
         4
       ],
       "pollVotes": 170,
-      "playsThisMonth": 0,
+      "playsThisMonth": 368,
       "owners": [
         "zntznt"
       ]
@@ -1421,7 +1423,7 @@
         6
       ],
       "pollVotes": 192,
-      "playsThisMonth": 0,
+      "playsThisMonth": 253,
       "owners": [
         "gabo"
       ]
@@ -1465,7 +1467,7 @@
         5
       ],
       "pollVotes": 670,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1110,
       "owners": [
         "zntznt"
       ]
@@ -1510,7 +1512,7 @@
         4
       ],
       "pollVotes": 132,
-      "playsThisMonth": 0,
+      "playsThisMonth": 612,
       "owners": [
         "zntznt"
       ]
@@ -1551,7 +1553,7 @@
         4
       ],
       "pollVotes": 210,
-      "playsThisMonth": 0,
+      "playsThisMonth": 114,
       "owners": [
         "zntznt"
       ]
@@ -1596,7 +1598,7 @@
         6
       ],
       "pollVotes": 661,
-      "playsThisMonth": 0,
+      "playsThisMonth": 785,
       "owners": [
         "zntznt"
       ]
@@ -1682,7 +1684,7 @@
         3
       ],
       "pollVotes": 99,
-      "playsThisMonth": 0,
+      "playsThisMonth": 315,
       "owners": [
         "zntznt"
       ]
@@ -1725,7 +1727,7 @@
         4
       ],
       "pollVotes": 308,
-      "playsThisMonth": 0,
+      "playsThisMonth": 118,
       "owners": [
         "zntznt"
       ]
@@ -1765,7 +1767,7 @@
         4
       ],
       "pollVotes": 222,
-      "playsThisMonth": 0,
+      "playsThisMonth": 202,
       "owners": [
         "gabo",
         "zntznt"
@@ -1813,7 +1815,7 @@
         4
       ],
       "pollVotes": 135,
-      "playsThisMonth": 0,
+      "playsThisMonth": 992,
       "owners": [
         "gabo"
       ]
@@ -1859,7 +1861,7 @@
         3
       ],
       "pollVotes": 136,
-      "playsThisMonth": 0,
+      "playsThisMonth": 159,
       "owners": [
         "zntznt"
       ]
@@ -1906,7 +1908,7 @@
         4
       ],
       "pollVotes": 96,
-      "playsThisMonth": 0,
+      "playsThisMonth": 144,
       "owners": [
         "zntznt"
       ]
@@ -1945,7 +1947,7 @@
         1
       ],
       "pollVotes": 83,
-      "playsThisMonth": 0,
+      "playsThisMonth": 180,
       "owners": [
         "zntznt"
       ]
@@ -1993,7 +1995,7 @@
         5
       ],
       "pollVotes": 42,
-      "playsThisMonth": 0,
+      "playsThisMonth": 52,
       "owners": [
         "zntznt"
       ]
@@ -2036,7 +2038,7 @@
         2
       ],
       "pollVotes": 77,
-      "playsThisMonth": 0,
+      "playsThisMonth": 238,
       "owners": [
         "zntznt"
       ]
@@ -2079,7 +2081,7 @@
         5
       ],
       "pollVotes": 61,
-      "playsThisMonth": 0,
+      "playsThisMonth": 172,
       "owners": [
         "zntznt"
       ]
@@ -2123,7 +2125,7 @@
         2
       ],
       "pollVotes": 14,
-      "playsThisMonth": 0,
+      "playsThisMonth": 205,
       "owners": [
         "zntznt"
       ]
@@ -2163,7 +2165,7 @@
         4
       ],
       "pollVotes": 68,
-      "playsThisMonth": 0,
+      "playsThisMonth": 64,
       "owners": [
         "gabo"
       ]
@@ -2207,7 +2209,7 @@
         5
       ],
       "pollVotes": 62,
-      "playsThisMonth": 0,
+      "playsThisMonth": 104,
       "owners": [
         "zntznt"
       ]
@@ -2250,7 +2252,7 @@
         4
       ],
       "pollVotes": 79,
-      "playsThisMonth": 0,
+      "playsThisMonth": 47,
       "owners": [
         "zntznt"
       ]
@@ -2295,7 +2297,7 @@
         7
       ],
       "pollVotes": 21,
-      "playsThisMonth": 0,
+      "playsThisMonth": 26,
       "owners": [
         "zntznt"
       ]
@@ -2336,7 +2338,7 @@
         4
       ],
       "pollVotes": 35,
-      "playsThisMonth": 0,
+      "playsThisMonth": 44,
       "owners": [
         "zntznt"
       ]
@@ -2382,7 +2384,7 @@
         5
       ],
       "pollVotes": 20,
-      "playsThisMonth": 0,
+      "playsThisMonth": 11,
       "owners": [
         "zntznt"
       ]
@@ -2421,7 +2423,7 @@
         1
       ],
       "pollVotes": 29,
-      "playsThisMonth": 0,
+      "playsThisMonth": 26,
       "owners": [
         "zntznt"
       ]
@@ -2465,7 +2467,7 @@
         4
       ],
       "pollVotes": 19,
-      "playsThisMonth": 0,
+      "playsThisMonth": 6,
       "owners": [
         "gabo"
       ]
@@ -2505,7 +2507,7 @@
         2
       ],
       "pollVotes": 13,
-      "playsThisMonth": 0,
+      "playsThisMonth": 17,
       "owners": [
         "zntznt"
       ]
@@ -2549,7 +2551,7 @@
         4
       ],
       "pollVotes": 30,
-      "playsThisMonth": 0,
+      "playsThisMonth": 38,
       "owners": [
         "gabo"
       ]
@@ -2590,7 +2592,7 @@
         1
       ],
       "pollVotes": 15,
-      "playsThisMonth": 0,
+      "playsThisMonth": 52,
       "owners": [
         "zntznt"
       ]
@@ -2636,7 +2638,7 @@
         4
       ],
       "pollVotes": 29,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -2675,7 +2677,7 @@
         1
       ],
       "pollVotes": 12,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3,
       "owners": [
         "zntznt"
       ]
@@ -2727,7 +2729,7 @@
         5
       ],
       "pollVotes": 11,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3,
       "owners": [
         "gabo"
       ]
@@ -2773,7 +2775,7 @@
         6
       ],
       "pollVotes": 9,
-      "playsThisMonth": 0,
+      "playsThisMonth": 22,
       "owners": [
         "gabo"
       ]
@@ -2817,7 +2819,7 @@
         2
       ],
       "pollVotes": 3,
-      "playsThisMonth": 0,
+      "playsThisMonth": 16,
       "owners": [
         "zntznt"
       ]
@@ -2899,7 +2901,7 @@
         1
       ],
       "pollVotes": 7,
-      "playsThisMonth": 0,
+      "playsThisMonth": 6,
       "owners": [
         "zntznt"
       ]
@@ -2980,7 +2982,7 @@
         5
       ],
       "pollVotes": 7,
-      "playsThisMonth": 0,
+      "playsThisMonth": 9,
       "owners": [
         "zntznt"
       ]
@@ -3031,7 +3033,7 @@
         3
       ],
       "pollVotes": 9,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3,
       "owners": [
         "zntznt"
       ]
@@ -3072,7 +3074,7 @@
         5
       ],
       "pollVotes": 3,
-      "playsThisMonth": 0,
+      "playsThisMonth": 12,
       "owners": [
         "gabo"
       ]
@@ -3203,7 +3205,7 @@
         10
       ],
       "pollVotes": 223,
-      "playsThisMonth": 0,
+      "playsThisMonth": 55,
       "owners": [
         "zntznt"
       ]
@@ -3321,7 +3323,7 @@
         5
       ],
       "pollVotes": 6,
-      "playsThisMonth": 0,
+      "playsThisMonth": 62,
       "owners": [
         "gabo"
       ]
@@ -3439,7 +3441,7 @@
         4
       ],
       "pollVotes": 4,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "zntznt"
       ]
@@ -3485,7 +3487,7 @@
         4
       ],
       "pollVotes": 62,
-      "playsThisMonth": 0,
+      "playsThisMonth": 85,
       "owners": [
         "zntznt"
       ]
