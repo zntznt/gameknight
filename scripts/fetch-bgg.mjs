@@ -25,7 +25,13 @@ const TOKEN = (process.env.BGG_TOKEN || process.env.BGG_API_TOKEN || '').trim();
 const parser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: '',
-  isArray: (name) => ['item', 'link', 'name', 'rank', 'poll', 'results', 'result'].includes(name),
+  // NB: isArray is consulted for ATTRIBUTES as well as elements. Without the
+  // !isAttribute guard, the name="..." attribute on <rank> and <poll> gets
+  // wrapped in an array, so `r.name === 'boardgame'` and
+  // `p.name === 'suggested_numplayers'` silently never match — which zeroed
+  // every rank and dropped every player poll from the bake.
+  isArray: (name, _jpath, _isLeafNode, isAttribute) =>
+    !isAttribute && ['item', 'link', 'name', 'rank', 'poll', 'results', 'result'].includes(name),
 });
 
 const sleep = (ms) => new Promise((r) => { setTimeout(r, ms); });
@@ -112,6 +118,37 @@ async function fetchCollectionIds(username, options) {
     console.warn(`    ⚠ "${username}" returned 0 games (private collection, typo, or empty shelf?).`);
   }
   return items.map((it) => String(it.objectid)).filter(Boolean);
+}
+
+// Plays logged this calendar month, summed per game across every shelf owner.
+// The collection endpoint's `numplays` is LIFETIME, so it can't substitute.
+// 100 plays per page — paginate until a short page comes back.
+async function fetchPlaysThisMonth(username, counts) {
+  const now = new Date();
+  const yyyy = now.getUTCFullYear();
+  const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
+  const minDate = `${yyyy}-${mm}-01`;
+  const maxDate = now.toISOString().slice(0, 10);
+
+  for (let page = 1; page <= 20; page++) {
+    const url = `${API}/plays?username=${encodeURIComponent(username)}&mindate=${minDate}&maxdate=${maxDate}&page=${page}`;
+    const xml = await bggGet(url);
+    const parsed = parser.parse(xml);
+    if (parsed?.errors) {
+      console.warn(`    ⚠ plays unavailable for "${username}" — skipping.`);
+      return;
+    }
+    const plays = toArr(parsed?.plays?.play);
+    for (const p of plays) {
+      const item = toArr(p.item)[0];
+      const objectid = item && String(item.objectid);
+      if (!objectid) continue;
+      const qty = num(p.quantity) || 1;
+      counts.set(objectid, (counts.get(objectid) || 0) + qty);
+    }
+    if (plays.length < 100) return; // short page = last page
+    await sleep(1500);
+  }
 }
 
 async function fetchThings(ids) {
@@ -227,12 +264,21 @@ async function main() {
     await sleep(2000);
   }
 
-  // 3) stitch owners back on and sort by rank
+  // 3) plays logged this month, across every shelf owner
+  const playCounts = new Map(); // gameId -> plays this month
+  for (const c of collections) {
+    console.log(`  → plays this month for ${c.bggUser}`);
+    await fetchPlaysThisMonth(c.bggUser, playCounts);
+    await sleep(1500);
+  }
+  console.log(`  ${playCounts.size} games played this month`);
+
+  // 4) stitch owners + plays back on and sort by rank
   const games = allIds
     .map((id) => {
       const d = details.get(id);
       if (!d) return null;
-      return { ...d, owners: [...ownersById.get(id)].sort() };
+      return { ...d, playsThisMonth: playCounts.get(id) || 0, owners: [...ownersById.get(id)].sort() };
     })
     .filter(Boolean)
     .sort((a, b) => (a.rank || 99999) - (b.rank || 99999) || (b.rating || 0) - (a.rating || 0));
