@@ -50,7 +50,10 @@ leave nothing dims and turns red, but stays clickable.
 
 Missing BGG data never silently drops a game. An unrated weight passes any
 complexity bucket, an unknown play time passes any time cap, and a game with no
-player poll falls back to its box player range.
+player poll falls back to its box player range. It does cost a game in the
+ranking though: once you set a time limit, a game whose length BGG does not know
+sorts below every game we can actually place, since it cannot be recommended as
+a good use of your evening.
 
 ---
 
