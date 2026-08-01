@@ -7,6 +7,15 @@
     <meta name="description" content="Filter your BoardGameGeek collections down to the one game you should play tonight." />
     <meta name="theme-color" content="#f4efe6" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%99%9E%3C/text%3E%3C/svg%3E" />
+    <!--
+      Installable as an app. Every path here is relative, so a fork served from
+      a repo subpath resolves them as happily as a custom domain does.
+      iOS ignores the manifest's icons, hence the separate apple-touch-icon.
+    -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Gameknight" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
