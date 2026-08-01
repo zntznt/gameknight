@@ -107,14 +107,19 @@ function answeredWants() {
 const RATED_BUCKETS = WEIGHT_BUCKETS.filter((b) => b.key !== 'any');
 const bandOf = (g) => RATED_BUCKETS.findIndex((b) => g.weight >= b.lo && g.weight < b.hi);
 
+// Same rule as unknown length: an unrated weight still passes the ceiling, but
+// ranks below every game we can actually place, since we cannot claim it is the
+// complexity you asked for. Worse than the largest real band distance.
+const UNRATED_WEIGHT_PENALTY = -RATED_BUCKETS.length;
+
 function weightFit(g) {
   const key = state.constraints.wKey;
   if (key === 'any') return 0; // no preference expressed
   const target = RATED_BUCKETS.findIndex((b) => b.key === key);
   if (target < 0) return 0;
-  if (!g.weight) return -1;
+  if (!g.weight) return UNRATED_WEIGHT_PENALTY;
   const band = bandOf(g);
-  return band < 0 ? -1 : -Math.abs(target - band);
+  return band < 0 ? UNRATED_WEIGHT_PENALTY : -Math.abs(target - band);
 }
 
 // A game's rung is the shortest offered cap it still fits inside, so a 50 minute
