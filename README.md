@@ -53,9 +53,9 @@ because step 2 involves waiting on a human at BGG.
 
 Fork it, or use it as a template. Two things to know straight away:
 
-* **`data/games.json` in this repo is not sample data.** It holds a real 80 game
+* **`data/games.json` in this repo is not sample data.** It holds a real game
   collection. Your fork will show those games until your own fetch overwrites
-  the file in step 5. That is harmless, just surprising.
+  the file in step 5.
 * **GitHub Pages on a private repo needs a paid plan.** If you are on a free
   account, keep the fork public. Your BGG token is not affected by this: it
   lives in an encrypted Actions secret, never in the repo. See
@@ -67,7 +67,7 @@ Since late 2025 the BGG XML API rejects unauthenticated requests with `401`.
 Apply at
 [boardgamegeek.com/using_the_xml_api](https://boardgamegeek.com/using_the_xml_api).
 
-It is an application, not a signup form. You describe what you are building and
+It is an application form. You describe what you are building and
 wait for approval, so start here rather than leaving it to last. A non
 commercial hobby project is exactly what they approve, and there is no fee.
 
@@ -250,7 +250,7 @@ can be both thinky and confrontational without anything breaking.
 
 ## Notes and limits
 
-* **The data is baked weekly, not live.** The UI never implies otherwise.
+* **The data is baked weekly, not live.**
 * **Plays this month** counts plays logged on BGG by everyone, not by you. It is
   a "what is hot right now" signal, matching the other two sorts which are also
   global BGG metrics.
