@@ -161,8 +161,22 @@ export const QUESTIONS = [
         match: (g) => cat(g, 'Animals', 'Environmental', 'Farming', 'Nautical') },
       { id: 'mystery', label: 'Horror & mystery',
         match: (g) => cat(g, 'Horror', 'Zombies', 'Murder', 'Mystery', 'Spies', 'Mafia', 'Deduction', 'Medical') },
-      { id: 'abstract', label: 'Cards & abstract',
-        match: (g) => cat(g, 'Abstract Strategy', 'Card Game', 'Number', 'Puzzle', 'Maze', 'Math', 'Educational') },
+      // 'Card Game' used to be in here, and it does not belong in a question
+      // about worlds: it describes what is in the box, not where the game is
+      // set. It was also doing the mechanics question's job. The option matched
+      // 46 games, 34% of the shelf, and 78% of those were already reachable
+      // through "Deck & bag building", "Drafting & picking" or "Playing a hand
+      // of cards", so answering it a second time here bought nothing.
+      //
+      // What is left is a real answer to "what world": none. No setting, no
+      // story, just structure.
+      //
+      // Two games lose their only theme this way, Fort and Sakura Arms, because
+      // BGG files both under Card Game and nothing else. That is honest rather
+      // than a gap: they genuinely have no theme, and both are still reachable
+      // through the mechanics question.
+      { id: 'abstract', label: 'Abstract & puzzle',
+        match: (g) => cat(g, 'Abstract Strategy', 'Number', 'Puzzle', 'Maze', 'Math', 'Educational') },
       // "Party & pop-culture" was two unrelated wants sharing a chip, and the
       // party half was the smaller one by far: 10 games are actually party or
       // humour, while 30 are licensed worlds. Someone tapping it hoping for
