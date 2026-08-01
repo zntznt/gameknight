@@ -1,5 +1,9 @@
 {
-  "generatedAt": "2026-08-01T00:35:26.098Z",
+  "generatedAt": "2026-08-01T22:21:35.176Z",
+  "site": {
+    "repoUrl": "https://github.com/zntznt/gameknight",
+    "appUrl": "https://zntznt.com/gameknight"
+  },
   "collections": [
     {
       "id": "zntznt",
@@ -69,8 +73,8 @@
         2,
         3
       ],
-      "pollVotes": 2374,
-      "playsThisMonth": 7,
+      "pollVotes": 2375,
+      "playsThisMonth": 190,
       "owners": [
         "zntznt"
       ]
@@ -134,7 +138,7 @@
         4
       ],
       "pollVotes": 1644,
-      "playsThisMonth": 2,
+      "playsThisMonth": 11,
       "owners": [
         "diego"
       ]
@@ -186,8 +190,8 @@
         4,
         6
       ],
-      "pollVotes": 509,
-      "playsThisMonth": 3,
+      "pollVotes": 510,
+      "playsThisMonth": 58,
       "owners": [
         "diego"
       ]
@@ -248,7 +252,7 @@
         6
       ],
       "pollVotes": 681,
-      "playsThisMonth": 0,
+      "playsThisMonth": 25,
       "owners": [
         "diego"
       ]
@@ -299,8 +303,8 @@
         3,
         4
       ],
-      "pollVotes": 2182,
-      "playsThisMonth": 0,
+      "pollVotes": 2183,
+      "playsThisMonth": 94,
       "owners": [
         "zntznt"
       ]
@@ -359,7 +363,7 @@
         4
       ],
       "pollVotes": 873,
-      "playsThisMonth": 0,
+      "playsThisMonth": 23,
       "owners": [
         "zntznt"
       ]
@@ -412,8 +416,8 @@
         4,
         5
       ],
-      "pollVotes": 864,
-      "playsThisMonth": 1,
+      "pollVotes": 865,
+      "playsThisMonth": 23,
       "owners": [
         "diego"
       ]
@@ -470,7 +474,7 @@
         5
       ],
       "pollVotes": 1676,
-      "playsThisMonth": 0,
+      "playsThisMonth": 37,
       "owners": [
         "zntznt"
       ]
@@ -524,8 +528,8 @@
         3,
         4
       ],
-      "pollVotes": 675,
-      "playsThisMonth": 3,
+      "pollVotes": 676,
+      "playsThisMonth": 25,
       "owners": [
         "diego"
       ]
@@ -578,7 +582,7 @@
         4
       ],
       "pollVotes": 1131,
-      "playsThisMonth": 8,
+      "playsThisMonth": 102,
       "owners": [
         "zntznt"
       ]
@@ -622,8 +626,8 @@
         3,
         4
       ],
-      "pollVotes": 336,
-      "playsThisMonth": 0,
+      "pollVotes": 338,
+      "playsThisMonth": 15,
       "owners": [
         "zntznt"
       ]
@@ -676,7 +680,7 @@
         4
       ],
       "pollVotes": 1420,
-      "playsThisMonth": 2,
+      "playsThisMonth": 47,
       "owners": [
         "diego",
         "zntznt"
@@ -727,7 +731,7 @@
         5
       ],
       "pollVotes": 1093,
-      "playsThisMonth": 0,
+      "playsThisMonth": 10,
       "owners": [
         "diego"
       ]
@@ -776,8 +780,8 @@
         3,
         4
       ],
-      "pollVotes": 1123,
-      "playsThisMonth": 1,
+      "pollVotes": 1124,
+      "playsThisMonth": 46,
       "owners": [
         "zntznt"
       ]
@@ -796,7 +800,7 @@
       "minAge": 13,
       "weight": 3.8,
       "rating": 8.1,
-      "rank": 53,
+      "rank": 54,
       "cooperative": false,
       "categories": [
         "Economic",
@@ -831,8 +835,8 @@
         4,
         5
       ],
-      "pollVotes": 629,
-      "playsThisMonth": 0,
+      "pollVotes": 630,
+      "playsThisMonth": 9,
       "owners": [
         "zntznt"
       ]
@@ -881,7 +885,7 @@
         3
       ],
       "pollVotes": 425,
-      "playsThisMonth": 0,
+      "playsThisMonth": 4,
       "owners": [
         "zntznt"
       ]
@@ -900,7 +904,7 @@
       "minAge": 14,
       "weight": 3.4,
       "rating": 7.9,
-      "rank": 85,
+      "rank": 84,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -924,7 +928,7 @@
         2
       ],
       "pollVotes": 424,
-      "playsThisMonth": 0,
+      "playsThisMonth": 8,
       "owners": [
         "zntznt"
       ]
@@ -943,7 +947,7 @@
       "minAge": 14,
       "weight": 2.8,
       "rating": 8.2,
-      "rank": 98,
+      "rank": 97,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -966,7 +970,7 @@
         1
       ],
       "pollVotes": 155,
-      "playsThisMonth": 0,
+      "playsThisMonth": 15,
       "owners": [
         "diego"
       ]
@@ -1012,7 +1016,7 @@
         5
       ],
       "pollVotes": 810,
-      "playsThisMonth": 3,
+      "playsThisMonth": 16,
       "owners": [
         "diego"
       ]
@@ -1056,7 +1060,7 @@
         5
       ],
       "pollVotes": 703,
-      "playsThisMonth": 0,
+      "playsThisMonth": 24,
       "owners": [
         "diego"
       ]
@@ -1106,7 +1110,7 @@
         4
       ],
       "pollVotes": 556,
-      "playsThisMonth": 0,
+      "playsThisMonth": 31,
       "owners": [
         "diego"
       ]
@@ -1125,7 +1129,7 @@
       "minAge": 13,
       "weight": 3.7,
       "rating": 8.3,
-      "rank": 159,
+      "rank": 160,
       "cooperative": true,
       "categories": [
         "Adventure",
@@ -1155,7 +1159,7 @@
         4
       ],
       "pollVotes": 267,
-      "playsThisMonth": 0,
+      "playsThisMonth": 8,
       "owners": [
         "diego"
       ]
@@ -1195,7 +1199,7 @@
         3
       ],
       "pollVotes": 374,
-      "playsThisMonth": 1,
+      "playsThisMonth": 14,
       "owners": [
         "zntznt"
       ]
@@ -1247,7 +1251,7 @@
         4
       ],
       "pollVotes": 2187,
-      "playsThisMonth": 1,
+      "playsThisMonth": 31,
       "owners": [
         "diego",
         "zntznt"
@@ -1267,7 +1271,7 @@
       "minAge": 10,
       "weight": 2.1,
       "rating": 7.6,
-      "rank": 181,
+      "rank": 180,
       "cooperative": false,
       "categories": [
         "Animals",
@@ -1295,8 +1299,8 @@
         3,
         4
       ],
-      "pollVotes": 542,
-      "playsThisMonth": 0,
+      "pollVotes": 543,
+      "playsThisMonth": 17,
       "owners": [
         "zntznt"
       ]
@@ -1388,9 +1392,54 @@
         5
       ],
       "pollVotes": 415,
-      "playsThisMonth": 0,
+      "playsThisMonth": 13,
       "owners": [
         "gabo"
+      ]
+    },
+    {
+      "id": 822,
+      "name": "Carcassonne",
+      "year": 2000,
+      "thumbnail": "https://cf.geekdo-images.com/peUgu3A20LRmAXAMyDQfpQ__small/img/oEEslN-EGqh82sNI6Aj4_MFXYg0=/fit-in/200x150/filters:strip_icc()/pic8621446.jpg",
+      "image": "https://cf.geekdo-images.com/peUgu3A20LRmAXAMyDQfpQ__original/img/bP18m_PYjyFOv1IBGgMOteQUneA=/0x0/filters:format(jpeg)/pic8621446.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 7,
+      "weight": 1.9,
+      "rating": 7.4,
+      "rank": 240,
+      "cooperative": false,
+      "categories": [
+        "Medieval",
+        "Territory Building"
+      ],
+      "mechanics": [
+        "Area Majority / Influence",
+        "Enclosure",
+        "Kill Steal",
+        "Map Addition",
+        "Pattern Building",
+        "Square Grid",
+        "Tile Placement"
+      ],
+      "bestPlayers": [
+        2,
+        3
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 2779,
+      "playsThisMonth": 88,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1407,7 +1456,7 @@
       "minAge": 14,
       "weight": 3.7,
       "rating": 7.5,
-      "rank": 240,
+      "rank": 241,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -1444,54 +1493,9 @@
         6
       ],
       "pollVotes": 1066,
-      "playsThisMonth": 0,
+      "playsThisMonth": 9,
       "owners": [
         "zntznt"
-      ]
-    },
-    {
-      "id": 822,
-      "name": "Carcassonne",
-      "year": 2000,
-      "thumbnail": "https://cf.geekdo-images.com/peUgu3A20LRmAXAMyDQfpQ__small/img/oEEslN-EGqh82sNI6Aj4_MFXYg0=/fit-in/200x150/filters:strip_icc()/pic8621446.jpg",
-      "image": "https://cf.geekdo-images.com/peUgu3A20LRmAXAMyDQfpQ__original/img/bP18m_PYjyFOv1IBGgMOteQUneA=/0x0/filters:format(jpeg)/pic8621446.jpg",
-      "minPlayers": 2,
-      "maxPlayers": 5,
-      "minTime": 30,
-      "maxTime": 45,
-      "playTime": 45,
-      "minAge": 7,
-      "weight": 1.9,
-      "rating": 7.4,
-      "rank": 241,
-      "cooperative": false,
-      "categories": [
-        "Medieval",
-        "Territory Building"
-      ],
-      "mechanics": [
-        "Area Majority / Influence",
-        "Enclosure",
-        "Kill Steal",
-        "Map Addition",
-        "Pattern Building",
-        "Square Grid",
-        "Tile Placement"
-      ],
-      "bestPlayers": [
-        2,
-        3
-      ],
-      "recPlayers": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "pollVotes": 2779,
-      "playsThisMonth": 3,
-      "owners": [
-        "diego"
       ]
     },
     {
@@ -1535,7 +1539,7 @@
         5
       ],
       "pollVotes": 301,
-      "playsThisMonth": 0,
+      "playsThisMonth": 8,
       "owners": [
         "gabo"
       ]
@@ -1588,7 +1592,7 @@
         5
       ],
       "pollVotes": 764,
-      "playsThisMonth": 0,
+      "playsThisMonth": 5,
       "owners": [
         "diego"
       ]
@@ -1632,7 +1636,7 @@
         5
       ],
       "pollVotes": 1208,
-      "playsThisMonth": 1,
+      "playsThisMonth": 36,
       "owners": [
         "diego"
       ]
@@ -1677,7 +1681,7 @@
         1
       ],
       "pollVotes": 248,
-      "playsThisMonth": 0,
+      "playsThisMonth": 8,
       "owners": [
         "zntznt"
       ]
@@ -1719,7 +1723,7 @@
         4
       ],
       "pollVotes": 220,
-      "playsThisMonth": 0,
+      "playsThisMonth": 21,
       "owners": [
         "diego"
       ]
@@ -1738,7 +1742,7 @@
       "minAge": 10,
       "weight": 2.2,
       "rating": 7.5,
-      "rank": 272,
+      "rank": 273,
       "cooperative": false,
       "categories": [
         "Abstract Strategy",
@@ -1766,7 +1770,7 @@
         4
       ],
       "pollVotes": 387,
-      "playsThisMonth": 0,
+      "playsThisMonth": 17,
       "owners": [
         "zntznt"
       ]
@@ -1785,7 +1789,7 @@
       "minAge": 14,
       "weight": 3.8,
       "rating": 8.7,
-      "rank": 281,
+      "rank": 278,
       "cooperative": true,
       "categories": [
         "Exploration",
@@ -1817,7 +1821,7 @@
         5
       ],
       "pollVotes": 96,
-      "playsThisMonth": 3,
+      "playsThisMonth": 19,
       "owners": [
         "diego"
       ]
@@ -1862,8 +1866,8 @@
         7,
         8
       ],
-      "pollVotes": 390,
-      "playsThisMonth": 0,
+      "pollVotes": 391,
+      "playsThisMonth": 27,
       "owners": [
         "diego"
       ]
@@ -1917,7 +1921,7 @@
         12
       ],
       "pollVotes": 317,
-      "playsThisMonth": 0,
+      "playsThisMonth": 18,
       "owners": [
         "diego"
       ]
@@ -1936,7 +1940,7 @@
       "minAge": 14,
       "weight": 3.6,
       "rating": 8.4,
-      "rank": 324,
+      "rank": 319,
       "cooperative": true,
       "categories": [
         "Adventure",
@@ -1966,7 +1970,7 @@
         3
       ],
       "pollVotes": 113,
-      "playsThisMonth": 0,
+      "playsThisMonth": 4,
       "owners": [
         "zntznt"
       ]
@@ -2014,7 +2018,7 @@
         5
       ],
       "pollVotes": 208,
-      "playsThisMonth": 6,
+      "playsThisMonth": 10,
       "owners": [
         "zntznt"
       ]
@@ -2033,7 +2037,7 @@
       "minAge": 14,
       "weight": 3.6,
       "rating": 7.7,
-      "rank": 340,
+      "rank": 338,
       "cooperative": false,
       "categories": [
         "Ancient",
@@ -2061,7 +2065,7 @@
         2
       ],
       "pollVotes": 437,
-      "playsThisMonth": 1,
+      "playsThisMonth": 6,
       "owners": [
         "zntznt"
       ]
@@ -2080,7 +2084,7 @@
       "minAge": 12,
       "weight": 2.9,
       "rating": 8.1,
-      "rank": 375,
+      "rank": 376,
       "cooperative": false,
       "categories": [
         "Ancient",
@@ -2102,7 +2106,7 @@
         1
       ],
       "pollVotes": 100,
-      "playsThisMonth": 0,
+      "playsThisMonth": 7,
       "owners": [
         "zntznt"
       ]
@@ -2150,7 +2154,7 @@
         3
       ],
       "pollVotes": 303,
-      "playsThisMonth": 1,
+      "playsThisMonth": 12,
       "owners": [
         "diego"
       ]
@@ -2246,7 +2250,7 @@
         3
       ],
       "pollVotes": 238,
-      "playsThisMonth": 0,
+      "playsThisMonth": 6,
       "owners": [
         "zntznt"
       ]
@@ -2265,7 +2269,7 @@
       "minAge": 8,
       "weight": 2.6,
       "rating": 7.4,
-      "rank": 420,
+      "rank": 421,
       "cooperative": false,
       "categories": [
         "Collectible Components",
@@ -2295,7 +2299,7 @@
         4
       ],
       "pollVotes": 398,
-      "playsThisMonth": 0,
+      "playsThisMonth": 5,
       "owners": [
         "zntznt"
       ]
@@ -2337,7 +2341,7 @@
         4
       ],
       "pollVotes": 260,
-      "playsThisMonth": 4,
+      "playsThisMonth": 22,
       "owners": [
         "diego"
       ]
@@ -2383,7 +2387,7 @@
         6
       ],
       "pollVotes": 465,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "diego"
       ]
@@ -2402,7 +2406,7 @@
       "minAge": 14,
       "weight": 3.8,
       "rating": 7.8,
-      "rank": 455,
+      "rank": 454,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -2427,7 +2431,7 @@
         2
       ],
       "pollVotes": 178,
-      "playsThisMonth": 1,
+      "playsThisMonth": 5,
       "owners": [
         "zntznt"
       ]
@@ -2446,7 +2450,7 @@
       "minAge": 13,
       "weight": 1.6,
       "rating": 7.2,
-      "rank": 465,
+      "rank": 467,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -2479,7 +2483,7 @@
         10
       ],
       "pollVotes": 517,
-      "playsThisMonth": 1,
+      "playsThisMonth": 3,
       "owners": [
         "diego"
       ]
@@ -2498,7 +2502,7 @@
       "minAge": 14,
       "weight": 2.1,
       "rating": 7.6,
-      "rank": 495,
+      "rank": 490,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -2521,8 +2525,8 @@
         4,
         5
       ],
-      "pollVotes": 122,
-      "playsThisMonth": 1,
+      "pollVotes": 123,
+      "playsThisMonth": 68,
       "owners": [
         "diego"
       ]
@@ -2541,7 +2545,7 @@
       "minAge": 8,
       "weight": 1.5,
       "rating": 7.1,
-      "rank": 501,
+      "rank": 500,
       "cooperative": false,
       "categories": [
         "Dice",
@@ -2569,8 +2573,8 @@
         5,
         6
       ],
-      "pollVotes": 1108,
-      "playsThisMonth": 0,
+      "pollVotes": 1109,
+      "playsThisMonth": 38,
       "owners": [
         "diego"
       ]
@@ -2614,7 +2618,7 @@
         4
       ],
       "pollVotes": 170,
-      "playsThisMonth": 0,
+      "playsThisMonth": 9,
       "owners": [
         "zntznt"
       ]
@@ -2663,7 +2667,7 @@
         6
       ],
       "pollVotes": 192,
-      "playsThisMonth": 2,
+      "playsThisMonth": 8,
       "owners": [
         "gabo"
       ]
@@ -2682,7 +2686,7 @@
       "minAge": 8,
       "weight": 1.7,
       "rating": 7,
-      "rank": 603,
+      "rank": 605,
       "cooperative": true,
       "categories": [
         "Card Game",
@@ -2707,7 +2711,7 @@
         5
       ],
       "pollVotes": 670,
-      "playsThisMonth": 0,
+      "playsThisMonth": 32,
       "owners": [
         "zntznt"
       ]
@@ -2758,7 +2762,7 @@
         5
       ],
       "pollVotes": 286,
-      "playsThisMonth": 0,
+      "playsThisMonth": 7,
       "owners": [
         "diego"
       ]
@@ -2777,7 +2781,7 @@
       "minAge": 10,
       "weight": 2.3,
       "rating": 7.1,
-      "rank": 628,
+      "rank": 624,
       "cooperative": false,
       "categories": [
         "Economic",
@@ -2807,7 +2811,7 @@
         4
       ],
       "pollVotes": 2182,
-      "playsThisMonth": 3,
+      "playsThisMonth": 46,
       "owners": [
         "diego"
       ]
@@ -2826,7 +2830,7 @@
       "minAge": 13,
       "weight": 2.2,
       "rating": 7.6,
-      "rank": 658,
+      "rank": 659,
       "cooperative": true,
       "categories": [
         "Fighting",
@@ -2852,7 +2856,7 @@
         4
       ],
       "pollVotes": 132,
-      "playsThisMonth": 2,
+      "playsThisMonth": 15,
       "owners": [
         "diego",
         "zntznt"
@@ -2872,7 +2876,7 @@
       "minAge": 14,
       "weight": 4.6,
       "rating": 7.7,
-      "rank": 717,
+      "rank": 716,
       "cooperative": false,
       "categories": [
         "Environmental",
@@ -2894,7 +2898,7 @@
         4
       ],
       "pollVotes": 210,
-      "playsThisMonth": 1,
+      "playsThisMonth": 2,
       "owners": [
         "zntznt"
       ]
@@ -2913,7 +2917,7 @@
       "minAge": 13,
       "weight": 1.4,
       "rating": 7,
-      "rank": 721,
+      "rank": 718,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -2939,7 +2943,7 @@
         6
       ],
       "pollVotes": 661,
-      "playsThisMonth": 1,
+      "playsThisMonth": 33,
       "owners": [
         "diego",
         "zntznt"
@@ -2959,7 +2963,7 @@
       "minAge": 14,
       "weight": 3.1,
       "rating": 7.7,
-      "rank": 774,
+      "rank": 771,
       "cooperative": true,
       "categories": [
         "Adventure",
@@ -2992,7 +2996,7 @@
         3
       ],
       "pollVotes": 127,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3,
       "owners": [
         "diego"
       ]
@@ -3011,7 +3015,7 @@
       "minAge": 12,
       "weight": 2.4,
       "rating": 7,
-      "rank": 779,
+      "rank": 780,
       "cooperative": false,
       "categories": [
         "Adventure",
@@ -3040,7 +3044,7 @@
         6
       ],
       "pollVotes": 591,
-      "playsThisMonth": 0,
+      "playsThisMonth": 4,
       "owners": [
         "diego"
       ]
@@ -3059,7 +3063,7 @@
       "minAge": 14,
       "weight": 3.2,
       "rating": 7.4,
-      "rank": 794,
+      "rank": 792,
       "cooperative": false,
       "categories": [
         "Science Fiction"
@@ -3081,8 +3085,8 @@
         5,
         6
       ],
-      "pollVotes": 118,
-      "playsThisMonth": 1,
+      "pollVotes": 119,
+      "playsThisMonth": 4,
       "owners": [
         "zntznt"
       ]
@@ -3101,7 +3105,7 @@
       "minAge": 13,
       "weight": 2.3,
       "rating": 7,
-      "rank": 800,
+      "rank": 801,
       "cooperative": true,
       "categories": [
         "Adventure",
@@ -3131,7 +3135,7 @@
         4
       ],
       "pollVotes": 475,
-      "playsThisMonth": 0,
+      "playsThisMonth": 4,
       "owners": [
         "diego"
       ]
@@ -3150,7 +3154,7 @@
       "minAge": 10,
       "weight": 2.6,
       "rating": 7.8,
-      "rank": 806,
+      "rank": 804,
       "cooperative": true,
       "categories": [
         "Adventure",
@@ -3183,7 +3187,7 @@
         4
       ],
       "pollVotes": 85,
-      "playsThisMonth": 0,
+      "playsThisMonth": 16,
       "owners": [
         "diego"
       ]
@@ -3202,7 +3206,7 @@
       "minAge": 14,
       "weight": 4,
       "rating": 8.5,
-      "rank": 815,
+      "rank": 816,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -3227,7 +3231,7 @@
         3
       ],
       "pollVotes": 99,
-      "playsThisMonth": 0,
+      "playsThisMonth": 4,
       "owners": [
         "zntznt"
       ]
@@ -3246,7 +3250,7 @@
       "minAge": 10,
       "weight": 2.3,
       "rating": 6.9,
-      "rank": 824,
+      "rank": 822,
       "cooperative": false,
       "categories": [
         "Abstract Strategy",
@@ -3270,7 +3274,7 @@
         4
       ],
       "pollVotes": 308,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -3289,7 +3293,7 @@
       "minAge": 10,
       "weight": 2.4,
       "rating": 7.1,
-      "rank": 831,
+      "rank": 829,
       "cooperative": false,
       "categories": [
         "Card Game"
@@ -3310,7 +3314,7 @@
         4
       ],
       "pollVotes": 222,
-      "playsThisMonth": 0,
+      "playsThisMonth": 6,
       "owners": [
         "gabo",
         "zntznt"
@@ -3330,7 +3334,7 @@
       "minAge": 8,
       "weight": 1.7,
       "rating": 6.9,
-      "rank": 858,
+      "rank": 857,
       "cooperative": false,
       "categories": [
         "Travel"
@@ -3354,7 +3358,7 @@
         5
       ],
       "pollVotes": 347,
-      "playsThisMonth": 0,
+      "playsThisMonth": 7,
       "owners": [
         "diego"
       ]
@@ -3373,7 +3377,7 @@
       "minAge": 10,
       "weight": 1.3,
       "rating": 7.1,
-      "rank": 896,
+      "rank": 889,
       "cooperative": false,
       "categories": [
         "Animals",
@@ -3401,7 +3405,7 @@
         4
       ],
       "pollVotes": 135,
-      "playsThisMonth": 1,
+      "playsThisMonth": 27,
       "owners": [
         "gabo"
       ]
@@ -3420,7 +3424,7 @@
       "minAge": 13,
       "weight": 2.8,
       "rating": 7.4,
-      "rank": 931,
+      "rank": 926,
       "cooperative": true,
       "categories": [
         "Animals",
@@ -3447,7 +3451,7 @@
         3
       ],
       "pollVotes": 136,
-      "playsThisMonth": 1,
+      "playsThisMonth": 5,
       "owners": [
         "zntznt"
       ]
@@ -3466,7 +3470,7 @@
       "minAge": 10,
       "weight": 2.3,
       "rating": 7.1,
-      "rank": 964,
+      "rank": 967,
       "cooperative": false,
       "categories": [
         "Dice",
@@ -3494,7 +3498,7 @@
         4
       ],
       "pollVotes": 96,
-      "playsThisMonth": 1,
+      "playsThisMonth": 3,
       "owners": [
         "zntznt"
       ]
@@ -3513,7 +3517,7 @@
       "minAge": 10,
       "weight": 2.5,
       "rating": 7.1,
-      "rank": 972,
+      "rank": 973,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -3538,7 +3542,7 @@
         4
       ],
       "pollVotes": 98,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "diego"
       ]
@@ -3557,7 +3561,7 @@
       "minAge": 14,
       "weight": 3.1,
       "rating": 7.4,
-      "rank": 979,
+      "rank": 980,
       "cooperative": false,
       "categories": [
         "Deduction",
@@ -3585,7 +3589,7 @@
         4
       ],
       "pollVotes": 114,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "diego"
       ]
@@ -3604,7 +3608,7 @@
       "minAge": 10,
       "weight": 1.9,
       "rating": 6.9,
-      "rank": 1006,
+      "rank": 1004,
       "cooperative": false,
       "categories": [
         "Dice",
@@ -3633,7 +3637,7 @@
         6
       ],
       "pollVotes": 181,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "diego"
       ]
@@ -3652,7 +3656,7 @@
       "minAge": 10,
       "weight": 3.3,
       "rating": 7.3,
-      "rank": 1021,
+      "rank": 1020,
       "cooperative": false,
       "categories": [
         "Animals",
@@ -3677,7 +3681,7 @@
         4
       ],
       "pollVotes": 95,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "diego"
       ]
@@ -3696,7 +3700,7 @@
       "minAge": 8,
       "weight": 1.3,
       "rating": 7.3,
-      "rank": 1033,
+      "rank": 1023,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -3717,7 +3721,7 @@
         5
       ],
       "pollVotes": 94,
-      "playsThisMonth": 0,
+      "playsThisMonth": 22,
       "owners": [
         "diego"
       ]
@@ -3767,8 +3771,8 @@
         3,
         4
       ],
-      "pollVotes": 571,
-      "playsThisMonth": 1,
+      "pollVotes": 572,
+      "playsThisMonth": 11,
       "owners": [
         "diego"
       ]
@@ -3787,7 +3791,7 @@
       "minAge": 12,
       "weight": 2,
       "rating": 7.9,
-      "rank": 1088,
+      "rank": 1086,
       "cooperative": false,
       "categories": [
         "Adventure",
@@ -3807,7 +3811,50 @@
         1
       ],
       "pollVotes": 83,
-      "playsThisMonth": 0,
+      "playsThisMonth": 5,
+      "owners": [
+        "zntznt"
+      ]
+    },
+    {
+      "id": 408637,
+      "name": "The Anarchy",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/HJmk-KN7SCLH46kQ1JnkDw__small/img/xyJIOEBvETtxW7L2Vt82yAObBvw=/fit-in/200x150/filters:strip_icc()/pic7908662.jpg",
+      "image": "https://cf.geekdo-images.com/HJmk-KN7SCLH46kQ1JnkDw__original/img/VyLpu7eFwXuQVQUUbrx7vldCPIY=/0x0/filters:format(jpeg)/pic7908662.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 13,
+      "weight": 3.9,
+      "rating": 8.4,
+      "rank": 1125,
+      "cooperative": false,
+      "categories": [
+        "City Building",
+        "Medieval"
+      ],
+      "mechanics": [
+        "Chaining",
+        "Income",
+        "Multi-Use Cards",
+        "Paper-and-Pencil",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Tech Trees / Tech Tracks",
+        "Track Movement"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1,
+        2
+      ],
+      "pollVotes": 77,
+      "playsThisMonth": 6,
       "owners": [
         "zntznt"
       ]
@@ -3855,50 +3902,7 @@
         5
       ],
       "pollVotes": 42,
-      "playsThisMonth": 0,
-      "owners": [
-        "zntznt"
-      ]
-    },
-    {
-      "id": 408637,
-      "name": "The Anarchy",
-      "year": 2025,
-      "thumbnail": "https://cf.geekdo-images.com/HJmk-KN7SCLH46kQ1JnkDw__small/img/xyJIOEBvETtxW7L2Vt82yAObBvw=/fit-in/200x150/filters:strip_icc()/pic7908662.jpg",
-      "image": "https://cf.geekdo-images.com/HJmk-KN7SCLH46kQ1JnkDw__original/img/VyLpu7eFwXuQVQUUbrx7vldCPIY=/0x0/filters:format(jpeg)/pic7908662.jpg",
-      "minPlayers": 1,
-      "maxPlayers": 4,
-      "minTime": 60,
-      "maxTime": 90,
-      "playTime": 90,
-      "minAge": 13,
-      "weight": 3.9,
-      "rating": 8.4,
-      "rank": 1131,
-      "cooperative": false,
-      "categories": [
-        "City Building",
-        "Medieval"
-      ],
-      "mechanics": [
-        "Chaining",
-        "Income",
-        "Multi-Use Cards",
-        "Paper-and-Pencil",
-        "Scenario / Mission / Campaign Game",
-        "Solo / Solitaire Game",
-        "Tech Trees / Tech Tracks",
-        "Track Movement"
-      ],
-      "bestPlayers": [
-        1
-      ],
-      "recPlayers": [
-        1,
-        2
-      ],
-      "pollVotes": 77,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "zntznt"
       ]
@@ -3941,7 +3945,7 @@
         5
       ],
       "pollVotes": 61,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "zntznt"
       ]
@@ -3960,7 +3964,7 @@
       "minAge": 8,
       "weight": 1.2,
       "rating": 6.7,
-      "rank": 1256,
+      "rank": 1255,
       "cooperative": false,
       "categories": [
         "Fantasy"
@@ -3985,7 +3989,7 @@
         8
       ],
       "pollVotes": 319,
-      "playsThisMonth": 0,
+      "playsThisMonth": 14,
       "owners": [
         "diego"
       ]
@@ -4004,7 +4008,7 @@
       "minAge": 14,
       "weight": 3.7,
       "rating": 7.5,
-      "rank": 1329,
+      "rank": 1326,
       "cooperative": false,
       "categories": [
         "Animals",
@@ -4030,7 +4034,7 @@
         3
       ],
       "pollVotes": 98,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3,
       "owners": [
         "diego"
       ]
@@ -4049,7 +4053,7 @@
       "minAge": 0,
       "weight": 3.5,
       "rating": 9.1,
-      "rank": 1381,
+      "rank": 1379,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -4074,7 +4078,7 @@
         2
       ],
       "pollVotes": 14,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "zntznt"
       ]
@@ -4093,7 +4097,7 @@
       "minAge": 8,
       "weight": 1.7,
       "rating": 6.7,
-      "rank": 1425,
+      "rank": 1421,
       "cooperative": true,
       "categories": [
         "Fantasy",
@@ -4121,7 +4125,7 @@
         6
       ],
       "pollVotes": 195,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "diego"
       ]
@@ -4161,7 +4165,7 @@
         4
       ],
       "pollVotes": 68,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3,
       "owners": [
         "gabo"
       ]
@@ -4180,7 +4184,7 @@
       "minAge": 13,
       "weight": 3,
       "rating": 8,
-      "rank": 1588,
+      "rank": 1586,
       "cooperative": true,
       "categories": [
         "Adventure",
@@ -4217,7 +4221,7 @@
         3
       ],
       "pollVotes": 51,
-      "playsThisMonth": 0,
+      "playsThisMonth": 9,
       "owners": [
         "diego"
       ]
@@ -4236,7 +4240,7 @@
       "minAge": 14,
       "weight": 2.2,
       "rating": 7.1,
-      "rank": 1685,
+      "rank": 1683,
       "cooperative": true,
       "categories": [
         "Fantasy",
@@ -4261,7 +4265,7 @@
         5
       ],
       "pollVotes": 62,
-      "playsThisMonth": 0,
+      "playsThisMonth": 4,
       "owners": [
         "zntznt"
       ]
@@ -4280,7 +4284,7 @@
       "minAge": 12,
       "weight": 3.1,
       "rating": 7.5,
-      "rank": 1745,
+      "rank": 1747,
       "cooperative": false,
       "categories": [
         "Ancient",
@@ -4304,7 +4308,7 @@
         4
       ],
       "pollVotes": 79,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -4323,7 +4327,7 @@
       "minAge": 14,
       "weight": 2.1,
       "rating": 7.7,
-      "rank": 1945,
+      "rank": 1949,
       "cooperative": true,
       "categories": [
         "Adventure",
@@ -4349,7 +4353,7 @@
         7
       ],
       "pollVotes": 21,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -4368,7 +4372,7 @@
       "minAge": 10,
       "weight": 2.5,
       "rating": 7.8,
-      "rank": 2068,
+      "rank": 2073,
       "cooperative": true,
       "categories": [
         "Fantasy",
@@ -4390,7 +4394,7 @@
         4
       ],
       "pollVotes": 35,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -4409,7 +4413,7 @@
       "minAge": 14,
       "weight": 3.7,
       "rating": 8.4,
-      "rank": 2196,
+      "rank": 2183,
       "cooperative": true,
       "categories": [
         "Dice",
@@ -4437,8 +4441,8 @@
         3,
         4
       ],
-      "pollVotes": 48,
-      "playsThisMonth": 0,
+      "pollVotes": 49,
+      "playsThisMonth": 6,
       "owners": [
         "diego"
       ]
@@ -4457,7 +4461,7 @@
       "minAge": 11,
       "weight": 2.7,
       "rating": 8.2,
-      "rank": 2239,
+      "rank": 2244,
       "cooperative": false,
       "categories": [
         "Book",
@@ -4503,7 +4507,7 @@
       "minAge": 12,
       "weight": 2,
       "rating": 8.1,
-      "rank": 2430,
+      "rank": 2438,
       "cooperative": false,
       "categories": [
         "Adventure",
@@ -4542,7 +4546,7 @@
       "minAge": 13,
       "weight": 1.6,
       "rating": 6.3,
-      "rank": 2501,
+      "rank": 2497,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -4584,7 +4588,7 @@
       "minAge": 14,
       "weight": 2.3,
       "rating": 7.6,
-      "rank": 2590,
+      "rank": 2596,
       "cooperative": true,
       "categories": [
         "Card Game",
@@ -4609,7 +4613,7 @@
         4
       ],
       "pollVotes": 19,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "gabo"
       ]
@@ -4628,7 +4632,7 @@
       "minAge": 13,
       "weight": 1.8,
       "rating": 6.3,
-      "rank": 2788,
+      "rank": 2789,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -4650,7 +4654,7 @@
         4
       ],
       "pollVotes": 155,
-      "playsThisMonth": 0,
+      "playsThisMonth": 5,
       "owners": [
         "diego"
       ]
@@ -4669,7 +4673,7 @@
       "minAge": 12,
       "weight": 3.8,
       "rating": 8.3,
-      "rank": 2901,
+      "rank": 2910,
       "cooperative": false,
       "categories": [
         "Fighting",
@@ -4690,7 +4694,7 @@
         2
       ],
       "pollVotes": 13,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -4709,7 +4713,7 @@
       "minAge": 12,
       "weight": 2.2,
       "rating": 7.2,
-      "rank": 2928,
+      "rank": 2936,
       "cooperative": true,
       "categories": [
         "Fighting",
@@ -4753,7 +4757,7 @@
       "minAge": 13,
       "weight": 4.6,
       "rating": 9.2,
-      "rank": 2963,
+      "rank": 2945,
       "cooperative": false,
       "categories": [
         "Korean War",
@@ -4794,7 +4798,7 @@
       "minAge": 14,
       "weight": 2.7,
       "rating": 7.2,
-      "rank": 3024,
+      "rank": 3019,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -4818,7 +4822,7 @@
         5
       ],
       "pollVotes": 36,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "diego"
       ]
@@ -4837,7 +4841,7 @@
       "minAge": 12,
       "weight": 3.5,
       "rating": 7.6,
-      "rank": 3114,
+      "rank": 3117,
       "cooperative": false,
       "categories": [
         "Miniatures",
@@ -4921,7 +4925,7 @@
       "minAge": 18,
       "weight": 3,
       "rating": 7.3,
-      "rank": 3534,
+      "rank": 3544,
       "cooperative": true,
       "categories": [
         "Comic Book / Strip",
@@ -4967,7 +4971,7 @@
       "minAge": 14,
       "weight": 2.4,
       "rating": 7.4,
-      "rank": 3549,
+      "rank": 3546,
       "cooperative": true,
       "categories": [
         "Horror",
@@ -4989,7 +4993,7 @@
         4
       ],
       "pollVotes": 23,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "diego"
       ]
@@ -5008,7 +5012,7 @@
       "minAge": 14,
       "weight": 3,
       "rating": 7.5,
-      "rank": 3601,
+      "rank": 3595,
       "cooperative": false,
       "categories": [
         "Card Game"
@@ -5096,7 +5100,7 @@
       "minAge": 0,
       "weight": 2.9,
       "rating": 8.5,
-      "rank": 4806,
+      "rank": 4790,
       "cooperative": false,
       "categories": [
         "Book",
@@ -5135,7 +5139,7 @@
       "minAge": 13,
       "weight": 2.5,
       "rating": 7.8,
-      "rank": 5439,
+      "rank": 5442,
       "cooperative": true,
       "categories": [
         "Horror",
@@ -5187,7 +5191,7 @@
       "minAge": 8,
       "weight": 1.2,
       "rating": 7.5,
-      "rank": 5513,
+      "rank": 5521,
       "cooperative": false,
       "categories": [
         "Action / Dexterity",
@@ -5214,7 +5218,7 @@
         6
       ],
       "pollVotes": 9,
-      "playsThisMonth": 0,
+      "playsThisMonth": 2,
       "owners": [
         "gabo"
       ]
@@ -5233,7 +5237,7 @@
       "minAge": 10,
       "weight": 2.4,
       "rating": 6.3,
-      "rank": 5610,
+      "rank": 5613,
       "cooperative": false,
       "categories": [
         "Animals",
@@ -5272,7 +5276,7 @@
       "minAge": 12,
       "weight": 1.7,
       "rating": 6.3,
-      "rank": 6201,
+      "rank": 6170,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -5315,7 +5319,7 @@
       "minAge": 14,
       "weight": 2.9,
       "rating": 8.1,
-      "rank": 6580,
+      "rank": 6537,
       "cooperative": false,
       "categories": [
         "Miniatures",
@@ -5356,7 +5360,7 @@
       "minAge": 14,
       "weight": 2.2,
       "rating": 8.4,
-      "rank": 6636,
+      "rank": 6642,
       "cooperative": false,
       "categories": [
         "Dice",
@@ -5381,7 +5385,7 @@
         2
       ],
       "pollVotes": 3,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -5400,7 +5404,7 @@
       "minAge": 14,
       "weight": 3.6,
       "rating": 8.1,
-      "rank": 6748,
+      "rank": 6753,
       "cooperative": false,
       "categories": [
         "Wargame",
@@ -5439,7 +5443,7 @@
       "minAge": 8,
       "weight": 1.5,
       "rating": 5.9,
-      "rank": 7120,
+      "rank": 7142,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -5477,7 +5481,7 @@
       "minAge": 10,
       "weight": 2.2,
       "rating": 6,
-      "rank": 7299,
+      "rank": 7298,
       "cooperative": false,
       "categories": [
         "Movies / TV / Radio theme",
@@ -5516,7 +5520,7 @@
       "minAge": 13,
       "weight": 4,
       "rating": 8.6,
-      "rank": 7417,
+      "rank": 7426,
       "cooperative": false,
       "categories": [
         "Aviation / Flight",
@@ -5559,7 +5563,7 @@
       "minAge": 14,
       "weight": 3.9,
       "rating": 8.6,
-      "rank": 8172,
+      "rank": 8176,
       "cooperative": false,
       "categories": [
         "Wargame",
@@ -5597,7 +5601,7 @@
       "minAge": 12,
       "weight": 1.5,
       "rating": 6.9,
-      "rank": 10483,
+      "rank": 10460,
       "cooperative": false,
       "categories": [
         "Adventure",
@@ -5640,7 +5644,7 @@
       "minAge": 14,
       "weight": 3,
       "rating": 8.6,
-      "rank": 11394,
+      "rank": 11406,
       "cooperative": false,
       "categories": [
         "Fantasy",
@@ -5660,7 +5664,7 @@
         2
       ],
       "pollVotes": 1,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "diego"
       ]
@@ -5679,7 +5683,7 @@
       "minAge": 10,
       "weight": 2.6,
       "rating": 7.2,
-      "rank": 11678,
+      "rank": 11684,
       "cooperative": true,
       "categories": [
         "Dice",
@@ -5730,7 +5734,7 @@
       "minAge": 10,
       "weight": 2,
       "rating": 7.1,
-      "rank": 12145,
+      "rank": 11985,
       "cooperative": false,
       "categories": [
         "Bluffing",
@@ -5771,7 +5775,7 @@
       "minAge": 13,
       "weight": 1.3,
       "rating": 7.3,
-      "rank": 14050,
+      "rank": 13905,
       "cooperative": false,
       "categories": [
         "Animals",
@@ -5813,7 +5817,7 @@
       "minAge": 0,
       "weight": 0,
       "rating": 7.9,
-      "rank": 14886,
+      "rank": 14893,
       "cooperative": false,
       "categories": [
         "Fighting",
@@ -5854,7 +5858,7 @@
       "minAge": 17,
       "weight": 1.2,
       "rating": 5.7,
-      "rank": 17137,
+      "rank": 17437,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -5883,7 +5887,7 @@
         10
       ],
       "pollVotes": 223,
-      "playsThisMonth": 0,
+      "playsThisMonth": 3,
       "owners": [
         "zntznt"
       ]
@@ -5902,7 +5906,7 @@
       "minAge": 8,
       "weight": 2.2,
       "rating": 7,
-      "rank": 18004,
+      "rank": 18019,
       "cooperative": false,
       "categories": [
         "Card Game",
@@ -5944,7 +5948,7 @@
       "minAge": 15,
       "weight": 1.5,
       "rating": 6.8,
-      "rank": 20484,
+      "rank": 20497,
       "cooperative": false,
       "categories": [
         "Adventure",
@@ -5979,7 +5983,7 @@
       "minAge": 12,
       "weight": 1.1,
       "rating": 5.8,
-      "rank": 25077,
+      "rank": 24891,
       "cooperative": false,
       "categories": [
         "Card Game",
