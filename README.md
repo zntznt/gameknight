@@ -246,18 +246,25 @@ BGG_TOKEN=your_token_here npm run fetch
 
 ### Linting
 
-ESLint (JS) and Stylelint (CSS) run on every push and pull request via
-[`.github/workflows/lint.yml`](.github/workflows/lint.yml). Both are dev only:
-nothing extra reaches the browser.
+ESLint (JS), Stylelint (CSS) and html-validate (HTML) run on every push and
+pull request via [`.github/workflows/lint.yml`](.github/workflows/lint.yml).
+All three are dev only: nothing extra reaches the browser.
 
 ```bash
-npm run lint       # check JS and CSS
-npm run lint:fix   # autofix what is safely fixable
+npm run lint       # check JS, CSS and HTML
+npm run lint:fix   # autofix what is safely fixable in JS and CSS
 ```
 
 The rules favour catching bugs over enforcing style. The CSS config disables the
 cosmetic rules that would fight the stylesheet's compact one line declarations,
-and the JS config keeps the correctness ones.
+the JS config keeps the correctness ones, and the HTML config in
+[`.htmlvalidate.json`](.htmlvalidate.json) keeps the structural checks that
+matter for a hand maintained page: unclosed tags, duplicate ids, images with no
+alt text, elements nested where they are not allowed. Its one cosmetic rule is
+set to match the markup rather than rewrite it, since `index.html` closes its
+void elements and there is no reason to argue about that.
+
+html-validate has no autofix, so `lint:fix` covers JS and CSS only.
 
 ---
 
