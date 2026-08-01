@@ -44,8 +44,10 @@ const SECTIONS = ['players', 'fit', 'weight', 'time', 'age', 'sort'].reduce(
   {}
 );
 
-// The time caps section 08 offers, ascending. Shared by the chips and by
-// timeFit so the two cannot drift apart.
+// The time caps the time limit offers, ascending. Shared by the chips and by
+// timeFit so the two cannot drift apart. Named rather than numbered on
+// purpose: SECTIONS derives the number from QUESTIONS.length, so adding a want
+// renumbers this section and any number written here goes quietly wrong.
 const TIME_CAPS = [15, 30, 45, 60, 90, 120, 180];
 // A game's length, preferring the headline playing time.
 const timeOf = (g) => g.playTime || g.maxTime || g.minTime || 0;

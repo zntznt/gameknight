@@ -258,8 +258,10 @@ export const QUESTIONS = [
   },
 ];
 
-// Complexity buckets for section 07, ascending. Half-open [lo, hi) so none
-// overlap, and unrated weight (0) passes every bucket.
+// Complexity buckets for the weight limit, ascending. Half-open [lo, hi) so
+// none overlap, and unrated weight (0) passes every bucket. Named rather than
+// numbered: app.js derives section numbers from QUESTIONS.length, so adding a
+// want to this file renumbers the limits and a number written here rots.
 //
 // Note how these are USED: `hi` acts as a ceiling, not a band. Picking "Medium"
 // keeps everything medium and lighter, because the question asks how much brain

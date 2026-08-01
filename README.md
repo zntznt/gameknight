@@ -270,7 +270,7 @@ BGG XML API  ->  (GitHub Action, weekly)  ->  data/games.json  ->  static page
 | File | Role |
 | --- | --- |
 | `index.html` | Page shell: header, the roots the app renders into, font links. |
-| `js/app.js` | The whole app: state, the eleven sections, fit scoring, verdict view, quick look sheet, guided scroll. |
+| `js/app.js` | The whole app: state, the twelve sections, fit scoring, verdict view, quick look sheet, guided scroll. |
 | `js/questions.js` | **The wants.** Every question and the `match(game)` predicate behind each answer, plus the complexity buckets. |
 | `js/data.js` | Loads `games.json`, builds the pool from the selected shelves, applies predicates. |
 | `css/styles.css` | All styling. Fluid, no media queries. |

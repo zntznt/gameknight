@@ -216,7 +216,7 @@ a:hover { color: var(--accent); }
 }
 
 .gk-section { display: grid; gap: 12px; }
-/* Sections 01–10 are separated from the one above; 00 sits flush. */
+/* Sections 01–11 are separated from the one above; 00 sits flush. */
 .gk-section + .gk-section { border-top: 1px solid var(--line); padding-top: 24px; }
 
 .gk-sechead { display: flex; align-items: center; gap: 10px; }
@@ -315,7 +315,7 @@ a:hover { color: var(--accent); }
 }
 .gk-shelf__link:hover { border-color: var(--ink); color: var(--accent); }
 
-/* --- 01–04 wants ---------------------------------------------------------- */
+/* --- 01–05 wants ---------------------------------------------------------- */
 /* --cols caps how many columns may form, so a question never ends on a lonely
    orphan chip. app.js sets it to a divisor of that question's option count when
    one exists; the 99 default means "no cap" and leaves the plain auto-fit
@@ -353,7 +353,7 @@ a:hover { color: var(--accent); }
 .gk-option--on .gk-option__count { color: var(--paper); }
 .gk-option__count--zero { color: var(--accent); }
 
-/* --- 05–10 limits --------------------------------------------------------- */
+/* --- 06–11 limits --------------------------------------------------------- */
 /* auto-fit so chips fill the row evenly rather than trailing off ragged-left */
 .gk-chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(72px, 1fr)); gap: 6px; }
 .gk-chip {
