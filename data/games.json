@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T23:17:30.727Z",
+  "generatedAt": "2026-08-01T00:35:26.098Z",
   "collections": [
     {
       "id": "zntznt",
@@ -11,6 +11,12 @@
       "id": "gabo",
       "label": "Gabo",
       "bggUser": "AranGba",
+      "avatar": ""
+    },
+    {
+      "id": "diego",
+      "label": "Diego",
+      "bggUser": "Niv_Mizzet",
       "avatar": ""
     }
   ],
@@ -64,9 +70,187 @@
         3
       ],
       "pollVotes": 2374,
-      "playsThisMonth": 8484,
+      "playsThisMonth": 7,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 174430,
+      "name": "Gloomhaven",
+      "year": 2017,
+      "thumbnail": "https://cf.geekdo-images.com/sZYp_3BTDGjh2unaZfZmuA__small/img/veqFeP4d_3zNhFc3GNBkV95rBEQ=/fit-in/200x150/filters:strip_icc()/pic2437871.jpg",
+      "image": "https://cf.geekdo-images.com/sZYp_3BTDGjh2unaZfZmuA__original/img/7d-lj5Gd1e8PFnD97LYFah2c45M=/0x0/filters:format(jpeg)/pic2437871.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 3.9,
+      "rating": 8.5,
+      "rank": 4,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Exploration",
+        "Fantasy",
+        "Fighting",
+        "Miniatures"
+      ],
+      "mechanics": [
+        "Action Queue",
+        "Action Retrieval",
+        "Campaign / Battle Card Driven",
+        "Card Play Conflict Resolution",
+        "Communication Limits",
+        "Cooperative Game",
+        "Critical Hits and Failures",
+        "Deck Construction",
+        "Grid Movement",
+        "Hand Management",
+        "Hexagon Grid",
+        "Legacy Game",
+        "Line of Sight",
+        "Modular Board",
+        "Multi-Use Cards",
+        "Narrative Choice / Paragraph",
+        "Once-Per-Game Abilities",
+        "Role Playing",
+        "Scenario / Mission / Campaign Game",
+        "Simultaneous Action Selection",
+        "Solo / Solitaire Game",
+        "Storytelling",
+        "Tags",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 1644,
+      "playsThisMonth": 2,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 397598,
+      "name": "Dune: Imperium – Uprising",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/UVUkjMV_Q2paVUIUP30Vvw__small/img/H6qmxJrRFjtOAPZOfDoZ480-46I=/fit-in/200x150/filters:strip_icc()/pic7664424.jpg",
+      "image": "https://cf.geekdo-images.com/UVUkjMV_Q2paVUIUP30Vvw__original/img/BoUtCkd1NRO0bR1R5EwL51xIuXA=/0x0/filters:format(jpeg)/pic7664424.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 6,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 13,
+      "weight": 3.5,
+      "rating": 8.7,
+      "rank": 5,
+      "cooperative": false,
+      "categories": [
+        "Movies / TV / Radio theme",
+        "Novel-based",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Automatic Resource Growth",
+        "Card Play Conflict Resolution",
+        "Contracts",
+        "Deck, Bag, and Pool Building",
+        "Delayed Purchase",
+        "Force Commitment",
+        "Increase Value of Unchosen Resources",
+        "Multi-Use Cards",
+        "Open Drafting",
+        "Solo / Solitaire Game",
+        "Team-Based Game",
+        "Turn Order: Progressive",
+        "Variable Player Powers",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "pollVotes": 509,
+      "playsThisMonth": 3,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 233078,
+      "name": "Twilight Imperium: Fourth Edition",
+      "year": 2017,
+      "thumbnail": "https://cf.geekdo-images.com/_Ppn5lssO5OaildSE-FgFA__small/img/lfEukJE0JsoZZObaF9K9YnFp62E=/fit-in/200x150/filters:strip_icc()/pic3727516.jpg",
+      "image": "https://cf.geekdo-images.com/_Ppn5lssO5OaildSE-FgFA__original/img/kVpZ0Maa_LeQGWxOqsYKP3N4KUY=/0x0/filters:format(jpeg)/pic3727516.jpg",
+      "minPlayers": 3,
+      "maxPlayers": 6,
+      "minTime": 240,
+      "maxTime": 480,
+      "playTime": 480,
+      "minAge": 14,
+      "weight": 4.4,
+      "rating": 8.6,
+      "rank": 7,
+      "cooperative": false,
+      "categories": [
+        "Civilization",
+        "Economic",
+        "Exploration",
+        "Negotiation",
+        "Political",
+        "Science Fiction",
+        "Space Exploration",
+        "Territory Building",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Action Drafting",
+        "Area-Impulse",
+        "Dice Rolling",
+        "Follow",
+        "Grid Movement",
+        "Hexagon Grid",
+        "Increase Value of Unchosen Resources",
+        "King of the Hill",
+        "Modular Board",
+        "Movement Points",
+        "Race",
+        "Tech Trees / Tech Tracks",
+        "Trading",
+        "Variable Phase Order",
+        "Variable Player Powers",
+        "Variable Set-up",
+        "Voting"
+      ],
+      "bestPlayers": [
+        6
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 681,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -116,7 +300,7 @@
         4
       ],
       "pollVotes": 2182,
-      "playsThisMonth": 3966,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -175,9 +359,63 @@
         4
       ],
       "pollVotes": 873,
-      "playsThisMonth": 868,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 167355,
+      "name": "Nemesis",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/4KSmlm59w0GwLIlgDnJDAQ__small/img/P20AxSqNHOEM5qT_doqeeE7JAHQ=/fit-in/200x150/filters:strip_icc()/pic8211747.png",
+      "image": "https://cf.geekdo-images.com/4KSmlm59w0GwLIlgDnJDAQ__original/img/f0VmAKrPrMRQOUcOJHekRvuysDE=/0x0/filters:format(png)/pic8211747.png",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 90,
+      "maxTime": 180,
+      "playTime": 180,
+      "minAge": 12,
+      "weight": 3.5,
+      "rating": 8.2,
+      "rank": 25,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Horror",
+        "Miniatures",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Campaign / Battle Card Driven",
+        "Cooperative Game",
+        "Dice Rolling",
+        "Hand Management",
+        "Hidden Roles",
+        "Interrupts",
+        "Modular Board",
+        "Player Elimination",
+        "Semi-Cooperative Game",
+        "Solo / Solitaire Game",
+        "Team-Based Game",
+        "Traitor Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4,
+        5
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 864,
+      "playsThisMonth": 1,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -232,9 +470,64 @@
         5
       ],
       "pollVotes": 1676,
-      "playsThisMonth": 1463,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 177736,
+      "name": "A Feast for Odin",
+      "year": 2016,
+      "thumbnail": "https://cf.geekdo-images.com/s9oGMCo1fcfV4Dk3EnqLZw__small/img/AKxMMz2DTbBrEynhDROla8fdjJ4=/fit-in/200x150/filters:strip_icc()/pic3146943.png",
+      "image": "https://cf.geekdo-images.com/s9oGMCo1fcfV4Dk3EnqLZw__original/img/N1X-0JB1GapFVhl98nP4tNFXMcM=/0x0/filters:format(png)/pic3146943.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 12,
+      "weight": 3.9,
+      "rating": 8.2,
+      "rank": 27,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Farming",
+        "Industry / Manufacturing",
+        "Medieval",
+        "Puzzle"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Automatic Resource Growth",
+        "Dice Rolling",
+        "Enclosure",
+        "Grid Coverage",
+        "Hand Management",
+        "Income",
+        "Layering",
+        "Pattern Recognition",
+        "Push Your Luck",
+        "Solo / Solitaire Game",
+        "Square Grid",
+        "Tile Placement",
+        "Turn Order: Pass Order",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 675,
+      "playsThisMonth": 3,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -285,7 +578,7 @@
         4
       ],
       "pollVotes": 1131,
-      "playsThisMonth": 3027,
+      "playsThisMonth": 8,
       "owners": [
         "zntznt"
       ]
@@ -330,7 +623,7 @@
         4
       ],
       "pollVotes": 336,
-      "playsThisMonth": 619,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -383,9 +676,60 @@
         4
       ],
       "pollVotes": 1420,
-      "playsThisMonth": 2085,
+      "playsThisMonth": 2,
       "owners": [
+        "diego",
         "zntznt"
+      ]
+    },
+    {
+      "id": 120677,
+      "name": "Terra Mystica",
+      "year": 2012,
+      "thumbnail": "https://cf.geekdo-images.com/bre12I1YiXkZr7elvriz4A__small/img/GW-ip0dfeAee7KQqJ04SRZxF1lg=/fit-in/200x150/filters:strip_icc()/pic5375624.jpg",
+      "image": "https://cf.geekdo-images.com/bre12I1YiXkZr7elvriz4A__original/img/_dZS7fVfdc4DhJPbqnDpwTT4uF0=/0x0/filters:format(jpeg)/pic5375624.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 150,
+      "playTime": 150,
+      "minAge": 12,
+      "weight": 4,
+      "rating": 8,
+      "rank": 36,
+      "cooperative": false,
+      "categories": [
+        "Civilization",
+        "Economic",
+        "Fantasy",
+        "Territory Building"
+      ],
+      "mechanics": [
+        "Chaining",
+        "End Game Bonuses",
+        "Hexagon Grid",
+        "Income",
+        "Increase Value of Unchosen Resources",
+        "Network and Route Building",
+        "Tech Trees / Tech Tracks",
+        "Turn Order: Pass Order",
+        "Variable Player Powers",
+        "Variable Set-up",
+        "Victory Points as a Resource"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 1093,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -433,7 +777,7 @@
         4
       ],
       "pollVotes": 1123,
-      "playsThisMonth": 1555,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -488,7 +832,7 @@
         5
       ],
       "pollVotes": 629,
-      "playsThisMonth": 530,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -537,7 +881,7 @@
         3
       ],
       "pollVotes": 425,
-      "playsThisMonth": 276,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -580,9 +924,240 @@
         2
       ],
       "pollVotes": 424,
-      "playsThisMonth": 500,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 277659,
+      "name": "Final Girl",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/TUtzY-F7gKTIKm9y8e1AQw__small/img/CVgcWusAt0oVteoy0XYmsFmhfQY=/fit-in/200x150/filters:strip_icc()/pic6520382.jpg",
+      "image": "https://cf.geekdo-images.com/TUtzY-F7gKTIKm9y8e1AQw__original/img/vpBmnZOOyLZA4va7N6S8j9NyGPQ=/0x0/filters:format(jpeg)/pic6520382.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 1,
+      "minTime": 20,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 14,
+      "weight": 2.8,
+      "rating": 8.2,
+      "rank": 98,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Fantasy",
+        "Horror"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Hand Management",
+        "Pick-up and Deliver",
+        "Push Your Luck",
+        "Solo / Solitaire Game",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        1
+      ],
+      "recPlayers": [
+        1
+      ],
+      "pollVotes": 155,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 110327,
+      "name": "Lords of Waterdeep",
+      "year": 2012,
+      "thumbnail": "https://cf.geekdo-images.com/DFZlakC9Lv8cB5Co5z3meA__small/img/zioDxFvYNCzSbh09ibB6arS017w=/fit-in/200x150/filters:strip_icc()/pic9230112.jpg",
+      "image": "https://cf.geekdo-images.com/DFZlakC9Lv8cB5Co5z3meA__original/img/zBcLeKy1quxQsUL3IWfXXBMvpqM=/0x0/filters:format(jpeg)/pic9230112.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 12,
+      "weight": 2.4,
+      "rating": 7.7,
+      "rank": 107,
+      "cooperative": false,
+      "categories": [
+        "City Building",
+        "Fantasy"
+      ],
+      "mechanics": [
+        "Contracts",
+        "Hidden Roles",
+        "Increase Value of Unchosen Resources",
+        "Ownership",
+        "Set Collection",
+        "Take That",
+        "Turn Order: Claim Action",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3,
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 810,
+      "playsThisMonth": 3,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Ra",
+      "year": 1999,
+      "thumbnail": "https://cf.geekdo-images.com/k7lG683LBZdvFyS-FH-MpA__small/img/6KTtiknxxGwd0ARKrlsdoXFtHfI=/fit-in/200x150/filters:strip_icc()/pic6746812.png",
+      "image": "https://cf.geekdo-images.com/k7lG683LBZdvFyS-FH-MpA__original/img/hEqkeRnhyNLxeryIIdOnAHdItfo=/0x0/filters:format(png)/pic6746812.png",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 12,
+      "weight": 2.3,
+      "rating": 7.7,
+      "rank": 113,
+      "cooperative": false,
+      "categories": [
+        "Ancient",
+        "Mythology"
+      ],
+      "mechanics": [
+        "Auction / Bidding",
+        "Auction: Once Around",
+        "Closed Economy Auction",
+        "Constrained Bidding",
+        "Hidden Victory Points",
+        "Push Your Luck",
+        "Set Collection"
+      ],
+      "bestPlayers": [
+        3,
+        4
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 703,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 217372,
+      "name": "The Quest for El Dorado",
+      "year": 2017,
+      "thumbnail": "https://cf.geekdo-images.com/b5VyYjNfAxJ4Z-Dx2UWlqg__small/img/TB_X7b0PIfykfnI12rm3bt6rnGY=/fit-in/200x150/filters:strip_icc()/pic7945692.jpg",
+      "image": "https://cf.geekdo-images.com/b5VyYjNfAxJ4Z-Dx2UWlqg__original/img/-GqQ0EOfg9e3yFVpKgJbPdlunso=/0x0/filters:format(jpeg)/pic7945692.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 10,
+      "weight": 1.9,
+      "rating": 7.7,
+      "rank": 122,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Exploration"
+      ],
+      "mechanics": [
+        "Deck, Bag, and Pool Building",
+        "Delayed Purchase",
+        "Grid Movement",
+        "Hand Management",
+        "Hexagon Grid",
+        "Modular Board",
+        "Multi-Use Cards",
+        "Once-Per-Game Abilities",
+        "Open Drafting",
+        "Race",
+        "Resource to Move",
+        "Variable Set-up",
+        "Zone of Control"
+      ],
+      "bestPlayers": [
+        2,
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 556,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 325494,
+      "name": "ISS Vanguard",
+      "year": 2022,
+      "thumbnail": "https://cf.geekdo-images.com/1ySeZNVkVwTvqykMGtHFFQ__small/img/pXp7JQo64YalithQyDM7tufyasA=/fit-in/200x150/filters:strip_icc()/pic7245199.jpg",
+      "image": "https://cf.geekdo-images.com/1ySeZNVkVwTvqykMGtHFFQ__original/img/WMa7R2ViiGzzWpKWEdJAOv518PU=/0x0/filters:format(jpeg)/pic7245199.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 90,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 13,
+      "weight": 3.7,
+      "rating": 8.3,
+      "rank": 159,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Exploration",
+        "Novel-based",
+        "Science Fiction",
+        "Space Exploration"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Dice Rolling",
+        "Narrative Choice / Paragraph",
+        "Open Drafting",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Storytelling",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        1,
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 267,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -620,7 +1195,7 @@
         3
       ],
       "pollVotes": 374,
-      "playsThisMonth": 566,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -672,8 +1247,9 @@
         4
       ],
       "pollVotes": 2187,
-      "playsThisMonth": 1060,
+      "playsThisMonth": 1,
       "owners": [
+        "diego",
         "zntznt"
       ]
     },
@@ -720,7 +1296,7 @@
         4
       ],
       "pollVotes": 542,
-      "playsThisMonth": 470,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -767,7 +1343,7 @@
         4
       ],
       "pollVotes": 454,
-      "playsThisMonth": 46,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -812,7 +1388,7 @@
         5
       ],
       "pollVotes": 415,
-      "playsThisMonth": 306,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
       ]
@@ -868,9 +1444,54 @@
         6
       ],
       "pollVotes": 1066,
-      "playsThisMonth": 81,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 822,
+      "name": "Carcassonne",
+      "year": 2000,
+      "thumbnail": "https://cf.geekdo-images.com/peUgu3A20LRmAXAMyDQfpQ__small/img/oEEslN-EGqh82sNI6Aj4_MFXYg0=/fit-in/200x150/filters:strip_icc()/pic8621446.jpg",
+      "image": "https://cf.geekdo-images.com/peUgu3A20LRmAXAMyDQfpQ__original/img/bP18m_PYjyFOv1IBGgMOteQUneA=/0x0/filters:format(jpeg)/pic8621446.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 7,
+      "weight": 1.9,
+      "rating": 7.4,
+      "rank": 241,
+      "cooperative": false,
+      "categories": [
+        "Medieval",
+        "Territory Building"
+      ],
+      "mechanics": [
+        "Area Majority / Influence",
+        "Enclosure",
+        "Kill Steal",
+        "Map Addition",
+        "Pattern Building",
+        "Square Grid",
+        "Tile Placement"
+      ],
+      "bestPlayers": [
+        2,
+        3
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 2779,
+      "playsThisMonth": 3,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -914,9 +1535,106 @@
         5
       ],
       "pollVotes": 301,
-      "playsThisMonth": 308,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
+      ]
+    },
+    {
+      "id": 150376,
+      "name": "Dead of Winter: A Crossroads Game",
+      "year": 2014,
+      "thumbnail": "https://cf.geekdo-images.com/g4mV4BH-ZrhMUVgil-yV1A__small/img/foFGN8KwmN8BaYNpolq0HcMba4M=/fit-in/200x150/filters:strip_icc()/pic3016500.jpg",
+      "image": "https://cf.geekdo-images.com/g4mV4BH-ZrhMUVgil-yV1A__original/img/NjrnSg1aeia8I4eETDU3I1Br7a8=/0x0/filters:format(jpeg)/pic3016500.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 13,
+      "weight": 3,
+      "rating": 7.4,
+      "rank": 255,
+      "cooperative": true,
+      "categories": [
+        "Bluffing",
+        "Deduction",
+        "Horror",
+        "Science Fiction",
+        "Zombies"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Area Movement",
+        "Dice Rolling",
+        "Hand Management",
+        "Narrative Choice / Paragraph",
+        "Push Your Luck",
+        "Scenario / Mission / Campaign Game",
+        "Semi-Cooperative Game",
+        "Storytelling",
+        "Trading",
+        "Traitor Game",
+        "Turn Order: Progressive",
+        "Variable Player Powers",
+        "Voting"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 764,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 9209,
+      "name": "Ticket to Ride",
+      "year": 2004,
+      "thumbnail": "https://cf.geekdo-images.com/kdWYkW-7AqG63HhqPL6ekA__small/img/5G46jv8MFh_BfX67iMSouTMhKxc=/fit-in/200x150/filters:strip_icc()/pic8937637.jpg",
+      "image": "https://cf.geekdo-images.com/kdWYkW-7AqG63HhqPL6ekA__original/img/rWF8r4JXXCQQ7QhiWHhmT-rQ3Pc=/0x0/filters:format(jpeg)/pic8937637.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 30,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 8,
+      "weight": 1.8,
+      "rating": 7.4,
+      "rank": 262,
+      "cooperative": false,
+      "categories": [
+        "Trains"
+      ],
+      "mechanics": [
+        "Connections",
+        "Contracts",
+        "End Game Bonuses",
+        "Hand Management",
+        "Network and Route Building",
+        "Open Drafting",
+        "Push Your Luck",
+        "Set Collection"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 1208,
+      "playsThisMonth": 1,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -959,9 +1677,51 @@
         1
       ],
       "pollVotes": 248,
-      "playsThisMonth": 415,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 295486,
+      "name": "My City",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/fz4aYmycg9baQlm_DzwyKA__small/img/j66PBN_vi0zLs7c-zR-r2NkUT2g=/fit-in/200x150/filters:strip_icc()/pic7443423.jpg",
+      "image": "https://cf.geekdo-images.com/fz4aYmycg9baQlm_DzwyKA__original/img/TvWwknCLoPNxx3uIOhlCg-9F1mM=/0x0/filters:format(jpeg)/pic7443423.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 10,
+      "weight": 2,
+      "rating": 7.6,
+      "rank": 270,
+      "cooperative": false,
+      "categories": [
+        "City Building"
+      ],
+      "mechanics": [
+        "Bingo",
+        "Catch the Leader",
+        "Grid Coverage",
+        "Legacy Game",
+        "Pattern Building",
+        "Scenario / Mission / Campaign Game",
+        "Tile Placement"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 220,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1006,9 +1766,160 @@
         4
       ],
       "pollVotes": 387,
-      "playsThisMonth": 749,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 381248,
+      "name": "Nemesis: Retaliation",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/bt-s6gbhhI46VSIgsxyOIw__small/img/TKmW4GDTIqDq242s222Viq_R4po=/fit-in/200x150/filters:strip_icc()/pic7375234.jpg",
+      "image": "https://cf.geekdo-images.com/bt-s6gbhhI46VSIgsxyOIw__original/img/xYe36FgPjJnSkBjIG3lryToA82I=/0x0/filters:format(jpeg)/pic7375234.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 120,
+      "maxTime": 180,
+      "playTime": 180,
+      "minAge": 14,
+      "weight": 3.8,
+      "rating": 8.7,
+      "rank": 281,
+      "cooperative": true,
+      "categories": [
+        "Exploration",
+        "Fighting",
+        "Horror",
+        "Miniatures",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Dice Rolling",
+        "Hidden Roles",
+        "Modular Board",
+        "Player Elimination",
+        "Semi-Cooperative Game",
+        "Solo / Solitaire Game",
+        "Traitor Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4,
+        5
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 96,
+      "playsThisMonth": 3,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 192291,
+      "name": "Sushi Go Party!",
+      "year": 2016,
+      "thumbnail": "https://cf.geekdo-images.com/2f9uTicUSXkdPp2Yks6zFw__small/img/_mXR9Tlo0f-i80h6pfhDEOBgvpY=/fit-in/200x150/filters:strip_icc()/pic5885689.jpg",
+      "image": "https://cf.geekdo-images.com/2f9uTicUSXkdPp2Yks6zFw__original/img/WQcFmlhYBMIp8f6gNNVhnnue1w4=/0x0/filters:format(jpeg)/pic5885689.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 8,
+      "minTime": 20,
+      "maxTime": 20,
+      "playTime": 20,
+      "minAge": 8,
+      "weight": 1.3,
+      "rating": 7.4,
+      "rank": 288,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Party Game"
+      ],
+      "mechanics": [
+        "Closed Drafting",
+        "End Game Bonuses",
+        "Hand Management",
+        "Set Collection",
+        "Simultaneous Action Selection",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        4,
+        5
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "pollVotes": 390,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 156129,
+      "name": "Deception: Murder in Hong Kong",
+      "year": 2014,
+      "thumbnail": "https://cf.geekdo-images.com/1COY3oeK9aN2_XNimKaNww__small/img/8IWDjnSYX-tYAVRgfq-W3y1b_Ww=/fit-in/200x150/filters:strip_icc()/pic3033330.jpg",
+      "image": "https://cf.geekdo-images.com/1COY3oeK9aN2_XNimKaNww__original/img/ZzyzlO15ggCfkLg9ckeM4PWNePI=/0x0/filters:format(jpeg)/pic3033330.jpg",
+      "minPlayers": 4,
+      "maxPlayers": 12,
+      "minTime": 20,
+      "maxTime": 20,
+      "playTime": 20,
+      "minAge": 14,
+      "weight": 1.6,
+      "rating": 7.4,
+      "rank": 291,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Deduction",
+        "Murder / Mystery",
+        "Party Game"
+      ],
+      "mechanics": [
+        "Communication Limits",
+        "Deduction",
+        "Events",
+        "Finale Ending",
+        "Hidden Roles",
+        "Storytelling",
+        "Team-Based Game",
+        "Traitor Game",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        6,
+        7,
+        8
+      ],
+      "recPlayers": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "pollVotes": 317,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1055,7 +1966,7 @@
         3
       ],
       "pollVotes": 113,
-      "playsThisMonth": 379,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -1103,7 +2014,7 @@
         5
       ],
       "pollVotes": 208,
-      "playsThisMonth": 232,
+      "playsThisMonth": 6,
       "owners": [
         "zntznt"
       ]
@@ -1150,7 +2061,7 @@
         2
       ],
       "pollVotes": 437,
-      "playsThisMonth": 379,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -1191,9 +2102,107 @@
         1
       ],
       "pollVotes": 100,
-      "playsThisMonth": 317,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 379078,
+      "name": "Expeditions",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/9eBww9iAi472T2goijVqwQ__small/img/xR6PqvTMNBFaGlnN9WDAeIooBNM=/fit-in/200x150/filters:strip_icc()/pic7320023.jpg",
+      "image": "https://cf.geekdo-images.com/9eBww9iAi472T2goijVqwQ__original/img/uvxTECY9yY2ONOllPgv7xLZCrGU=/0x0/filters:format(jpeg)/pic7320023.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 14,
+      "weight": 3.1,
+      "rating": 7.6,
+      "rank": 380,
+      "cooperative": false,
+      "categories": [
+        "Exploration"
+      ],
+      "mechanics": [
+        "Action Retrieval",
+        "Deck, Bag, and Pool Building",
+        "Grid Movement",
+        "Hand Management",
+        "Melding and Splaying",
+        "Modular Board",
+        "Multi-Use Cards",
+        "Solo / Solitaire Game",
+        "Tags",
+        "Variable Player Powers",
+        "Variable Set-up",
+        "Victory Points as a Resource",
+        "Worker Placement, Different Worker Types"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 303,
+      "playsThisMonth": 1,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 181279,
+      "name": "Fury of Dracula (Third/Fourth Edition)",
+      "year": 2015,
+      "thumbnail": "https://cf.geekdo-images.com/iLiUp891Wqb5EE0gBqjBaA__small/img/Jg01alIAt8H1KI6gFhS-naLJans=/fit-in/200x150/filters:strip_icc()/pic4411188.jpg",
+      "image": "https://cf.geekdo-images.com/iLiUp891Wqb5EE0gBqjBaA__original/img/XowehLK_AtTFigFRNeLqCMmVXNo=/0x0/filters:format(jpeg)/pic4411188.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 120,
+      "maxTime": 180,
+      "playTime": 180,
+      "minAge": 14,
+      "weight": 3.3,
+      "rating": 7.4,
+      "rank": 408,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Deduction",
+        "Fighting",
+        "Horror",
+        "Novel-based"
+      ],
+      "mechanics": [
+        "Card Play Conflict Resolution",
+        "Hand Management",
+        "Hidden Movement",
+        "Point to Point Movement",
+        "Resource to Move",
+        "Rock-Paper-Scissors",
+        "Secret Unit Deployment",
+        "Team-Based Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        3,
+        5
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 278,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1237,7 +2246,7 @@
         3
       ],
       "pollVotes": 238,
-      "playsThisMonth": 107,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -1286,9 +2295,97 @@
         4
       ],
       "pollVotes": 398,
-      "playsThisMonth": 128,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 219513,
+      "name": "Bärenpark",
+      "year": 2017,
+      "thumbnail": "https://cf.geekdo-images.com/9JC16l1EMwmJkpbjaUBkpw__small/img/MbjH6nLmJQ5IjCgeULOjMfOf-NA=/fit-in/200x150/filters:strip_icc()/pic3486218.jpg",
+      "image": "https://cf.geekdo-images.com/9JC16l1EMwmJkpbjaUBkpw__original/img/H14LeRRtvcOajZ1Z1_pRYu_rSTM=/0x0/filters:format(jpeg)/pic3486218.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 8,
+      "weight": 1.7,
+      "rating": 7.3,
+      "rank": 429,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Puzzle"
+      ],
+      "mechanics": [
+        "Grid Coverage",
+        "Modular Board",
+        "Open Drafting",
+        "Set Collection",
+        "Square Grid",
+        "Tile Placement"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 260,
+      "playsThisMonth": 4,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 59959,
+      "name": "Letters from Whitechapel",
+      "year": 2011,
+      "thumbnail": "https://cf.geekdo-images.com/H3G1t-oIjN9gEVVI21FoVg__small/img/f6VZ_PEr1DAr6oLEjG9PxGFYzmQ=/fit-in/200x150/filters:strip_icc()/pic1545654.jpg",
+      "image": "https://cf.geekdo-images.com/H3G1t-oIjN9gEVVI21FoVg__original/img/YfHGqQB_HXicZUTY-XgXgpsl_rg=/0x0/filters:format(jpeg)/pic1545654.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 6,
+      "minTime": 90,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 14,
+      "weight": 2.6,
+      "rating": 7.3,
+      "rank": 441,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Deduction",
+        "Murder / Mystery",
+        "Post-Napoleonic"
+      ],
+      "mechanics": [
+        "Hidden Movement",
+        "Memory",
+        "Point to Point Movement",
+        "Questions and Answers",
+        "Secret Unit Deployment",
+        "Team-Based Game"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 465,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1330,9 +2427,152 @@
         2
       ],
       "pollVotes": 178,
-      "playsThisMonth": 124,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 41114,
+      "name": "The Resistance",
+      "year": 2009,
+      "thumbnail": "https://cf.geekdo-images.com/cAPTkL2BR3snLO71dkH8rw__small/img/5lDn1W82rlLXtVG7nPIYR9Orn-4=/fit-in/200x150/filters:strip_icc()/pic2576459.jpg",
+      "image": "https://cf.geekdo-images.com/cAPTkL2BR3snLO71dkH8rw__original/img/_UahoIUTqh39xRqzCc2jwgdYbSA=/0x0/filters:format(jpeg)/pic2576459.jpg",
+      "minPlayers": 5,
+      "maxPlayers": 10,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 13,
+      "weight": 1.6,
+      "rating": 7.2,
+      "rank": 465,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Card Game",
+        "Deduction",
+        "Negotiation",
+        "Party Game",
+        "Print & Play",
+        "Science Fiction",
+        "Spies / Secret Agents"
+      ],
+      "mechanics": [
+        "Hidden Roles",
+        "Memory",
+        "Roles with Asymmetric Information",
+        "Simultaneous Action Selection",
+        "Team-Based Game",
+        "Traitor Game",
+        "Voting"
+      ],
+      "bestPlayers": [
+        7
+      ],
+      "recPlayers": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "pollVotes": 517,
+      "playsThisMonth": 1,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 425549,
+      "name": "Moon Colony Bloodbath",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/KDrRxEKQMmHyM0QQ2ONX4Q__small/img/EusjojuWYxwkxaP7eAnaBn1QzLg=/fit-in/200x150/filters:strip_icc()/pic8638247.jpg",
+      "image": "https://cf.geekdo-images.com/KDrRxEKQMmHyM0QQ2ONX4Q__original/img/XD-aeaMShk-TN_n0n6O9kbczxNY=/0x0/filters:format(jpeg)/pic8638247.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 14,
+      "weight": 2.1,
+      "rating": 7.6,
+      "rank": 495,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Deck, Bag, and Pool Building",
+        "Delayed Purchase",
+        "Events",
+        "Simultaneous Action Selection",
+        "Variable Phase Order"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 122,
+      "playsThisMonth": 1,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 70323,
+      "name": "King of Tokyo",
+      "year": 2011,
+      "thumbnail": "https://cf.geekdo-images.com/m_RzXpHURC0_xLkvRSR_sw__small/img/OfgWmkGJj5BgOO0zFHEtP5CHfbU=/fit-in/200x150/filters:strip_icc()/pic3043734.jpg",
+      "image": "https://cf.geekdo-images.com/m_RzXpHURC0_xLkvRSR_sw__original/img/hSvWgiRYJCTTuoLOWTW3c8sYtl8=/0x0/filters:format(jpeg)/pic3043734.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 6,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 8,
+      "weight": 1.5,
+      "rating": 7.1,
+      "rank": 501,
+      "cooperative": false,
+      "categories": [
+        "Dice",
+        "Fighting",
+        "Movies / TV / Radio theme",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Die Icon Resolution",
+        "King of the Hill",
+        "Open Drafting",
+        "Player Elimination",
+        "Push Your Luck",
+        "Re-rolling and Locking",
+        "Take That"
+      ],
+      "bestPlayers": [
+        4,
+        5
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 1108,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1374,7 +2614,7 @@
         4
       ],
       "pollVotes": 170,
-      "playsThisMonth": 368,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -1423,7 +2663,7 @@
         6
       ],
       "pollVotes": 192,
-      "playsThisMonth": 253,
+      "playsThisMonth": 2,
       "owners": [
         "gabo"
       ]
@@ -1467,9 +2707,109 @@
         5
       ],
       "pollVotes": 670,
-      "playsThisMonth": 1110,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 136063,
+      "name": "Forbidden Desert",
+      "year": 2013,
+      "thumbnail": "https://cf.geekdo-images.com/OU26qQZoHJodxSFKiR5IzA__small/img/eDUA8LpBqRjlzJWJYIsIenpF_rA=/fit-in/200x150/filters:strip_icc()/pic1528722.jpg",
+      "image": "https://cf.geekdo-images.com/OU26qQZoHJodxSFKiR5IzA__original/img/8smpJMuHROyrbu8FP-EOLXjEi0w=/0x0/filters:format(jpeg)/pic1528722.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 10,
+      "weight": 2,
+      "rating": 7.1,
+      "rank": 613,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Fantasy",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Bias",
+        "Cooperative Game",
+        "Grid Movement",
+        "Hand Management",
+        "Map Deformation",
+        "Modular Board",
+        "Pick-up and Deliver",
+        "Solo / Solitaire Game",
+        "Square Grid",
+        "Tile Placement",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 286,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Catan",
+      "year": 1995,
+      "thumbnail": "https://cf.geekdo-images.com/0XODRpReiZBFUffEcqT5-Q__small/img/SNVfF23OQafv3u8xdFolJnMkBoM=/fit-in/200x150/filters:strip_icc()/pic9156909.png",
+      "image": "https://cf.geekdo-images.com/0XODRpReiZBFUffEcqT5-Q__original/img/oRc0AomWA9ZtFqQDZiZbIyKE1j0=/0x0/filters:format(png)/pic9156909.png",
+      "minPlayers": 3,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 10,
+      "weight": 2.3,
+      "rating": 7.1,
+      "rank": 628,
+      "cooperative": false,
+      "categories": [
+        "Economic",
+        "Negotiation"
+      ],
+      "mechanics": [
+        "Chaining",
+        "Dice Rolling",
+        "Hand Management",
+        "Hexagon Grid",
+        "Hidden Victory Points",
+        "Income",
+        "Market",
+        "Modular Board",
+        "Network and Route Building",
+        "Race",
+        "Random Production",
+        "Take That",
+        "Trading",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4
+      ],
+      "pollVotes": 2182,
+      "playsThisMonth": 3,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1512,8 +2852,9 @@
         4
       ],
       "pollVotes": 132,
-      "playsThisMonth": 612,
+      "playsThisMonth": 2,
       "owners": [
+        "diego",
         "zntznt"
       ]
     },
@@ -1553,7 +2894,7 @@
         4
       ],
       "pollVotes": 210,
-      "playsThisMonth": 114,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -1598,9 +2939,110 @@
         6
       ],
       "pollVotes": 661,
-      "playsThisMonth": 785,
+      "playsThisMonth": 1,
       "owners": [
+        "diego",
         "zntznt"
+      ]
+    },
+    {
+      "id": 273330,
+      "name": "Bloodborne: The Board Game",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/clKFvn2bUUPbY62eSmc-ig__small/img/q6y67Y5CknBEAwgkfAaGRxo26CQ=/fit-in/200x150/filters:strip_icc()/pic4757839.png",
+      "image": "https://cf.geekdo-images.com/clKFvn2bUUPbY62eSmc-ig__original/img/Ftulo3vFiGUJaRsW9TOif-ViyDg=/0x0/filters:format(png)/pic4757839.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 75,
+      "playTime": 75,
+      "minAge": 14,
+      "weight": 3.1,
+      "rating": 7.7,
+      "rank": 774,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Exploration",
+        "Fantasy",
+        "Fighting",
+        "Horror",
+        "Miniatures",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Campaign / Battle Card Driven",
+        "Card Play Conflict Resolution",
+        "Cooperative Game",
+        "Deck, Bag, and Pool Building",
+        "Hand Management",
+        "Modular Board",
+        "Narrative Choice / Paragraph",
+        "Scenario / Mission / Campaign Game",
+        "Storytelling",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        1,
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 127,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 10547,
+      "name": "Betrayal at House on the Hill",
+      "year": 2004,
+      "thumbnail": "https://cf.geekdo-images.com/lqmt2Oti_qJS65XqHcB8AA__small/img/EDOmDbRhLy4za2PHkJ5IbhNxZmk=/fit-in/200x150/filters:strip_icc()/pic5146864.png",
+      "image": "https://cf.geekdo-images.com/lqmt2Oti_qJS65XqHcB8AA__original/img/7R6yYk8A2eUMmSDaxGjae5SceGI=/0x0/filters:format(png)/pic5146864.png",
+      "minPlayers": 3,
+      "maxPlayers": 6,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 12,
+      "weight": 2.4,
+      "rating": 7,
+      "rank": 779,
+      "cooperative": false,
+      "categories": [
+        "Adventure",
+        "Exploration",
+        "Horror"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Map Addition",
+        "Modular Board",
+        "Player Elimination",
+        "Role Playing",
+        "Storytelling",
+        "Team-Based Game",
+        "Traitor Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        5,
+        6
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 591,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1640,9 +3082,110 @@
         6
       ],
       "pollVotes": 118,
-      "playsThisMonth": 0,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 100423,
+      "name": "Elder Sign",
+      "year": 2011,
+      "thumbnail": "https://cf.geekdo-images.com/wNCSCl961fMzDUhwetfjTg__small/img/sc0S7TSpC40Mg9EEmufj-XqXcBw=/fit-in/200x150/filters:strip_icc()/pic1236119.jpg",
+      "image": "https://cf.geekdo-images.com/wNCSCl961fMzDUhwetfjTg__original/img/H-iLs6JcceMk96bYON5c9PFUag8=/0x0/filters:format(jpeg)/pic1236119.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 8,
+      "minTime": 90,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 13,
+      "weight": 2.3,
+      "rating": 7,
+      "rank": 800,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Card Game",
+        "Dice",
+        "Fantasy",
+        "Fighting",
+        "Horror",
+        "Novel-based"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Dice Rolling",
+        "Die Icon Resolution",
+        "Modular Board",
+        "Re-rolling and Locking",
+        "Solo / Solitaire Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 475,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 358737,
+      "name": "Leviathan Wilds",
+      "year": 2024,
+      "thumbnail": "https://cf.geekdo-images.com/k_iHhr7ltGhj46u4oQ4YAQ__small/img/-YtdhfpOEJNDPIbJovPSjDMXgec=/fit-in/200x150/filters:strip_icc()/pic7976770.jpg",
+      "image": "https://cf.geekdo-images.com/k_iHhr7ltGhj46u4oQ4YAQ__original/img/qSlgK-1y9-AgtOAA86R9gt9XNaI=/0x0/filters:format(jpeg)/pic7976770.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 10,
+      "weight": 2.6,
+      "rating": 7.8,
+      "rank": 806,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Card Game",
+        "Fantasy",
+        "Fighting",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Action / Event",
+        "Action Points",
+        "Cooperative Game",
+        "Events",
+        "Grid Coverage",
+        "Grid Movement",
+        "Hand Management",
+        "Scenario / Mission / Campaign Game",
+        "Solo / Solitaire Game",
+        "Square Grid",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2,
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 85,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1684,7 +3227,7 @@
         3
       ],
       "pollVotes": 99,
-      "playsThisMonth": 315,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -1727,7 +3270,7 @@
         4
       ],
       "pollVotes": 308,
-      "playsThisMonth": 118,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -1767,10 +3310,53 @@
         4
       ],
       "pollVotes": 222,
-      "playsThisMonth": 202,
+      "playsThisMonth": 0,
       "owners": [
         "gabo",
         "zntznt"
+      ]
+    },
+    {
+      "id": 123540,
+      "name": "Tokaido",
+      "year": 2012,
+      "thumbnail": "https://cf.geekdo-images.com/7kLkx3k3ovL8fP-2krPqwA__small/img/yQg2AyLDdtfArqfb866NW2Wv1Es=/fit-in/200x150/filters:strip_icc()/pic8758132.jpg",
+      "image": "https://cf.geekdo-images.com/7kLkx3k3ovL8fP-2krPqwA__original/img/NWuaZkfygEeQ7nvi0Ih7_FW9jO0=/0x0/filters:format(jpeg)/pic8758132.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 8,
+      "weight": 1.7,
+      "rating": 6.9,
+      "rank": 858,
+      "cooperative": false,
+      "categories": [
+        "Travel"
+      ],
+      "mechanics": [
+        "End Game Bonuses",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Track Movement",
+        "Turn Order: Time Track",
+        "Variable Player Powers",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 347,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1815,7 +3401,7 @@
         4
       ],
       "pollVotes": 135,
-      "playsThisMonth": 992,
+      "playsThisMonth": 1,
       "owners": [
         "gabo"
       ]
@@ -1861,7 +3447,7 @@
         3
       ],
       "pollVotes": 136,
-      "playsThisMonth": 159,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
       ]
@@ -1908,9 +3494,283 @@
         4
       ],
       "pollVotes": 96,
-      "playsThisMonth": 144,
+      "playsThisMonth": 1,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 201825,
+      "name": "Ex Libris",
+      "year": 2017,
+      "thumbnail": "https://cf.geekdo-images.com/DYOUITVYzZEC45u4suwezQ__small/img/27aO3vgzM7MwAPSiKLpehEpAsVI=/fit-in/200x150/filters:strip_icc()/pic3578008.png",
+      "image": "https://cf.geekdo-images.com/DYOUITVYzZEC45u4suwezQ__original/img/GTzMk2LzB3H2xu9tn8nX3Nh9528=/0x0/filters:format(png)/pic3578008.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 10,
+      "weight": 2.5,
+      "rating": 7.1,
+      "rank": 972,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Fantasy"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Open Drafting",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Tile Placement",
+        "Variable Player Powers",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 98,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 281549,
+      "name": "Beast",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/-9NLgO6ASOHgZtMtamqjxw__small/img/fCr4XXnWjrm7TBCL4Vf_VH7pHYA=/fit-in/200x150/filters:strip_icc()/pic6418160.png",
+      "image": "https://cf.geekdo-images.com/-9NLgO6ASOHgZtMtamqjxw__original/img/h0pnI_UvkAQfMPhQq-7dKzEcHlc=/0x0/filters:format(png)/pic6418160.png",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 3.1,
+      "rating": 7.4,
+      "rank": 979,
+      "cooperative": false,
+      "categories": [
+        "Deduction",
+        "Fantasy",
+        "Fighting",
+        "Horror"
+      ],
+      "mechanics": [
+        "Action Drafting",
+        "Closed Drafting",
+        "Hand Management",
+        "Hidden Movement",
+        "Multi-Use Cards",
+        "Point to Point Movement",
+        "Secret Unit Deployment",
+        "Team-Based Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 114,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 160499,
+      "name": "King of New York",
+      "year": 2014,
+      "thumbnail": "https://cf.geekdo-images.com/FGekxht_r5xqt8oSmQ9HZg__small/img/DBoMebkqbcyZWJVLC5MRbF-YbnU=/fit-in/200x150/filters:strip_icc()/pic2407103.jpg",
+      "image": "https://cf.geekdo-images.com/FGekxht_r5xqt8oSmQ9HZg__original/img/b5zgGvja0Qpte-Jqb5baQNWuG3c=/0x0/filters:format(jpeg)/pic2407103.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 6,
+      "minTime": 40,
+      "maxTime": 40,
+      "playTime": 40,
+      "minAge": 10,
+      "weight": 1.9,
+      "rating": 6.9,
+      "rank": 1006,
+      "cooperative": false,
+      "categories": [
+        "Dice",
+        "Fighting",
+        "Movies / TV / Radio theme",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Die Icon Resolution",
+        "King of the Hill",
+        "Open Drafting",
+        "Player Elimination",
+        "Push Your Luck",
+        "Re-rolling and Locking",
+        "Tags",
+        "Take That"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 181,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 317457,
+      "name": "Dinosaur World",
+      "year": 2021,
+      "thumbnail": "https://cf.geekdo-images.com/q-CvtJOYWZQDw1tuOdDd4Q__small/img/JmOmFgjBhY0rc1ejk7z7Cw1o9Dw=/fit-in/200x150/filters:strip_icc()/pic6020854.jpg",
+      "image": "https://cf.geekdo-images.com/q-CvtJOYWZQDw1tuOdDd4Q__original/img/Eo6IIIYE_Ks1AkMS7garjfSXsh4=/0x0/filters:format(jpeg)/pic6020854.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 10,
+      "weight": 3.3,
+      "rating": 7.3,
+      "rank": 1021,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "City Building",
+        "Economic",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Income",
+        "Movement Points",
+        "Tile Placement",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 95,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 402283,
+      "name": "Courtisans",
+      "year": 2024,
+      "thumbnail": "https://cf.geekdo-images.com/JK1HbIGtiVfsIbnw3Q543w__small/img/aLX0aSFbj4WBlK69h0x7j_8bItc=/fit-in/200x150/filters:strip_icc()/pic8004908.jpg",
+      "image": "https://cf.geekdo-images.com/JK1HbIGtiVfsIbnw3Q543w__original/img/kPNCItrb8GwoIwV9R-vjczIkJR4=/0x0/filters:format(jpeg)/pic8004908.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 20,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 8,
+      "weight": 1.3,
+      "rating": 7.3,
+      "rank": 1033,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Medieval"
+      ],
+      "mechanics": [
+        "End Game Bonuses",
+        "Set Collection",
+        "Take That"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 94,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 65244,
+      "name": "Forbidden Island",
+      "year": 2010,
+      "thumbnail": "https://cf.geekdo-images.com/JgAkEBUaiHOsOS94iRMs2w__small/img/5aPR8-KMbgucI_XkPE2PJaMQQsg=/fit-in/200x150/filters:strip_icc()/pic646458.jpg",
+      "image": "https://cf.geekdo-images.com/JgAkEBUaiHOsOS94iRMs2w__original/img/H5d4I5z_HSpPEu7EAl0DqLt9_pM=/0x0/filters:format(jpeg)/pic646458.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 10,
+      "weight": 1.7,
+      "rating": 6.7,
+      "rank": 1035,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Fantasy",
+        "Science Fiction"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Cooperative Game",
+        "Events",
+        "Grid Movement",
+        "Hand Management",
+        "Map Reduction",
+        "Modular Board",
+        "Pick-up and Deliver",
+        "Set Collection",
+        "Solo / Solitaire Game",
+        "Square Grid",
+        "Tile Placement",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 571,
+      "playsThisMonth": 1,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -1947,7 +3807,7 @@
         1
       ],
       "pollVotes": 83,
-      "playsThisMonth": 180,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -1995,7 +3855,7 @@
         5
       ],
       "pollVotes": 42,
-      "playsThisMonth": 52,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2038,7 +3898,7 @@
         2
       ],
       "pollVotes": 77,
-      "playsThisMonth": 238,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2081,9 +3941,98 @@
         5
       ],
       "pollVotes": 61,
-      "playsThisMonth": 172,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 16992,
+      "name": "Tsuro",
+      "year": 2005,
+      "thumbnail": "https://cf.geekdo-images.com/2V3d4ryhxkS3RoPtDrvpUw__small/img/NWgNhoxUIF7Lmj1apRkZQhFL6NU=/fit-in/200x150/filters:strip_icc()/pic875761.jpg",
+      "image": "https://cf.geekdo-images.com/2V3d4ryhxkS3RoPtDrvpUw__original/img/TP5U-O2eujPBK9IVmmifdfkWwdQ=/0x0/filters:format(jpeg)/pic875761.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 8,
+      "minTime": 15,
+      "maxTime": 20,
+      "playTime": 20,
+      "minAge": 8,
+      "weight": 1.2,
+      "rating": 6.7,
+      "rank": 1256,
+      "cooperative": false,
+      "categories": [
+        "Fantasy"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Network and Route Building",
+        "Player Elimination",
+        "Tile Placement"
+      ],
+      "bestPlayers": [
+        4,
+        6
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "pollVotes": 319,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 371077,
+      "name": "Arborea",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/KHT8Ex0wvRs5wAWPNo3xNg__small/img/3RNpeYrdE_ns9Q9MEJgjks73ESg=/fit-in/200x150/filters:strip_icc()/pic7230067.png",
+      "image": "https://cf.geekdo-images.com/KHT8Ex0wvRs5wAWPNo3xNg__original/img/iMUGBOw1H51W0thj6tgXMrnPf6Q=/0x0/filters:format(png)/pic7230067.png",
+      "minPlayers": 1,
+      "maxPlayers": 5,
+      "minTime": 90,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 3.7,
+      "rating": 7.5,
+      "rank": 1329,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Fantasy"
+      ],
+      "mechanics": [
+        "Bias",
+        "End Game Bonuses",
+        "Slide / Push",
+        "Solo / Solitaire Game",
+        "Tile Placement",
+        "Track Movement",
+        "Variable Set-up",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        2,
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 98,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2125,9 +4074,56 @@
         2
       ],
       "pollVotes": 14,
-      "playsThisMonth": 205,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 43443,
+      "name": "Castle Panic",
+      "year": 2009,
+      "thumbnail": "https://cf.geekdo-images.com/ryPiCH15spkrdtvUI-utuA__small/img/2MMQHuG-dSRngk0E2EKeqyE8e9o=/fit-in/200x150/filters:strip_icc()/pic6966125.jpg",
+      "image": "https://cf.geekdo-images.com/ryPiCH15spkrdtvUI-utuA__original/img/RYiSrrenTejCl149T6tc2d9CuwA=/0x0/filters:format(jpeg)/pic6966125.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 6,
+      "minTime": 30,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 8,
+      "weight": 1.7,
+      "rating": 6.7,
+      "rank": 1425,
+      "cooperative": true,
+      "categories": [
+        "Fantasy",
+        "Fighting",
+        "Medieval"
+      ],
+      "mechanics": [
+        "Campaign / Battle Card Driven",
+        "Cooperative Game",
+        "Dice Rolling",
+        "Hand Management",
+        "Semi-Cooperative Game",
+        "Solo / Solitaire Game",
+        "Trading"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 195,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2165,9 +4161,65 @@
         4
       ],
       "pollVotes": 68,
-      "playsThisMonth": 64,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
+      ]
+    },
+    {
+      "id": 356754,
+      "name": "Tamashii: Chronicle of Ascend",
+      "year": 2023,
+      "thumbnail": "https://cf.geekdo-images.com/GFWy_5CeHuScKnGiSvrHgA__small/img/DygQ2yyyuinOl-kGh6bgct-ARck=/fit-in/200x150/filters:strip_icc()/pic9445107.png",
+      "image": "https://cf.geekdo-images.com/GFWy_5CeHuScKnGiSvrHgA__original/img/7cBsT6ZsrLt-MODPvTGmGOh7jpE=/0x0/filters:format(png)/pic9445107.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 60,
+      "maxTime": 180,
+      "playTime": 180,
+      "minAge": 13,
+      "weight": 3,
+      "rating": 8,
+      "rank": 1588,
+      "cooperative": true,
+      "categories": [
+        "Adventure",
+        "Exploration",
+        "Fighting",
+        "Miniatures",
+        "Science Fiction",
+        "Space Exploration"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Cooperative Game",
+        "Deck, Bag, and Pool Building",
+        "Dice Rolling",
+        "Grid Movement",
+        "Hexagon Grid",
+        "Narrative Choice / Paragraph",
+        "Pattern Building",
+        "Scenario / Mission / Campaign Game",
+        "Semi-Cooperative Game",
+        "Slide / Push",
+        "Solo / Solitaire Game",
+        "Square Grid",
+        "Variable Player Powers",
+        "Variable Set-up"
+      ],
+      "bestPlayers": [
+        1,
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3
+      ],
+      "pollVotes": 51,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2209,7 +4261,7 @@
         5
       ],
       "pollVotes": 62,
-      "playsThisMonth": 104,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2252,7 +4304,7 @@
         4
       ],
       "pollVotes": 79,
-      "playsThisMonth": 47,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2297,7 +4349,7 @@
         7
       ],
       "pollVotes": 21,
-      "playsThisMonth": 26,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2338,9 +4390,57 @@
         4
       ],
       "pollVotes": 35,
-      "playsThisMonth": 44,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 415845,
+      "name": "Grimcoven",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/wbP3u5-2a_0yXbENaI6zDQ__small/img/_UB9-s3f9lpfydYnOcZaZo7FB3g=/fit-in/200x150/filters:strip_icc()/pic8061469.png",
+      "image": "https://cf.geekdo-images.com/wbP3u5-2a_0yXbENaI6zDQ__original/img/akQ7ktyFEfCwoTAHUSBhIG1oD70=/0x0/filters:format(png)/pic8061469.png",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 90,
+      "maxTime": 270,
+      "playTime": 270,
+      "minAge": 14,
+      "weight": 3.7,
+      "rating": 8.4,
+      "rank": 2196,
+      "cooperative": true,
+      "categories": [
+        "Dice",
+        "Fantasy",
+        "Fighting",
+        "Horror",
+        "Miniatures"
+      ],
+      "mechanics": [
+        "Cooperative Game",
+        "Dice Rolling",
+        "Events",
+        "Modular Board",
+        "Narrative Choice / Paragraph",
+        "Solo / Solitaire Game",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2,
+        3
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 48,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2384,7 +4484,7 @@
         5
       ],
       "pollVotes": 20,
-      "playsThisMonth": 11,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2423,9 +4523,51 @@
         1
       ],
       "pollVotes": 29,
-      "playsThisMonth": 26,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 12692,
+      "name": "Gloom",
+      "year": 2005,
+      "thumbnail": "https://cf.geekdo-images.com/jD7_Ir8gL_9AXC-wjnqjHg__small/img/wWqmoercFrbIFjS1FloZFTZddcE=/fit-in/200x150/filters:strip_icc()/pic2080481.jpg",
+      "image": "https://cf.geekdo-images.com/jD7_Ir8gL_9AXC-wjnqjHg__original/img/RjeHGxYOUqBv7sUgcRF5VdDlhbs=/0x0/filters:format(jpeg)/pic2080481.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 13,
+      "weight": 1.6,
+      "rating": 6.3,
+      "rank": 2501,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Horror",
+        "Humor"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Layering",
+        "Lose a Turn",
+        "Storytelling",
+        "Take That"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 130,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2467,9 +4609,50 @@
         4
       ],
       "pollVotes": 19,
-      "playsThisMonth": 6,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
+      ]
+    },
+    {
+      "id": 131835,
+      "name": "Boss Monster: The Dungeon Building Card Game",
+      "year": 2013,
+      "thumbnail": "https://cf.geekdo-images.com/VBwaHyx-NWL3VLcCWKRA0w__small/img/wisLXxKXbo5-Ci-ZjEj8ryyoN2g=/fit-in/200x150/filters:strip_icc()/pic1732644.jpg",
+      "image": "https://cf.geekdo-images.com/VBwaHyx-NWL3VLcCWKRA0w__original/img/izAmJ81QELl5DoK3y2bzJw55lhA=/0x0/filters:format(jpeg)/pic1732644.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 13,
+      "weight": 1.8,
+      "rating": 6.3,
+      "rank": 2788,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Fantasy",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Hand Management",
+        "Player Elimination",
+        "Take That",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 155,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2507,7 +4690,7 @@
         2
       ],
       "pollVotes": 13,
-      "playsThisMonth": 17,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2551,7 +4734,7 @@
         4
       ],
       "pollVotes": 30,
-      "playsThisMonth": 38,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
       ]
@@ -2592,9 +4775,136 @@
         1
       ],
       "pollVotes": 15,
-      "playsThisMonth": 52,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 245659,
+      "name": "Vampire: The Masquerade – Vendetta",
+      "year": 2020,
+      "thumbnail": "https://cf.geekdo-images.com/V3Ff1dIMh6QrU2IeZabr_g__small/img/BPmJ2azFAI6-MIHQ9Vg7n4bnsc8=/fit-in/200x150/filters:strip_icc()/pic4854194.png",
+      "image": "https://cf.geekdo-images.com/V3Ff1dIMh6QrU2IeZabr_g__original/img/foDuQtg-CH-JXOW952qvgEo4eZ0=/0x0/filters:format(png)/pic4854194.png",
+      "minPlayers": 3,
+      "maxPlayers": 6,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 14,
+      "weight": 2.7,
+      "rating": 7.2,
+      "rank": 3024,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Card Game",
+        "Horror"
+      ],
+      "mechanics": [
+        "Area Majority / Influence",
+        "Auction / Bidding",
+        "Deck, Bag, and Pool Building",
+        "Hand Management",
+        "Take That",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 36,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 256066,
+      "name": "Warhammer 40,000: Kill Team",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/nfUzKd7cslRijhjgCEX1Xg__small/img/hpJ7H833SZ5vsF9ef2ZfT9VTuAk=/fit-in/200x150/filters:strip_icc()/pic4230177.jpg",
+      "image": "https://cf.geekdo-images.com/nfUzKd7cslRijhjgCEX1Xg__original/img/jBsyywAMOxNSbWTQbgHw5srhapI=/0x0/filters:format(jpeg)/pic4230177.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 30,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 12,
+      "weight": 3.5,
+      "rating": 7.6,
+      "rank": 3114,
+      "cooperative": false,
+      "categories": [
+        "Miniatures",
+        "Science Fiction",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Line of Sight",
+        "Measurement Movement",
+        "Simulation",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2,
+        4
+      ],
+      "pollVotes": 13,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 173200,
+      "name": "Epic Spell Wars of the Battle Wizards: Rumble at Castle Tentakill",
+      "year": 2015,
+      "thumbnail": "https://cf.geekdo-images.com/4oBxiak52TxaVrnSlh2Geg__small/img/Vn-KKwCDfTkUcFe8NeZNFAWrO4s=/fit-in/200x150/filters:strip_icc()/pic2453925.jpg",
+      "image": "https://cf.geekdo-images.com/4oBxiak52TxaVrnSlh2Geg__original/img/ZYfqFAmT8R7EQM9AYPt5_Fd5woQ=/0x0/filters:format(jpeg)/pic2453925.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 6,
+      "minTime": 30,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 15,
+      "weight": 1.6,
+      "rating": 6.5,
+      "rank": 3470,
+      "cooperative": false,
+      "categories": [
+        "Fantasy",
+        "Fighting",
+        "Humor"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Hand Management",
+        "Take That"
+      ],
+      "bestPlayers": [
+        3,
+        4,
+        5
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 15,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2638,9 +4948,138 @@
         4
       ],
       "pollVotes": 29,
-      "playsThisMonth": 1,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 233896,
+      "name": "Resident Evil 2: The Board Game",
+      "year": 2019,
+      "thumbnail": "https://cf.geekdo-images.com/3571tuSDcDnaT1a6AQTUQQ__small/img/WzGJxtnFbHLe2grVklJ9cgY3NsY=/fit-in/200x150/filters:strip_icc()/pic3742353.jpg",
+      "image": "https://cf.geekdo-images.com/3571tuSDcDnaT1a6AQTUQQ__original/img/khPq8NK3OtnegPJbppzY7PJPabw=/0x0/filters:format(jpeg)/pic3742353.jpg",
+      "minPlayers": 1,
+      "maxPlayers": 4,
+      "minTime": 90,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 2.4,
+      "rating": 7.4,
+      "rank": 3549,
+      "cooperative": true,
+      "categories": [
+        "Horror",
+        "Video Game Theme",
+        "Zombies"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Campaign / Battle Card Driven",
+        "Cooperative Game"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pollVotes": 23,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 204493,
+      "name": "Sakura Arms",
+      "year": 2016,
+      "thumbnail": "https://cf.geekdo-images.com/IMslo9J8RnWXQospAjO6Dw__small/img/72su9RSHg1kxt9MApnodqc76f6Y=/fit-in/200x150/filters:strip_icc()/pic3545811.jpg",
+      "image": "https://cf.geekdo-images.com/IMslo9J8RnWXQospAjO6Dw__original/img/DPPq9spt37SJlliXpyqKXFVwu_4=/0x0/filters:format(jpeg)/pic3545811.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 2,
+      "minTime": 30,
+      "maxTime": 30,
+      "playTime": 30,
+      "minAge": 14,
+      "weight": 3,
+      "rating": 7.5,
+      "rank": 3601,
+      "cooperative": false,
+      "categories": [
+        "Card Game"
+      ],
+      "mechanics": [
+        "Action Points",
+        "Campaign / Battle Card Driven",
+        "Deck Construction",
+        "Hand Management",
+        "Interrupts",
+        "Multi-Use Cards",
+        "Relative Movement",
+        "Take That",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2
+      ],
+      "pollVotes": 12,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 167698,
+      "name": "Magic: The Gathering – Arena of the Planeswalkers",
+      "year": 2015,
+      "thumbnail": "https://cf.geekdo-images.com/pjsa1dpZ4iv6C1fbMxxRtA__small/img/EKDIWt9NtFU--yzDG1YR6txtM-g=/fit-in/200x150/filters:strip_icc()/pic2411639.jpg",
+      "image": "https://cf.geekdo-images.com/pjsa1dpZ4iv6C1fbMxxRtA__original/img/yNIirrKGLlcV4gzk0og9iyXqdi0=/0x0/filters:format(jpeg)/pic2411639.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "minTime": 60,
+      "maxTime": 60,
+      "playTime": 60,
+      "minAge": 10,
+      "weight": 2.4,
+      "rating": 6.1,
+      "rank": 4726,
+      "cooperative": false,
+      "categories": [
+        "Fantasy",
+        "Fighting",
+        "Miniatures",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Grid Movement",
+        "Hand Management",
+        "Hexagon Grid",
+        "Modular Board",
+        "Team-Based Game"
+      ],
+      "bestPlayers": [
+        2,
+        4
+      ],
+      "recPlayers": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "pollVotes": 45,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2677,7 +5116,7 @@
         1
       ],
       "pollVotes": 12,
-      "playsThisMonth": 3,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2729,7 +5168,7 @@
         5
       ],
       "pollVotes": 11,
-      "playsThisMonth": 3,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
       ]
@@ -2775,9 +5214,132 @@
         6
       ],
       "pollVotes": 9,
-      "playsThisMonth": 22,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
+      ]
+    },
+    {
+      "id": 255037,
+      "name": "Silk",
+      "year": 2018,
+      "thumbnail": "https://cf.geekdo-images.com/09W9RVgQH3iczXgNpc4t4A__small/img/7Gnu1fAzXwPA83uqNtMtd5fobvo=/fit-in/200x150/filters:strip_icc()/pic4232947.jpg",
+      "image": "https://cf.geekdo-images.com/09W9RVgQH3iczXgNpc4t4A__original/img/Q9MMOtDDzodc6c93FWbM1UmBUG0=/0x0/filters:format(jpeg)/pic4232947.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 45,
+      "maxTime": 45,
+      "playTime": 45,
+      "minAge": 10,
+      "weight": 2.4,
+      "rating": 6.3,
+      "rank": 5610,
+      "cooperative": false,
+      "categories": [
+        "Animals",
+        "Farming"
+      ],
+      "mechanics": [
+        "Area Majority / Influence",
+        "Dice Rolling",
+        "Take That",
+        "Worker Placement"
+      ],
+      "bestPlayers": [
+        3
+      ],
+      "recPlayers": [
+        3,
+        4
+      ],
+      "pollVotes": 30,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 129359,
+      "name": "Munchkin Pathfinder",
+      "year": 2013,
+      "thumbnail": "https://cf.geekdo-images.com/vRimUOTB4iXWBnkY6ILhFw__small/img/UYGD7j4XbFFw9TUwXWVhSyqoTCI=/fit-in/200x150/filters:strip_icc()/pic1641599.jpg",
+      "image": "https://cf.geekdo-images.com/vRimUOTB4iXWBnkY6ILhFw__original/img/WG2oG7lzXuQi2diE3alpzU6cHfY=/0x0/filters:format(jpeg)/pic1641599.jpg",
+      "minPlayers": 3,
+      "maxPlayers": 6,
+      "minTime": 60,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 12,
+      "weight": 1.7,
+      "rating": 6.3,
+      "rank": 6201,
+      "cooperative": false,
+      "categories": [
+        "Card Game",
+        "Fantasy",
+        "Fighting",
+        "Humor"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Hand Management",
+        "Take That",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 3,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 418316,
+      "name": "Halo: Flashpoint",
+      "year": 2024,
+      "thumbnail": "https://cf.geekdo-images.com/pRKpwZjnkpmz1kOIVLBVvg__small/img/ld0QzRg2M9b_jF5t_jqqlxpTOO8=/fit-in/200x150/filters:strip_icc()/pic8462903.png",
+      "image": "https://cf.geekdo-images.com/pRKpwZjnkpmz1kOIVLBVvg__original/img/vu92Rm0yucE7a1CQhjO67mAx_nA=/0x0/filters:format(png)/pic8462903.png",
+      "minPlayers": 2,
+      "maxPlayers": 2,
+      "minTime": 30,
+      "maxTime": 90,
+      "playTime": 90,
+      "minAge": 14,
+      "weight": 2.9,
+      "rating": 8.1,
+      "rank": 6580,
+      "cooperative": false,
+      "categories": [
+        "Miniatures",
+        "Science Fiction",
+        "Video Game Theme"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Grid Movement",
+        "Line of Sight",
+        "Moving Multiple Units",
+        "Square Grid"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        1,
+        2
+      ],
+      "pollVotes": 7,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -2819,7 +5381,7 @@
         2
       ],
       "pollVotes": 3,
-      "playsThisMonth": 16,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2864,6 +5426,83 @@
       ]
     },
     {
+      "id": 130592,
+      "name": "Clue",
+      "year": 2012,
+      "thumbnail": "https://cf.geekdo-images.com/5NJKy5K9c0tyCTnTWFekeQ__small/img/U73irtMkLpBBRod1xMnSO6-FbKI=/fit-in/200x150/filters:strip_icc()/pic3181978.png",
+      "image": "https://cf.geekdo-images.com/5NJKy5K9c0tyCTnTWFekeQ__original/img/RlWgyKfLDdxIErDCmtFmogfvxoU=/0x0/filters:format(png)/pic3181978.png",
+      "minPlayers": 2,
+      "maxPlayers": 6,
+      "minTime": 40,
+      "maxTime": 40,
+      "playTime": 40,
+      "minAge": 8,
+      "weight": 1.5,
+      "rating": 5.9,
+      "rank": 7120,
+      "cooperative": false,
+      "categories": [
+        "Bluffing",
+        "Deduction",
+        "Murder / Mystery"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Roll / Spin and Move"
+      ],
+      "bestPlayers": [],
+      "recPlayers": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pollVotes": 46,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
+      "id": 15045,
+      "name": "Risk: Star Wars – Clone Wars Edition",
+      "year": 2005,
+      "thumbnail": "https://cf.geekdo-images.com/qL0o8ParMNRkv7Y2i3ug5g__small/img/IXHMIw93Ndw9Saex5LK6EpwfGV0=/fit-in/200x150/filters:strip_icc()/pic4922578.jpg",
+      "image": "https://cf.geekdo-images.com/qL0o8ParMNRkv7Y2i3ug5g__original/img/yYHYjeUKZIqYcTCDcp1MJNCDgCU=/0x0/filters:format(jpeg)/pic4922578.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 4,
+      "minTime": 120,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 10,
+      "weight": 2.2,
+      "rating": 6,
+      "rank": 7299,
+      "cooperative": false,
+      "categories": [
+        "Movies / TV / Radio theme",
+        "Science Fiction",
+        "Wargame"
+      ],
+      "mechanics": [
+        "Area Majority / Influence",
+        "Area Movement",
+        "Dice Rolling"
+      ],
+      "bestPlayers": [
+        4
+      ],
+      "recPlayers": [
+        2,
+        4
+      ],
+      "pollVotes": 21,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
+      ]
+    },
+    {
       "id": 294609,
       "name": "Carrier Battle: Philippine Sea",
       "year": 2023,
@@ -2901,7 +5540,7 @@
         1
       ],
       "pollVotes": 7,
-      "playsThisMonth": 6,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -2982,9 +5621,48 @@
         5
       ],
       "pollVotes": 7,
-      "playsThisMonth": 9,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
+      ]
+    },
+    {
+      "id": 432261,
+      "name": "Trench Crusade",
+      "year": 2025,
+      "thumbnail": "https://cf.geekdo-images.com/JLfJw7CU_qDYf3rWpjqdfA__small/img/3WHMV9KaAqqHcsT3UHP6wjHlYWs=/fit-in/200x150/filters:strip_icc()/pic8520238.jpg",
+      "image": "https://cf.geekdo-images.com/JLfJw7CU_qDYf3rWpjqdfA__original/img/8kNglJwFihSwvsmDNObv_kOzBcI=/0x0/filters:format(jpeg)/pic8520238.jpg",
+      "minPlayers": 2,
+      "maxPlayers": 2,
+      "minTime": 45,
+      "maxTime": 120,
+      "playTime": 120,
+      "minAge": 14,
+      "weight": 3,
+      "rating": 8.6,
+      "rank": 11394,
+      "cooperative": false,
+      "categories": [
+        "Fantasy",
+        "Horror",
+        "Miniatures"
+      ],
+      "mechanics": [
+        "Dice Rolling",
+        "Measurement Movement",
+        "Modular Board",
+        "Variable Player Powers"
+      ],
+      "bestPlayers": [
+        2
+      ],
+      "recPlayers": [
+        2
+      ],
+      "pollVotes": 1,
+      "playsThisMonth": 0,
+      "owners": [
+        "diego"
       ]
     },
     {
@@ -3033,7 +5711,7 @@
         3
       ],
       "pollVotes": 9,
-      "playsThisMonth": 3,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -3074,7 +5752,7 @@
         5
       ],
       "pollVotes": 3,
-      "playsThisMonth": 12,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
       ]
@@ -3205,7 +5883,7 @@
         10
       ],
       "pollVotes": 223,
-      "playsThisMonth": 55,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -3323,7 +6001,7 @@
         5
       ],
       "pollVotes": 6,
-      "playsThisMonth": 62,
+      "playsThisMonth": 0,
       "owners": [
         "gabo"
       ]
@@ -3441,7 +6119,7 @@
         4
       ],
       "pollVotes": 4,
-      "playsThisMonth": 2,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
@@ -3487,7 +6165,7 @@
         4
       ],
       "pollVotes": 62,
-      "playsThisMonth": 85,
+      "playsThisMonth": 0,
       "owners": [
         "zntznt"
       ]
