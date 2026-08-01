@@ -62,7 +62,11 @@ a:hover { color: var(--accent); }
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 9px;
+
+  /* Tightens only at the narrow end. The row carries four fixed width items
+     (knight mark, BGG pill, GitHub badge) around one elastic one, so at 320px
+     the gaps are the cheapest few pixels to give back to the wordmark. */
+  gap: clamp(6px, 2.2vw, 9px);
 }
 .gk-headrow--top { padding: 5px 16px; }
 .gk-headrow--live { padding: 0 16px 4px; min-width: 0; }
@@ -81,11 +85,22 @@ a:hover { color: var(--accent); }
 }
 .gk-wordmark {
   font-family: var(--serif);
-  font-size: 23px;
+
+  /* "Gameknight" needs 111px at 23px, and below about 330px the row cannot
+     spare that, so the title was being cut mid-word on the smallest phones.
+     6.2vw reaches the full 23px by 371px, which leaves every real handset from
+     the 375px iPhone up looking exactly as it did, and tapers only below that. */
+  font-size: clamp(19px, 6.2vw, 23px);
   line-height: 1;
   letter-spacing: -0.01em;
   flex: 1 1 auto;
   min-width: 0;
+
+  /* Below the 320px floor the stylesheet targets, ellipsis rather than letting
+     the title spill across the BGG logo. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* BGG attribution is required for public-facing API use. The white ground is
