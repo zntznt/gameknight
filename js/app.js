@@ -120,15 +120,21 @@ function weightFit(g) {
 // A game's rung is the shortest offered cap it still fits inside, so a 50 minute
 // game and a 60 minute one share the "60" rung and both read as a good use of an
 // hour, while a 15 minute filler sits three rungs down.
+//
+// A game whose length BGG does not know still passes the filter, because missing
+// data must never drop a game, but it ranks below every game we can actually
+// place. Worst real distance is TIME_CAPS.length - 1, so this is always worse.
+const UNKNOWN_TIME_PENALTY = -TIME_CAPS.length;
+
 function timeFit(g) {
   const cap = state.constraints.maxTime;
   if (!cap) return 0;
   const target = TIME_CAPS.indexOf(cap);
   if (target < 0) return 0;
   const t = timeOf(g);
-  if (!t) return -1;
+  if (!t) return UNKNOWN_TIME_PENALTY;
   const rung = TIME_CAPS.findIndex((c) => t <= c);
-  return rung < 0 ? -1 : -Math.abs(target - rung);
+  return rung < 0 ? UNKNOWN_TIME_PENALTY : -Math.abs(target - rung);
 }
 
 // Summed rather than tiered: both measure the same thing in the same unit, and
