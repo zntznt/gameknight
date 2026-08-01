@@ -160,8 +160,25 @@ export const QUESTIONS = [
     options: [
       { id: 'engine', label: 'Build an engine',
         match: (g) => mech(g, 'Engine Building', 'Income', 'Tableau', 'Automatic Resource Growth') },
-      { id: 'cards', label: 'Cards & deck-building',
-        match: (g) => mech(g, 'Deck Construction', 'Deck, Bag', 'Deck Building', 'Hand Management', 'Multi-Use Card', 'Card Play', 'Drafting') },
+      // Three cravings, not one. As a single option this matched 60% of the
+      // shelf, so choosing it barely moved the ranking: it lumped together
+      // building a deck, drafting from a pool, and simply having cards in hand,
+      // which are different things people want on different nights.
+      //
+      // Hand Management is the reason it ballooned. It sits on 46% of the shelf,
+      // on Ark Nova and A Feast for Odin as readily as on any card game, so it
+      // is ambient rather than a craving and cannot carry an option by itself.
+      // It earns its place below only where BGG also calls the game a card game,
+      // which is what rescues pure card games like Sentinels of the Multiverse
+      // and Boss Monster whose only other mechanic tag is Hand Management.
+      { id: 'deckbuild', label: 'Deck & bag building',
+        match: (g) => mech(g, 'Deck Construction', 'Deck, Bag') },
+      { id: 'draft', label: 'Drafting & picking',
+        match: (g) => mech(g, 'Drafting') },
+      { id: 'cardplay', label: 'Playing a hand of cards',
+        match: (g) =>
+          mech(g, 'Multi-Use Cards', 'Card Play', 'Command Cards', 'Campaign / Battle Card', 'Move Through Deck') ||
+          (mech(g, 'Hand Management') && cat(g, 'Card Game')) },
       { id: 'worker', label: 'Worker placement',
         match: (g) => mech(g, 'Worker Placement', 'Action Points', 'Action Retrieval', 'Action Drafting') },
       { id: 'area', label: 'Area control & routes',
@@ -191,8 +208,12 @@ export const QUESTIONS = [
       // shelf actually has those games; coverage does not depend on either.
       { id: 'sets', label: 'Set collection',
         match: (g) => mech(g, 'Set Collection', 'Contracts', 'Collection') },
+      // 'Deck, Bag' used to sit here too, but it now belongs to "Deck & bag
+      // building" above and having it in both made this option a partial copy
+      // of that one. What is left is what genuinely changes between sessions:
+      // the setup and the board.
       { id: 'variable', label: 'Different every time',
-        match: (g) => mech(g, 'Variable Set-up', 'Modular Board', 'Deck, Bag') },
+        match: (g) => mech(g, 'Variable Set-up', 'Modular Board') },
     ],
   },
 
