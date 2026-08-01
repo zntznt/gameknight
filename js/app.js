@@ -1030,4 +1030,19 @@ async function boot() {
   setInterval(checkIdle, 400);
 }
 
+// Registering the worker is what makes the page installable, and it is what
+// lets the shelf open with no signal. Deliberately after boot rather than
+// before: the app must never wait on it, and a browser without service workers,
+// or a page opened straight off the filesystem, simply carries on without one.
+// See sw.js for why it refuses to serve a stale shelf.
+function registerWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  if (!location.protocol.startsWith('http')) return;
+  navigator.serviceWorker.register('./sw.js').catch(() => {
+    // An unregistrable worker costs offline support and nothing else, so it is
+    // not worth an error in the console of a page that otherwise works.
+  });
+}
+
 boot();
+registerWorker();

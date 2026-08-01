@@ -14,6 +14,8 @@ import js from '@eslint/js';
 const browserGlobals = {
   document: 'readonly',
   window: 'readonly',
+  location: 'readonly',
+  navigator: 'readonly',
   fetch: 'readonly',
   console: 'readonly',
   Image: 'readonly',
@@ -22,6 +24,18 @@ const browserGlobals = {
   clearTimeout: 'readonly',
   setInterval: 'readonly',
   clearInterval: 'readonly',
+};
+
+// sw.js runs in the ServiceWorkerGlobalScope, not the page: no document, no
+// window, and `self` in place of both.
+const workerGlobals = {
+  self: 'readonly',
+  caches: 'readonly',
+  clients: 'readonly',
+  fetch: 'readonly',
+  Response: 'readonly',
+  URL: 'readonly',
+  console: 'readonly',
 };
 
 const nodeGlobals = {
@@ -85,6 +99,15 @@ export default [
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: nodeGlobals,
+    },
+    rules: sharedRules,
+  },
+  {
+    files: ['sw.js'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'script',
+      globals: workerGlobals,
     },
     rules: sharedRules,
   },

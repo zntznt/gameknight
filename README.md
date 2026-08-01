@@ -175,6 +175,41 @@ Your site appears at `https://<you>.github.io/<repo>/` within a minute or so.
 
 ---
 
+## Installing it as an app
+
+Gameknight is a PWA, so it can be added to a phone's home screen or installed
+as a desktop app and then opens in its own window with no browser chrome. There
+is nothing to switch on: it works in your fork as soon as Pages is serving over
+HTTPS, which it always is.
+
+* **Android and desktop Chrome or Edge** offer an install button in the address
+  bar, or under the browser menu.
+* **iOS Safari** uses Share, then Add to Home Screen.
+
+Once installed it opens offline too, showing the shelf from the last time you
+had signal. Two rules keep that from going stale, both in
+[`sw.js`](sw.js):
+
+* Page loads and `games.json` go to the **network first**, falling back to the
+  cache only when the network fails. A push to `main` and the weekly data
+  refresh reach you on the next load, exactly as they would without the app
+  installed.
+* Everything else same origin is served from cache and replaced in the
+  background, so a stale file is used at most once.
+
+Box art is the exception. Those images live on BGG's servers, so they are left
+to the browser and will not appear offline; the monogram tiles stand in for
+them, the same as when an image fails to load normally.
+
+**Making it yours.** The name and colours live in
+[`manifest.webmanifest`](manifest.webmanifest), and the icons in `icons/` are a
+paper knight on the ink background from the header. Replace the PNGs, keeping
+the filenames and sizes, and the installed app is branded as yours. Every path
+in the manifest is relative, so none of this needs editing for a fork served
+from a repo subpath.
+
+---
+
 ## Keeping your token safe
 
 Worth stating plainly, since the repo is likely public:
@@ -239,6 +274,9 @@ BGG XML API  ->  (GitHub Action, weekly)  ->  data/games.json  ->  static page
 | `js/questions.js` | **The wants.** Every question and the `match(game)` predicate behind each answer, plus the complexity buckets. |
 | `js/data.js` | Loads `games.json`, builds the pool from the selected shelves, applies predicates. |
 | `css/styles.css` | All styling. Fluid, no media queries. |
+| `sw.js` | Service worker: makes the page installable and lets it open offline. |
+| `manifest.webmanifest` | App name, colours and icons for an installed copy. |
+| `icons/` | Install icons. Replace these to brand your fork. |
 | `scripts/fetch-bgg.mjs` | Server side BGG fetcher. Handles the async 202 queue, the Bearer token, and enrichment. |
 | `.github/workflows/fetch-collections.yml` | Runs the fetcher weekly and on demand, commits the result. |
 | `.github/workflows/lint.yml` | Lints on push and pull request. |
