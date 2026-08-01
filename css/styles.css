@@ -301,7 +301,20 @@ a:hover { color: var(--accent); }
 .gk-shelf__link:hover { border-color: var(--ink); color: var(--accent); }
 
 /* --- 01–04 wants ---------------------------------------------------------- */
-.gk-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 8px; }
+/* --cols caps how many columns may form, so a question never ends on a lonely
+   orphan chip. app.js sets it to a divisor of that question's option count when
+   one exists; the 99 default means "no cap" and leaves the plain auto-fit
+   behaviour untouched. Still no media query: max() hands back to the 158px floor
+   as soon as one share of the row would be narrower than that, so a six option
+   question steps 3 across, then 2, then 1 as the screen narrows. */
+.gk-options {
+  --cols: 99;
+  --gap: 8px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(158px, calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols))), 1fr));
+  gap: var(--gap);
+}
 .gk-option {
   text-align: left;
   font: inherit;
