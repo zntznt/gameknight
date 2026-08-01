@@ -75,15 +75,11 @@ commercial hobby project is exactly what they approve, and there is no fee.
 
 * **Keep the "Powered by BGG" logo.** BGG requires public facing applications to
   display it. It is already in the header of `index.html`. Do not remove it.
-* **Identify your client honestly.** Edit the `UA` constant near the top of
-  [`scripts/fetch-bgg.mjs`](scripts/fetch-bgg.mjs) so it points at *your* copy
-  rather than mine:
-
-  ```js
-  const UA = 'Gameknight/0.1 (+https://your-site.example/gameknight) collection baker';
-  ```
-
-  BGG uses this to match traffic to your registered application.
+* **Identify your client honestly.** BGG matches API traffic to your registered
+  application via the User-Agent, so it must point at your copy rather than
+  mine. You do not edit any source for this: set it in the `site` block of
+  [`data/collections.config.json`](data/collections.config.json) in step 4, and
+  the fetcher builds the User-Agent from it.
 
 ### 3. Add the token as a repo secret
 
@@ -103,6 +99,10 @@ Edit [`data/collections.config.json`](data/collections.config.json):
 
 ```json
 {
+  "site": {
+    "repoUrl": "https://github.com/you/your-fork",
+    "appUrl": "https://you.github.io/your-fork"
+  },
   "collections": [
     { "id": "alex", "label": "Alex", "bggUser": "alex_bgg_name" },
     { "id": "sam",  "label": "Sam",  "bggUser": "sam_bgg_name" }
@@ -110,6 +110,17 @@ Edit [`data/collections.config.json`](data/collections.config.json):
   "options": { "own": true, "wishlist": false, "preordered": false }
 }
 ```
+
+**This is the only file you need to edit to make the app yours.** The `site`
+block replaces what would otherwise be hardcoded in two places:
+
+* `repoUrl` is where the header's GitHub badge points. The app reads it from
+  the baked data at runtime, so the value in `index.html` is only a fallback for
+  the moment before your first fetch.
+* `appUrl` becomes the User-Agent the fetcher sends to BGG. Leaving mine in
+  place would report your API requests as my application.
+
+And the shelves themselves:
 
 * `bggUser` is the BoardGameGeek username, exactly as BGG spells it.
 * `label` is what appears on the shelf card. Short names read best.
@@ -119,9 +130,6 @@ Edit [`data/collections.config.json`](data/collections.config.json):
   "what can we actually play" shelf. These combine with OR and the app cannot
   tell them apart afterwards, so only enable `wishlist` or `preordered` if you
   genuinely want those games mixed in.
-
-While you are here, update the GitHub link in
-[`index.html`](index.html) (search for `gk-gh`) to point at your fork.
 
 ### 5. Bake your data
 

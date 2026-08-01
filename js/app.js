@@ -895,6 +895,12 @@ function render() {
   // The header only follows you on the board; on the verdict it scrolls away.
   $('.gk-header').classList.toggle('gk-header--flat', state.view === 'verdict');
 
+  // Point the source badge at whichever repo baked this data. Falls back to the
+  // href in index.html when the bake predates the site block, so a fork that
+  // has not re-fetched yet still has a working link.
+  const repoUrl = state.data.site && state.data.site.repoUrl;
+  if (repoUrl) $('.gk-gh').href = repoUrl;
+
   renderLive();
   root.replaceChildren(built.main);
   if (built.bar) barRoot.replaceChildren(built.bar);

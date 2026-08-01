@@ -17,9 +17,13 @@ const API = 'https://boardgamegeek.com/xmlapi2';
 const CONFIG_PATH = new URL('../data/collections.config.json', import.meta.url);
 const OUT_PATH = new URL('../data/games.json', import.meta.url);
 const CHUNK = 20; // ids per `thing` request
-// Identifies this client to BGG. Keep it pointing at the live app so BGG can
-// match API traffic to the registered application.
-const UA = 'Gameknight/0.1 (+https://www.zntznt.com/gameknight) collection baker';
+// Identifies this client to BGG, which is how they match API traffic to a
+// registered application. Set `site.appUrl` in data/collections.config.json
+// rather than editing this: main() overwrites UA from the config before any
+// request goes out. The literal here is only a fallback for a config with no
+// site block.
+let UA = 'Gameknight/0.1 (+https://github.com/zntznt/gameknight) collection baker';
+const uaFor = (appUrl) => `Gameknight/0.1 (+${appUrl}) collection baker`;
 const TOKEN = (process.env.BGG_TOKEN || process.env.BGG_API_TOKEN || '').trim();
 
 const parser = new XMLParser({
@@ -238,6 +242,13 @@ async function main() {
   const config = JSON.parse(await readFile(CONFIG_PATH, 'utf8'));
   const collections = (config.collections || []).filter((c) => c.bggUser);
   const options = config.options || { own: true };
+  const site = config.site || {};
+  // Identify this deployment to BGG before any request goes out.
+  if (site.appUrl) {
+    UA = uaFor(site.appUrl);
+  } else {
+    console.warn('    ⚠ No site.appUrl in collections.config.json, so BGG will see the default User-Agent.');
+  }
   if (!collections.length) {
     console.error('No collections with a bggUser in collections.config.json. Nothing to do.');
     process.exit(1);
@@ -320,7 +331,8 @@ async function main() {
     unchanged =
       !prev.sample &&
       JSON.stringify(prev.games) === JSON.stringify(games) &&
-      JSON.stringify(prev.collections) === JSON.stringify(collectionsOut);
+      JSON.stringify(prev.collections) === JSON.stringify(collectionsOut) &&
+      JSON.stringify(prev.site || {}) === JSON.stringify({ repoUrl: site.repoUrl || '', appUrl: site.appUrl || '' });
   } catch {
     /* no previous file, treat as changed */
   }
@@ -331,6 +343,7 @@ async function main() {
 
   const out = {
     generatedAt: new Date().toISOString(),
+    site: { repoUrl: site.repoUrl || '', appUrl: site.appUrl || '' },
     collections: collectionsOut,
     games,
   };
