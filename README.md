@@ -9,7 +9,7 @@ world, what mechanics, whether everyone plays by the same rules), then set the
 **limits** that actually matter (how many players, how much brain, how much
 time). It ranks your shelf and names a game.
 
-Live: [www.zntznt.com/gameknight](https://www.zntznt.com/gameknight)
+Live: [zntznt.com/gameknight](https://zntznt.com/gameknight)
 
 It is a static site on **GitHub Pages**. No server, no tracking, no build step,
 and no API calls from your browser.
