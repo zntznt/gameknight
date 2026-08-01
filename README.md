@@ -5,8 +5,9 @@
 Point Gameknight at your board game collection, or your whole friend group's
 shelves, and it turns "I dunno, what do you fancy?" into one recommendation.
 You answer a few **wants** (who is playing together, what mood you are in, what
-world, what mechanics), then set the **limits** that actually matter (how many
-players, how much brain, how much time). It ranks your shelf and names a game.
+world, what mechanics, whether everyone plays by the same rules), then set the
+**limits** that actually matter (how many players, how much brain, how much
+time). It ranks your shelf and names a game.
 
 Live: [www.zntznt.com/gameknight](https://www.zntznt.com/gameknight)
 
@@ -22,26 +23,26 @@ design:
 
 **Wants rank. Limits filter.**
 
-* **Sections 01 to 04 are wants.** They never remove a game. Each answered
+* **The wants (the first numbered sections) never remove a game.** Each answered
   question a game satisfies is worth one point, and results sort best fit first.
   Say you want a cooperative fantasy engine builder: a game matching all four
   goes top, a game matching three sits behind it, and a game matching none is
   still there at the bottom. "I fancy something fantasy" is a preference, not
   "delete everything that is not fantasy".
-* **Sections 05 to 09 are limits.** These do filter, strictly. If only four of
+* **The limits (the later sections) do filter, strictly.** If only four of
   you can play and a game seats three, it is gone.
-* **Complexity (07) and time (08) are ceilings, not bands.** They ask what you
+* **Complexity and time are ceilings, not bands.** They ask what you
   are *willing* to spend, so picking Medium keeps the lighter games too, and
   "≤ 120m" keeps the short ones. Both then rank by closeness to what you asked
   for, stepping down one notch per bucket or per time rung, so a medium two hour
   night surfaces medium two hour games ahead of the fillers those ceilings also
   allow. Picking Medium on a 137 game shelf leaves 89 games with the genuinely
   medium ones on top, rather than only the 25 inside that one band.
-* **Section 10** picks which score settles the order once fit and closeness have
-  had their say: BGG rating, BGG rank, or plays logged on BGG this month.
+* **The final section** picks which score settles the order once fit and
+  closeness have had their say: BGG rating, BGG rank, or plays logged on BGG this month.
 
 The full ordering is: how many wants a game matches, then how close it sits to
-the complexity and length you asked for, then your section 10 metric.
+the complexity and length you asked for, then your chosen score.
 
 Every count you see is live. The header shows how many games survive your
 limits; each want option shows how many of those games have that quality; each

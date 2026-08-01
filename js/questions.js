@@ -1,11 +1,11 @@
-// questions.js. The "wants" (sections 01 to 04 of the board).
+// questions.js. The "wants": the numbered sections after the shelves.
 // =============================================================================
 // This file IS the spec for what each answer filters on.
 //
 // RULES OF THE ENGINE (see js/data.js + js/app.js):
 //   • Wants SCORE, they do not eliminate. A game matching more of your answers
 //     ranks higher; a game matching none still appears, just last. Only the
-//     limits (sections 05 to 09) actually remove games. This is the whole point
+//     limits (the sections after the wants) actually remove games. This is the whole point
 //     of the wants/limits split: "I fancy something fantasy" is a preference,
 //     not "delete everything that isn't fantasy".
 //   • Wants are optional. Nothing selected in a section = that section is
@@ -48,9 +48,16 @@ const isTraitor = (g) => mech(g, 'Hidden Roles', 'Traitor', 'Semi-Cooperative');
 const isSoloOnly = (g) => g.maxPlayers === 1;
 const playsSolo = (g) => g.minPlayers === 1 || mech(g, 'Solo / Solitaire');
 
+// Does each player get their own faction, character or power set, or does
+// everyone work with the same toolkit? Unlike the old "Thinky & calm", the
+// negative side here is a genuine binary rather than a residual: a game either
+// hands players different abilities or it does not.
+const isAsymmetric = (g) =>
+  mech(g, 'Variable Player Powers', 'Roles with Asymmetric Information', 'Different Worker Types');
+
 // Party is about how the game FEELS, not how many chairs it has. Seating 6+ was
 // previously enough to qualify, which labelled heavy euros like Hadrian's Wall
-// and Twilight Inscription party games. Player count is section 05's job.
+// and Twilight Inscription party games. Player count is the limits' job.
 const isParty = (g) =>
   cat(g, 'Party Game', 'Word Game', 'Humor', 'Trivia', 'Music') ||
   mech(g, 'Acting', 'Singing', 'Storytelling', 'Player Judge');
@@ -175,6 +182,21 @@ export const QUESTIONS = [
         match: (g) => mech(g, 'Flicking', 'Stacking and Balancing', 'Real-Time', 'Speed Matching', 'Line Drawing', 'Slide/Push') || cat(g, 'Action / Dexterity', 'Real-time') },
       { id: 'trick', label: 'Trick-taking',
         match: (g) => mech(g, 'Trick-taking', 'Ladder Climbing', 'Melding') },
+    ],
+  },
+
+  // --- 05 · roles ------------------------------------------------------------
+  // Splits the shelf close to evenly (roughly 45/55), which makes it one of the
+  // sharpest signals available, and it is a question people genuinely ask before
+  // a game night: is everyone learning one set of rules, or five?
+  {
+    id: 'asymmetry',
+    kicker: 'roles',
+    title: 'Does everyone play by the same rules?',
+    type: 'single',
+    options: [
+      { id: 'same', label: 'Same for everyone', match: (g) => !isAsymmetric(g) },
+      { id: 'asym', label: 'Unique roles & factions', match: isAsymmetric },
     ],
   },
 ];

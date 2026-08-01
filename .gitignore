@@ -6,3 +6,6 @@ package-lock.json
 # (local shell) or a GitHub Actions secret, not on disk.
 .env
 .env.*
+
+# playwright-core is installed ad hoc for browser verification only.
+# It is not a project dependency; keep it out of package.json.

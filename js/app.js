@@ -1,7 +1,7 @@
 // app.js. Gameknight.
 //
-// One scrolling board of 11 numbered sections (00 shelves, 01–04 wants,
-// 05–10 limits), then a verdict view with tonight's pick. Nothing selected in a
+// One scrolling board of numbered sections (00 shelves, then the wants, then
+// the limits), and a verdict view with tonight's pick. Nothing selected in a
 // section means that section simply doesn't filter. There is no skip control.
 //
 // Rendering is a full rebuild of each root on every state change. At collection
@@ -34,7 +34,15 @@ const state = {
   failed: {}, // game ids whose thumbnail 404'd
 };
 
-const SECTIONS = { players: '05', fit: '06', weight: '07', time: '08', age: '09', sort: '10' };
+// Section numbers: 00 is the shelves, then one per want, then the limits.
+// Derived from QUESTIONS.length so adding or removing a want renumbers the
+// limits automatically instead of silently colliding with a want's number.
+const num2 = (n) => String(n).padStart(2, '0');
+const LIMITS_START = QUESTIONS.length + 1;
+const SECTIONS = ['players', 'fit', 'weight', 'time', 'age', 'sort'].reduce(
+  (acc, key, i) => ({ ...acc, [key]: num2(LIMITS_START + i) }),
+  {}
+);
 
 // The time caps section 08 offers, ascending. Shared by the chips and by
 // timeFit so the two cannot drift apart.
@@ -174,7 +182,7 @@ function isRecAt(g, n) {
   if (!n || !g.pollVotes || !Array.isArray(g.recPlayers)) return false;
   return n >= 8 ? g.recPlayers.some((c) => c >= 8) : g.recPlayers.includes(n);
 }
-// Only used to tint the shortlist tag. Ordering comes from section 10.
+// Only used to tint the shortlist tag. Ordering comes from the sort section.
 function fitTier(g) {
   const c = state.constraints;
   if (!c.players || c.playerFit === 'supported') return 0;
@@ -187,7 +195,7 @@ function fitTier(g) {
 /* -------------------------------------------------------------- sorting -- */
 const playsThisMonth = (g) => g.playsThisMonth || 0;
 
-// Best fit first, then the metric chosen in section 10 settles the order among
+// Best fit first, then the metric chosen in the sort section settles the order among
 // games that fit equally well.
 function sortGames(games) {
   const by = state.sortBy;
@@ -250,7 +258,7 @@ function metaLine(g) {
   return [players, timeStr(g), weight].join('  ·  ');
 }
 
-// The headline number always matches section 10's choice.
+// The headline number always matches the sort section's choice.
 function sortTag(g, short) {
   const by = state.sortBy;
   if (by === 'rank') {
@@ -530,13 +538,13 @@ function renderShelves() {
   return makeSection('00', 'Whose shelves are we raiding?', true, grid);
 }
 
-/* --- 01–04 wants ---------------------------------------------------------- */
+/* --- the wants ------------------------------------------------------------ */
 function renderWants() {
   const out = frag();
   const base = basePool();
 
   QUESTIONS.forEach((q, qi) => {
-    const num = String(qi + 1).padStart(2, '0');
+    const num = num2(qi + 1);
     const sel = new Set(state.answers[q.id] || []);
     // Counts are honest against every OTHER filter, since there is no step order.
     // Wants no longer eliminate, so a count here answers "how many playable
@@ -579,9 +587,9 @@ function renderWants() {
   return out;
 }
 
-/* --- 05–10 limits --------------------------------------------------------- */
+/* --- the limits ----------------------------------------------------------- */
 // `zeroSub` turns the sub-line vermilion, matching the want options: a choice
-// that would leave nothing dims AND flags its count. Section 10's sub-line is a
+// that would leave nothing dims AND flags its count. The sort section's sub-line is a
 // text hint rather than a count, so it never sets this.
 function chip({ label, sub, on, empty, zeroSub, onClick }) {
   const btn = el('button', `gk-chip${on ? ' gk-chip--on' : ''}${empty ? ' gk-chip--empty' : ''}`);
@@ -859,7 +867,7 @@ function buildVerdict() {
     head.appendChild(el('span', 'gk-shortlist__title', 'Also on the table'));
     const byLabel = state.sortBy === 'plays' ? 'plays this month' : state.sortBy;
     // Say fit first when wants are in play, since that is what actually drives
-    // the order; the section 10 metric only settles ties.
+    // the order; the sort metric only settles ties.
     const order = answeredWants() > 0 ? `fit, then ${byLabel}` : byLabel;
     head.appendChild(el('span', 'gk-shortlist__count', `${rest.length} · by ${order}`));
     sec.appendChild(head);
