@@ -1,125 +1,261 @@
 # Gameknight ♞
 
-Point Gameknight at your board game collection (or your whole friend group's
-shelves), answer a short flowchart of **wants** (co-op or cutthroat, what
-theme you're in the mood for, which mechanisms you're craving) and watch the
-list narrow **live** as you go. Only at the end does it ask the boring
-**constraints**: how many players, how much brain, how much time. What's left is
-what you should actually play tonight.
+**What should we play tonight?**
 
-It's a static site built for **GitHub Pages**: no server, no tracking, works
-offline once loaded.
+Point Gameknight at your board game collection, or your whole friend group's
+shelves, and it turns "I dunno, what do you fancy?" into one recommendation.
+You answer a few **wants** (who is playing together, what mood you are in, what
+world, what mechanics), then set the **limits** that actually matter (how many
+players, how much brain, how much time). It ranks your shelf and names a game.
 
-## The trick with BoardGameGeek
+Live: [www.zntznt.com/gameknight](https://www.zntznt.com/gameknight)
 
-BGG's XML API has no CORS support and its collection endpoint is asynchronous
-(it makes you poll), so a browser can't call it directly. Gameknight sidesteps
-that entirely: a **GitHub Action fetches everything server-side**, enriches each
-game with full details (weight, player counts, time, mechanics, categories),
-and commits the result as a plain [`data/games.json`](data/games.json). The page
-just loads that file: instant, no proxy, no rate limits at runtime.
+It is a static site on **GitHub Pages**. No server, no tracking, no build step,
+and no API calls from your browser.
 
+---
+
+## How the picking works
+
+This is the part worth understanding before you fork it, because it is the whole
+design:
+
+**Wants rank. Limits filter.**
+
+* **Sections 01 to 04 are wants.** They never remove a game. Each answered
+  question a game satisfies is worth one point, and results sort best fit first.
+  Say you want a cooperative fantasy engine builder: a game matching all four
+  goes top, a game matching three sits behind it, and a game matching none is
+  still there at the bottom. "I fancy something fantasy" is a preference, not
+  "delete everything that is not fantasy".
+* **Sections 05 to 09 are limits.** These do filter, strictly. If only four of
+  you can play and a game seats three, it is gone.
+* **Section 10** picks which score settles ties among equally good fits: BGG
+  rating, BGG rank, or plays logged on BGG this month.
+
+Every count you see is live. The header shows how many games survive your
+limits; each want option shows how many of those games have that quality; each
+limit chip shows how many would remain if you picked it. A choice that would
+leave nothing dims and turns red, but stays clickable.
+
+Missing BGG data never silently drops a game. An unrated weight passes any
+complexity bucket, an unknown play time passes any time cap, and a game with no
+player poll falls back to its box player range.
+
+---
+
+## Deploy your own copy
+
+You need a GitHub account and a BoardGameGeek account. Budget a few days,
+because step 2 involves waiting on a human at BGG.
+
+### 1. Fork the repo
+
+Fork it, or use it as a template. Two things to know straight away:
+
+* **`data/games.json` in this repo is not sample data.** It holds a real 80 game
+  collection. Your fork will show those games until your own fetch overwrites
+  the file in step 5. That is harmless, just surprising.
+* **GitHub Pages on a private repo needs a paid plan.** If you are on a free
+  account, keep the fork public. Your BGG token is not affected by this: it
+  lives in an encrypted Actions secret, never in the repo. See
+  [Keeping your token safe](#keeping-your-token-safe).
+
+### 2. Apply for a BGG API token
+
+Since late 2025 the BGG XML API rejects unauthenticated requests with `401`.
+Apply at
+[boardgamegeek.com/using_the_xml_api](https://boardgamegeek.com/using_the_xml_api).
+
+It is an application, not a signup form. You describe what you are building and
+wait for approval, so start here rather than leaving it to last. A non
+commercial hobby project is exactly what they approve, and there is no fee.
+
+**Two obligations come with approval:**
+
+* **Keep the "Powered by BGG" logo.** BGG requires public facing applications to
+  display it. It is already in the header of `index.html`. Do not remove it.
+* **Identify your client honestly.** Edit the `UA` constant near the top of
+  [`scripts/fetch-bgg.mjs`](scripts/fetch-bgg.mjs) so it points at *your* copy
+  rather than mine:
+
+  ```js
+  const UA = 'Gameknight/0.1 (+https://your-site.example/gameknight) collection baker';
+  ```
+
+  BGG uses this to match traffic to your registered application.
+
+### 3. Add the token as a repo secret
+
+**Settings → Secrets and variables → Actions → New repository secret**
+
+| | |
+| --- | --- |
+| Name | `BGG_TOKEN` |
+| Value | the token BGG issued you |
+
+The name must match exactly. Without it the fetch fails with a `401` and a
+message telling you so.
+
+### 4. List your shelves
+
+Edit [`data/collections.config.json`](data/collections.config.json):
+
+```json
+{
+  "collections": [
+    { "id": "alex", "label": "Alex", "bggUser": "alex_bgg_name" },
+    { "id": "sam",  "label": "Sam",  "bggUser": "sam_bgg_name" }
+  ],
+  "options": { "own": true, "wishlist": false, "preordered": false }
+}
 ```
-BGG XML API ──(GitHub Action, weekly)──▶ data/games.json ──▶ static page (Pages)
-```
 
-## Setup
+* `bggUser` is the BoardGameGeek username, exactly as BGG spells it.
+* `label` is what appears on the shelf card. Short names read best.
+* `id` is an internal key. **It must be unique.** Two shelves sharing an `id`
+  will merge into one and you will not be able to select them separately.
+* `options` picks which BGG statuses to pull. Leave `own: true` on its own for a
+  "what can we actually play" shelf. These combine with OR and the app cannot
+  tell them apart afterwards, so only enable `wishlist` or `preordered` if you
+  genuinely want those games mixed in.
 
-1. **List your collections.** Edit [`data/collections.config.json`](data/collections.config.json):
+While you are here, update the GitHub link in
+[`index.html`](index.html) (search for `gk-gh`) to point at your fork.
 
-   ```json
-   {
-     "collections": [
-       { "id": "alex", "label": "Alex's shelf", "bggUser": "alex_bgg_name" },
-       { "id": "sam",  "label": "Sam's shelf",  "bggUser": "sam_bgg_name" }
-     ],
-     "options": { "own": true, "wishlist": false, "preordered": false }
-   }
-   ```
+### 5. Bake your data
 
-   `bggUser` is the BoardGameGeek username. `id` is a short internal key;
-   `label` is what shows in the UI.
+**Actions → Fetch BGG collections → Run workflow**
 
-2. **Get a BGG API token.** Since late 2025 the BGG XML API requires a Bearer
-   token. Register your use at
-   [boardgamegeek.com/using_the_xml_api](https://boardgamegeek.com/using_the_xml_api),
-   then in this repo go to **Settings → Secrets and variables → Actions → New
-   repository secret** and add it as `BGG_TOKEN`. Without it the fetch returns
-   `401`. The token lives only in the secret and the CI job. It is never
-   committed or shipped to the browser.
+It reads your config, pulls each collection server side, enriches every game
+(weight, player counts, times, categories, mechanics, BGG rank, the suggested
+players poll, plays this month, shelf avatars), and commits a fresh
+`data/games.json`. It also runs weekly on its own.
 
-3. **Bake the data.** In the **Actions** tab, run **Fetch BGG collections**
-   (also runs weekly on its own). It authenticates with `BGG_TOKEN`, writes a
-   fresh `data/games.json`, and commits it. First run for a large collection can
-   take a couple of minutes, since BGG queues collection requests and we wait
-   politely.
+A large collection takes a few minutes, since BGG queues collection requests and
+the fetcher waits politely between calls.
 
-4. **Publish.** Settings → Pages → Build and deployment → Source =
-   **Deploy from a branch** → Branch `main`, folder `/ (root)` → Save. GitHub
-   serves the static files directly (a `.nojekyll` file is included so it skips
-   Jekyll). No build step and no deploy workflow, so every push to `main`
-   republishes automatically.
+> If your fork has branch protection on `main`, this step fails: the workflow
+> commits the refreshed data directly. Either allow the `github-actions` bot to
+> push, or drop the protection.
 
-Until you run step 3, the app shows bundled **sample data** so you can try the
-flow immediately.
+### 6. Turn on Pages
+
+**Settings → Pages → Build and deployment → Source = Deploy from a branch**,
+branch `main`, folder `/ (root)`, Save.
+
+GitHub serves the files as they are. A `.nojekyll` file is included so it does
+not try to run Jekyll over them. There is no build step and no deploy workflow,
+so every push to `main` republishes automatically, including the weekly data
+refresh.
+
+Your site appears at `https://<you>.github.io/<repo>/` within a minute or so.
+
+---
+
+## Keeping your token safe
+
+Worth stating plainly, since the repo is likely public:
+
+* The token lives **only** in the encrypted Actions secret and the CI job. It is
+  never committed and never sent to the browser.
+* **Forks of your repo do not inherit your secrets.** Anyone forking you needs
+  their own token.
+* The fetch workflow runs only on a schedule or manual dispatch, never on
+  `pull_request`, so a pull request from a stranger cannot run a job that can
+  read your secret.
+* The practical trust boundary is **who has write access to your repo**, since a
+  collaborator could change a workflow. Only add people you would trust with the
+  token itself.
+* `.env` is gitignored, so a local token file cannot be committed by accident.
+
+---
 
 ## Local development
 
-No build step. Serve the folder over HTTP (ES modules need a real origin):
+No build step. Serve the folder over HTTP, since ES modules need a real origin:
 
 ```bash
-npm run serve      # python3 -m http.server 8080  → http://localhost:8080
-# or refresh the data locally (needs your usernames in the config + a token):
+npm run serve      # http://localhost:8080
+```
+
+To refresh the data locally instead of via Actions, you need your usernames in
+the config and your token in the environment:
+
+```bash
 npm install
 BGG_TOKEN=your_token_here npm run fetch
 ```
 
 ### Linting
 
-ESLint (JS) and Stylelint (CSS) run on every push and PR via
-[`.github/workflows/lint.yml`](.github/workflows/lint.yml). Both are dev-only:
-nothing is added to what the browser downloads, and there's still no build step.
+ESLint (JS) and Stylelint (CSS) run on every push and pull request via
+[`.github/workflows/lint.yml`](.github/workflows/lint.yml). Both are dev only:
+nothing extra reaches the browser.
 
 ```bash
-npm install
-npm run lint       # check JS + CSS
-npm run lint:fix   # autofix what's safely fixable
+npm run lint       # check JS and CSS
+npm run lint:fix   # autofix what is safely fixable
 ```
 
-The rules favour catching bugs over enforcing style: the CSS config disables
-the cosmetic rules that would fight this file's compact one-line declarations,
-and the JS config keeps the correctness rules (`array-callback-return`,
-`no-constant-binary-expression`, `consistent-return`, …).
+The rules favour catching bugs over enforcing style. The CSS config disables the
+cosmetic rules that would fight the stylesheet's compact one line declarations,
+and the JS config keeps the correctness ones.
 
-## How it's wired
+---
+
+## How it is wired
+
+```
+BGG XML API  ->  (GitHub Action, weekly)  ->  data/games.json  ->  static page
+```
 
 | File | Role |
 | --- | --- |
-| `index.html` | Shell: a sticky "what remains" panel + a stage the JS renders into. |
-| `js/app.js` | Step machine: collections → preferences → constraints → result. |
-| `js/questions.js` | **The flowchart.** Data-driven preference questions; edit to reshape it. |
-| `js/data.js` | Loads `games.json`, combines collections (union / intersection), applies filters. |
-| `scripts/fetch-bgg.mjs` | Server-side BGG fetcher (handles the 202 poll + enrichment). |
-| `.github/workflows/fetch-collections.yml` | Runs the fetcher on a schedule / on demand. |
-| `data/games.json` | Baked, static game data the page reads. |
+| `index.html` | Page shell: header, the roots the app renders into, font links. |
+| `js/app.js` | The whole app: state, the eleven sections, fit scoring, verdict view, quick look sheet, guided scroll. |
+| `js/questions.js` | **The wants.** Every question and the `match(game)` predicate behind each answer, plus the complexity buckets. |
+| `js/data.js` | Loads `games.json`, builds the pool from the selected shelves, applies predicates. |
+| `css/styles.css` | All styling. Fluid, no media queries. |
+| `scripts/fetch-bgg.mjs` | Server side BGG fetcher. Handles the async 202 queue, the Bearer token, and enrichment. |
+| `.github/workflows/fetch-collections.yml` | Runs the fetcher weekly and on demand, commits the result. |
+| `.github/workflows/lint.yml` | Lints on push and pull request. |
+| `data/collections.config.json` | Which BGG users to pull. |
+| `data/games.json` | The baked data the page reads. Generated, but committed. |
 
-### Reshaping the flowchart
+### Reshaping the questions
 
-Every preference question lives in `js/questions.js` as a plain object with a
-`match(game)` predicate per answer. Preferences are ANDed across questions and
-ORed within a multi-select. Every question is skippable, because a *want* isn't a
-*requirement*. Add, remove, or reword questions there; no rebuild needed.
+Every want lives in [`js/questions.js`](js/questions.js) as a plain object with
+a `match(game)` predicate per answer. Add, remove or reword them freely and
+reload. No build step.
 
-## Notes
+Matching on categories and mechanics is case insensitive substring, so a needle
+like `Draft` catches "Card Drafting", "Open Drafting" and "Action Drafting".
+That is convenient but blunt, so check your counts after editing: an option that
+reads `0` against a shelf you know contains such games usually means the needle
+does not match BGG's exact wording.
 
-- **Union vs. intersection:** with several collections selected, choose "anyone
-  owns" (union) or "everyone owns" (intersection, the safe bet if the owner
-  might not show up).
-- **Plays-well-at-N:** the player-count filter uses BGG's *suggested number of
-  players* poll, not just the box range. Pick **Best** (the sweet spot),
-  **Recommended** (community says it plays fine), or **Box supports** (anything
-  in the min–max range). Games without poll votes fall back to the box range.
-  Result cards show a **best N** badge from the same poll.
-- **Missing metadata** (e.g. unrated weight, no player poll) never silently
-  drops a game from a constraint filter. Unknowns pass, or fall back to the box.
-- Game data © BoardGameGeek; fetched via their XML API for personal use.
+Because wants score rather than filter, predicates can overlap happily. A game
+can be both thinky and confrontational without anything breaking.
+
+---
+
+## Notes and limits
+
+* **The data is baked weekly, not live.** The UI never implies otherwise.
+* **Plays this month** counts plays logged on BGG by everyone, not by you. It is
+  a "what is hot right now" signal, matching the other two sorts which are also
+  global BGG metrics.
+* **Player fit** uses BGG's suggested players poll rather than just the box.
+  Pick Best, Recommended, or Box supports. Games with no poll votes fall back to
+  the box range in all three modes.
+* **Expansions are excluded** from collections, since you cannot sit down and
+  play one on its own.
+* Thumbnails come from BGG's CDN at up to 200x150. Ones that fail to load fall
+  back to a monogram tile.
+* Game data is © BoardGameGeek, fetched via their XML API under a non commercial
+  registration.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
