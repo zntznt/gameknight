@@ -553,6 +553,16 @@ function renderWants() {
     const context = applyFilters(base, constraintPreds());
 
     const grid = el('div', 'gk-options');
+    // Cap the columns at a divisor of the option count so the last row fills.
+    // Six options used to lay out 5+1 on anything wider than 900px, leaving one
+    // chip alone beside four empty columns; capped at 3 they sit 3+3. Nothing
+    // below 3 is worth having, since forcing 14 options into 2 columns to make
+    // them divide evenly would be a worse layout than the ragged last row.
+    // Where no divisor qualifies the property stays unset and CSS keeps its
+    // uncapped default.
+    const cols = [5, 4, 3].find((c) => q.options.length % c === 0);
+    if (cols) grid.style.setProperty('--cols', String(cols));
+
     q.options.forEach((o) => {
       const on = sel.has(o.id);
       const count = context.filter(o.match).length;
