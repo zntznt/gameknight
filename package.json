@@ -5,6 +5,8 @@
   "type": "module",
   "description": "Filter your board game collections down to the perfect game for the table.",
   "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "audit": "node scripts/audit-questions.mjs",
     "fetch": "node scripts/fetch-bgg.mjs",
     "serve": "python3 -m http.server 8080",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",

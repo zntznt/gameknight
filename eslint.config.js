@@ -103,6 +103,16 @@ export default [
     rules: sharedRules,
   },
   {
+    // node:test suite. Same runtime as scripts/, so the same globals.
+    files: ['test/**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: nodeGlobals,
+    },
+    rules: sharedRules,
+  },
+  {
     files: ['sw.js'],
     languageOptions: {
       ecmaVersion: 2022,
