@@ -35,17 +35,18 @@ const mech = (g, ...needles) => anyIncludes(g.mechanics, needles);
 const isTeam = (g) => mech(g, 'Team-Based');
 const isTraitor = (g) => mech(g, 'Hidden Roles', 'Traitor', 'Semi-Cooperative');
 
+// Players against each other rather than against the game. The seat count then
+// separates "Free-for-all" from "Head to head", so solo-only boxes fall out of
+// both without needing a guard of their own.
+const isVersus = (g) => !g.cooperative && !isTeam(g) && !isTraitor(g);
+
 // Two different solo questions, and conflating them was a real blind spot.
-//
-// isSoloOnly: the box seats exactly one. These games have no sides to draw, so
-// they are kept out of "Free-for-all".
 //
 // playsSolo: can I play this ALONE tonight, which is what someone picking
 // "Just me" is actually asking. Either signal counts, because each catches
 // games the other misses: the box range catches Twilight Inscription and
 // Libertalia, while BGG's solo tag catches Pandemic and Forbidden Island, whose
 // well known solo variants the box's "2 players minimum" hides.
-const isSoloOnly = (g) => g.maxPlayers === 1;
 const playsSolo = (g) => g.minPlayers === 1 || mech(g, 'Solo / Solitaire');
 
 // Does each player get their own faction, character or power set, or does
@@ -98,10 +99,22 @@ export const QUESTIONS = [
     type: 'single',
     options: [
       { id: 'coop', label: 'All cooperative', match: (g) => g.cooperative && !isTraitor(g) },
-      // Only solo-ONLY games are held out here. A 1 to 4 player game like Ark
-      // Nova is a perfectly good free-for-all that also happens to play alone,
-      // and since wants score rather than filter, it can answer both.
-      { id: 'ffa', label: 'Free-for-all', match: (g) => !g.cooperative && !isTeam(g) && !isTraitor(g) && !isSoloOnly(g) },
+      // Free-for-all now means what its name says: a TABLE, three or more,
+      // everyone for themselves. Games built for exactly two are their own
+      // answer below rather than a small odd corner of this one.
+      //
+      // Solo-only games are excluded by the seat count on both. A 1 to 4 player
+      // game like Ark Nova is still a perfectly good free-for-all that also
+      // happens to play alone, and since wants score rather than filter, it can
+      // answer both that and "Just me".
+      { id: 'ffa', label: 'Free-for-all', match: (g) => isVersus(g) && g.maxPlayers >= 3 },
+      // A game designed for two is a different night from a five player table,
+      // and the limits cannot express it: setting players to 2 also keeps every
+      // 2 to 5 game that merely tolerates a pair. This ranks the ones actually
+      // built as duels first. Seat count is used rather than a mechanic needle
+      // because BGG tags these inconsistently: Netrunner and Sakura Arms share
+      // almost no mechanics with the skirmish wargames sitting beside them here.
+      { id: 'duel', label: 'Head to head', match: (g) => isVersus(g) && g.maxPlayers === 2 },
       { id: 'teams', label: 'Teams', match: (g) => isTeam(g) },
       { id: 'traitor', label: 'Hidden traitor', match: (g) => isTraitor(g) },
       { id: 'solo', label: 'Just me', match: playsSolo },
