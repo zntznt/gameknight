@@ -3,10 +3,17 @@
 // This file IS the spec for what each answer filters on.
 //
 // RULES OF THE ENGINE (see js/data.js + js/app.js):
+//   • Wants SCORE, they do not eliminate. A game matching more of your answers
+//     ranks higher; a game matching none still appears, just last. Only the
+//     limits (sections 05 to 09) actually remove games. This is the whole point
+//     of the wants/limits split: "I fancy something fantasy" is a preference,
+//     not "delete everything that isn't fantasy".
 //   • Wants are optional. Nothing selected in a section = that section is
 //     skipped; there is no separate "doesn't matter" control.
-//   • Within a multi-select question, chosen options are OR'd together.
-//   • Across questions, answers are AND'd together.
+//   • Within a multi-select question, chosen options are OR'd together, so a
+//     game matching any of them scores that question.
+//   • Each answered question is worth one point, so no single question can
+//     dominate by having more options selected.
 //   • Matching on categories/mechanics is case-insensitive SUBSTRING, so a
 //     needle like "Draft" matches "Card Drafting", "Open Drafting", etc.
 //   • `g.cooperative` is precomputed by the fetcher from the "Cooperative Game"
@@ -21,15 +28,46 @@ const cat = (g, ...needles) => anyIncludes(g.categories, needles);
 const mech = (g, ...needles) => anyIncludes(g.mechanics, needles);
 
 // Shared "shape" predicates reused across questions.
+//
+// These describe qualities, and a game may legitimately have several: Pax Pamir
+// is both thinky and confrontational. That overlap is fine because wants are
+// scored rather than used to eliminate, so nothing is forced into one bucket.
 const isTeam = (g) => mech(g, 'Team-Based');
 const isTraitor = (g) => mech(g, 'Hidden Roles', 'Traitor', 'Semi-Cooperative');
+const isSolo = (g) => g.maxPlayers === 1;
+
+// Party is about how the game FEELS, not how many chairs it has. Seating 6+ was
+// previously enough to qualify, which labelled heavy euros like Hadrian's Wall
+// and Twilight Inscription party games. Player count is section 05's job.
 const isParty = (g) =>
   cat(g, 'Party Game', 'Word Game', 'Humor', 'Trivia', 'Music') ||
-  mech(g, 'Acting', 'Singing', 'Storytelling', 'Voting') ||
-  g.maxPlayers >= 6;
-const isConfrontational = (g) =>
+  mech(g, 'Acting', 'Singing', 'Storytelling', 'Player Judge');
+
+// Conflict aimed AT other players. Two guards matter here:
+//   • "Area Movement" and "Area Majority" are spatial mechanics that plenty of
+//     peaceful euros use, so they are not triggers.
+//   • A full co-op cannot be confrontational: you fight the game, not each
+//     other. Without this, Spirit Island's "Fighting" category made it
+//     confrontational and so disqualified it from "Thinky & calm".
+const hasFightingSubject = (g) =>
   cat(g, 'Wargame', 'Fighting', 'Modern Warfare', 'World War', 'Civil War', 'Vietnam War', 'Napoleonic', 'Pike and Shot') ||
-  mech(g, 'Area Majority', 'Player Elimination', 'Take That', 'Area Movement', 'Battle', 'Combat', 'King of the Hill');
+  mech(g, 'Player Elimination', 'Take That', 'Battle', 'Combat', 'King of the Hill');
+const isConfrontational = (g) => hasFightingSubject(g) && (!g.cooperative || isTraitor(g));
+
+// Defined by what it IS, not by what it is not. The old version was the
+// leftovers after party and confrontational, so any over-eager rule in those
+// two silently evicted games (Spirit Island lost it to "Area Majority").
+const isThinky = (g) =>
+  mech(
+    g, 'Engine Building', 'Worker Placement', 'Tile Placement', 'Set Collection',
+    'Drafting', 'Hand Management', 'Pattern Building', 'Income', 'Tableau',
+    'Network and Route', 'Deck Construction', 'Deck, Bag', 'Grid Coverage',
+    'Action Points', 'Variable Player Powers'
+  ) ||
+  cat(
+    g, 'Abstract Strategy', 'Economic', 'City Building', 'Industry / Manufacturing',
+    'Territory Building', 'Farming', 'Puzzle', 'Environmental'
+  );
 
 // =============================================================================
 export const QUESTIONS = [
@@ -41,9 +79,12 @@ export const QUESTIONS = [
     type: 'single',
     options: [
       { id: 'coop', label: 'All cooperative', match: (g) => g.cooperative && !isTraitor(g) },
-      { id: 'ffa', label: 'Free-for-all', match: (g) => !g.cooperative && !isTeam(g) && !isTraitor(g) },
+      // Solo-only games have no sides to draw, so they are their own answer
+      // rather than being swept into free-for-all.
+      { id: 'ffa', label: 'Free-for-all', match: (g) => !g.cooperative && !isTeam(g) && !isTraitor(g) && !isSolo(g) },
       { id: 'teams', label: 'Teams', match: (g) => isTeam(g) },
       { id: 'traitor', label: 'Hidden traitor', match: (g) => isTraitor(g) },
+      { id: 'solo', label: 'Just me', match: isSolo },
     ],
   },
 
@@ -54,9 +95,9 @@ export const QUESTIONS = [
     title: 'What mood are we bringing to the table?',
     type: 'single',
     options: [
-      { id: 'thinky', label: 'Thinky & calm', match: (g) => !isConfrontational(g) && !isParty(g) },
-      { id: 'party', label: 'Loud & social', match: (g) => isParty(g) },
-      { id: 'cutthroat', label: 'Confrontational', match: (g) => isConfrontational(g) },
+      { id: 'thinky', label: 'Thinky & calm', match: (g) => isThinky(g) && !isConfrontational(g) },
+      { id: 'party', label: 'Loud & social', match: isParty },
+      { id: 'cutthroat', label: 'Confrontational', match: isConfrontational },
     ],
   },
 

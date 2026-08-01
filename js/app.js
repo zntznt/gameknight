@@ -43,11 +43,6 @@ function basePool() {
   return poolFor(state.data, state.selected);
 }
 
-// `skipId` lets a section measure counts as if its own answer weren't applied.
-function prefPreds(answers = state.answers, skipId = null) {
-  return QUESTIONS.filter((q) => q.id !== skipId).map((q) => questionPredicate(q, answers[q.id]));
-}
-
 // `skip` excludes one limit so its chips can each show their own count.
 function constraintPreds(c = state.constraints, skip = null) {
   const preds = [];
@@ -67,8 +62,26 @@ function constraintPreds(c = state.constraints, skip = null) {
   return preds;
 }
 
+// Only the limits remove games. Wants never eliminate; see fitScore.
 function remaining() {
-  return applyFilters(basePool(), [...prefPreds(), ...constraintPreds()]);
+  return applyFilters(basePool(), constraintPreds());
+}
+
+/* ------------------------------------------------------------ want fit -- */
+// How many of the answered wants this game satisfies. Each answered question is
+// worth one point regardless of how many options are ticked inside it, so a
+// 10-option theme question cannot outweigh the single-choice mood question.
+function fitScore(g) {
+  let score = 0;
+  for (const q of QUESTIONS) {
+    const pred = questionPredicate(q, state.answers[q.id]);
+    if (pred && pred(g)) score += 1;
+  }
+  return score;
+}
+// How many wants are in play at all, so fit can be shown as "2 of 3".
+function answeredWants() {
+  return QUESTIONS.filter((q) => (state.answers[q.id] || []).length > 0).length;
 }
 
 function anyFilters() {
@@ -112,9 +125,13 @@ function fitTier(g) {
 /* -------------------------------------------------------------- sorting -- */
 const playsThisMonth = (g) => g.playsThisMonth || 0;
 
+// Best fit first, then the metric chosen in section 10 settles the order among
+// games that fit equally well.
 function sortGames(games) {
   const by = state.sortBy;
   return games.slice().sort((a, b) => {
+    const fit = fitScore(b) - fitScore(a);
+    if (fit) return fit;
     if (by === 'plays') {
       const d = playsThisMonth(b) - playsThisMonth(a);
       if (d) return d;
@@ -185,6 +202,16 @@ function sortTag(g, short) {
 function tagsFor(g) {
   const n = state.constraints.players;
   const out = [{ text: sortTag(g), cls: 'gk-tag--sort' }];
+  // Show how the pick answered your wants, so the ordering is explainable
+  // rather than mysterious. Only meaningful once a want has been expressed.
+  const asked = answeredWants();
+  if (asked > 0) {
+    const got = fitScore(g);
+    out.push({
+      text: `matches ${got} of ${asked} want${asked === 1 ? '' : 's'}`,
+      cls: got === asked ? 'gk-tag--fit' : '',
+    });
+  }
   if (g.pollVotes && Array.isArray(g.bestPlayers) && g.bestPlayers.length) {
     out.push({
       text: `best at ${formatCounts(g.bestPlayers)}`,
@@ -445,16 +472,15 @@ function renderWants() {
     const num = String(qi + 1).padStart(2, '0');
     const sel = new Set(state.answers[q.id] || []);
     // Counts are honest against every OTHER filter, since there is no step order.
-    const context = applyFilters(base, [...prefPreds(state.answers, q.id), ...constraintPreds()]);
+    // Wants no longer eliminate, so a count here answers "how many playable
+    // games have this quality", measured against the limits only. It is a
+    // description of the shelf rather than a threat to shrink it.
+    const context = applyFilters(base, constraintPreds());
 
     const grid = el('div', 'gk-options');
     q.options.forEach((o) => {
       const on = sel.has(o.id);
-      // For a multi-select, the count is the OR of the current selection plus this option.
-      const test = new Set(sel);
-      test.add(o.id);
-      const pred = q.type === 'single' ? o.match : questionPredicate(q, [...test]);
-      const count = context.filter(pred).length;
+      const count = context.filter(o.match).length;
 
       const btn = el('button', `gk-option${on ? ' gk-option--on' : ''}${count === 0 && !on ? ' gk-option--empty' : ''}`);
       btn.type = 'button';
@@ -504,7 +530,9 @@ function renderLimits() {
   const out = frag();
   const c = state.constraints;
   const base = basePool();
-  const ctxFor = (skip) => applyFilters(base, [...prefPreds(), ...constraintPreds(c, skip)]);
+  // Limits still filter, so a chip count is a genuine "this many would remain".
+  // Wants are excluded from the context because they no longer remove anything.
+  const ctxFor = (skip) => applyFilters(base, constraintPreds(c, skip));
 
   // A chip row where "Any" clears the value; each chip counts its own value
   // with every other filter applied.
@@ -764,7 +792,10 @@ function buildVerdict() {
     const head = el('div', 'gk-shortlist__head');
     head.appendChild(el('span', 'gk-shortlist__title', 'Also on the table'));
     const byLabel = state.sortBy === 'plays' ? 'plays this month' : state.sortBy;
-    head.appendChild(el('span', 'gk-shortlist__count', `${rest.length} · by ${byLabel}`));
+    // Say fit first when wants are in play, since that is what actually drives
+    // the order; the section 10 metric only settles ties.
+    const order = answeredWants() > 0 ? `fit, then ${byLabel}` : byLabel;
+    head.appendChild(el('span', 'gk-shortlist__count', `${rest.length} · by ${order}`));
     sec.appendChild(head);
 
     const rows = el('div', 'gk-rows');
