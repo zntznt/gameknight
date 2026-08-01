@@ -166,8 +166,14 @@ export const QUESTIONS = [
   },
 ];
 
-// Complexity buckets for section 07. Half-open [lo, hi) so none overlap;
-// unrated weight (0) passes every bucket.
+// Complexity buckets for section 07, ascending. Half-open [lo, hi) so none
+// overlap, and unrated weight (0) passes every bucket.
+//
+// Note how these are USED: `hi` acts as a ceiling, not a band. Picking "Medium"
+// keeps everything medium and lighter, because the question asks how much brain
+// you are willing to spend. `lo` is only used to work out which band a game sits
+// in, so games at the weight you asked for can rank above the lighter ones you
+// would still accept. See weightFit in app.js.
 export const WEIGHT_BUCKETS = [
   { key: 'any', label: 'Any', sub: '', lo: 0, hi: 99 },
   { key: 'light', label: 'Light', sub: 'gateway', lo: 0, hi: 2.0 },

@@ -49,8 +49,13 @@ function constraintPreds(c = state.constraints, skip = null) {
   const bk = bucketFor(c.wKey);
   if (c.players && skip !== 'players') preds.push((g) => fitsPlayers(g, c.players, c.playerFit));
   // Missing metadata always passes: unrated weight, unknown time, no minAge.
-  if (skip !== 'weight' && (bk.lo > 0 || bk.hi < 99)) {
-    preds.push((g) => !g.weight || (g.weight >= bk.lo && g.weight < bk.hi));
+  //
+  // Weight is a CEILING, not a band. The question asks how much brain you are
+  // willing to spend, so anything heavier is out while anything lighter is
+  // still perfectly playable. Preferring the weight you actually asked for is
+  // handled by weightFit in the ranking, not by throwing lighter games away.
+  if (skip !== 'weight' && bk.hi < 99) {
+    preds.push((g) => !g.weight || g.weight < bk.hi);
   }
   if (c.maxTime && skip !== 'time') {
     preds.push((g) => {
@@ -82,6 +87,27 @@ function fitScore(g) {
 // How many wants are in play at all, so fit can be shown as "2 of 3".
 function answeredWants() {
   return QUESTIONS.filter((q) => (state.answers[q.id] || []).length > 0).length;
+}
+
+/* ---------------------------------------------------------- weight fit -- */
+// Buckets excluding "Any", in ascending order, so a game's band is its index.
+const RATED_BUCKETS = WEIGHT_BUCKETS.filter((b) => b.key !== 'any');
+const bandOf = (g) => RATED_BUCKETS.findIndex((b) => g.weight >= b.lo && g.weight < b.hi);
+
+// Higher is better, 0 being "exactly the weight you asked for". Heavier games
+// are already gone by the time this runs (the ceiling filter), so this only
+// ranks the chosen band above progressively lighter ones, one notch per bucket.
+// An unrated weight takes a single notch: it survives the filter, but we cannot
+// claim it is what you asked for, so it should not outrank a confirmed match.
+function weightFit(g) {
+  const key = state.constraints.wKey;
+  if (key === 'any') return 0; // no preference expressed
+  const target = RATED_BUCKETS.findIndex((b) => b.key === key);
+  if (target < 0) return 0;
+  if (!g.weight) return -1;
+  const band = bandOf(g);
+  if (band < 0) return -1;
+  return -Math.abs(target - band);
 }
 
 function anyFilters() {
@@ -132,6 +158,10 @@ function sortGames(games) {
   return games.slice().sort((a, b) => {
     const fit = fitScore(b) - fitScore(a);
     if (fit) return fit;
+    // Then closeness to the weight you asked for, so a medium night surfaces
+    // medium games ahead of the fillers it also allows.
+    const w = weightFit(b) - weightFit(a);
+    if (w) return w;
     if (by === 'plays') {
       const d = playsThisMonth(b) - playsThisMonth(a);
       if (d) return d;
@@ -612,10 +642,9 @@ function renderLimits() {
     const grid = el('div', 'gk-chips');
     WEIGHT_BUCKETS.forEach((bk) => {
       const on = c.wKey === bk.key;
-      const count =
-        bk.lo === 0 && bk.hi === 99
-          ? ctx.length
-          : ctx.filter((g) => !g.weight || (g.weight >= bk.lo && g.weight < bk.hi)).length;
+      // Cumulative, because the bucket is a ceiling: "Medium" counts everything
+      // medium and lighter, which is what picking it would actually leave you.
+      const count = bk.hi >= 99 ? ctx.length : ctx.filter((g) => !g.weight || g.weight < bk.hi).length;
       grid.appendChild(
         chip({
           label: bk.label,
