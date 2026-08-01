@@ -244,11 +244,34 @@ npm install
 BGG_TOKEN=your_token_here npm run fetch
 ```
 
+### Tests
+
+```bash
+npm test           # node --test, no dependencies beyond node itself
+npm run audit      # how each want option performs against YOUR shelf
+```
+
+`npm test` checks what is true for every fork whatever games they own: that the
+questions are shaped the way the app reads them, that every predicate hands back
+a real boolean even for a game BGG has barely tagged, that the complexity
+buckets ascend without gaps or overlaps, that the pool unions shelves rather
+than intersecting them, that an unanswered want filters nothing, and that the
+baked data has the fields the cards and the sorting need.
+
+`npm run audit` is the other half, and it deliberately never fails. It prints
+every option with its count against your collection and flags the two shapes
+worth a second look: an option almost nothing matches, which usually means a
+needle that does not match BGG's wording rather than a gap in your shelf, and an
+option matching more than half of it, which barely reorders anything when
+chosen. Both are judgements about a particular collection, so they are yours to
+make rather than something CI should decide.
+
 ### Linting
 
-ESLint (JS), Stylelint (CSS) and html-validate (HTML) run on every push and
-pull request via [`.github/workflows/lint.yml`](.github/workflows/lint.yml).
-All three are dev only: nothing extra reaches the browser.
+ESLint (JS), Stylelint (CSS) and html-validate (HTML) run alongside the tests on
+every push and pull request via
+[`.github/workflows/lint.yml`](.github/workflows/lint.yml). All are dev only:
+nothing extra reaches the browser.
 
 ```bash
 npm run lint       # check JS, CSS and HTML
@@ -286,7 +309,9 @@ BGG XML API  ->  (GitHub Action, weekly)  ->  data/games.json  ->  static page
 | `icons/` | Install icons. Replace these to brand your fork. |
 | `scripts/fetch-bgg.mjs` | Server side BGG fetcher. Handles the async 202 queue, the Bearer token, and enrichment. |
 | `.github/workflows/fetch-collections.yml` | Runs the fetcher weekly and on demand, commits the result. |
-| `.github/workflows/lint.yml` | Lints on push and pull request. |
+| `.github/workflows/lint.yml` | Tests and lints on push and pull request. |
+| `test/` | `node --test` suite. Structure and behaviour, never shelf counts. |
+| `scripts/audit-questions.mjs` | `npm run audit`: how each want option performs against your shelf. |
 | `data/collections.config.json` | Which BGG users to pull. |
 | `data/games.json` | The baked data the page reads. Generated, but committed. |
 

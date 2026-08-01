@@ -98,7 +98,10 @@ export const QUESTIONS = [
     title: 'How are we drawing sides tonight?',
     type: 'single',
     options: [
-      { id: 'coop', label: 'All cooperative', match: (g) => g.cooperative && !isTraitor(g) },
+      // `=== true` rather than a bare truthiness check: a game whose data has no
+      // cooperative flag at all would otherwise make this return undefined, and
+      // every other predicate here hands back a real boolean.
+      { id: 'coop', label: 'All cooperative', match: (g) => g.cooperative === true && !isTraitor(g) },
       // Free-for-all now means what its name says: a TABLE, three or more,
       // everyone for themselves. Games built for exactly two are their own
       // answer below rather than a small odd corner of this one.

@@ -1,4 +1,4 @@
-name: Lint
+name: Checks
 
 on:
   push:
@@ -19,6 +19,8 @@ jobs:
           node-version: 22
       - name: Install deps
         run: npm install --no-audit --no-fund
+      - name: Test
+        run: npm test
       - name: Lint JS
         run: npm run lint:js
       - name: Lint CSS
