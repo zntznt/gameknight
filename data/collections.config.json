@@ -1,5 +1,10 @@
 {
   "$comment": "List the BGG usernames whose collections should be baked into data/games.json. The GitHub Action reads this file. 'id' is a short internal key, 'label' is what shows in the UI. Add more entries to pull a whole friend group.",
+  "site": {
+    "$comment": "CHANGE THESE WHEN YOU FORK. 'repoUrl' is where the header's GitHub badge points. 'appUrl' is where your copy is published, and it goes into the User-Agent the fetcher sends, which is how BGG matches API traffic to your registered application. Leaving mine here would report your requests as my app.",
+    "repoUrl": "https://github.com/zntznt/gameknight",
+    "appUrl": "https://www.zntznt.com/gameknight"
+  },
   "collections": [
     { "id": "zntznt", "label": "Zeo", "bggUser": "zntznt" },
     { "id": "gabo", "label": "Gabo", "bggUser": "AranGba" },
