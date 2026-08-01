@@ -128,8 +128,11 @@ export const QUESTIONS = [
     title: 'What world are we stepping into?',
     type: 'multi',
     options: [
+      // 'Travel' moved here from the old "Sports & racing", where it was the
+      // needle doing nearly all that option's matching. A journey game like
+      // Tokaido belongs with adventure and exploration, not with racing.
       { id: 'fantasy', label: 'Fantasy & adventure',
-        match: (g) => cat(g, 'Fantasy', 'Adventure', 'Mythology', 'Exploration', 'Fairy Tale') },
+        match: (g) => cat(g, 'Fantasy', 'Adventure', 'Mythology', 'Exploration', 'Fairy Tale', 'Travel') },
       { id: 'scifi', label: 'Sci-fi & space',
         match: (g) => cat(g, 'Science Fiction', 'Space Exploration') },
       { id: 'history', label: 'History & civ',
@@ -144,10 +147,19 @@ export const QUESTIONS = [
         match: (g) => cat(g, 'Horror', 'Zombies', 'Murder', 'Mystery', 'Spies', 'Mafia', 'Deduction', 'Medical') },
       { id: 'abstract', label: 'Cards & abstract',
         match: (g) => cat(g, 'Abstract Strategy', 'Card Game', 'Number', 'Puzzle', 'Maze', 'Math', 'Educational') },
-      { id: 'party', label: 'Party & pop-culture',
-        match: (g) => cat(g, 'Party Game', 'Humor', 'Word Game', 'Trivia', 'Music', 'Movies / TV / Radio theme', 'Video Game Theme', 'Comic Book', 'Novel-based', 'Book') },
-      { id: 'sport', label: 'Sports & racing',
-        match: (g) => cat(g, 'Sports', 'Racing', 'Aviation / Flight', 'Travel') },
+      // "Party & pop-culture" was two unrelated wants sharing a chip, and the
+      // party half was the smaller one by far: 10 games are actually party or
+      // humour, while 30 are licensed worlds. Someone tapping it hoping for
+      // something silly got mostly Marvel and Stranger Things.
+      { id: 'party', label: 'Party & humour',
+        match: (g) => cat(g, 'Party Game', 'Humor', 'Word Game', 'Trivia', 'Music') },
+      // Replaces "Sports & racing", which was a phantom. This shelf has no
+      // Sports category at all, one Racing game and one Aviation game, so four
+      // of its five matches came from the 'Travel' needle, which is not sport.
+      // Reinstate it if your own shelf has real sports games; nothing else in
+      // the question depends on it.
+      { id: 'licensed', label: 'Films, games & books',
+        match: (g) => cat(g, 'Movies / TV / Radio theme', 'Video Game Theme', 'Comic Book', 'Novel-based', 'Book') },
     ],
   },
 
