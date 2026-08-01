@@ -178,10 +178,21 @@ export const QUESTIONS = [
         match: (g) => mech(g, 'Negotiation', 'Trading', 'Auction', 'Bidding', 'Market', 'Stock', 'Commodity', 'Loans') || cat(g, 'Negotiation') },
       { id: 'campaign', label: 'Campaign / legacy / story',
         match: (g) => mech(g, 'Legacy', 'Campaign', 'Scenario', 'Mission', 'Narrative', 'Storytelling', 'Role Playing', 'Paragraph') },
-      { id: 'dex', label: 'Dexterity & real-time',
-        match: (g) => mech(g, 'Flicking', 'Stacking and Balancing', 'Real-Time', 'Speed Matching', 'Line Drawing', 'Slide/Push') || cat(g, 'Action / Dexterity', 'Real-time') },
-      { id: 'trick', label: 'Trick-taking',
-        match: (g) => mech(g, 'Trick-taking', 'Ladder Climbing', 'Melding') },
+      // Replaced two options that could not do any work on this shelf:
+      //
+      //   "Trick-taking" matched exactly one game, and matched it WRONGLY: its
+      //   'Melding' needle caught Expeditions via "Melding and Splaying". There
+      //   is not a single real trick-taker here.
+      //
+      //   "Dexterity & real-time" matched two games, both already reachable
+      //   through Dice and Tile-laying.
+      //
+      // These two carry their weight instead. Reinstate the old pair if your
+      // shelf actually has those games; coverage does not depend on either.
+      { id: 'sets', label: 'Set collection',
+        match: (g) => mech(g, 'Set Collection', 'Contracts', 'Collection') },
+      { id: 'variable', label: 'Different every time',
+        match: (g) => mech(g, 'Variable Set-up', 'Modular Board', 'Deck, Bag') },
     ],
   },
 
