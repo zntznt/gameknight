@@ -30,8 +30,18 @@ design:
   "delete everything that is not fantasy".
 * **Sections 05 to 09 are limits.** These do filter, strictly. If only four of
   you can play and a game seats three, it is gone.
-* **Section 10** picks which score settles ties among equally good fits: BGG
-  rating, BGG rank, or plays logged on BGG this month.
+* **Complexity (section 07) is a ceiling, not a band.** It asks how much brain
+  you are *willing* to spend, so picking Medium drops the heavier games but
+  keeps the lighter ones, which are still perfectly playable. Among what
+  survives, games at the weight you actually asked for rank above the lighter
+  ones, stepping down a notch per bucket. Picking Medium on a 137 game shelf
+  leaves 89 games with the genuinely medium ones on top, rather than leaving
+  only the 25 inside that one band.
+* **Section 10** picks which score settles the order once fit and weight have
+  had their say: BGG rating, BGG rank, or plays logged on BGG this month.
+
+The full ordering is: how many wants a game matches, then how close it sits to
+the complexity you asked for, then your section 10 metric.
 
 Every count you see is live. The header shows how many games survive your
 limits; each want option shows how many of those games have that quality; each
