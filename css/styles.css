@@ -350,6 +350,9 @@ a:hover { color: var(--accent); }
 .gk-chip--on { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
 .gk-chip--empty { opacity: 0.5; }
 .gk-chip__sub { font-family: var(--mono); font-size: 9px; opacity: 0.7; letter-spacing: 0.04em; }
+/* A limit that would leave nothing flags its count, same as a want option.
+   Full opacity so the vermilion actually reads against the dimmed chip. */
+.gk-chip__sub--zero { color: var(--accent); opacity: 1; }
 
 /* ========================================================= action bar ===== */
 .gk-bar {

@@ -487,12 +487,15 @@ function renderWants() {
 }
 
 /* --- 05–10 limits --------------------------------------------------------- */
-function chip({ label, sub, on, empty, onClick }) {
+// `zeroSub` turns the sub-line vermilion, matching the want options: a choice
+// that would leave nothing dims AND flags its count. Section 10's sub-line is a
+// text hint rather than a count, so it never sets this.
+function chip({ label, sub, on, empty, zeroSub, onClick }) {
   const btn = el('button', `gk-chip${on ? ' gk-chip--on' : ''}${empty ? ' gk-chip--empty' : ''}`);
   btn.type = 'button';
   btn.setAttribute('aria-pressed', on ? 'true' : 'false');
   btn.appendChild(el('span', null, label));
-  btn.appendChild(el('span', 'gk-chip__sub', sub));
+  btn.appendChild(el('span', `gk-chip__sub${zeroSub ? ' gk-chip__sub--zero' : ''}`, sub));
   btn.onclick = onClick;
   return btn;
 }
@@ -516,6 +519,7 @@ function renderLimits() {
         sub: String(count),
         on,
         empty: count === 0 && !on,
+        zeroSub: count === 0 && !on,
         onClick: () => {
           const was = current;
           setConstraint({ [key]: val });
@@ -559,6 +563,7 @@ function renderLimits() {
           sub: String(count),
           on,
           empty: count === 0 && !on,
+          zeroSub: count === 0 && !on,
           onClick: () => {
             const was = c.playerFit;
             setConstraint({ playerFit: val });
@@ -589,6 +594,7 @@ function renderLimits() {
           sub: String(count),
           on,
           empty: count === 0 && !on,
+          zeroSub: count === 0 && !on,
           onClick: () => {
             const was = c.wKey;
             setConstraint({ wKey: bk.key });
