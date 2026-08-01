@@ -36,6 +36,12 @@ const state = {
 
 const SECTIONS = { players: '05', fit: '06', weight: '07', time: '08', age: '09', sort: '10' };
 
+// The time caps section 08 offers, ascending. Shared by the chips and by
+// timeFit so the two cannot drift apart.
+const TIME_CAPS = [15, 30, 45, 60, 90, 120, 180];
+// A game's length, preferring the headline playing time.
+const timeOf = (g) => g.playTime || g.maxTime || g.minTime || 0;
+
 /* -------------------------------------------------------------- derived -- */
 const bucketFor = (key) => WEIGHT_BUCKETS.find((b) => b.key === key) || WEIGHT_BUCKETS[0];
 
@@ -59,7 +65,7 @@ function constraintPreds(c = state.constraints, skip = null) {
   }
   if (c.maxTime && skip !== 'time') {
     preds.push((g) => {
-      const t = g.playTime || g.maxTime || g.minTime || 0;
+      const t = timeOf(g);
       return !t || t <= c.maxTime;
     });
   }
@@ -89,16 +95,18 @@ function answeredWants() {
   return QUESTIONS.filter((q) => (state.answers[q.id] || []).length > 0).length;
 }
 
-/* ---------------------------------------------------------- weight fit -- */
+/* ----------------------------------------------------------- limit fit -- */
+// Complexity and time are both ceilings: they ask what you are WILLING to
+// spend, so lighter and shorter games survive the filter. These score how close
+// a survivor sits to what you actually asked for, in notches, where 0 is spot
+// on and every step below costs one. Missing data (unrated weight, unknown
+// length) survives the filter but takes a single notch, since we cannot confirm
+// it is what you wanted and it should not outrank something we can confirm.
+
 // Buckets excluding "Any", in ascending order, so a game's band is its index.
 const RATED_BUCKETS = WEIGHT_BUCKETS.filter((b) => b.key !== 'any');
 const bandOf = (g) => RATED_BUCKETS.findIndex((b) => g.weight >= b.lo && g.weight < b.hi);
 
-// Higher is better, 0 being "exactly the weight you asked for". Heavier games
-// are already gone by the time this runs (the ceiling filter), so this only
-// ranks the chosen band above progressively lighter ones, one notch per bucket.
-// An unrated weight takes a single notch: it survives the filter, but we cannot
-// claim it is what you asked for, so it should not outrank a confirmed match.
 function weightFit(g) {
   const key = state.constraints.wKey;
   if (key === 'any') return 0; // no preference expressed
@@ -106,9 +114,26 @@ function weightFit(g) {
   if (target < 0) return 0;
   if (!g.weight) return -1;
   const band = bandOf(g);
-  if (band < 0) return -1;
-  return -Math.abs(target - band);
+  return band < 0 ? -1 : -Math.abs(target - band);
 }
+
+// A game's rung is the shortest offered cap it still fits inside, so a 50 minute
+// game and a 60 minute one share the "60" rung and both read as a good use of an
+// hour, while a 15 minute filler sits three rungs down.
+function timeFit(g) {
+  const cap = state.constraints.maxTime;
+  if (!cap) return 0;
+  const target = TIME_CAPS.indexOf(cap);
+  if (target < 0) return 0;
+  const t = timeOf(g);
+  if (!t) return -1;
+  const rung = TIME_CAPS.findIndex((c) => t <= c);
+  return rung < 0 ? -1 : -Math.abs(target - rung);
+}
+
+// Summed rather than tiered: both measure the same thing in the same unit, and
+// neither is obviously more important than the other.
+const limitFit = (g) => weightFit(g) + timeFit(g);
 
 function anyFilters() {
   const c = state.constraints;
@@ -158,10 +183,11 @@ function sortGames(games) {
   return games.slice().sort((a, b) => {
     const fit = fitScore(b) - fitScore(a);
     if (fit) return fit;
-    // Then closeness to the weight you asked for, so a medium night surfaces
-    // medium games ahead of the fillers it also allows.
-    const w = weightFit(b) - weightFit(a);
-    if (w) return w;
+    // Then closeness to the complexity and length you asked for, so a medium
+    // two hour night surfaces medium two hour games ahead of the light fillers
+    // those ceilings also allow.
+    const lim = limitFit(b) - limitFit(a);
+    if (lim) return lim;
     if (by === 'plays') {
       const d = playsThisMonth(b) - playsThisMonth(a);
       if (d) return d;
@@ -671,8 +697,8 @@ function renderLimits() {
       SECTIONS.time,
       'How much time have we got to play?',
       !!c.maxTime,
-      valueRow('time', [15, 30, 45, 60, 90, 120, 180], c.maxTime, 'maxTime', (v) => `≤ ${v}m`, SECTIONS.time, (g, v) => {
-        const t = g.playTime || g.maxTime || g.minTime || 0;
+      valueRow('time', TIME_CAPS, c.maxTime, 'maxTime', (v) => `≤ ${v}m`, SECTIONS.time, (g, v) => {
+        const t = timeOf(g);
         return !t || t <= v;
       })
     )
