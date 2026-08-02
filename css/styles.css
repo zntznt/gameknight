@@ -227,9 +227,15 @@ a:hover { color: var(--accent); }
 
 /* The one line that says what this is. Sits above section 00 in the scroll area,
    not in the sticky header, so it costs no height once you are past it. */
+.gk-intro { margin: 0 0 22px; display: grid; gap: 7px; }
 .gk-lede {
-  margin: 0 0 20px;
+  margin: 0;
   font-family: var(--serif);
+
+  /* Explicitly 400, as .gk-sectitle also is. Instrument Serif ships one weight,
+     so an h1's default bold gets synthesized by the browser, and faux bold on a
+     display serif looks like a mistake. */
+  font-weight: 400;
 
   /* Ink, not muted, and only a notch under the section titles. Set dim and
      small it read as a failed section heading rather than the page's opening
@@ -239,6 +245,17 @@ a:hover { color: var(--accent); }
   font-size: clamp(20px, 5vw, 25px);
   line-height: 1.2;
   color: var(--ink);
+}
+
+/* Small and quiet is right HERE, unlike on the line above it: this sits under
+   an ink heading it clearly belongs to, rather than floating above a blacker
+   one it appears to be losing to. */
+.gk-lede__sub {
+  margin: 0;
+  font-size: clamp(14px, 3.7vw, 15px);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 52ch;
 }
 
 .gk-section { display: grid; gap: 12px; }

@@ -651,11 +651,24 @@ function renderLimits() {
 /* --- board ---------------------------------------------------------------- */
 function buildBoard() {
   const main = el('main', 'gk-main');
-  // The one line saying what this is. It lived only in the <title>, where a tab
-  // shows about ten characters of it and nobody reads the rest. Deliberately in
-  // the scroll area and not the sticky header: the header is already two rows on
-  // a phone, and a statement of purpose has done its job after the first screen.
-  main.appendChild(el('p', 'gk-lede', 'What should we play tonight?'));
+  // What this is, and what it will do about it. Both lived only in the <title>
+  // and the meta description, where a tab shows about ten characters and nobody
+  // reads the rest. Deliberately in the scroll area rather than the sticky
+  // header: the header is already two rows on a phone, and an introduction has
+  // done its job after the first screen.
+  //
+  // The second line is the one that makes this an introduction rather than a
+  // slogan. On its own the tagline is a rhetorical question sitting above a real
+  // one, which orients nobody; saying wants, then limits, then one game tells a
+  // first-time visitor what the numbered sections below are for.
+  //
+  // The h1 is also the page's only one. The board had h2 section titles and no
+  // h1 above them, so this closes that as well.
+  const intro = el('div', 'gk-intro');
+  intro.appendChild(el('h1', 'gk-lede', 'What should we play tonight?'));
+  intro.appendChild(el('p', 'gk-lede__sub',
+    'Say what you fancy, set what tonight allows, and it names one game.'));
+  main.appendChild(intro);
   main.appendChild(renderShelves());
   main.appendChild(renderWants());
   main.appendChild(renderLimits());
