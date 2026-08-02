@@ -76,6 +76,27 @@ export function fitTier(g, c) {
   return rec ? 3 : best ? 2 : 1;
 }
 
+/* ---------------------------------------------------------------- age -- */
+// Age is the one limit where "BGG does not know" must not mean "yes".
+//
+// Everywhere else, missing data passing is generosity toward the user's own
+// flexibility: weight and time ask what YOU are willing to spend, so letting an
+// unplaceable game through and sinking it in the ranking costs nothing worse
+// than a game that turns out heavier or longer than you fancied, and the card
+// shows you the numbers either way.
+//
+// This question asks about someone else at the table. Passing an unknown here
+// is not generosity, it is a claim about a child's game that we have no basis
+// for, and the card cannot show a reassuring number because there is none.
+// Applied to this shelf the old rule was not a near miss: asking for 6+ left
+// seven games, every one of them missing its age, and the answer it named was a
+// Netrunner fan expansion.
+//
+// So an unknown age fails an age limit. Nothing else changes: with no age
+// chosen this is never consulted, and the other limits keep passing their
+// unknowns exactly as before.
+export const fitsAge = (g, minAge) => Boolean(g.minAge) && g.minAge <= minAge;
+
 /* ------------------------------------------------------------- limits -- */
 // The only thing that removes a game. `skip` excludes one limit so its chips
 // can each show their own count.
@@ -83,7 +104,9 @@ export function constraintPreds(c, skip = null) {
   const preds = [];
   const bk = bucketFor(c.wKey);
   if (c.players && skip !== 'players') preds.push((g) => fitsPlayers(g, c.players, c.playerFit));
-  // Missing metadata always passes: unrated weight, unknown time, no minAge.
+  // Missing metadata passes on the axes that describe YOUR tolerance: an
+  // unrated weight and an unknown length both survive and are sunk in the
+  // ranking instead. Age is the exception, for the reason given above it.
   //
   // Weight is a CEILING, not a band. The question asks how much brain you are
   // willing to spend, so anything heavier is out while anything lighter is
@@ -98,7 +121,7 @@ export function constraintPreds(c, skip = null) {
       return !t || t <= c.maxTime;
     });
   }
-  if (c.minAge && skip !== 'age') preds.push((g) => !g.minAge || g.minAge <= c.minAge);
+  if (c.minAge && skip !== 'age') preds.push((g) => fitsAge(g, c.minAge));
   return preds;
 }
 

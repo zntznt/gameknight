@@ -586,7 +586,7 @@ function renderLimits() {
       SECTIONS.age,
       'Anyone young among us?',
       !!c.minAge,
-      valueRow('age', [6, 8, 10, 12, 14], c.minAge, 'minAge', (v) => `${v}+`, SECTIONS.age, (g, v) => !g.minAge || g.minAge <= v)
+      valueRow('age', [6, 8, 10, 12, 14], c.minAge, 'minAge', (v) => `${v}+`, SECTIONS.age, rank.fitsAge)
     )
   );
 

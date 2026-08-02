@@ -54,9 +54,24 @@ test('length is a ceiling too, and an unknown length passes it', () => {
   assert.deepEqual(keep(games, limits({ maxTime: 60 })), ['short', 'unknown']);
 });
 
-test('a missing minimum age passes the age limit', () => {
+// The one limit where missing data does NOT pass, and the asymmetry is the
+// point: weight and time ask what YOU will spend, so letting an unknown through
+// is generosity. Age asks about someone at the table, where "BGG does not know"
+// is not a yes.
+test('an unknown minimum age fails the age limit', () => {
   const games = [game({ name: 'kids', minAge: 8 }), game({ name: 'adult', minAge: 14 }), game({ name: 'unknown' })];
-  assert.deepEqual(keep(games, limits({ minAge: 10 })), ['kids', 'unknown']);
+  assert.deepEqual(keep(games, limits({ minAge: 10 })), ['kids']);
+});
+
+test('an unknown age is only excluded once an age is actually chosen', () => {
+  const games = [game({ name: 'unknown' })];
+  assert.deepEqual(keep(games, limits({})), ['unknown'], 'no age chosen must not drop it');
+});
+
+// Guards the asymmetry from being "tidied up" in either direction later.
+test('the other limits still pass their unknowns', () => {
+  const games = [game({ name: 'no weight', weight: 0 }), game({ name: 'no time' })];
+  assert.deepEqual(keep(games, limits({ wKey: 'light', maxTime: 30 })), ['no weight', 'no time']);
 });
 
 // This is what lets each chip show its own count: "how many would remain if I
