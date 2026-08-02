@@ -96,7 +96,12 @@ a:hover { color: var(--accent); }
      6.2vw reaches the full 23px by 371px, which leaves every real handset from
      the 375px iPhone up looking exactly as it did, and tapers only below that. */
   font-size: clamp(19px, 6.2vw, 23px);
-  line-height: 1;
+
+  /* Not 1. A line box exactly one font-size tall stops at the baseline, and the
+     overflow:hidden below then slices the descender off the g in "knight".
+     1.25 leaves room for the full glyph and still sits under the 32px header
+     badges, so the row does not grow. */
+  line-height: 1.25;
   letter-spacing: -0.01em;
   flex: 1 1 auto;
   min-width: 0;
