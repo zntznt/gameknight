@@ -305,6 +305,13 @@ a:hover { color: var(--accent); }
   font-size: clamp(20px, 5vw, 25px);
   line-height: 1.2;
   color: var(--ink);
+
+  /* Both lines here are short blocks that wrap, and left alone they wrap badly:
+     the supporting line below dropped a lone "game." onto its own line at every
+     width from 600px up, which is every desktop. balance evens the lines out
+     instead of filling the first and stranding the remainder. Ignored by
+     browsers that do not have it, which just puts the old wrapping back. */
+  text-wrap: balance;
 }
 
 /* Small and quiet is right HERE, unlike on the line above it: this sits under
@@ -316,6 +323,7 @@ a:hover { color: var(--accent); }
   line-height: 1.5;
   color: var(--ink-2);
   max-width: 52ch;
+  text-wrap: balance;
 }
 
 .gk-section { display: grid; gap: 12px; }
