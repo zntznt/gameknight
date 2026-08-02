@@ -54,9 +54,24 @@ test('length is a ceiling too, and an unknown length passes it', () => {
   assert.deepEqual(keep(games, limits({ maxTime: 60 })), ['short', 'unknown']);
 });
 
-test('a missing minimum age passes the age limit', () => {
+// The one limit where missing data does NOT pass, and the asymmetry is the
+// point: weight and time ask what YOU will spend, so letting an unknown through
+// is generosity. Age asks about someone at the table, where "BGG does not know"
+// is not a yes.
+test('an unknown minimum age fails the age limit', () => {
   const games = [game({ name: 'kids', minAge: 8 }), game({ name: 'adult', minAge: 14 }), game({ name: 'unknown' })];
-  assert.deepEqual(keep(games, limits({ minAge: 10 })), ['kids', 'unknown']);
+  assert.deepEqual(keep(games, limits({ minAge: 10 })), ['kids']);
+});
+
+test('an unknown age is only excluded once an age is actually chosen', () => {
+  const games = [game({ name: 'unknown' })];
+  assert.deepEqual(keep(games, limits({})), ['unknown'], 'no age chosen must not drop it');
+});
+
+// Guards the asymmetry from being "tidied up" in either direction later.
+test('the other limits still pass their unknowns', () => {
+  const games = [game({ name: 'no weight', weight: 0 }), game({ name: 'no time' })];
+  assert.deepEqual(keep(games, limits({ wKey: 'light', maxTime: 30 })), ['no weight', 'no time']);
 });
 
 // This is what lets each chip show its own count: "how many would remain if I
@@ -275,4 +290,28 @@ test('an unranked game sinks to the bottom when sorting by rank', () => {
 test('a game with no plays logged sorts below one with plays', () => {
   const games = [game({ name: 'quiet', rating: 9 }), game({ name: 'hot', playsThisMonth: 3, rating: 1 })];
   assert.deepEqual(sortNames(games, {}, NO_LIMITS, 'plays'), ['hot', 'quiet']);
+});
+
+// The order must be a function of the rules in ranking.js and nothing else.
+// Before this was explicit, rating rounded to 1dp left most games tied, and a
+// stable sort quietly fell through to the order the fetcher happened to write
+// games.json in. That worked, invisibly, until someone changed the fetcher.
+test('the order does not depend on the order games arrive in', () => {
+  const games = [
+    game({ id: 1, name: 'a', rating: 8, rank: 100 }),
+    game({ id: 2, name: 'b', rating: 8, rank: 50 }),
+    game({ id: 3, name: 'c', rating: 8, rank: 0 }),
+    game({ id: 4, name: 'd', rating: 8, rank: 0 }),
+  ];
+  const opts = { answers: {}, constraints: NO_LIMITS, sortBy: 'rating' };
+  const forward = sortGames(games, opts).map((g) => g.name);
+  const backward = sortGames([...games].reverse(), opts).map((g) => g.name);
+  assert.deepEqual(forward, backward, 'same games, different input order, different result');
+  assert.deepEqual(forward, ['b', 'a', 'c', 'd'], 'rank then id settles an identical rating');
+});
+
+test('unranked games sort below ranked ones on an identical rating', () => {
+  const games = [game({ id: 1, name: 'unranked', rating: 8, rank: 0 }), game({ id: 2, name: 'ranked', rating: 8, rank: 9000 })];
+  assert.deepEqual(sortGames(games, { answers: {}, constraints: NO_LIMITS, sortBy: 'rating' }).map((g) => g.name),
+    ['ranked', 'unranked']);
 });

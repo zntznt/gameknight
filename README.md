@@ -56,6 +56,15 @@ ranking though: once you set a complexity or time limit, a game BGG cannot place
 on that axis sorts below every game it can, since there is no honest way to call
 it a good match for what you asked for.
 
+**Age is the deliberate exception, and it is the only one.** Every other limit
+asks what *you* are willing to spend, so letting an unplaceable game through and
+sinking it in the ranking costs you nothing worse than a game that turns out
+heavier or longer than you fancied. The age question asks about somebody else at
+the table, where "BGG does not know" is not a yes, so a game with no minimum age
+is excluded once you pick one. Expect a lower count than you might guess, and
+expect the lowest chip to come back empty on a grown-up shelf. Empty is the
+honest answer when nothing you own is genuinely a young child's game.
+
 ---
 
 ## Deploy your own copy
