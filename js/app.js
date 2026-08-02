@@ -914,12 +914,44 @@ function render() {
   if (built.bar) barRoot.replaceChildren(built.bar);
   else barRoot.replaceChildren();
   renderSheet();
+  // The introduction card is rebuilt on every state change, so the observer is
+  // pointed at a node that no longer exists unless it is re-attached here.
+  watchIntroMark();
 
   // Belt and braces: if the swap still moved us (a genuinely shorter page), put
   // it back, unless a guided scroll is mid-flight and owns the position.
   if (state.view === 'board' && !guide.progScroll && window.scrollY !== keepY) {
     window.scrollTo(0, keepY);
   }
+}
+
+/* ------------------------------------------------------- knight hand-off -- */
+// The header knight stays out of the way while the introduction card is showing
+// its own. When that scrolls off, this one takes over.
+//
+// Watching the card's mark rather than the card itself, so the swap happens at
+// the moment the big knight actually leaves rather than when the last line of
+// text does. rootMargin pulls the trigger line down past the sticky header, or
+// the hand-off would fire while the card is still visible underneath it.
+let markWatcher = null;
+
+function watchIntroMark() {
+  const header = $('.gk-mark');
+  if (!header) return;
+  if (markWatcher) markWatcher.disconnect();
+
+  // The verdict has no introduction card, so there is nothing to defer to.
+  const introMark = $('.gk-intro__mark');
+  if (!introMark || typeof IntersectionObserver !== 'function') {
+    header.classList.remove('gk-mark--tucked');
+    return;
+  }
+
+  markWatcher = new IntersectionObserver(
+    ([entry]) => header.classList.toggle('gk-mark--tucked', entry.isIntersecting),
+    { rootMargin: `-${headerH()}px 0px 0px 0px`, threshold: 0 }
+  );
+  markWatcher.observe(introMark);
 }
 
 /* ----------------------------------------------------------------- boot -- */

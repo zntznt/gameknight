@@ -65,8 +65,11 @@ a:hover { color: var(--accent); }
 
   /* Tightens only at the narrow end. The row carries four fixed width items
      (knight mark, BGG pill, GitHub badge) around one elastic one, so at 320px
-     the gaps are the cheapest few pixels to give back to the wordmark. */
-  gap: clamp(6px, 2.2vw, 9px);
+     the gaps are the cheapest few pixels to give back to the wordmark.
+     Named because .gk-mark--tucked has to cancel its own share of it. */
+  --headrow-gap: clamp(6px, 2.2vw, 9px);
+
+  gap: var(--headrow-gap);
 }
 .gk-headrow--top { padding: 5px 16px; }
 .gk-headrow--live { padding: 0 16px 4px; min-width: 0; }
@@ -80,14 +83,44 @@ a:hover { color: var(--accent); }
    wide and a square box would letterbox it. The height tracks the wordmark's
    own clamp so the two shrink together on narrow screens. */
 .gk-mark {
-  height: clamp(22px, 7.2vw, 27px);
+  --mark-h: clamp(22px, 7.2vw, 27px);
+
+  /* Width stated rather than derived from the SVG, because a collapse cannot be
+     animated from `auto`. 0.8321 is the artwork's own ratio, 1085.178/1304.128,
+     so this is the width it would have taken anyway. */
+  --mark-w: calc(var(--mark-h) * 0.8321);
+
+  height: var(--mark-h);
+  width: var(--mark-w);
   flex: 0 0 auto;
   color: var(--ink);
   display: grid;
   place-items: center;
   line-height: 1;
+  overflow: hidden;
+  transition: width 0.28s ease, margin-right 0.28s ease, opacity 0.2s ease, transform 0.28s ease;
 }
 .gk-mark svg { height: 100%; width: auto; display: block; }
+
+/* Tucked away while the introduction card is showing its own, much larger
+   knight. Two marks on screen at once is one too many, and the header has
+   better uses for the width on a phone.
+   Width AND the negative margin both matter: a zero-width flex item still
+   contributes its gap, so without cancelling that the wordmark would stop
+   short of where it should land. Defaulting to the visible state means a
+   browser without IntersectionObserver simply keeps the knight. */
+.gk-mark--tucked {
+  width: 0;
+  margin-right: calc(-1 * var(--headrow-gap));
+  opacity: 0;
+  transform: translateX(-4px);
+}
+
+/* The hand-off is decoration. Anyone who has asked for less movement gets the
+   end states without the travel. */
+@media (prefers-reduced-motion: reduce) {
+  .gk-mark { transition: none; }
+}
 .gk-wordmark {
   font-family: var(--serif);
 
