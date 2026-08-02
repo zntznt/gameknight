@@ -228,11 +228,17 @@ a:hover { color: var(--accent); }
 /* The one line that says what this is. Sits above section 00 in the scroll area,
    not in the sticky header, so it costs no height once you are past it. */
 .gk-lede {
-  margin: 0 0 4px;
+  margin: 0 0 20px;
   font-family: var(--serif);
-  font-size: clamp(17px, 4.4vw, 21px);
-  line-height: 1.25;
-  color: var(--muted);
+
+  /* Ink, not muted, and only a notch under the section titles. Set dim and
+     small it read as a failed section heading rather than the page's opening
+     line: same serif, same question shape, less weight, directly above a black
+     one. Full ink stops it competing from below, and the size keeps it from
+     out-shouting the workflow it introduces. */
+  font-size: clamp(20px, 5vw, 25px);
+  line-height: 1.2;
+  color: var(--ink);
 }
 
 .gk-section { display: grid; gap: 12px; }
