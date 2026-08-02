@@ -80,9 +80,12 @@ a:hover { color: var(--accent); }
   color: var(--paper);
   display: grid;
   place-items: center;
-  font-size: 18px;
   line-height: 1;
 }
+/* The knight is drawn rather than typed now, so it no longer depends on a font
+   having the ♞ glyph. currentColor keeps it inheriting the tile's paper fill,
+   which is what lets the same artwork sit ink-on-paper elsewhere. */
+.gk-mark svg { width: 66%; height: 66%; display: block; }
 .gk-wordmark {
   font-family: var(--serif);
 
