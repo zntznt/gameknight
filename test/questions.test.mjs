@@ -107,3 +107,44 @@ test('bucket keys are unique', () => {
   const keys = WEIGHT_BUCKETS.map((b) => b.key);
   assert.equal(new Set(keys).size, keys.length, `duplicate bucket key in ${keys}`);
 });
+
+// --- mood predicates --------------------------------------------------------
+// Fixtures, not shelf counts, so these hold for any collection. They pin the
+// rule that "fights the game" and "fights each other" are different things.
+
+const tone = QUESTIONS.find((q) => q.id === 'tone');
+const mood = (id) => tone.options.find((o) => o.id === id);
+const withTags = (patch) => ({ ...BARE, ...patch });
+
+test('a competitive game measuring firing lines is confrontational', () => {
+  // Skirmish games are often filed under Miniatures with no Wargame or Fighting
+  // category, so the mechanics have to carry it.
+  for (const m of ['Line of Sight', 'Measurement Movement']) {
+    const g = withTags({ categories: ['Miniatures', 'Science Fiction'], mechanics: [m] });
+    assert.equal(mood('cutthroat').match(g), true, `${m} should read as confrontational`);
+  }
+});
+
+// The guard earns its keep here: Gloomhaven carries Line of Sight, and calling
+// a co-op campaign confrontational would be badly wrong.
+test('a cooperative game with the same tags is not confrontational', () => {
+  const g = withTags({ cooperative: true, categories: ['Fantasy'], mechanics: ['Line of Sight', 'Critical Hits and Failures'] });
+  assert.equal(mood('cutthroat').match(g), false, 'you fight the game, not each other');
+});
+
+test('a traitor game stays confrontational despite being semi-cooperative', () => {
+  const g = withTags({ cooperative: true, mechanics: ['Hidden Roles', 'Player Elimination'] });
+  assert.equal(mood('cutthroat').match(g), true);
+});
+
+test('a peaceful euro is not dragged in by spatial mechanics', () => {
+  const g = withTags({ categories: ['Economic'], mechanics: ['Area Majority / Influence', 'Area Movement'] });
+  assert.equal(mood('cutthroat').match(g), false);
+});
+
+// Every mood is optional, and a game answering none of them is a real outcome
+// rather than a bug. See the note above the tone question in questions.js.
+test('a game may legitimately match no mood at all', () => {
+  const g = withTags({ categories: ['Adventure'], mechanics: ['Dice Rolling', 'Push Your Luck'] });
+  assert.equal(tone.options.some((o) => o.match(g)), false);
+});
