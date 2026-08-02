@@ -21,9 +21,15 @@
 //                           splitting. Single-choice questions are the
 //                           exception: those partition the shelf, so one large
 //                           answer there is normal.
-//   coverage below 100%     Games no option in that question can reach. They can
-//                           never score it. Often they are simply thin on BGG
-//                           tags rather than mis-handled.
+//   coverage below 100%     Games no option in that question can reach. Read
+//                           this last, and do not treat it as a score to
+//                           maximise. A game matching nothing simply scores
+//                           nothing on that question: it is never removed, and
+//                           it still competes on every other one. Some games
+//                           honestly have no answer, and widening an option
+//                           until they do is how an option stops meaning
+//                           anything. Chase a needle that looks WRONG, not a
+//                           coverage line that is short.
 
 import { readFileSync } from 'node:fs';
 import { QUESTIONS } from '../js/questions.js';

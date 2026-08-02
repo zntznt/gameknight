@@ -69,9 +69,20 @@ const isParty = (g) =>
 //   • A full co-op cannot be confrontational: you fight the game, not each
 //     other. Without this, Spirit Island's "Fighting" category made it
 //     confrontational and so disqualified it from "Thinky & calm".
+//   • Skirmish games are often filed under Miniatures with no Wargame or
+//     Fighting category at all, so the categories alone miss them. 'Line of
+//     Sight' and 'Measurement Movement' close that: you only measure a firing
+//     line in a game about shooting at each other. They are the reason a Halo
+//     skirmish game now reads as confrontational rather than as nothing.
+//
+// Needles considered and rejected, since a rule that cannot fire is worse than
+// no rule at all: 'Secret Unit Deployment' matched only games already caught,
+// 'Critical Hits' only ever landed on co-ops the guard below blocks anyway, and
+// 'Zone of Control' wrongly caught The Quest for El Dorado, which uses it for
+// blocking on a race track.
 const hasFightingSubject = (g) =>
   cat(g, 'Wargame', 'Fighting', 'Modern Warfare', 'World War', 'Civil War', 'Vietnam War', 'Napoleonic', 'Pike and Shot') ||
-  mech(g, 'Player Elimination', 'Take That', 'Battle', 'Combat', 'King of the Hill');
+  mech(g, 'Player Elimination', 'Take That', 'Battle', 'Combat', 'King of the Hill', 'Line of Sight', 'Measurement Movement');
 const isConfrontational = (g) => hasFightingSubject(g) && (!g.cooperative || isTraitor(g));
 
 // Defined by what it IS, not by what it is not. The old version was the
@@ -125,6 +136,18 @@ export const QUESTIONS = [
   },
 
   // --- 02 · mood ------------------------------------------------------------
+  // This question does not reach every game, and that is the right outcome
+  // rather than a gap to close. A game matching no mood simply scores nothing
+  // here; it is never removed, since wants rank and only limits filter.
+  //
+  // On the shelf this was written against, three games match nothing. A solo
+  // push-your-luck crawl is not calm, social or aggressive, and the honest fix
+  // would be a fourth mood for suspense, which measured 21 games of which 20
+  // already had a mood: it would reshuffle twenty answers to rescue one. A
+  // light roll-and-move deduction game would need "thinky" widened until it
+  // stopped meaning thinky. And one game has no BGG categories at all, so any
+  // match would be invented. Chase the counts in `npm run audit` when a needle
+  // looks wrong, not when the coverage line is short of 100%.
   {
     id: 'tone',
     kicker: 'mood',
