@@ -266,10 +266,16 @@ a:hover { color: var(--accent); }
   margin: 0;
   display: flex;
   align-items: center;
-  gap: clamp(12px, 3.5vw, 18px);
-  padding: clamp(14px, 3.5vw, 18px);
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  gap: clamp(13px, 3.6vw, 20px);
+
+  /* Deliberately the .gk-hero treatment rather than the .gk-option one. Those
+     are the app's two big statement cards, one opening the board and one
+     closing it, so they should read as the same class of object: the stronger
+     border, the 12px radius, the same generous padding. It had been 10px and
+     --line, which made it neither, and 10px was the only one in the file. */
+  padding: clamp(16px, 4vw, 26px);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
   background: var(--paper-hi);
 }
 .gk-intro__text { display: grid; gap: 6px; min-width: 0; }
