@@ -65,8 +65,11 @@ a:hover { color: var(--accent); }
 
   /* Tightens only at the narrow end. The row carries four fixed width items
      (knight mark, BGG pill, GitHub badge) around one elastic one, so at 320px
-     the gaps are the cheapest few pixels to give back to the wordmark. */
-  gap: clamp(6px, 2.2vw, 9px);
+     the gaps are the cheapest few pixels to give back to the wordmark.
+     Named because .gk-mark--tucked has to cancel its own share of it. */
+  --headrow-gap: clamp(6px, 2.2vw, 9px);
+
+  gap: var(--headrow-gap);
 }
 .gk-headrow--top { padding: 5px 16px; }
 .gk-headrow--live { padding: 0 16px 4px; min-width: 0; }
@@ -80,14 +83,44 @@ a:hover { color: var(--accent); }
    wide and a square box would letterbox it. The height tracks the wordmark's
    own clamp so the two shrink together on narrow screens. */
 .gk-mark {
-  height: clamp(22px, 7.2vw, 27px);
+  --mark-h: clamp(22px, 7.2vw, 27px);
+
+  /* Width stated rather than derived from the SVG, because a collapse cannot be
+     animated from `auto`. 0.8321 is the artwork's own ratio, 1085.178/1304.128,
+     so this is the width it would have taken anyway. */
+  --mark-w: calc(var(--mark-h) * 0.8321);
+
+  height: var(--mark-h);
+  width: var(--mark-w);
   flex: 0 0 auto;
   color: var(--ink);
   display: grid;
   place-items: center;
   line-height: 1;
+  overflow: hidden;
+  transition: width 0.28s ease, margin-right 0.28s ease, opacity 0.2s ease, transform 0.28s ease;
 }
 .gk-mark svg { height: 100%; width: auto; display: block; }
+
+/* Tucked away while the introduction card is showing its own, much larger
+   knight. Two marks on screen at once is one too many, and the header has
+   better uses for the width on a phone.
+   Width AND the negative margin both matter: a zero-width flex item still
+   contributes its gap, so without cancelling that the wordmark would stop
+   short of where it should land. Defaulting to the visible state means a
+   browser without IntersectionObserver simply keeps the knight. */
+.gk-mark--tucked {
+  width: 0;
+  margin-right: calc(-1 * var(--headrow-gap));
+  opacity: 0;
+  transform: translateX(-4px);
+}
+
+/* The hand-off is decoration. Anyone who has asked for less movement gets the
+   end states without the travel. */
+@media (prefers-reduced-motion: reduce) {
+  .gk-mark { transition: none; }
+}
 .gk-wordmark {
   font-family: var(--serif);
 
@@ -223,6 +256,74 @@ a:hover { color: var(--accent); }
   padding: 20px 16px 92px;
   display: grid;
   gap: 24px;
+}
+
+/* The one line that says what this is. Sits above section 00 in the scroll area,
+   not in the sticky header, so it costs no height once you are past it. */
+/* A card, so the introduction is an object among objects rather than prose
+   floating on the board. Same ground, border and radius as an option chip. */
+.gk-intro {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(13px, 3.6vw, 20px);
+
+  /* Deliberately the .gk-hero treatment rather than the .gk-option one. Those
+     are the app's two big statement cards, one opening the board and one
+     closing it, so they should read as the same class of object: the stronger
+     border, the 12px radius, the same generous padding. It had been 10px and
+     --line, which made it neither, and 10px was the only one in the file. */
+  padding: clamp(16px, 4vw, 26px);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--paper-hi);
+}
+.gk-intro__text { display: grid; gap: 6px; min-width: 0; }
+/* Ink on paper here, the inverse of the header tile, and big enough to read as
+   an anchor rather than a repeat of the 27px one above it. */
+.gk-intro__mark {
+  height: clamp(40px, 11vw, 54px);
+  width: auto;
+  flex: 0 0 auto;
+  color: var(--ink);
+  display: block;
+}
+.gk-lede {
+  margin: 0;
+  font-family: var(--serif);
+
+  /* Explicitly 400, as .gk-sectitle also is. Instrument Serif ships one weight,
+     so an h1's default bold gets synthesized by the browser, and faux bold on a
+     display serif looks like a mistake. */
+  font-weight: 400;
+
+  /* Ink, not muted, and only a notch under the section titles. Set dim and
+     small it read as a failed section heading rather than the page's opening
+     line: same serif, same question shape, less weight, directly above a black
+     one. Full ink stops it competing from below, and the size keeps it from
+     out-shouting the workflow it introduces. */
+  font-size: clamp(20px, 5vw, 25px);
+  line-height: 1.2;
+  color: var(--ink);
+
+  /* Both lines here are short blocks that wrap, and left alone they wrap badly:
+     the supporting line below dropped a lone "game." onto its own line at every
+     width from 600px up, which is every desktop. balance evens the lines out
+     instead of filling the first and stranding the remainder. Ignored by
+     browsers that do not have it, which just puts the old wrapping back. */
+  text-wrap: balance;
+}
+
+/* Small and quiet is right HERE, unlike on the line above it: this sits under
+   an ink heading it clearly belongs to, rather than floating above a blacker
+   one it appears to be losing to. */
+.gk-lede__sub {
+  margin: 0;
+  font-size: clamp(14px, 3.7vw, 15px);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 52ch;
+  text-wrap: balance;
 }
 
 .gk-section { display: grid; gap: 12px; }
@@ -425,7 +526,9 @@ a:hover { color: var(--accent); }
 }
 .gk-deal:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
 .gk-deal:disabled { opacity: 0.45; cursor: not-allowed; }
-.gk-deal__knight { font-size: 17px; line-height: 1; }
+/* An SVG now rather than a text glyph, so it is sized rather than set. Height
+   only, because the artwork is taller than it is wide. */
+.gk-deal__knight { height: 17px; width: auto; display: block; }
 
 /* ============================================================ verdict ===== */
 .gk-main--verdict { padding: 22px 16px 60px; gap: 26px; animation: gk-in 0.25s ease both; }

@@ -20,6 +20,7 @@ const browserGlobals = {
   console: 'readonly',
   Image: 'readonly',
   requestAnimationFrame: 'readonly',
+  IntersectionObserver: 'readonly',
   setTimeout: 'readonly',
   clearTimeout: 'readonly',
   setInterval: 'readonly',

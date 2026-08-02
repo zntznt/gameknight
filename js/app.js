@@ -22,6 +22,23 @@ const el = (tag, cls, text) => {
 };
 const frag = () => document.createDocumentFragment();
 
+// The mark as an inline SVG, so anywhere the app draws the knight draws the same
+// one. Kept in step with icons/knight.svg and index.html by hand; there is one
+// path and no build step to derive it.
+const KNIGHT_VIEWBOX = '523.862 373.852 1085.178 1304.128';
+const KNIGHT_PATH = document.querySelector('.gk-mark svg path')?.getAttribute('d') || '';
+function knightGlyph(cls) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', KNIGHT_VIEWBOX);
+  svg.setAttribute('aria-hidden', 'true');
+  if (cls) svg.setAttribute('class', cls);
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('fill', 'currentColor');
+  path.setAttribute('d', KNIGHT_PATH);
+  svg.appendChild(path);
+  return svg;
+}
+
 /* ---------------------------------------------------------------- state -- */
 const state = {
   data: null,
@@ -634,6 +651,35 @@ function renderLimits() {
 /* --- board ---------------------------------------------------------------- */
 function buildBoard() {
   const main = el('main', 'gk-main');
+  // What this is, and what it will do about it. Both lived only in the <title>
+  // and the meta description, where a tab shows about ten characters and nobody
+  // reads the rest. Deliberately in the scroll area rather than the sticky
+  // header: the header is already two rows on a phone, and an introduction has
+  // done its job after the first screen.
+  //
+  // The second line is the one that makes this an introduction rather than a
+  // slogan. On its own the tagline is a rhetorical question sitting above a real
+  // one, which orients nobody; saying wants, then limits, then one game tells a
+  // first-time visitor what the numbered sections below are for.
+  //
+  // The h1 is also the page's only one. The board had h2 section titles and no
+  // h1 above them, so this closes that as well.
+  //
+  // It is a card, not loose text. Everything else on this board is a filled,
+  // bordered object, so prose floating on the checkerboard had no mass in that
+  // system and read as an orphan whatever size or colour it was set in. Given
+  // the same treatment as an option chip it becomes a peer of them.
+  //
+  // The knight anchors it and is the only place the mark appears at a size you
+  // can actually see, the header showing it at 27px.
+  const intro = el('div', 'gk-intro');
+  intro.appendChild(knightGlyph('gk-intro__mark'));
+  const introText = el('div', 'gk-intro__text');
+  introText.appendChild(el('h1', 'gk-lede', 'What should we play tonight?'));
+  introText.appendChild(el('p', 'gk-lede__sub',
+    'Say what you fancy, set what tonight allows, and it names one game.'));
+  intro.appendChild(introText);
+  main.appendChild(intro);
   main.appendChild(renderShelves());
   main.appendChild(renderWants());
   main.appendChild(renderLimits());
@@ -643,7 +689,9 @@ function buildBoard() {
   const deal = el('button', 'gk-deal');
   deal.type = 'button';
   deal.appendChild(el('span', null, 'Make the move'));
-  deal.appendChild(el('span', 'gk-deal__knight', '♞'));
+  // Was the ♞ character, which after the logo landed meant the page showed two
+  // different knights. Same artwork as the header now, and no font dependency.
+  deal.appendChild(knightGlyph('gk-deal__knight'));
   deal.disabled = remaining().length === 0;
   deal.onclick = () => {
     setState({ view: 'verdict' });
@@ -866,12 +914,44 @@ function render() {
   if (built.bar) barRoot.replaceChildren(built.bar);
   else barRoot.replaceChildren();
   renderSheet();
+  // The introduction card is rebuilt on every state change, so the observer is
+  // pointed at a node that no longer exists unless it is re-attached here.
+  watchIntroMark();
 
   // Belt and braces: if the swap still moved us (a genuinely shorter page), put
   // it back, unless a guided scroll is mid-flight and owns the position.
   if (state.view === 'board' && !guide.progScroll && window.scrollY !== keepY) {
     window.scrollTo(0, keepY);
   }
+}
+
+/* ------------------------------------------------------- knight hand-off -- */
+// The header knight stays out of the way while the introduction card is showing
+// its own. When that scrolls off, this one takes over.
+//
+// Watching the card's mark rather than the card itself, so the swap happens at
+// the moment the big knight actually leaves rather than when the last line of
+// text does. rootMargin pulls the trigger line down past the sticky header, or
+// the hand-off would fire while the card is still visible underneath it.
+let markWatcher = null;
+
+function watchIntroMark() {
+  const header = $('.gk-mark');
+  if (!header) return;
+  if (markWatcher) markWatcher.disconnect();
+
+  // The verdict has no introduction card, so there is nothing to defer to.
+  const introMark = $('.gk-intro__mark');
+  if (!introMark || typeof IntersectionObserver !== 'function') {
+    header.classList.remove('gk-mark--tucked');
+    return;
+  }
+
+  markWatcher = new IntersectionObserver(
+    ([entry]) => header.classList.toggle('gk-mark--tucked', entry.isIntersecting),
+    { rootMargin: `-${headerH()}px 0px 0px 0px`, threshold: 0 }
+  );
+  markWatcher.observe(introMark);
 }
 
 /* ----------------------------------------------------------------- boot -- */
