@@ -258,6 +258,13 @@ buckets ascend without gaps or overlaps, that the pool unions shelves rather
 than intersecting them, that an unanswered want filters nothing, and that the
 baked data has the fields the cards and the sorting need.
 
+It also pins the ordering rules described above, which is the part worth having
+if you start changing them: that complexity and time really are ceilings rather
+than bands, that missing data always survives a limit but never outranks data we
+have, that ticking five options inside one question is still worth one point,
+that a game matching no wants is ranked last rather than dropped, and that fit
+beats closeness which beats whichever score you chose.
+
 `npm run audit` is the other half, and it deliberately never fails. It prints
 every option with its count against your collection and flags the two shapes
 worth a second look: an option almost nothing matches, which usually means a
@@ -303,6 +310,7 @@ BGG XML API  ->  (GitHub Action, weekly)  ->  data/games.json  ->  static page
 | `js/app.js` | The whole app: state, the twelve sections, fit scoring, verdict view, quick look sheet, guided scroll. |
 | `js/questions.js` | **The wants.** Every question and the `match(game)` predicate behind each answer, plus the complexity buckets. |
 | `js/data.js` | Loads `games.json`, builds the pool from the selected shelves, applies predicates. |
+| `js/ranking.js` | **The ordering rules.** Limits, fit scoring, the weight and time ceilings, the sort. Pure functions, no state. |
 | `css/styles.css` | All styling. Fluid, no media queries. |
 | `sw.js` | Service worker: makes the page installable and lets it open offline. |
 | `manifest.webmanifest` | App name, colours and icons for an installed copy. |
