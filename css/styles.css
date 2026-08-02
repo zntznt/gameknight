@@ -71,18 +71,23 @@ a:hover { color: var(--accent); }
 .gk-headrow--top { padding: 5px 16px; }
 .gk-headrow--live { padding: 0 16px 4px; min-width: 0; }
 
+/* The knight stands on the page rather than sitting in a tile: no ground, no
+   corner radius, just the silhouette in ink beside the wordmark. The app icons
+   keep their tile, since a home screen and a browser tab both need a ground of
+   their own to sit on.
+
+   Sized by height with width auto, because the artwork is taller than it is
+   wide and a square box would letterbox it. The height tracks the wordmark's
+   own clamp so the two shrink together on narrow screens. */
 .gk-mark {
-  width: 28px;
-  height: 28px;
+  height: clamp(22px, 7.2vw, 27px);
   flex: 0 0 auto;
-  border-radius: 4px;
-  background: var(--ink);
-  color: var(--paper);
+  color: var(--ink);
   display: grid;
   place-items: center;
-  font-size: 18px;
   line-height: 1;
 }
+.gk-mark svg { height: 100%; width: auto; display: block; }
 .gk-wordmark {
   font-family: var(--serif);
 
