@@ -22,6 +22,23 @@ const el = (tag, cls, text) => {
 };
 const frag = () => document.createDocumentFragment();
 
+// The mark as an inline SVG, so anywhere the app draws the knight draws the same
+// one. Kept in step with icons/knight.svg and index.html by hand; there is one
+// path and no build step to derive it.
+const KNIGHT_VIEWBOX = '523.862 373.852 1085.178 1304.128';
+const KNIGHT_PATH = document.querySelector('.gk-mark svg path')?.getAttribute('d') || '';
+function knightGlyph(cls) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', KNIGHT_VIEWBOX);
+  svg.setAttribute('aria-hidden', 'true');
+  if (cls) svg.setAttribute('class', cls);
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('fill', 'currentColor');
+  path.setAttribute('d', KNIGHT_PATH);
+  svg.appendChild(path);
+  return svg;
+}
+
 /* ---------------------------------------------------------------- state -- */
 const state = {
   data: null,
@@ -634,6 +651,11 @@ function renderLimits() {
 /* --- board ---------------------------------------------------------------- */
 function buildBoard() {
   const main = el('main', 'gk-main');
+  // The one line saying what this is. It lived only in the <title>, where a tab
+  // shows about ten characters of it and nobody reads the rest. Deliberately in
+  // the scroll area and not the sticky header: the header is already two rows on
+  // a phone, and a statement of purpose has done its job after the first screen.
+  main.appendChild(el('p', 'gk-lede', 'What should we play tonight?'));
   main.appendChild(renderShelves());
   main.appendChild(renderWants());
   main.appendChild(renderLimits());
@@ -643,7 +665,9 @@ function buildBoard() {
   const deal = el('button', 'gk-deal');
   deal.type = 'button';
   deal.appendChild(el('span', null, 'Make the move'));
-  deal.appendChild(el('span', 'gk-deal__knight', '♞'));
+  // Was the ♞ character, which after the logo landed meant the page showed two
+  // different knights. Same artwork as the header now, and no font dependency.
+  deal.appendChild(knightGlyph('gk-deal__knight'));
   deal.disabled = remaining().length === 0;
   deal.onclick = () => {
     setState({ view: 'verdict' });
