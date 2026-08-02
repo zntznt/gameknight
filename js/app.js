@@ -8,8 +8,9 @@
 // scale (tens to low hundreds of games) that stays well inside a frame and
 // keeps the data flow obvious; the strip's scroll offset is carried across.
 
-import { loadData, poolFor, applyFilters, questionPredicate } from './data.js';
+import { loadData, poolFor, applyFilters } from './data.js';
 import { QUESTIONS, WEIGHT_BUCKETS } from './questions.js';
+import * as rank from './ranking.js';
 
 /* ------------------------------------------------------------------ dom -- */
 const $ = (sel) => document.querySelector(sel);
@@ -44,182 +45,26 @@ const SECTIONS = ['players', 'fit', 'weight', 'time', 'age', 'sort'].reduce(
   {}
 );
 
-// The time caps the time limit offers, ascending. Shared by the chips and by
-// timeFit so the two cannot drift apart. Named rather than numbered on
-// purpose: SECTIONS derives the number from QUESTIONS.length, so adding a want
-// renumbers this section and any number written here goes quietly wrong.
-const TIME_CAPS = [15, 30, 45, 60, 90, 120, 180];
-// A game's length, preferring the headline playing time.
-const timeOf = (g) => g.playTime || g.maxTime || g.minTime || 0;
+// The ordering rules live in ranking.js as pure functions, so they can be
+// tested without a browser. What follows is only the plumbing: each wrapper
+// hands the current state to one of them, which keeps every call site below
+// unchanged and keeps `state` from leaking into the rules themselves.
+const { TIME_CAPS, timeOf, fitsPlayers, isBestAt, playsThisMonth } = rank;
 
-/* -------------------------------------------------------------- derived -- */
-const bucketFor = (key) => WEIGHT_BUCKETS.find((b) => b.key === key) || WEIGHT_BUCKETS[0];
+const constraintPreds = (c = state.constraints, skip = null) => rank.constraintPreds(c, skip);
+const fitScore = (g) => rank.fitScore(g, state.answers);
+const answeredWants = () => rank.answeredWants(state.answers);
+const fitTier = (g) => rank.fitTier(g, state.constraints);
+const anyFilters = () => rank.anyFilters(state.answers, state.constraints);
+const sortGames = (games) => rank.sortGames(games, state);
 
 function basePool() {
   return poolFor(state.data, state.selected);
 }
 
-// `skip` excludes one limit so its chips can each show their own count.
-function constraintPreds(c = state.constraints, skip = null) {
-  const preds = [];
-  const bk = bucketFor(c.wKey);
-  if (c.players && skip !== 'players') preds.push((g) => fitsPlayers(g, c.players, c.playerFit));
-  // Missing metadata always passes: unrated weight, unknown time, no minAge.
-  //
-  // Weight is a CEILING, not a band. The question asks how much brain you are
-  // willing to spend, so anything heavier is out while anything lighter is
-  // still perfectly playable. Preferring the weight you actually asked for is
-  // handled by weightFit in the ranking, not by throwing lighter games away.
-  if (skip !== 'weight' && bk.hi < 99) {
-    preds.push((g) => !g.weight || g.weight < bk.hi);
-  }
-  if (c.maxTime && skip !== 'time') {
-    preds.push((g) => {
-      const t = timeOf(g);
-      return !t || t <= c.maxTime;
-    });
-  }
-  if (c.minAge && skip !== 'age') preds.push((g) => !g.minAge || g.minAge <= c.minAge);
-  return preds;
-}
-
 // Only the limits remove games. Wants never eliminate; see fitScore.
 function remaining() {
   return applyFilters(basePool(), constraintPreds());
-}
-
-/* ------------------------------------------------------------ want fit -- */
-// How many of the answered wants this game satisfies. Each answered question is
-// worth one point regardless of how many options are ticked inside it, so a
-// 10-option theme question cannot outweigh the single-choice mood question.
-function fitScore(g) {
-  let score = 0;
-  for (const q of QUESTIONS) {
-    const pred = questionPredicate(q, state.answers[q.id]);
-    if (pred && pred(g)) score += 1;
-  }
-  return score;
-}
-// How many wants are in play at all, so fit can be shown as "2 of 3".
-function answeredWants() {
-  return QUESTIONS.filter((q) => (state.answers[q.id] || []).length > 0).length;
-}
-
-/* ----------------------------------------------------------- limit fit -- */
-// Complexity and time are both ceilings: they ask what you are WILLING to
-// spend, so lighter and shorter games survive the filter. These score how close
-// a survivor sits to what you actually asked for, in notches, where 0 is spot
-// on and every step below costs one. Missing data (unrated weight, unknown
-// length) survives the filter but takes a single notch, since we cannot confirm
-// it is what you wanted and it should not outrank something we can confirm.
-
-// Buckets excluding "Any", in ascending order, so a game's band is its index.
-const RATED_BUCKETS = WEIGHT_BUCKETS.filter((b) => b.key !== 'any');
-const bandOf = (g) => RATED_BUCKETS.findIndex((b) => g.weight >= b.lo && g.weight < b.hi);
-
-// Same rule as unknown length: an unrated weight still passes the ceiling, but
-// ranks below every game we can actually place, since we cannot claim it is the
-// complexity you asked for. Worse than the largest real band distance.
-const UNRATED_WEIGHT_PENALTY = -RATED_BUCKETS.length;
-
-function weightFit(g) {
-  const key = state.constraints.wKey;
-  if (key === 'any') return 0; // no preference expressed
-  const target = RATED_BUCKETS.findIndex((b) => b.key === key);
-  if (target < 0) return 0;
-  if (!g.weight) return UNRATED_WEIGHT_PENALTY;
-  const band = bandOf(g);
-  return band < 0 ? UNRATED_WEIGHT_PENALTY : -Math.abs(target - band);
-}
-
-// A game's rung is the shortest offered cap it still fits inside, so a 50 minute
-// game and a 60 minute one share the "60" rung and both read as a good use of an
-// hour, while a 15 minute filler sits three rungs down.
-//
-// A game whose length BGG does not know still passes the filter, because missing
-// data must never drop a game, but it ranks below every game we can actually
-// place. Worst real distance is TIME_CAPS.length - 1, so this is always worse.
-const UNKNOWN_TIME_PENALTY = -TIME_CAPS.length;
-
-function timeFit(g) {
-  const cap = state.constraints.maxTime;
-  if (!cap) return 0;
-  const target = TIME_CAPS.indexOf(cap);
-  if (target < 0) return 0;
-  const t = timeOf(g);
-  if (!t) return UNKNOWN_TIME_PENALTY;
-  const rung = TIME_CAPS.findIndex((c) => t <= c);
-  return rung < 0 ? UNKNOWN_TIME_PENALTY : -Math.abs(target - rung);
-}
-
-// Summed rather than tiered: both measure the same thing in the same unit, and
-// neither is obviously more important than the other.
-const limitFit = (g) => weightFit(g) + timeFit(g);
-
-function anyFilters() {
-  const c = state.constraints;
-  return (
-    QUESTIONS.some((q) => (state.answers[q.id] || []).length > 0) ||
-    !!c.players || !!c.maxTime || !!c.minAge || c.wKey !== 'any'
-  );
-}
-
-/* ---------------------------------------------------------- player fit -- */
-// 'supported' = the box min–max. 'rec'/'best' = BGG's suggested-players poll.
-// A game with no poll votes falls back to the box range in all three modes.
-// The "8" chip means "8 or more".
-function fitsPlayers(g, n, mode) {
-  const atLeast = n >= 8;
-  const inBox = atLeast ? g.maxPlayers >= 8 : g.minPlayers <= n && g.maxPlayers >= n;
-  if (mode === 'supported') return inBox;
-  const arr = mode === 'best' ? g.bestPlayers : g.recPlayers;
-  if (!g.pollVotes || !Array.isArray(arr) || !arr.length) return inBox;
-  return atLeast ? arr.some((c) => c >= 8) : arr.includes(n);
-}
-function isBestAt(g, n) {
-  if (!n || !g.pollVotes || !Array.isArray(g.bestPlayers)) return false;
-  return n >= 8 ? g.bestPlayers.some((c) => c >= 8) : g.bestPlayers.includes(n);
-}
-function isRecAt(g, n) {
-  if (!n || !g.pollVotes || !Array.isArray(g.recPlayers)) return false;
-  return n >= 8 ? g.recPlayers.some((c) => c >= 8) : g.recPlayers.includes(n);
-}
-// Only used to tint the shortlist tag. Ordering comes from the sort section.
-function fitTier(g) {
-  const c = state.constraints;
-  if (!c.players || c.playerFit === 'supported') return 0;
-  const best = isBestAt(g, c.players);
-  const rec = isRecAt(g, c.players);
-  if (c.playerFit === 'best') return best ? 3 : rec ? 2 : 1;
-  return rec ? 3 : best ? 2 : 1;
-}
-
-/* -------------------------------------------------------------- sorting -- */
-const playsThisMonth = (g) => g.playsThisMonth || 0;
-
-// Best fit first, then the metric chosen in the sort section settles the order among
-// games that fit equally well.
-function sortGames(games) {
-  const by = state.sortBy;
-  return games.slice().sort((a, b) => {
-    const fit = fitScore(b) - fitScore(a);
-    if (fit) return fit;
-    // Then closeness to the complexity and length you asked for, so a medium
-    // two hour night surfaces medium two hour games ahead of the light fillers
-    // those ceilings also allow.
-    const lim = limitFit(b) - limitFit(a);
-    if (lim) return lim;
-    if (by === 'plays') {
-      const d = playsThisMonth(b) - playsThisMonth(a);
-      if (d) return d;
-    }
-    if (by === 'rank') {
-      const ra = a.rank > 0 ? a.rank : Infinity;
-      const rb = b.rank > 0 ? b.rank : Infinity;
-      if (ra !== rb) return ra - rb; // unranked sinks to the bottom
-    }
-    return (b.rating || 0) - (a.rating || 0); // ties always break on rating
-  });
 }
 
 /* ----------------------------------------------------------- formatting -- */
