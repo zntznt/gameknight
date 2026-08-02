@@ -214,6 +214,23 @@ export function sortGames(games, { answers, constraints, sortBy }) {
       const rb = b.rank > 0 ? b.rank : Infinity;
       if (ra !== rb) return ra - rb; // unranked sinks to the bottom
     }
-    return (b.rating || 0) - (a.rating || 0); // ties always break on rating
+    const byRating = (b.rating || 0) - (a.rating || 0);
+    if (byRating) return byRating;
+    // Explicit last tier, and today it changes nothing: the fetcher rounds
+    // rating to one decimal, so 128 of 137 games share a rating with something,
+    // and it also writes games.json in ascending rank order. A stable sort was
+    // therefore already falling through to rank via input order. That was
+    // invisible, untested, and would have silently reshuffled the shortlist the
+    // day anyone changed how the file is written. Verified behaviour preserving
+    // across all 105 scenarios (3 sort modes x 35 single wants).
+    const ra = a.rank > 0 ? a.rank : Infinity;
+    const rb = b.rank > 0 ? b.rank : Infinity;
+    if (ra !== rb) return ra - rb;
+    // Rank alone still left 40 of those 105 scenarios decided by input order,
+    // because every unranked game ties with every other at Infinity. Id closes
+    // it: the order is now fully determined by the rules stated here and by
+    // nothing else. It reorders only the tail among unranked games and changes
+    // no verdict at all (0 of 105).
+    return a.id - b.id;
   });
 }

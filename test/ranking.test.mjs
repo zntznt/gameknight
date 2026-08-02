@@ -291,3 +291,27 @@ test('a game with no plays logged sorts below one with plays', () => {
   const games = [game({ name: 'quiet', rating: 9 }), game({ name: 'hot', playsThisMonth: 3, rating: 1 })];
   assert.deepEqual(sortNames(games, {}, NO_LIMITS, 'plays'), ['hot', 'quiet']);
 });
+
+// The order must be a function of the rules in ranking.js and nothing else.
+// Before this was explicit, rating rounded to 1dp left most games tied, and a
+// stable sort quietly fell through to the order the fetcher happened to write
+// games.json in. That worked, invisibly, until someone changed the fetcher.
+test('the order does not depend on the order games arrive in', () => {
+  const games = [
+    game({ id: 1, name: 'a', rating: 8, rank: 100 }),
+    game({ id: 2, name: 'b', rating: 8, rank: 50 }),
+    game({ id: 3, name: 'c', rating: 8, rank: 0 }),
+    game({ id: 4, name: 'd', rating: 8, rank: 0 }),
+  ];
+  const opts = { answers: {}, constraints: NO_LIMITS, sortBy: 'rating' };
+  const forward = sortGames(games, opts).map((g) => g.name);
+  const backward = sortGames([...games].reverse(), opts).map((g) => g.name);
+  assert.deepEqual(forward, backward, 'same games, different input order, different result');
+  assert.deepEqual(forward, ['b', 'a', 'c', 'd'], 'rank then id settles an identical rating');
+});
+
+test('unranked games sort below ranked ones on an identical rating', () => {
+  const games = [game({ id: 1, name: 'unranked', rating: 8, rank: 0 }), game({ id: 2, name: 'ranked', rating: 8, rank: 9000 })];
+  assert.deepEqual(sortGames(games, { answers: {}, constraints: NO_LIMITS, sortBy: 'rating' }).map((g) => g.name),
+    ['ranked', 'unranked']);
+});

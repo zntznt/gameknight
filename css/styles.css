@@ -513,6 +513,8 @@ a:hover { color: var(--accent); }
 }
 .gk-tag--sort { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 .gk-tag--fit { color: var(--paper-hi); background: var(--fit); border-color: var(--fit); }
+/* Quieter than the rest: it qualifies the verdict rather than praising it. */
+.gk-tag--muted { color: var(--muted); border-style: dashed; }
 
 /* --- empty verdict -------------------------------------------------------- */
 .gk-empty { border: 1px solid var(--line-strong); border-radius: 12px; background: var(--paper-hi); padding: 26px; display: grid; gap: 12px; }
