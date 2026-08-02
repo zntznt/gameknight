@@ -664,10 +664,21 @@ function buildBoard() {
   //
   // The h1 is also the page's only one. The board had h2 section titles and no
   // h1 above them, so this closes that as well.
+  //
+  // It is a card, not loose text. Everything else on this board is a filled,
+  // bordered object, so prose floating on the checkerboard had no mass in that
+  // system and read as an orphan whatever size or colour it was set in. Given
+  // the same treatment as an option chip it becomes a peer of them.
+  //
+  // The knight anchors it and is the only place the mark appears at a size you
+  // can actually see, the header showing it at 27px.
   const intro = el('div', 'gk-intro');
-  intro.appendChild(el('h1', 'gk-lede', 'What should we play tonight?'));
-  intro.appendChild(el('p', 'gk-lede__sub',
+  intro.appendChild(knightGlyph('gk-intro__mark'));
+  const introText = el('div', 'gk-intro__text');
+  introText.appendChild(el('h1', 'gk-lede', 'What should we play tonight?'));
+  introText.appendChild(el('p', 'gk-lede__sub',
     'Say what you fancy, set what tonight allows, and it names one game.'));
+  intro.appendChild(introText);
   main.appendChild(intro);
   main.appendChild(renderShelves());
   main.appendChild(renderWants());
