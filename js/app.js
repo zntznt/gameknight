@@ -337,11 +337,20 @@ function makeSection(num, title, answered, body) {
 // a game's details read out all 137 of them, and so did changing the sort, which
 // does not change the count at all. This writes one sentence into a node the
 // render never touches, and stays quiet unless the number actually moved.
-function announceCount(fit, total) {
+function announceCount(fit, total, emptyMsg) {
   const node = $('#gkLiveMsg');
   if (!node) return;
-  const msg = fit === 0 ? 'Nothing fits. Something has to give.' : `${fit} of ${total} games fit`;
+  const msg = fit === 0 ? emptyMsg : `${fit} of ${total} games fit`;
   if (node.textContent !== msg) node.textContent = msg;
+}
+
+// Two different dead ends that used to read identically. With no shelf ticked
+// there is nothing to draw from in the first place, and telling someone that
+// "something has to give" points them at limits that are not the problem.
+function emptyReason() {
+  return state.selected.length === 0
+    ? 'No shelf selected. Pick one above.'
+    : 'Nothing fits. Something has to give.';
 }
 
 // `games` is the shared per-render ordering. render() is the only caller and it
@@ -352,14 +361,17 @@ function renderLive(games) {
   const out = frag();
 
   const total = basePool().length;
-  announceCount(games.length, total);
+  announceCount(games.length, total, emptyReason());
 
   const live = el('div', 'gk-live');
   live.appendChild(el('span', `gk-live__n${games.length === 0 ? ' gk-live__n--zero' : ''}`, String(games.length)));
   live.appendChild(el('span', 'gk-live__total', `/ ${total}`));
   out.appendChild(live);
 
-  if (anyFilters()) {
+  // Board only. The header is on screen during the verdict too, where pressing
+  // this silently rewrote the pick someone was reading, with nothing on that
+  // screen to explain why the game had changed.
+  if (anyFilters() && state.view === 'board') {
     const clear = el('button', 'gk-clear', 'clear');
     clear.type = 'button';
     clear.dataset.gkKey = 'clear';
@@ -369,7 +381,7 @@ function renderLive(games) {
 
   const strip = el('div', 'gk-strip');
   if (games.length === 0) {
-    strip.appendChild(el('div', 'gk-strip__empty', 'Nothing fits. Something has to give.'));
+    strip.appendChild(el('div', 'gk-strip__empty', emptyReason()));
   } else {
     games.forEach((g) => {
       const btn = tile(g, 34, 'button');

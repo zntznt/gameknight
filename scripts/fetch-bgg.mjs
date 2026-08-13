@@ -219,7 +219,11 @@ function parseThing(it) {
     name: primary.value || 'Unknown',
     year: num(it.yearpublished?.value),
     thumbnail: it.thumbnail || '',
-    image: it.image || '',
+    // No `image` field. The full resolution art was baked into every record and
+    // read by nothing: the app draws thumbnails only, at 34 to 96 pixels. It was
+    // 4.9 KB gzipped, a fifth of what every visitor downloads before the board
+    // can be drawn, to deliver URLs no code ever looked at. If a future verdict
+    // hero wants the big art, this is where it goes back.
     minPlayers: num(it.minplayers?.value),
     maxPlayers: num(it.maxplayers?.value),
     minTime: num(it.minplaytime?.value),
