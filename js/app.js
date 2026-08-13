@@ -871,20 +871,55 @@ function buildVerdict(ranked) {
 }
 
 /* --- quick-look sheet ----------------------------------------------------- */
+// Everything outside the dialog, which has to stop being reachable while it is
+// open. Toggled BEFORE the early return below, or the page stays inert forever
+// the first time the sheet closes.
+const OUTSIDE_THE_SHEET = ['.gk-skip', '.gk-header', '#gkRoot', '#gkBarRoot'];
+
 function renderSheet() {
   const root = $('#gkSheetRoot');
   root.textContent = '';
   const g = state.sheetGame;
+  // aria-modal="true" was a claim the page did not honour: the whole board
+  // stayed tabbable and clickable behind the dialog, so Tab walked straight out
+  // of it into controls the user could not see. inert takes the background out
+  // of the tab order, out of the accessibility tree, and out of reach of the
+  // pointer, in one attribute. Browsers without it fall back to the Tab trap
+  // installed below.
+  OUTSIDE_THE_SHEET.forEach((sel) => {
+    const n = $(sel);
+    if (n) n.inert = Boolean(g);
+  });
   if (!g) return;
 
   const backdrop = el('div', 'gk-sheet-backdrop');
-  backdrop.onclick = () => setState({ sheetGame: null });
+  // Dismiss on a click on the backdrop itself, but only when the press STARTED
+  // there. A tall sheet scrolls now, so the backdrop has a scrollbar, and a
+  // plain click handler treated dragging that as "clicked outside" and closed
+  // the card mid-scroll. It did the same when a text selection that began on the
+  // card happened to end off it.
+  let pressedBackdrop = false;
+  backdrop.addEventListener('pointerdown', (e) => {
+    pressedBackdrop = e.target === backdrop && e.offsetX < backdrop.clientWidth;
+  });
+  backdrop.addEventListener('click', (e) => {
+    if (pressedBackdrop && e.target === backdrop) setState({ sheetGame: null });
+  });
 
   const sheet = el('div', 'gk-sheet');
   sheet.setAttribute('role', 'dialog');
   sheet.setAttribute('aria-modal', 'true');
   sheet.setAttribute('aria-label', g.name);
-  sheet.onclick = (e) => e.stopPropagation();
+  // Keeps Tab inside the card, and wraps at both ends.
+  sheet.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const stops = [...sheet.querySelectorAll('button, a[href]')];
+    if (!stops.length) return;
+    const edge = e.shiftKey ? stops[0] : stops[stops.length - 1];
+    if (document.activeElement !== edge) return;
+    e.preventDefault();
+    (e.shiftKey ? stops[stops.length - 1] : stops[0]).focus();
+  });
 
   const head = el('div', 'gk-sheet__head');
   head.appendChild(tile(g, 72));

@@ -742,16 +742,25 @@ a:hover { color: var(--accent); }
 .gk-row__tag--fit { color: var(--fit); }
 
 /* ======================================================== quick-look ====== */
+/* A scroll container, not a centring grid. `place-items: center` centred the
+   card no matter how tall it got, so a sheet taller than the viewport hung off
+   BOTH ends at once with no way to reach either: the overflow above the start
+   edge is unreachable by definition. Flex with auto margins on the card centres
+   identically while there is room and collapses to zero when there is not, so
+   all the overflow lands after the start edge where scrolling can get to it.
+   A long game name at 320px, or any phone in landscape, hits this. */
 .gk-sheet-backdrop {
   position: fixed;
   inset: 0;
   z-index: 40;
   background: rgba(25, 22, 18, 0.42);
-  display: grid;
-  place-items: center;
+  display: flex;
+  overflow-y: auto;
+  overscroll-behavior: contain; /* stops the board scrolling behind it */
   padding: 16px;
 }
 .gk-sheet {
+  margin: auto; /* centres in both axes, and yields rather than overflowing */
   width: 100%;
   max-width: 400px;
   background: var(--paper-hi);
