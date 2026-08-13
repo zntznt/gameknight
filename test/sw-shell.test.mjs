@@ -97,6 +97,22 @@ test('every stylesheet, manifest and icon the page references is in the shell', 
   }
 });
 
+// The modulepreload hints exist to flatten the import waterfall, and they are a
+// hand-written copy of the same graph, so they rot the same way. A missing hint
+// costs a round trip; a stale one costs a 404 and a console warning.
+test('the modulepreload hints match the module graph exactly', () => {
+  const html = read('index.html');
+  const hinted = [...html.matchAll(/<link[^>]*rel="modulepreload"[^>]*href="([^"]+)"/g)].map(
+    (m) => m[1]
+  );
+  const entries = scriptEntries();
+  // The entry point does not need a hint: its own <script> tag starts it.
+  const wanted = moduleGraph(entries)
+    .map(asShellPath)
+    .filter((p) => !entries.includes(p));
+  assert.deepEqual([...hinted].sort(), [...wanted].sort());
+});
+
 test('every shell entry points at a file that exists', () => {
   for (const entry of SHELL) {
     if (entry === './') continue; // the directory index, served as index.html

@@ -18,6 +18,8 @@
     <meta name="apple-mobile-web-app-title" content="Gameknight" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Every thumbnail and the attribution logo come from here. -->
+    <link rel="preconnect" href="https://cf.geekdo-images.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
@@ -54,10 +56,21 @@
           rel="noopener"
           title="Powered by BoardGameGeek"
         >
+          <!--
+            Intrinsic size stated so the 26px-tall box is reserved before a
+            single byte arrives; without it the header reflowed when the logo
+            landed. Not lazy: it is in the sticky header, on screen from the
+            first paint, and lazy only delayed it.
+            Do not rewrite the /fit-in/1200x900/ path segment. It carries a
+            thumbor signature and any edit returns HTTP 400, which would break
+            the attribution image BGG requires.
+          -->
           <img
             src="https://cf.geekdo-images.com/HZy35cmzmmyV9BarSuk6ug__imagepagezoom/img/pXXf-xfYw0boHLfc3sL_g1nsLtY=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic7779581.png"
             alt="Powered by BoardGameGeek"
-            loading="lazy"
+            width="1200"
+            height="352"
+            decoding="async"
           />
         </a>
         <!--
@@ -111,6 +124,18 @@
     <div id="gkBarRoot"></div>
     <div id="gkSheetRoot"></div>
 
+    <!--
+      app.js imports these three, and they import each other, so without this the
+      browser cannot even learn they exist until app.js has been fetched and
+      parsed, and games.json waits behind all of it. Declaring them here flattens
+      that: everything starts at once and the shelf request moves a round trip
+      earlier. Relative, like everything else, so a fork on a repo subpath is
+      unaffected, and test/sw-shell.test.mjs asserts this list against the real
+      module graph so it cannot drift.
+    -->
+    <link rel="modulepreload" href="./js/data.js" />
+    <link rel="modulepreload" href="./js/questions.js" />
+    <link rel="modulepreload" href="./js/ranking.js" />
     <script type="module" src="./js/app.js"></script>
   </body>
 </html>

@@ -1,7 +1,14 @@
 // data.js. Loads the baked collection data and exposes pool/filter helpers.
 
 export async function loadData() {
-  const res = await fetch('./data/games.json', { cache: 'no-cache' });
+  // No cache mode override. `no-cache` forced a revalidation round trip on every
+  // single load, including through the service worker, which inherits the
+  // request's mode. It bought nothing: index.html is served with the same
+  // max-age as this file, so a visitor holding a cached page was never going to
+  // see fresher data anyway, and sw.js owns freshness for this URL the moment a
+  // worker exists (network first, cache only as a fallback). The file is baked
+  // once a week.
+  const res = await fetch('./data/games.json');
   if (!res.ok) throw new Error(`Could not load games.json (${res.status})`);
   const data = await res.json();
   if (!Array.isArray(data.games)) throw new Error('games.json is malformed');

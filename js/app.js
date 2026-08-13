@@ -215,6 +215,9 @@ function tile(g, size, tag = 'span') {
   img.src = g.thumbnail;
   img.alt = '';
   img.loading = 'lazy';
+  // Off the main thread: up to 137 of these are created at once when the strip
+  // rebuilds, and decoding them synchronously blocks the tap that caused it.
+  img.decoding = 'async';
   img.onerror = () => markFailed(g.id);
   wrap.appendChild(img);
   return wrap;
@@ -408,6 +411,7 @@ function renderShelves() {
       img.src = col.avatar;
       img.alt = '';
       img.loading = 'lazy';
+      img.decoding = 'async';
       img.onerror = () => markFailed(`av:${col.id}`);
       avatar.appendChild(img);
     } else {
