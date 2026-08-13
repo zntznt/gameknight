@@ -193,11 +193,10 @@ a:hover { color: var(--accent-ink); }
   transform: translateX(-4px);
 }
 
-/* The hand-off is decoration. Anyone who has asked for less movement gets the
-   end states without the travel. */
-@media (prefers-reduced-motion: reduce) {
-  .gk-mark { transition: none; }
-}
+/* The hand-off is decoration, and anyone who has asked for less movement gets
+   the end states without the travel. The rule itself lives in the single
+   reduced-motion block at the foot of this file; see the note there for why it
+   cannot sit here. */
 .gk-wordmark {
   font-family: var(--serif);
 
@@ -316,11 +315,16 @@ a:hover { color: var(--accent-ink); }
 }
 .gk-tile__ini { font-family: var(--mono); font-weight: 700; color: var(--ink-2); }
 
-.gk-tile--34 { width: 34px; height: 34px; border-radius: 3px; padding: 0; cursor: pointer; transition: transform 0.12s ease, border-color 0.12s ease; }
+/* No hover lift. The strip scrolls horizontally, so it clips its overflow on
+   BOTH axes, and it is exactly as tall as these tiles: a 2px rise was sliced
+   off at the top every time, which read as the tile losing its edge rather than
+   rising. Giving the strip padding to lift into would grow the sticky header on
+   every phone, and the border darkening was already carrying the affordance. */
+.gk-tile--34 { width: 34px; height: 34px; border-radius: 3px; padding: 0; cursor: pointer; transition: border-color 0.12s ease; }
 /* Drawn INSIDE the tile. The strip clips its overflow in order to scroll
    sideways, so a ring offset outwards is sliced off every tile it holds. */
 .gk-tile--34:focus-visible { outline-offset: -2px; }
-.gk-tile--34:hover { transform: translateY(-2px); border-color: var(--ink); }
+.gk-tile--34:hover { border-color: var(--ink); }
 .gk-tile--34 .gk-tile__ini { font-size: 10px; }
 .gk-tile--44 { width: 44px; height: 44px; border-radius: 4px; }
 .gk-tile--44 .gk-tile__ini { font-size: 12px; }
@@ -738,7 +742,14 @@ a:hover { color: var(--accent-ink); }
   text-transform: uppercase; color: var(--ink); font-weight: 700;
 }
 .gk-shortlist__count { font-family: var(--mono); font-size: 10px; color: var(--muted); }
-.gk-rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2px; }
+/* min(320px, 100%) rather than a bare 320px. A minmax floor is a hard minimum:
+   below about 352px the track stayed 320px wide inside a container narrower than
+   that, and the verdict, the one page this app exists to show, could be dragged
+   sideways by up to 34px on a 320px phone. min() lets the floor collapse to the
+   container when there is less than 320px to give, so it becomes one full-width
+   column; at 352px and up min() still returns 320px and the two-column desktop
+   layout is byte for byte what it was. */
+.gk-rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 2px; }
 .gk-row {
   text-align: left;
   font: inherit;
@@ -842,3 +853,28 @@ a:hover { color: var(--accent-ink); }
 /* The retry under a failed load. Inline-block, so .gk-loading's centring
    already places it; it only needs air above. */
 .gk-retry { margin-top: 14px; font-family: var(--sans); }
+
+/* ==================================================== reduced motion ====== */
+/* ONE block, and it is at the foot of the file on purpose. A media query adds
+   no specificity, so these rules only beat the ones they override by coming
+   later in source order. The old block sat at line 121, above everything except
+   the header mark, which is why it covered exactly one 27px logo and silently
+   missed every other moving thing in the app.
+   Colour and border transitions are left alone: they communicate state without
+   moving anything, and removing them would make the app feel broken rather than
+   calm. What goes is travel. */
+@media (prefers-reduced-motion: reduce) {
+  .gk-mark { transition: none; }
+  .gk-skip { transition: none; }
+
+  /* Both entrances slide up 6px as well as fading. Overriding only the
+     animation-name keeps each one's own duration and `both` fill, so the timing
+     stays exactly as designed and only the movement goes. */
+  .gk-main--verdict,
+  .gk-sheet { animation-name: gk-fade; }
+}
+
+@keyframes gk-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
