@@ -399,6 +399,10 @@ function renderShelves() {
     // monogram. A dead avatar URL falls back to the monogram too.
     const monogram = (col.label || col.bggUser || '?').trim().charAt(0).toUpperCase();
     const avatar = el('span', 'gk-shelf__avatar');
+    // Decoration either way, and when it falls back to the letter it was
+    // leaking a stray "Z" into the button's accessible name: the shelf read as
+    // "Z Zeo @zntznt 69 games".
+    avatar.setAttribute('aria-hidden', 'true');
     if (col.avatar && !state.failed[`av:${col.id}`]) {
       const img = el('img');
       img.src = col.avatar;

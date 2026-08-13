@@ -11,8 +11,20 @@
   --line-strong: #c9bca5; /* card borders, header tiles */
   --ink: #191612; /* text, selected fill */
   --ink-2: #4a423a; /* secondary text, tag text */
-  --muted: #7c7266; /* labels, meta, mono micro-copy */
-  --accent: #d8452f; /* move marker */
+  --muted: #6f665c; /* labels, meta, mono micro-copy */
+
+  /* Two reds, because one cannot do both jobs.
+     --accent is the identity colour and stays exactly as it was, but only where
+     it is decoration: the shelf and hero dots, and the focus ring. Those are
+     held to 3:1 and clear it.
+     --accent-ink is the same red taken down until it passes 4.5:1 as TEXT on
+     all three grounds (5.17 paper, 5.67 paper-hi, 4.98 checker). The bright one
+     managed 3.81 / 4.18 / 3.68, so every vermilion word in this app was below
+     the floor: the zero counts, the "TONIGHT'S MOVE" label, every link hover.
+     It also backs the primary buttons on hover, where white on the bright red
+     measured 4.36 and paper on it 3.81. Both now sit at 5.92 and 5.17. */
+  --accent: #d8452f; /* move marker, decoration only */
+  --accent-ink: #b8341f; /* the same red, wherever it has to be readable */
   --fit: #3c6e52; /* "best at N" when it matches the chosen count */
 
   --serif: "Instrument Serif", Georgia, serif;
@@ -37,6 +49,10 @@
    default, which the ink fills swallow. :focus-visible, so a pointer click does
    not leave a ring sitting behind it. */
 :focus-visible {
+  /* The bright accent, not the ink one. This is a pure indicator carrying no
+     text, so it is held to 3:1 rather than 4.5:1, and it clears that on both
+     grounds it lands on: 4.18 on paper, 4.13 on the ink fills. Being the more
+     saturated of the two is the point. */
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -99,7 +115,7 @@ body {
 }
 
 a { color: var(--ink); }
-a:hover { color: var(--accent); }
+a:hover { color: var(--accent-ink); }
 
 @keyframes gk-in {
   from { opacity: 0; transform: translateY(6px); }
@@ -235,12 +251,12 @@ a:hover { color: var(--accent); }
   color: var(--ink-2);
   transition: border-color 0.12s ease, color 0.12s ease;
 }
-.gk-gh:hover { border-color: var(--ink); color: var(--accent); }
+.gk-gh:hover { border-color: var(--ink); color: var(--accent-ink); }
 .gk-gh svg { width: 16px; height: 16px; fill: currentColor; display: block; }
 
 .gk-live { flex: 0 0 auto; display: flex; align-items: baseline; gap: 4px; }
 .gk-live__n { font-family: var(--serif); font-size: 22px; line-height: 1; }
-.gk-live__n--zero { color: var(--accent); }
+.gk-live__n--zero { color: var(--accent-ink); }
 .gk-live__total { font-family: var(--mono); font-size: 11px; color: var(--muted); }
 
 .gk-clear {
@@ -259,7 +275,7 @@ a:hover { color: var(--accent); }
   min-height: 26px;
   transition: color 0.12s ease, border-color 0.12s ease;
 }
-.gk-clear:hover { color: var(--accent); border-color: var(--accent); }
+.gk-clear:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
 
 .gk-strip {
   flex: 1 1 auto;
@@ -469,7 +485,7 @@ a:hover { color: var(--accent); }
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent); /* a dot, not text: decoration keeps the bright one */
   opacity: 0;
 }
 .gk-shelf__btn--on .gk-shelf__dot { opacity: 1; }
@@ -488,7 +504,7 @@ a:hover { color: var(--accent); }
   font-size: 13px;
   transition: border-color 0.12s ease, color 0.12s ease;
 }
-.gk-shelf__link:hover { border-color: var(--ink); color: var(--accent); }
+.gk-shelf__link:hover { border-color: var(--ink); color: var(--accent-ink); }
 
 /* --- 01–05 wants ---------------------------------------------------------- */
 /* --cols caps how many columns may form, so a question never ends on a lonely
@@ -522,11 +538,19 @@ a:hover { color: var(--accent); }
 }
 .gk-option:hover { border-color: var(--ink); }
 .gk-option--on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.gk-option--empty { opacity: 0.55; }
+/* "Picking this leaves you nothing" said with colour rather than a group alpha.
+   opacity on the button faded the text and the card it sits on TOWARD each
+   other, so it could only ever destroy contrast: measured at 0.55 the count read
+   1.96:1 and the vermilion zero 2.07:1, against a 4.5:1 floor. Receding the card
+   to the board's own ground says the same thing and keeps every value legible.
+   The behaviour the comment on the chips describes is unchanged: it dims, it
+   flags its count, and it stays clickable. */
+.gk-option--empty { background: var(--checker); border-color: var(--line); }
+.gk-option--empty .gk-option__label { color: var(--ink-2); }
 .gk-option__label { font-weight: 600; font-size: 14px; line-height: 1.2; flex: 1 1 auto; }
 .gk-option__count { font-family: var(--mono); font-size: 11px; font-weight: 700; flex: 0 0 auto; color: var(--muted); }
 .gk-option--on .gk-option__count { color: var(--paper); }
-.gk-option__count--zero { color: var(--accent); }
+.gk-option__count--zero { color: var(--accent-ink); }
 
 /* --- 06–11 limits --------------------------------------------------------- */
 /* auto-fit so chips fill the row evenly rather than trailing off ragged-left */
@@ -551,11 +575,16 @@ a:hover { color: var(--accent); }
 }
 .gk-chip:hover { border-color: var(--ink); }
 .gk-chip--on { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
-.gk-chip--empty { opacity: 0.5; }
+.gk-chip--empty { background: var(--checker); border-color: var(--line); }
+/* Fine on an opaque fill: 6.57:1 on an unselected chip, 8.15:1 on a selected
+   one, 6.14:1 on an empty one. It was only ever the group alpha above that
+   made this unreadable. */
 .gk-chip__sub { font-family: var(--mono); font-size: 9px; opacity: 0.7; letter-spacing: 0.04em; }
 /* A limit that would leave nothing flags its count, same as a want option.
-   Full opacity so the vermilion actually reads against the dimmed chip. */
-.gk-chip__sub--zero { color: var(--accent); opacity: 1; }
+   The opacity override still earns its place, and now for a reason that can be
+   stated: the vermilion is the one colour here dark enough to need its full
+   strength. At 0.7 it measures 3.09:1 on this ground and at 1 it is 4.98:1. */
+.gk-chip__sub--zero { color: var(--accent-ink); opacity: 1; }
 
 /* ========================================================= action bar ===== */
 .gk-bar {
@@ -588,7 +617,7 @@ a:hover { color: var(--accent); }
   gap: 8px;
   transition: background 0.12s ease, border-color 0.12s ease;
 }
-.gk-deal:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
+.gk-deal:hover:not(:disabled) { background: var(--accent-ink); border-color: var(--accent-ink); }
 .gk-deal:disabled { opacity: 0.45; cursor: not-allowed; }
 /* An SVG now rather than a text glyph, so it is sized rather than set. Height
    only, because the artwork is taller than it is wide. */
@@ -633,7 +662,7 @@ a:hover { color: var(--accent); }
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 700;
 }
 .gk-hero__row { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
@@ -664,7 +693,7 @@ a:hover { color: var(--accent); }
   justify-content: center;
   transition: background 0.12s ease;
 }
-.gk-hero__cta:hover { background: var(--accent); color: #fff; }
+.gk-hero__cta:hover { background: var(--accent-ink); color: #fff; }
 
 .gk-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .gk-tag {
@@ -693,7 +722,7 @@ a:hover { color: var(--accent); }
   border-radius: 8px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer;
   transition: background 0.12s ease, border-color 0.12s ease;
 }
-.gk-btn-ink:hover { background: var(--accent); border-color: var(--accent); }
+.gk-btn-ink:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
 .gk-btn-outline {
   font: inherit; font-weight: 600; font-size: 14px; min-height: 48px; padding: 13px 18px;
   border: 1px solid var(--line); border-radius: 8px; background: transparent; cursor: pointer; color: var(--ink);
@@ -788,7 +817,7 @@ a:hover { color: var(--accent); }
   line-height: 1;
   transition: border-color 0.12s ease, color 0.12s ease;
 }
-.gk-sheet__close:hover { border-color: var(--accent); color: var(--accent); }
+.gk-sheet__close:hover { border-color: var(--accent-ink); color: var(--accent-ink); }
 .gk-sheet__body { padding: 0 16px 16px; display: grid; gap: 11px; }
 .gk-sheet__owners { font-size: 13px; color: var(--muted); }
 .gk-sheet__foot { display: grid; gap: 8px; border-top: 1px solid var(--square-dark); padding-top: 12px; }
@@ -806,7 +835,7 @@ a:hover { color: var(--accent); }
   justify-content: center;
   transition: background 0.12s ease;
 }
-.gk-sheet__cta:hover { background: var(--accent); color: #fff; }
+.gk-sheet__cta:hover { background: var(--accent-ink); color: #fff; }
 
 /* ============================================================== misc ====== */
 .gk-loading { padding: 40px 16px; text-align: center; color: var(--muted); font-family: var(--mono); font-size: 12px; }
