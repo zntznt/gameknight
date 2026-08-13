@@ -18,9 +18,70 @@
   --serif: "Instrument Serif", Georgia, serif;
   --sans: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Keeps whatever the browser scrolls to clear of the two bars that float over
+     the page. This fires on every forward Tab, on the skip link, and on any
+     in-page anchor, none of which the guided scroll in app.js knows about: that
+     one measures the header itself and uses absolute coordinates, so it is
+     unaffected. The bottom value is the one that matters most, since tabbing
+     DOWN the board is what walks a control under the fixed action bar. On the
+     verdict the header is static and there is no bar, where the only effect is
+     a little slack that scroll positions clamp away. */
+  scroll-padding: 92px 0 72px;
 }
 
 * { box-sizing: border-box; }
+
+/* Every control in this app is a custom-styled <button> and the stylesheet
+   never said what focus looks like, so the only indicator was the browser
+   default, which the ink fills swallow. :focus-visible, so a pointer click does
+   not leave a ring sitting behind it. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Visually hidden, still announced. Not display:none or visibility:hidden,
+   which would take it out of the accessibility tree and silence it. */
+.gk-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Off screen until it is tabbed to. Fixed rather than absolute so it is
+   reachable from anywhere in the scroll, and above the sticky header's z-index
+   so it is not painted behind it. */
+.gk-skip {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 60;
+  transform: translateY(calc(-100% - 16px));
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+.gk-skip:focus-visible { transform: none; }
+/* Cancels the global a:hover, which would tint it vermilion on ink. */
+.gk-skip:hover { color: var(--paper); }
+/* Both are focus targets rather than controls: the board is what the skip link
+   points at, and <main> is where focus lands after a board/verdict swap. They
+   need to be focusable without being tab stops, and a ring around the whole page
+   would be noise rather than information. */
+.gk-root:focus,
+.gk-main:focus { outline: none; }
 /* No overflow-x:hidden here. It makes html/body a scroll container, which
    silently kills `position: sticky` on the header, and the guided scroll
    measures against a sticky header, so it breaks that too. The layout is
@@ -240,6 +301,9 @@ a:hover { color: var(--accent); }
 .gk-tile__ini { font-family: var(--mono); font-weight: 700; color: var(--ink-2); }
 
 .gk-tile--34 { width: 34px; height: 34px; border-radius: 3px; padding: 0; cursor: pointer; transition: transform 0.12s ease, border-color 0.12s ease; }
+/* Drawn INSIDE the tile. The strip clips its overflow in order to scroll
+   sideways, so a ring offset outwards is sliced off every tile it holds. */
+.gk-tile--34:focus-visible { outline-offset: -2px; }
 .gk-tile--34:hover { transform: translateY(-2px); border-color: var(--ink); }
 .gk-tile--34 .gk-tile__ini { font-size: 10px; }
 .gk-tile--44 { width: 44px; height: 44px; border-radius: 4px; }

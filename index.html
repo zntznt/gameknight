@@ -35,6 +35,12 @@
     </noscript>
   </head>
   <body>
+    <!--
+      The header ends with a strip of one button per surviving game, up to 137 of
+      them, so tabbing from the top of the page to the first question meant
+      passing every one. Parked off screen until focused.
+    -->
+    <a class="gk-skip" href="#gkRoot">Skip to the board</a>
     <header class="gk-header">
       <div class="gk-headrow gk-headrow--top">
         <div class="gk-mark" aria-hidden="true">
@@ -74,7 +80,16 @@
           </svg>
         </a>
       </div>
-      <div class="gk-headrow gk-headrow--live" id="gkLive" aria-live="polite"></div>
+      <div class="gk-headrow gk-headrow--live" id="gkLive"></div>
+      <!--
+        The announcement, deliberately NOT on the row above.
+        That row is rebuilt in full on every state change and contains a button
+        per surviving game, so marking it live meant a screen reader read out the
+        entire shelf, by name, every time you touched anything. This node is
+        never rebuilt: app.js writes one short sentence into it, and only when
+        the number actually changes.
+      -->
+      <p id="gkLiveMsg" class="gk-sr" aria-live="polite" aria-atomic="true"></p>
     </header>
 
     <!--
@@ -84,7 +99,7 @@
       blank paper. render() replaces the whole root on its first call, so this
       costs nothing once the app is alive.
     -->
-    <div id="gkRoot">
+    <div id="gkRoot" class="gk-root" tabindex="-1">
       <div class="gk-loading gk-loading--js">Loading the shelf…</div>
       <noscript>
         <div class="gk-loading">

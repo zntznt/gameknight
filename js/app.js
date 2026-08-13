@@ -49,6 +49,7 @@ const state = {
   sortBy: 'rating', // 'rating' | 'rank' | 'plays'
   pickId: null, // manual "Deal another" choice
   sheetGame: null,
+  sheetOpener: null, // gk-key of the control that opened the sheet, to hand focus back
   failed: {}, // game ids whose thumbnail 404'd
 };
 
@@ -325,6 +326,21 @@ function makeSection(num, title, answered, body) {
 }
 
 /* --- header live row ------------------------------------------------------ */
+// What a screen reader hears when the shelf changes size.
+//
+// The visible count lives in a row that is rebuilt in full on every render and
+// holds one button per surviving game. Marking that row aria-live, which is what
+// it used to be, meant every tap re-announced the entire shelf by name: opening
+// a game's details read out all 137 of them, and so did changing the sort, which
+// does not change the count at all. This writes one sentence into a node the
+// render never touches, and stays quiet unless the number actually moved.
+function announceCount(fit, total) {
+  const node = $('#gkLiveMsg');
+  if (!node) return;
+  const msg = fit === 0 ? 'Nothing fits. Something has to give.' : `${fit} of ${total} games fit`;
+  if (node.textContent !== msg) node.textContent = msg;
+}
+
 // `games` is the shared per-render ordering. render() is the only caller and it
 // only calls this once the data has loaded, so there is no empty case to guard.
 function renderLive(games) {
@@ -333,6 +349,7 @@ function renderLive(games) {
   const out = frag();
 
   const total = basePool().length;
+  announceCount(games.length, total);
 
   const live = el('div', 'gk-live');
   live.appendChild(el('span', `gk-live__n${games.length === 0 ? ' gk-live__n--zero' : ''}`, String(games.length)));
@@ -342,6 +359,7 @@ function renderLive(games) {
   if (anyFilters()) {
     const clear = el('button', 'gk-clear', 'clear');
     clear.type = 'button';
+    clear.dataset.gkKey = 'clear';
     clear.onclick = resetAll;
     out.appendChild(clear);
   }
@@ -354,6 +372,7 @@ function renderLive(games) {
       const btn = tile(g, 34, 'button');
       btn.type = 'button';
       btn.title = g.name;
+      btn.dataset.gkKey = `strip:${g.id}`;
       btn.setAttribute('aria-label', `${g.name}, details`);
       btn.onclick = () => setState({ sheetGame: g });
       strip.appendChild(btn);
@@ -374,6 +393,7 @@ function renderShelves() {
     const wrap = el('div', 'gk-shelf');
     const btn = el('button', `gk-shelf__btn${on ? ' gk-shelf__btn--on' : ''}`);
     btn.type = 'button';
+    btn.dataset.gkKey = `shelf:${col.id}`;
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     // The owner's BGG avatar when the bake found one, else a typographic
     // monogram. A dead avatar URL falls back to the monogram too.
@@ -453,6 +473,7 @@ function renderWants() {
 
       const btn = el('button', `gk-option${on ? ' gk-option--on' : ''}${count === 0 && !on ? ' gk-option--empty' : ''}`);
       btn.type = 'button';
+      btn.dataset.gkKey = `opt:${q.id}:${o.id}`;
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
       btn.appendChild(el('span', 'gk-option__label', o.label));
       btn.appendChild(
@@ -485,9 +506,10 @@ function renderWants() {
 // `zeroSub` turns the sub-line vermilion, matching the want options: a choice
 // that would leave nothing dims AND flags its count. The sort section's sub-line is a
 // text hint rather than a count, so it never sets this.
-function chip({ label, sub, on, empty, zeroSub, onClick }) {
+function chip({ label, sub, on, empty, zeroSub, key, onClick }) {
   const btn = el('button', `gk-chip${on ? ' gk-chip--on' : ''}${empty ? ' gk-chip--empty' : ''}`);
   btn.type = 'button';
+  if (key) btn.dataset.gkKey = key;
   btn.setAttribute('aria-pressed', on ? 'true' : 'false');
   btn.appendChild(el('span', null, label));
   btn.appendChild(el('span', `gk-chip__sub${zeroSub ? ' gk-chip__sub--zero' : ''}`, sub));
@@ -523,6 +545,7 @@ function renderLimits() {
         on,
         empty: count === 0 && !on,
         zeroSub: count === 0 && !on,
+        key: `chip:${sectionId}:${val}`,
         onClick: () => {
           const was = current;
           setConstraint({ [key]: val });
@@ -567,6 +590,7 @@ function renderLimits() {
           on,
           empty: count === 0 && !on,
           zeroSub: count === 0 && !on,
+          key: `chip:${SECTIONS.fit}:${val}`,
           onClick: () => {
             const was = c.playerFit;
             setConstraint({ playerFit: val });
@@ -597,6 +621,7 @@ function renderLimits() {
           on,
           empty: count === 0 && !on,
           zeroSub: count === 0 && !on,
+          key: `chip:${SECTIONS.weight}:${bk.key}`,
           onClick: () => {
             const was = c.wKey;
             setConstraint({ wKey: bk.key });
@@ -647,6 +672,7 @@ function renderLimits() {
           sub: hint,
           on: state.sortBy === val,
           empty: false,
+          key: `chip:${SECTIONS.sort}:${val}`,
           onClick: () => setState({ sortBy: val, pickId: null }),
         })
       );
@@ -660,6 +686,9 @@ function renderLimits() {
 /* --- board ---------------------------------------------------------------- */
 function buildBoard(ranked) {
   const main = el('main', 'gk-main');
+  // Focusable but not a tab stop, so render() can land focus here after a view
+  // swap. See restoreFocus.
+  main.tabIndex = -1;
   // What this is, and what it will do about it. Both lived only in the <title>
   // and the meta description, where a tab shows about ten characters and nobody
   // reads the rest. Deliberately in the scroll area rather than the sticky
@@ -697,6 +726,7 @@ function buildBoard(ranked) {
   const inner = el('div', 'gk-bar__inner');
   const deal = el('button', 'gk-deal');
   deal.type = 'button';
+  deal.dataset.gkKey = 'deal';
   deal.appendChild(el('span', null, 'Make the move'));
   // Was the ♞ character, which after the logo landed meant the page showed two
   // different knights. Same artwork as the header now, and no font dependency.
@@ -714,11 +744,13 @@ function buildBoard(ranked) {
 /* --- verdict -------------------------------------------------------------- */
 function buildVerdict(ranked) {
   const main = el('main', 'gk-main gk-main--verdict');
+  main.tabIndex = -1;
   const hero = ranked.find((g) => g.id === state.pickId) || ranked[0];
 
   const actions = el('div', 'gk-vactions');
   const back = el('button', 'gk-vbtn');
   back.type = 'button';
+  back.dataset.gkKey = 'vbtn:back';
   back.appendChild(el('span', 'gk-vbtn__glyph', '←'));
   back.appendChild(el('span', null, 'Back to the board'));
   back.onclick = () => {
@@ -729,6 +761,7 @@ function buildVerdict(ranked) {
   if (ranked.length > 1) {
     const again = el('button', 'gk-vbtn');
     again.type = 'button';
+    again.dataset.gkKey = 'vbtn:again';
     again.appendChild(el('span', null, 'Deal another'));
     again.appendChild(el('span', 'gk-vbtn__glyph', '↻'));
     again.onclick = () => {
@@ -818,6 +851,7 @@ function buildVerdict(ranked) {
     rest.forEach((g) => {
       const btn = el('button', 'gk-row');
       btn.type = 'button';
+      btn.dataset.gkKey = `row:${g.id}`;
       btn.appendChild(tile(g, 44));
       const t = el('span', 'gk-row__text');
       t.appendChild(el('span', 'gk-row__name', g.name));
@@ -890,6 +924,34 @@ function resetAll() {
   render();
 }
 
+/* ------------------------------------------------------- focus handover -- */
+// Every control on the page is destroyed and rebuilt on each render, which
+// dropped focus to <body>. For a keyboard or switch user that meant being thrown
+// back toward the top of a document with over two hundred tab stops after every
+// single selection, so answering two questions in a row was not realistically
+// possible. Controls carry a stable key, and the rebuilt one is found again by
+// it. This does not overturn the full-rebuild model the file header defends; it
+// finishes it.
+let lastView = null;
+
+function restoreFocus(key) {
+  // While the sheet is open it owns focus. renderSheet has just put it on the
+  // close button, and taking it back would leave the user outside a dialog that
+  // claims to be modal.
+  if (state.sheetGame) return;
+  // Whatever the user was on, or else whoever opened the sheet that just closed:
+  // the close button has no key of its own, so without this, dismissing a game's
+  // details dropped focus on the floor.
+  const want = key || state.sheetOpener;
+  state.sheetOpener = null;
+  if (!want) return;
+  const next = document.querySelector(`[data-gk-key="${CSS.escape(want)}"]`);
+  // preventScroll is not optional. Without it the browser scrolls the restored
+  // control into view, which fights both the keepY correction at the end of
+  // render() and any guided scroll still in flight.
+  if (next) next.focus({ preventScroll: true });
+}
+
 function render() {
   const root = $('#gkRoot');
   const barRoot = $('#gkBarRoot');
@@ -906,6 +968,11 @@ function render() {
   // which is what used to throw you back to the top on every click. A single
   // replaceChildren() never leaves the document short.
   const keepY = window.scrollY;
+  // Read before anything is torn down. If the sheet is opening, this is the
+  // control that opened it, and closing needs to hand focus back there.
+  const focusKey = document.activeElement?.dataset?.gkKey || null;
+  if (state.sheetGame && focusKey) state.sheetOpener = focusKey;
+
   // One sort per render, handed to everything that needs the ordering. The
   // header strip, the board's deal button and the verdict each used to sort the
   // survivors independently, which on the verdict meant running the identical
@@ -931,6 +998,21 @@ function render() {
   // The introduction card is rebuilt on every state change, so the observer is
   // pointed at a node that no longer exists unless it is re-attached here.
   watchIntroMark();
+
+  // A board/verdict swap has no counterpart control on the other side, so send
+  // focus to the top of the new page rather than leaving it on <body>.
+  //
+  // Only on a real swap. The FIRST render also changes this value, from null,
+  // and treating that as a swap moved focus into <main> on page load, which
+  // silently skipped the whole header: the skip link stopped being the first tab
+  // stop, which is the one thing a skip link has to be.
+  if (state.view !== lastView) {
+    const swapped = lastView !== null;
+    lastView = state.view;
+    if (swapped && !state.sheetGame) built.main.focus({ preventScroll: true });
+  } else {
+    restoreFocus(focusKey);
+  }
 
   // Belt and braces: if the swap still moved us (a genuinely shorter page), put
   // it back, unless a guided scroll is mid-flight and owns the position.

@@ -21,6 +21,7 @@ const browserGlobals = {
   Image: 'readonly',
   requestAnimationFrame: 'readonly',
   IntersectionObserver: 'readonly',
+  CSS: 'readonly',
   setTimeout: 'readonly',
   clearTimeout: 'readonly',
   setInterval: 'readonly',
