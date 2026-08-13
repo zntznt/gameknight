@@ -50,6 +50,7 @@ const state = {
   pickId: null, // manual "Deal another" choice
   sheetGame: null,
   sheetOpener: null, // gk-key of the control that opened the sheet, to hand focus back
+  boardScrollY: 0, // where you were reading before the verdict, to come back to
   failed: {}, // game ids whose thumbnail 404'd
 };
 
@@ -293,6 +294,73 @@ function advanceFrom(sectionId) {
   }, 220);
 }
 
+/* -------------------------------------------------------------- history -- */
+// The back gesture is how you leave a screen on a phone, and here it left the
+// site. Opening a game's details and pressing back closed Gameknight; so did
+// backing out of the verdict, taking every answer with it, because the whole
+// session lived in one history entry.
+//
+// Each screen someone would expect to back out of pushes an entry, and popstate
+// puts the app wherever the entry it lands on says. Driving it from the entry
+// rather than from the current view means forward works too, and the stack can
+// never drift out of step with the screen.
+//
+// pushState is called with no url argument, so the address bar is untouched.
+// Nothing is encoded in the URL: a fork on a repo subpath is unaffected, there
+// is no state to parse on load, and this is not a way to share or bookmark a
+// result, which would be a feature rather than a fix.
+const hasHistory = typeof history !== 'undefined' && typeof history.pushState === 'function';
+
+function pushScreen(entry) {
+  if (hasHistory) history.pushState(entry, '');
+}
+
+// Leave by unwinding the entry we pushed, rather than by setting state directly,
+// so the stack stays exactly as deep as the screens on top of it.
+function leaveScreen(fallback) {
+  if (hasHistory) history.back();
+  else fallback();
+}
+
+function showVerdict() {
+  state.boardScrollY = window.scrollY;
+  pushScreen({ gk: 'verdict' });
+  setState({ view: 'verdict', sheetGame: null });
+  window.scrollTo({ top: 0 });
+}
+
+function showBoard() {
+  setState({ view: 'board', sheetGame: null });
+  // Back to what you were reading, not to the top. You reach the verdict from
+  // the bottom of a long board, and landing at the top meant scrolling the whole
+  // way down again to change a single answer.
+  window.scrollTo({ top: state.boardScrollY || 0 });
+}
+
+function openSheet(g) {
+  pushScreen({ gk: 'sheet', id: g.id, view: state.view });
+  setState({ sheetGame: g });
+}
+
+const closeSheet = () => leaveScreen(() => setState({ sheetGame: null }));
+
+function onPopState(e) {
+  const entry = e.state || null;
+  const gk = entry && entry.gk;
+  if (gk === 'sheet') {
+    const games = (state.data && state.data.games) || [];
+    setState({ view: entry.view || 'board', sheetGame: games.find((x) => x.id === entry.id) || null });
+    return;
+  }
+  if (gk === 'verdict') {
+    state.boardScrollY = state.view === 'board' ? window.scrollY : state.boardScrollY;
+    setState({ view: 'verdict', sheetGame: null });
+    window.scrollTo({ top: 0 });
+    return;
+  }
+  showBoard();
+}
+
 /* --------------------------------------------------------------- render -- */
 function setState(patch) {
   Object.assign(state, patch);
@@ -381,7 +449,7 @@ function renderLive(games) {
       btn.title = g.name;
       btn.dataset.gkKey = `strip:${g.id}`;
       btn.setAttribute('aria-label', `${g.name}, details`);
-      btn.onclick = () => setState({ sheetGame: g });
+      btn.onclick = () => openSheet(g);
       strip.appendChild(btn);
     });
   }
@@ -744,10 +812,7 @@ function buildBoard(ranked) {
   // different knights. Same artwork as the header now, and no font dependency.
   deal.appendChild(knightGlyph('gk-deal__knight'));
   deal.disabled = ranked.length === 0;
-  deal.onclick = () => {
-    setState({ view: 'verdict' });
-    window.scrollTo({ top: 0 });
-  };
+  deal.onclick = showVerdict;
   inner.appendChild(deal);
   bar.appendChild(inner);
   return { main, bar };
@@ -765,10 +830,9 @@ function buildVerdict(ranked) {
   back.dataset.gkKey = 'vbtn:back';
   back.appendChild(el('span', 'gk-vbtn__glyph', '←'));
   back.appendChild(el('span', null, 'Back to the board'));
-  back.onclick = () => {
-    setState({ view: 'board' });
-    window.scrollTo({ top: 0 });
-  };
+  // Unwinds the entry the deal button pushed, so this and the device's own
+  // back gesture do exactly the same thing.
+  back.onclick = () => leaveScreen(showBoard);
   actions.appendChild(back);
   if (ranked.length > 1) {
     const again = el('button', 'gk-vbtn');
@@ -796,22 +860,37 @@ function buildVerdict(ranked) {
   }
   main.appendChild(actions);
 
+  // Reachable, and worth stating why, because it looks like it should not be:
+  // the deal button is disabled exactly when this pool is empty, so you cannot
+  // walk here from the board. You can arrive by going BACK to the board, filtering
+  // everything away or unticking every shelf, and then pressing FORWARD. Deleting
+  // this branch as dead code would turn that into a crash on the next line.
   if (!hero) {
     const card = el('section', 'gk-empty');
     card.appendChild(el('h1', 'gk-empty__title', 'Nothing survived.'));
+    const noShelf = state.selected.length === 0;
     card.appendChild(
-      el('p', 'gk-empty__body', 'Every game got filtered out. The shelf isn’t infinite, so drop a want or loosen a limit.')
+      el(
+        'p',
+        'gk-empty__body',
+        noShelf
+          ? 'No shelf is selected, so there is nothing to draw from. Pick a shelf back up and try again.'
+          : 'Every game got filtered out. The shelf isn’t infinite, so drop a want or loosen a limit.'
+      )
     );
     const row = el('div', 'gk-empty__actions');
     const toBoard = el('button', 'gk-btn-ink', 'Back to the board');
     toBoard.type = 'button';
-    toBoard.onclick = () => {
-      setState({ view: 'board' });
-      window.scrollTo({ top: 0 });
-    };
+    toBoard.onclick = () => leaveScreen(showBoard);
     const clear = el('button', 'gk-btn-outline', 'Clear everything');
     clear.type = 'button';
-    clear.onclick = resetAll;
+    // Everything means everything, shelves included. The header's clear is
+    // deliberately narrower, since it only appears when a want or a limit is set
+    // and unticking a shelf is neither.
+    clear.onclick = () => {
+      state.selected = ((state.data && state.data.collections) || []).map((col) => col.id);
+      resetAll();
+    };
     row.appendChild(toBoard);
     row.appendChild(clear);
     card.appendChild(row);
@@ -872,7 +951,7 @@ function buildVerdict(ranked) {
       btn.appendChild(
         el('span', `gk-row__tag${fitTier(g) === 3 ? ' gk-row__tag--fit' : ''}`, sortTag(g, true))
       );
-      btn.onclick = () => setState({ sheetGame: g });
+      btn.onclick = () => openSheet(g);
       rows.appendChild(btn);
     });
     sec.appendChild(rows);
@@ -915,7 +994,7 @@ function renderSheet() {
     pressedBackdrop = e.target === backdrop && e.offsetX < backdrop.clientWidth;
   });
   backdrop.addEventListener('click', (e) => {
-    if (pressedBackdrop && e.target === backdrop) setState({ sheetGame: null });
+    if (pressedBackdrop && e.target === backdrop) closeSheet();
   });
 
   const sheet = el('div', 'gk-sheet');
@@ -942,7 +1021,7 @@ function renderSheet() {
   const close = el('button', 'gk-sheet__close', '✕');
   close.type = 'button';
   close.setAttribute('aria-label', 'Close');
-  close.onclick = () => setState({ sheetGame: null });
+  close.onclick = closeSheet;
   head.appendChild(close);
   sheet.appendChild(head);
 
@@ -1123,8 +1202,10 @@ function wireUp() {
   wired = true;
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && state.sheetGame) setState({ sheetGame: null });
+    if (e.key === 'Escape' && state.sheetGame) closeSheet();
   });
+
+  window.addEventListener('popstate', onPopState);
 
   guide.scrollRef = window.scrollY;
   window.addEventListener(
