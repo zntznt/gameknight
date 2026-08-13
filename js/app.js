@@ -232,9 +232,24 @@ function tagRow(g, isHero, pool) {
 }
 
 /* --------------------------------------------------- guided scroll ------- */
-// Advances on a section's FIRST pick, disarms when the reader takes over,
-// re-arms (and pulls the nearest section square) after an idle pause.
-const guide = { armed: true, progScroll: false, scrollRef: 0, lastActivity: Date.now(), timer: null };
+// Advances on a section's FIRST pick, and disarms when the reader takes over.
+//
+// It used to also re-arm on a timer, and pull the nearest section square, after
+// 2.6 seconds without an input event. The flaw is that READING produces no input
+// events, so the trigger for "the user has stopped and wants help" fired exactly
+// when someone was paying attention. Measured on a 390px phone: load the page
+// and touch nothing, and at about three seconds it scrolled itself 141px and put
+// the introduction card, the app's only statement of what it is, behind the
+// header. Scroll somewhere to read and hold still, and it moved 88px under you
+// five seconds later. Neither could be refused: swiping against it did nothing
+// while a programmed scroll was in flight, and the 120px disarm was un-keepable
+// because the timer re-armed unconditionally.
+//
+// So the page moves only as the direct consequence of a tap now. That also makes
+// the advance RELIABLE, which it was not: it was gated on an armed flag that any
+// recent scroll cleared, so the same tap advanced or did not depending on
+// whether you had scrolled lately.
+const guide = { armed: true, progScroll: false, scrollRef: 0, timer: null };
 
 const headerH = () => {
   const h = $('.gk-header');
@@ -261,44 +276,21 @@ function scrollToSection(i, correct = true) {
     }
     guide.progScroll = false;
     guide.scrollRef = window.scrollY;
-    guide.lastActivity = Date.now();
   }, 900);
 }
 
+// Called only from a section's first pick, which IS the explicit user action
+// that re-arms the guide. Answering a question is a request to be taken to the
+// next one; nothing else is.
 function advanceFrom(sectionId) {
-  if (!guide.armed) return;
+  guide.armed = true;
   setTimeout(() => {
+    // A scroll inside this window is the reader overriding the offer, so drop
+    // it. This is the same disarm the scroll listener has always set.
     if (!guide.armed) return;
     const i = sectionEls().findIndex((n) => n.dataset.gkSection === String(sectionId));
     if (i >= 0) scrollToSection(i + 1);
   }, 220);
-}
-
-function nearestSection() {
-  const anchor = headerH() + 12;
-  let index = 0;
-  let bestD = Infinity;
-  let delta = 0;
-  sectionEls().forEach((node, i) => {
-    const top = node.getBoundingClientRect().top;
-    const d = Math.abs(top - anchor);
-    if (d < bestD) {
-      bestD = d;
-      index = i;
-      delta = top - anchor;
-    }
-  });
-  return { index, delta };
-}
-
-function checkIdle() {
-  if (state.view !== 'board' || state.sheetGame || guide.progScroll) return;
-  if (Date.now() - guide.lastActivity < 2600) return;
-  const { index, delta } = nearestSection();
-  guide.armed = true; // re-arm unconditionally
-  guide.lastActivity = Date.now();
-  if (Math.abs(delta) > 26) scrollToSection(index);
-  else guide.scrollRef = window.scrollY;
 }
 
 /* --------------------------------------------------------------- render -- */
@@ -1138,16 +1130,15 @@ function wireUp() {
   window.addEventListener(
     'scroll',
     () => {
-      guide.lastActivity = Date.now();
       if (guide.progScroll) return;
       if (Math.abs(window.scrollY - guide.scrollRef) > 120) guide.armed = false;
     },
     { passive: true }
   );
-  ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((ev) =>
-    window.addEventListener(ev, () => { guide.lastActivity = Date.now(); }, { passive: true })
-  );
-  setInterval(checkIdle, 400);
+  // No idle poll. There used to be a setInterval here running four times a
+  // second for the life of the page, including while the tab was in the
+  // background, whose only job was the behaviour described above the guide
+  // object. The activity listeners it needed went with it.
 }
 
 async function boot() {
