@@ -144,11 +144,11 @@ function sortTag(g, short) {
 // How many OTHER survivors match exactly as many wants as this one. Recomputed
 // rather than cached because the pool changes with every limit, and at shelf
 // scale the whole board is rebuilt on each render anyway.
-function tiedAtFit(g, got) {
-  return remaining().filter((x) => x.id !== g.id && fitScore(x) === got).length;
+function tiedAtFit(g, got, pool) {
+  return pool.filter((x) => x.id !== g.id && fitScore(x) === got).length;
 }
 
-function tagsFor(g, isHero) {
+function tagsFor(g, isHero, pool) {
   const n = state.constraints.players;
   const out = [{ text: sortTag(g), cls: 'gk-tag--sort' }];
   // Show how the pick answered your wants, so the ordering is explainable
@@ -165,7 +165,7 @@ function tagsFor(g, isHero) {
     // metric alone picked between them. Saying so is the honest version, and it
     // is the difference between a verdict that was earned and one that was a
     // coin flip. Only shown on the hero card, where the claim is being made.
-    const alsoTied = isHero ? tiedAtFit(g, got) : 0;
+    const alsoTied = isHero ? tiedAtFit(g, got, pool) : 0;
     if (alsoTied > 0) out.push({ text: `${alsoTied} tied on fit`, cls: 'gk-tag--muted' });
   }
   if (g.pollVotes && Array.isArray(g.bestPlayers) && g.bestPlayers.length) {
@@ -219,9 +219,11 @@ function tile(g, size, tag = 'span') {
   return wrap;
 }
 
-function tagRow(g, isHero) {
+function tagRow(g, isHero, pool) {
   const row = el('div', 'gk-tags');
-  tagsFor(g, isHero).forEach((t) => row.appendChild(el('span', `gk-tag ${t.cls}`.trim(), t.text)));
+  tagsFor(g, isHero, pool).forEach((t) =>
+    row.appendChild(el('span', `gk-tag ${t.cls}`.trim(), t.text))
+  );
   return row;
 }
 
@@ -323,16 +325,13 @@ function makeSection(num, title, answered, body) {
 }
 
 /* --- header live row ------------------------------------------------------ */
-function renderLive() {
+// `games` is the shared per-render ordering. render() is the only caller and it
+// only calls this once the data has loaded, so there is no empty case to guard.
+function renderLive(games) {
   const root = $('#gkLive');
   const prevScroll = root.querySelector('.gk-strip')?.scrollLeft || 0;
-  if (!state.data) {
-    root.replaceChildren();
-    return;
-  }
   const out = frag();
 
-  const games = sortGames(remaining());
   const total = basePool().length;
 
   const live = el('div', 'gk-live');
@@ -423,15 +422,19 @@ function renderShelves() {
 function renderWants() {
   const out = frag();
   const base = basePool();
+  // Counts are honest against every OTHER filter, since there is no step order.
+  // Wants no longer eliminate, so a count here answers "how many playable
+  // games have this quality", measured against the limits only. It is a
+  // description of the shelf rather than a threat to shrink it.
+  //
+  // Hoisted out of the loop below. Nothing inside it varies per question, so
+  // this was re-running the identical filter pass over the whole shelf once for
+  // every want section on the board.
+  const context = applyFilters(base, constraintPreds());
 
   QUESTIONS.forEach((q, qi) => {
     const num = num2(qi + 1);
     const sel = new Set(state.answers[q.id] || []);
-    // Counts are honest against every OTHER filter, since there is no step order.
-    // Wants no longer eliminate, so a count here answers "how many playable
-    // games have this quality", measured against the limits only. It is a
-    // description of the shelf rather than a threat to shrink it.
-    const context = applyFilters(base, constraintPreds());
 
     const grid = el('div', 'gk-options');
     // Cap the columns at a divisor of the option count so the last row fills.
@@ -498,7 +501,13 @@ function renderLimits() {
   const base = basePool();
   // Limits still filter, so a chip count is a genuine "this many would remain".
   // Wants are excluded from the context because they no longer remove anything.
-  const ctxFor = (skip) => applyFilters(base, constraintPreds(c, skip));
+  // Memoised because two sections skip 'players': the count row and the fit row
+  // ask the same question and were each paying for their own full pass.
+  const ctxCache = new Map();
+  const ctxFor = (skip) => {
+    if (!ctxCache.has(skip)) ctxCache.set(skip, applyFilters(base, constraintPreds(c, skip)));
+    return ctxCache.get(skip);
+  };
 
   // A chip row where "Any" clears the value; each chip counts its own value
   // with every other filter applied.
@@ -649,7 +658,7 @@ function renderLimits() {
 }
 
 /* --- board ---------------------------------------------------------------- */
-function buildBoard() {
+function buildBoard(ranked) {
   const main = el('main', 'gk-main');
   // What this is, and what it will do about it. Both lived only in the <title>
   // and the meta description, where a tab shows about ten characters and nobody
@@ -692,7 +701,7 @@ function buildBoard() {
   // Was the ♞ character, which after the logo landed meant the page showed two
   // different knights. Same artwork as the header now, and no font dependency.
   deal.appendChild(knightGlyph('gk-deal__knight'));
-  deal.disabled = remaining().length === 0;
+  deal.disabled = ranked.length === 0;
   deal.onclick = () => {
     setState({ view: 'verdict' });
     window.scrollTo({ top: 0 });
@@ -703,9 +712,8 @@ function buildBoard() {
 }
 
 /* --- verdict -------------------------------------------------------------- */
-function buildVerdict() {
+function buildVerdict(ranked) {
   const main = el('main', 'gk-main gk-main--verdict');
-  const ranked = sortGames(remaining());
   const hero = ranked.find((g) => g.id === state.pickId) || ranked[0];
 
   const actions = el('div', 'gk-vactions');
@@ -778,7 +786,7 @@ function buildVerdict() {
   const text = el('div', 'gk-hero__text');
   text.appendChild(el('h1', 'gk-hero__title', hero.name));
   text.appendChild(el('div', 'gk-hero__meta', metaLine(hero)));
-  text.appendChild(tagRow(hero, true));
+  text.appendChild(tagRow(hero, true, ranked));
   const owners = ownersLine(hero);
   if (owners) text.appendChild(el('div', 'gk-hero__owners', owners));
   row.appendChild(text);
@@ -898,7 +906,13 @@ function render() {
   // which is what used to throw you back to the top on every click. A single
   // replaceChildren() never leaves the document short.
   const keepY = window.scrollY;
-  const built = state.view === 'board' ? buildBoard() : { main: buildVerdict(), bar: null };
+  // One sort per render, handed to everything that needs the ordering. The
+  // header strip, the board's deal button and the verdict each used to sort the
+  // survivors independently, which on the verdict meant running the identical
+  // full sort twice in the same call stack.
+  const ranked = sortGames(remaining());
+  const built =
+    state.view === 'board' ? buildBoard(ranked) : { main: buildVerdict(ranked), bar: null };
 
   // The header only follows you on the board; on the verdict it scrolls away.
   $('.gk-header').classList.toggle('gk-header--flat', state.view === 'verdict');
@@ -909,7 +923,7 @@ function render() {
   const repoUrl = state.data.site && state.data.site.repoUrl;
   if (repoUrl) $('.gk-gh').href = repoUrl;
 
-  renderLive();
+  renderLive(ranked);
   root.replaceChildren(built.main);
   if (built.bar) barRoot.replaceChildren(built.bar);
   else barRoot.replaceChildren();

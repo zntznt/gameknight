@@ -197,13 +197,29 @@ export const playsThisMonth = (g) => g.playsThisMonth || 0;
 // Best fit first, then the metric chosen in the sort section settles the order
 // among games that fit equally well.
 export function sortGames(games, { answers, constraints, sortBy }) {
-  return games.slice().sort((a, b) => {
-    const fit = fitScore(b, answers) - fitScore(a, answers);
+  // Decorate, sort, undecorate.
+  //
+  // fitScore and limitFit used to be called from inside the comparator, so
+  // every game's score was recomputed once per COMPARISON rather than once per
+  // game. On an 88 game shelf that is about eleven times over, and the factor is
+  // log n, so it gets worse on a bigger fork rather than better. Both are pure
+  // functions of the game and the answers, which is exactly the shape that wants
+  // computing up front, and doing so is behaviour identical: the comparator
+  // below reads the same two numbers it used to compute.
+  const keyed = games.map((g) => ({
+    g,
+    fit: fitScore(g, answers),
+    lim: limitFit(g, constraints),
+  }));
+  keyed.sort((x, y) => {
+    const a = x.g;
+    const b = y.g;
+    const fit = y.fit - x.fit;
     if (fit) return fit;
     // Then closeness to the complexity and length you asked for, so a medium
     // two hour night surfaces medium two hour games ahead of the light fillers
     // those ceilings also allow.
-    const lim = limitFit(b, constraints) - limitFit(a, constraints);
+    const lim = y.lim - x.lim;
     if (lim) return lim;
     if (sortBy === 'plays') {
       const d = playsThisMonth(b) - playsThisMonth(a);
@@ -233,4 +249,7 @@ export function sortGames(games, { answers, constraints, sortBy }) {
     // no verdict at all (0 of 105).
     return a.id - b.id;
   });
+  // games.map already produced a fresh array, so the caller still gets a copy
+  // and the input is still untouched.
+  return keyed.map((k) => k.g);
 }

@@ -22,8 +22,24 @@
 
 // --- matching helpers -------------------------------------------------------
 const norm = (s) => (s || '').toLowerCase();
-const anyIncludes = (arr, needles) =>
-  Array.isArray(arr) && arr.some((v) => needles.some((n) => norm(v).includes(norm(n))));
+
+// Both sides are lowercased ONCE, not once per pair.
+//
+// This was `arr.some((v) => needles.some((n) => norm(v).includes(norm(n))))`,
+// which re-lowercases the value for every needle and the needle for every
+// value, for strings that are constants of the file and fields of a JSON blob
+// that never change. Measured on the real shelf, one sort of 88 survivors made
+// 319,296 toLowerCase calls and a full board render 477,482. Same matching,
+// same results, just without doing the identical work hundreds of thousands of
+// times per tap.
+const anyIncludes = (arr, needles) => {
+  if (!Array.isArray(arr) || arr.length === 0) return false;
+  const lowered = needles.map(norm);
+  return arr.some((v) => {
+    const lv = norm(v);
+    return lowered.some((n) => lv.includes(n));
+  });
+};
 const cat = (g, ...needles) => anyIncludes(g.categories, needles);
 const mech = (g, ...needles) => anyIncludes(g.mechanics, needles);
 
