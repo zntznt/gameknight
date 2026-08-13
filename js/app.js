@@ -955,16 +955,29 @@ function watchIntroMark() {
 }
 
 /* ----------------------------------------------------------------- boot -- */
-async function boot() {
-  render();
-  try {
-    state.data = await loadData();
-    state.selected = (state.data.collections || []).map((c) => c.id); // all shelves on
-  } catch (e) {
-    $('#gkRoot').replaceChildren(el('div', 'gk-loading', `Could not load the shelf. ${e.message}`));
-    return;
-  }
-  render();
+// A failed load used to print one line and stop, which on a phone that dipped
+// out of signal for a second meant the app was dead until you found the reload
+// control. An installed standalone copy has no reload control at all: no address
+// bar, no pull-to-refresh on every platform, nothing. So the message carries the
+// button now.
+function showBootError(message) {
+  const box = el('div', 'gk-loading');
+  box.appendChild(el('div', null, `Could not load the shelf. ${message}`));
+  const retry = el('button', 'gk-btn-outline gk-retry', 'Try again');
+  retry.type = 'button';
+  // boot() opens with render(), which paints the loading line, so a retry
+  // already shows that it is doing something. A second failure lands back here.
+  retry.onclick = () => boot();
+  box.appendChild(retry);
+  $('#gkRoot').replaceChildren(box);
+}
+
+// Wiring that must happen exactly once. boot() is re-entrant now, and running
+// this twice would stack a duplicate of every listener and a second idle timer.
+let wired = false;
+function wireUp() {
+  if (wired) return;
+  wired = true;
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && state.sheetGame) setState({ sheetGame: null });
@@ -984,6 +997,19 @@ async function boot() {
     window.addEventListener(ev, () => { guide.lastActivity = Date.now(); }, { passive: true })
   );
   setInterval(checkIdle, 400);
+}
+
+async function boot() {
+  render();
+  try {
+    state.data = await loadData();
+    state.selected = (state.data.collections || []).map((c) => c.id); // all shelves on
+  } catch (e) {
+    showBootError(e.message);
+    return;
+  }
+  render();
+  wireUp();
 }
 
 // Registering the worker is what makes the page installable, and it is what

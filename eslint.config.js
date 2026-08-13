@@ -37,6 +37,8 @@ const workerGlobals = {
   Response: 'readonly',
   URL: 'readonly',
   console: 'readonly',
+  setTimeout: 'readonly',
+  clearTimeout: 'readonly',
 };
 
 const nodeGlobals = {

@@ -737,3 +737,6 @@ a:hover { color: var(--accent); }
 
 /* ============================================================== misc ====== */
 .gk-loading { padding: 40px 16px; text-align: center; color: var(--muted); font-family: var(--mono); font-size: 12px; }
+/* The retry under a failed load. Inline-block, so .gk-loading's centring
+   already places it; it only needs air above. */
+.gk-retry { margin-top: 14px; font-family: var(--sans); }

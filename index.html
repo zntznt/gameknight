@@ -23,6 +23,16 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
+    <!--
+      With scripting off, the "Loading the shelf" line below would sit there
+      forever promising something that is never coming, so hide it and let the
+      <noscript> beside it explain instead.
+    -->
+    <noscript>
+      <style>
+        .gk-loading--js { display: none; }
+      </style>
+    </noscript>
   </head>
   <body>
     <header class="gk-header">
@@ -67,7 +77,22 @@
       <div class="gk-headrow gk-headrow--live" id="gkLive" aria-live="polite"></div>
     </header>
 
-    <div id="gkRoot"></div>
+    <!--
+      The loading line is markup, not the first thing render() paints. It is on
+      screen before app.js has been fetched or parsed, so a slow module, a failed
+      one, or a browser that cannot run it all leave a sentence up rather than
+      blank paper. render() replaces the whole root on its first call, so this
+      costs nothing once the app is alive.
+    -->
+    <div id="gkRoot">
+      <div class="gk-loading gk-loading--js">Loading the shelf…</div>
+      <noscript>
+        <div class="gk-loading">
+          Gameknight sorts your shelf inside the browser, so it needs JavaScript
+          switched on. There is no server doing it for you.
+        </div>
+      </noscript>
+    </div>
     <div id="gkBarRoot"></div>
     <div id="gkSheetRoot"></div>
 
